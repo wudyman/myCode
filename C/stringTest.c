@@ -1,6 +1,7 @@
 #include "string.h"
 #include "stdio.h"
 #include "stdlib.h"
+
 int main(void)
 {
 	char s1[100]="originnew";
