@@ -1,0 +1,47 @@
+#include "sys/types.h"------------(pid_t....)
+#inlcude "sys/stat.h"
+#include "fcntl.h"----------------(fcntl,open,creat)
+
+int open(const char *pathname,int flags)
+int open(const char *pathname,int flags,mode_t mode)
+int creat(const char *pathname,mode_t mode)
+
+flags主要是打开文件的方式，有O_RDONLY,O_WRONLY,O_RDWR,O_APPEND,O_ASYNC,O_CLOEXEC,O_DIRECT,O_DIRECTORY,O_EXCL,O_LARGFILE,O_NOATIME,O_NOCTTY,O_NOFLOW
+O_NONBLOCK,O_NDELAY,O_SYNC,O_TRUNC
+
+mode_t是指创建的文件权限，S_IRUSR,S_IWUSR,S_IXUSER,S_IRWXU;          S_IRGRP,S_IWGRP,S_IXGRP,S_IRWXG;   S_IROTH,S_IWOTH,S_IXOTH,S_IRWXO
+						用户读， 用户写，用户执行，用户读写运行；   组读，组写，组运行，组读写运行；    其他人读，其他人写，其他人运行，其他人读写运行
+例如文件test.txt 全部权限打开为0777，对应的权限为rwxrwxrwx,第一组为用户，第二组为组，第三组为其他人
+
+mode_t在creat函数或者open函数带有O_CREAT情况下可以使用
+
+#include "unistd.h"
+ssize_t read(int fd,void *buf,size_t nbytes)
+ssize_t write(int fd,const void *buf,size_t nbytes)
+
+read是阻塞的，当读不到数据时会停在该函数不会往下执行， nbytes表示每次读取的数据数目，例如读取文件如果有100字节，当nbytes为10时，要读取10次
+通常取nbytes值等于buf的大小.返回值表示实际读取的数据数目
+
+
+fork：子进程会复制父进程的代码段，数据段和堆栈段。
+vfork: 子进程暂时占用父进程的地址空间，子进程先执行完后，父进程才能执行。一般使用情况需要运行“exec”等函数替换子进程空间
+phtread: 线程共用地址空间，栈和寄存器段不同，用于任务切换。
+
+dup,dup2 复制文件描述符，可以用于重定向
+
+LD_LIBRARY_PATH和/etc/ld.so.conf 是程序运行时搜索的库路径，  LD_PRELOAD是默认最先加载的库,编译时有-llib*和-L路径 去指定。
+
+#include <stdio.h>
+FILE *fopen(const char *path, const char *mode);
+FILE *fdopen(int fd, const char *mode);
+FILE *freopen(const char *path, const char *mode, FILE *stream);
+mode具体的有
+"r"(只读模式打开)，
+“r+"(读写模式打开),
+"w"(只写模式打开，如果不存在会新建，如果有会内容清零),
+"w+"(读写模式打开，如果不存在会新建，如果有会内容清零),
+"a"(追加模式只写),
+"a+"(追加模式读写),
+"b"(二进制文件打开，在Linux加不加此模式无区别。
+	window下有区别，回车换行符“0x0A”和“0x0D 0x0A”，例如如果原始文件为二进制（0x0A）,拷贝到不以二进制打开的文件时，0x0A会被转成Ox0D 0x0A,导致文件变大)
+

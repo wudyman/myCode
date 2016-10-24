@@ -1,0 +1,263 @@
+0.virtualbox安装完UBUNTU出现“The system is running in low-graphics mode”
+
+在菜单栏上点“设备”，然后点“安装增强功能”，
+如果addon的iso已经下载了，就会在虚拟机了挂在在光驱上，
+如果还没下载，就会开始下载，然后挂载，然后打开光驱，
+# mount -t auto /dev/cdrom /mnt
+看看是否有一个叫“VboxLinuxAdditions.run”的文件,然后在终端打开到这个目录，
+运行 “sh ./VboxLinuxAdditions.run”.装完后，在虚拟机设置里把2D,3D加速打开，
+
+卸载：sh ./VBoxLinuxAdditions.run uninstall
+为确保全部删除，到/opt目录里找VBoxGuestAdditions目录，根据你安装的版本，再执行一下卸载命令。
+/opt/VBoxGuestAdditions-4.2.18/uninstall.sh
+
+
+
+
+
+1.ubuntu 的 桌面和终端的默认启动方法
+
+修改
+/etc/X11/default-display-manager
+
+值为/usr/sbin/gdm，则进入图形界面
+值为false，则进入控制台
+修改
+/etc/X11/default-display-manager
+
+如果值为/usr/sbin/gdm，则进入图形界面
+如果值为false，则进入控制台（命令行方式）
+如果想从控制台进入图形界面，可以在控制台上输入命令 sudo gdm或sudo startx
+如果想从图形界面进入控制台，可以在终端上输入命令 sudo init 1，不过好像不好用
+
+插入一个小知识：
+XDM即“X Display Manager”，由它来启动X Window服务器，并管理图形客户端程序的
+登录、会话、启动窗口管理器（KDE、Gnome）等。KDE和Gnome也提供了自己的xdm的实现，分别叫kdm
+和gdm。
+
+
+对于12.04的ubuntu桌面系统，如果想在开机的时候直接进入字符界面，那可以：
+查看文件/etc/init/rc-sysinit.conf，在第14行附近：确认“env DEFAULT_RUNLEVEL=2”。2是新装系统默认的，确保不被修改。
+编辑文件 /etc/init/lightdm.conf，在第12行附近，原句“ and runlevel [!06]” 改为“ and runlevel [!026]”即可，之后如果想切换到图形界面，那再执行：startx 就可以了！
+
+2.
+［00］ubuntu 开启 ssh 服务
+    sudo apt-get install openssh-server
+
+［01]假如要改SSH的默认端口（22），那么你只要修改：/etc/ssh/sshd_config中Port 22，这里把22改成自己要设的端口就行了，不过千万别设和现已有的端口相同哦，以防造成未知后果。
+
+[02]假如要限制SSH登陆的IP，那么可以如下做：
+先：修改/etc/hosts.deny，在其中加入sshd:ALL
+然后：修改：/etc/hosts.allow，在其中进行如下设置：sshd:192.168.0.241
+这样就可以限制只有192.168.0.241的IP通过SSH登陆上LINUX机器了。
+当然在做为服务器方面，我都不装gnome和KDE的，而且很多东东都不装，这样增加安全系数。
+
+3.
+  ubuntu的shell改为链接为/bin/bash
+
+4.更改UBUNTU的DNS
+  内容提要：解决在Ubuntu 12下更改DNS的问题
+在12.04之前，我们只需要修改/etc/resolv.conf便可手动配置DNS了。但在12.04下，如果还这样操作会出现重启后/etc/resolv.conf被重置的情况。
+查阅资料后发现，往resolvconf这个目录里写入一个新配置文件才是正道。
+echo "nameserver 8.8.8.8" >>  /etc/resolvconf/resolv.conf.d/tail
+echo "nameserver 8.8.4.4" >>  /etc/resolvconf/resolv.conf.d/tail
+/etc/init.d/resolvconf restart
+再ping一下试试，问题解决了吗？
+
+5.设置静态IP
+
+sudo gedit /etc/network/interfaces
+
+auto lo     iface lo inet loopback 这个正是lo回环，
+我需要让这台运行Ubuntu Server的机子通过DHCP获得IP来加入网络，
+那么我只需要在上面的lo回环的配置内容下面加入：
+auto eth0
+iface eth0 inet static
+address 192.168.1.5
+netmask 255.255.255.0
+gateway 192.168.1.1
+如果是手动指定IP并且还需要访问互联网，那么还需要设置DNS：
+$sudo gedit /etc/resolv.conf
+假如dns地址为61.177.7.1,则向这里添加如下配置内容：
+nameserver 61.177.7.1 保存即可。
+重启网络组件让网络配置文件生效：
+$sudo /etc/init.d/networking restart 只要显示Reconfiguring network interfaces... [OK]
+即成功重启网络组件。
+
+6.安装MSD6329开发环境
+gcc:
+安装mips-4.3编译工具链"mips-4.3-MSD6329.tar.bz2"
+更改SHELL指向BASH
+
+mide:
+1）从服务器上移植
+解压“usr_lib_for_mide.tar.bz2”文件到/usr/lib/
+解压“usr_local_for_mide.tar.bz2”文件到/usr/
+更改MIDE文件中“export LD_LIBRARY_PATH=$APP_DIR:/usr/lib:/usr/local/lib”
+              为“export LD_LIBRARY_PATH=$APP_DIR:/usr/lib:/usr/local_for_mide/lib”
+2）重新安装
+   需要dfb-1.4.2 linux_fusion.8.1.1 libjpeg libpng libfreetype libiconv
+   apt-cache search
+   apt-get install
+
+7 codeblocks+wxwidgets
+sudo apt-get install libwxgtk2.8-0 libwxgtk2.8-dev wx2.8-headers wx-common
+设置 wxWidgets 默认版本代码:
+sudo update-alternatives --config wx-config
+新建project后在code blocks中设置project>builder options:
+在终端运行
+# wx-config --cxxflags
+将得到的结果
+-I/usr/lib/wx/include/gtk2-unicode-release-2.8 -I/usr/include/wx-2.8 -D_FILE_OFFSET_BITS=64 -D_LARGE_FILES -D__WXGTK__ -pthread
+贴到Compiler settings >> Other options中.
+
+在终端运行
+# wx-config --libs
+将得到的结果
+-pthread -lwx_gtk2u_richtext-2.8 -lwx_gtk2u_aui-2.8 -lwx_gtk2u_xrc-2.8 -lwx_gtk2u_qa-2.8 -lwx_gtk2u_html-2.8 -lwx_gtk2u_adv-2.8 -lwx_gtk2u_core-2.8 -lwx_baseu_xml-2.8 -lwx_ba
+贴到Linker options >> Other linker options中.
+
+7.  virtualbox增加磁盘
+
+关闭Ubuntu系统，打开VistualBox，"设置"->"存储"->“添加虚拟硬盘”
+fdisk -l
+fdisk /dev/sdb
+Command (m for help): n
+mkfs -t ext3 /dev/sdb1 // 用ext3格式对 /dev/sdb1 进行格式化
+
+mkdir /data // 创建新的挂载点
+mount /dev/sdb1 /data // 将新磁盘分区挂载到 /data 目录下
+df // 查看挂载结果
+
+vi /etc/fstab // 修改 /etc/fstab 文件
+在 /etc/fatab 文件中，添加如下内容：
+/dev/sdb1 /data ext3 defaults 1 2
+
+8.nfs
+nfs 安装(1)
+apt-get install nfs-kernel-server
+apt-get install portmap nfs-common
+(2)
+编辑/etc/exports
+/home/jgyang/nfsroot  *(rw,sync,no_root_squash)
+(3)
+修改挂载点的属性
+chmod 777 /home/jgyang/rootfs
+(4)
+重启nfs
+sudo /etc/init.d/nfs-kernel-server restart
+sudo /etc/init.d/portmap restart
+(5)
+在本机上测试
+showmount -e
+mount 172.20.149.190:/home/jgyang/nfsroot /mnt
+ls -l /mnt
+注：可以通过一个符号链接来export NFS目录，但在/etc/exports下所添加的挂载点应为真正的目录。比如建一符号链接
+ln -s /home/pub/work/freerunner/out/target/product/freerunner /home/jgyang/nfsroot&#160;
+这样在开发板上设置的内核命令行中设置的NFS目录就可是：/home/jgyang/nfsroot,但在/etc/exports文件中 export出的目录应当是实际的NFS所在的目录，即/home/pub/work/freerunner/out/target/product/freerunner。
+这样有两个好处，一是可以省去开发板中启动参数命令过长的麻烦;二是在重新编译android之后可以直接使用生成的NFS，而不必再重新拷贝一份。
+
+9.dos2unix
+sudo apt-get install tofrodos
+ln -s /usr/bin/todos /usr/bin/unix2dos
+ln -s /usr/bin/fromdos /usr/bin/dos2unix
+
+10. tar 打包
+NAME=backup2644/Backup_2644_dongxw_$(date +%Y%m%d).tar.bz2
+rm $NAME
+tar -jcvf $NAME -C /home/dongxw/RealTek/ \
+Release2644I/system/src/Project/Timer.h \
+Release2644I/system/src/Project/FactoryMenuFunctionsDefine.h \
+
+11.ifconfig 网关
+ifconfig eth0 192.168.0.9 netmask 255.255.255.0
+route add default gw 192.168.0.1
+
+12. svn
+svn info | grep Revision | awk '{ printf("#define REVISION \"%s\"\n", $$0) }' > ver.h
+find . -type d -name ".svn"|xargs rm -rf
+svn import --no-ignore -m "New import" RTD2644IG_6R81S_temp svn://172.20.115.242/home/svn/svn/RT2644/RTD2644IG_6R81S_temp
+svn checkout svn://172.20.115.242/home/svn/svn/RT2644/RTD2644IG_6R81S
+svn checkout svn://172.20.115.242/home/svn/svn/RT2644/RTD2644IG_NEW
+svn checkout svn://172.20.115.242/home/svn/svn/MSD6308/Supernova_DVB_ISDB/Supernova
+
+软连接上传
+svn add --no-ignore file
+svn commit -m "test" file
+
+13.释放缓存
+free -m
+sync
+echo 3 > /proc/sys/vm/drop_caches
+cat /proc/sys/vm/drop_caches
+
+14.清理系统
+sudo apt-get autoclean --清理旧版本的软件缓存
+sudo apt-get clean--清理所有软件缓存
+sudo apt-get autoremove--删除系统不再使用的孤立软件
+
+15.更换网卡
+
+最近服务器检修，更换了主板硬件，用老的硬盘进入系统以后，发现只有本地回路，eth网卡所有都不见了。
+查了一下，ubuntu会将网卡的MAC信息写在/etc/udev/rules.d/70-persistent-net.rules这个文件中。更换了网卡后MAC地址变了，于是用老的配置文件就不能正确识别出新的网卡了。
+简单的方法就是删除这个文件，重启系统。
+
+16.安装ubuntu 64bit
+重启进主机BIOS，找到virtualization的一项,我的BIOS中在Advanced-cpu setup-virtualization，现为Disabled状态，改为Enable，重启进入系统
+原来新建虚拟电脑时，要安装64位的ubuntu可是没有对应选择64位，更改设置即可。
+这里还要注意一点：要打开VirtualBox的vt-x/amd-v设置，这个其实会自动打开。
+重新安装，大功告成了！
+
+17.
+Virtualbox的GustAddition在Ubuntu 10.10中安装后有问题，不能全屏或是修改按窗口大小修改屏幕分辨率，解决方法：
+Ubuntu中安装下面的软件
+sudo apt-get update
+sudo apt-get install build-essential linux-headers-$(uname -r)
+sudo apt-get install virtualbox-ose-guest-x11
+重启！OK
+
+18.
+ubuntu 12.04 装 svn 1.7
+sudo vim /etc/apt/sources.list
+最后添加
+deb http://ppa.launchpad.net/svn/ppa/ubuntu precise main 
+deb-src http://ppa.launchpad.net/svn/ppa/ubuntu precise main
+sudo apt-get update
+出现W: GPG 错误：http://ppa.launchpad.net lucid Release: 由于没有公钥，无法验证下列签名：NO_PUBKEY 089EBE08314DF160 的问题，
+可以在终端中运行：sudo apt-key adv --keyserver keyserver.ubuntu.com --recv-keys 089EBE08314DF160 命令即可解决···
+如果出现gpg:error,更换外部网络后重试
+sudo apt-get update
+sudo apt-get install subversion
+svn --version
+
+19.
+virtual box 压缩 vmdk 磁盘
+虚拟机中碎片整理，
+sudo dd if=/dev/zero of=/EMPTY bs=1M
+sudo rm -f /EMPTY
+主机中压缩
+VBoxManage clonehd "source.vmdk" "cloned.vdi" --format vdi
+VBoxManage modifyhd cloned.vdi --compact
+VBoxManage clonehd "cloned.vdi" "compressed.vmdk" --format vmdk
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

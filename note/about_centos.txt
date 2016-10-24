@@ -1,0 +1,410 @@
+centos 查询安装包相关命令
+
+rpm -qa | grep 包名 ； rpm -qc ;rpm -ql
+
+进入系统后，按Ctrl+Alt+Fn可以切换控制台，其中F1~F6是字符控制台，F7~F12是X控制台
+如果启动直接进入字符控制台，而不是X Window，可以编辑/etc/inittab将id:5:initdefault:修改为id:3:initdefault:
+下次重启就不启动X Window了
+
+添加磁盘：
+fdisk /dev/xvdd
+选择命令“n”,选择创建主分区“p”,选择“w”保存
+格式化：mkfs.ext4 /dev/xvdd1
+挂载 mount /dev/xvdd1 dir
+
+开机挂载挂载为用户可读写
+vi /etc/fstab
+/dev/xvdd1 /home/dongxw/dataDisk1 ext4 users,rw 0 1
+chown dongxw:dongxw /home/dongxw/dataDisk1
+
+
+
+一. virtualbox+centos多网卡设置
+
+eth0是NAT，另外一块(eth4)是Host-Only.
+
+#确认网卡MAC
+[root@localhost ~]# ifconfig -a | grep HW
+eth0      Link encap:Ethernet  HWaddr 08:00:27:B2:9F:F5
+eth4      Link encap:Ethernet  HWaddr 08:00:27:BB:84:F9
+
+[root@localhost ~]# vi /etc/udev/rules.d/70-persistent-net.rules
+# PCI device 0x8086:0x100e (e1000)
+SUBSYSTEM=="net", ACTION=="add", DRIVERS=="?*", ATTR{address}=="08:00:27:B2:9F:F5", ATTR{type}=="1", KERNEL=="eth*", NAME="eth0"
+
+# PCI device 0x8086:0x100e (e1000)
+SUBSYSTEM=="net", ACTION=="add", DRIVERS=="?*", ATTR{address}=="08:00:27:BB:84:F9", ATTR{type}=="1", KERNEL=="eth*", NAME="eth4"
+
+[root@localhost ~]# vi /etc/sysconfig/network-scripts/ifcfg-eth0
+DEVICE="eth0"
+BOOTPROTO="dhcp"
+HWADDR="08:00:27:B2:9F:F5"
+IPV6INIT="yes"
+NM_CONTROLLED="yes"
+ONBOOT="yes"
+TYPE="Ethernet"
+UUID="56f45b3e-1d42-4cf8-a78e-4a041835f3a1"
+
+[root@localhost ~]# vi /etc/sysconfig/network-scripts/ifcfg-eth4
+DEVICE="eth4"
+BOOTPROTO=static
+IPADDR=192.168.56.102
+GATEWAY=192.168.56.1（如果双网卡，前一个是NAT方式，此处不能设置网关，否则会导致NAT无法访问外网）
+NETMASK=255.255.255.0
+HWADDR="08:00:27:BB:84:F9"
+NM_CONTROLLED="yes"
+ONBOOT="yes"
+TYPE="Ethernet"
+UUID="56f45b3e-1d42-4cf8-a78e-4a041835f3a1"
+
+二.安装SSH：
+yum install ssh
+启动SSH： 
+service sshd start
+设置开机运行： 
+chkconfig sshd on
+一般默认CentOS已经安装了OpenSSH，即使你是最小化安装也是如此。
+SSH配置：
+1、修改vi /etc/ssh/sshd_config，根据模板将要修改的参数注释去掉并修改参数值：
+Port 22 指定SSH连接的端口号，安全方面不建议使用默认22端口
+Protocol 2,1 允许SSH1和SSH2连接，建议设置成 Protocal 2
+其他参数根据自己的需要进行调整。配置方法详见： man ssh_config
+2、修改hosts.deny 在最后面添加一行：
+sshd:All
+3、修改hosts.allow 在最后面添加一行：
+sshd:All
+如果为了安装可以限制访问的IP，设置如下：
+sshd:192.168.0.101
+sshd:192.168.0.102
+上述配置表示只允许101和102的服务器进行SSH连接
+4、启动SSH
+/etc/init.d/sshd start
+至此SSH已经可以连接了
+
+三.添加用户
+useradd xxx(只添加用户xxx，HOME下没目录)
+useradd -m xxx(添加用户xxx，HOME下有目录xxx)
+adduser xxx(添加用户xxx，HOME下有目录xxx)
+passwd xxx(设置密码)
+
+添加用户到SUDO
+vi /etc/sudoers
+找到root    ALL=(ALL)       ALL一行，
+在下面插入新的一行，内容是：
+dongxw ALL=(ALL)       ALL
+
+四.安装SAMBA
+1、
+使用Samba服务器需要防火墙开放以下端口
+    UDP 137
+    UDP 138
+    TCP 139
+    TCP 445
+vi /etc/sysconfig/iptables   #配置防火墙端口
+-A INPUT -m state --state NEW -m tcp -p tcp --dport 139 -j ACCEPT
+-A INPUT -m state --state NEW -m tcp -p tcp --dport 445 -j ACCEPT
+-A INPUT -m state --state NEW -m udp -p udp --dport 137 -j ACCEPT
+-A INPUT -m state --state NEW -m udp -p udp --dport 138 -j ACCEPT
+/etc/rc.d/init.d/iptables restart     #重启防火墙，使规则生效
+2.
+centos有一个selinux模块，该模块增加了centos安全访问控制性能，对samba及ftp等一些配置均有影响。
+可以把selinux取消，这样，通过windows就可以访问linux的共享了。
+通过   vi /etc/sysconfig/selinux
+把 SELINUX=enforcing   修改为SELINUX= disable 
+#SELINUXTYPE=targeted #注释掉 
+setenforce 0 #使配置立即生效
+退出保存，并且重启。
+就可以实现windows 实在对centOS ，smb共享的访问了，当然，也可以通过配置selinux策略来实现该功能。
+2.3(如果是centos7,取消firewall,采用iptabls)
+systemctl stop firewalld.service #停止firewall
+systemctl disable firewalld.service #禁止firewall开机启动
+yum install iptables-services #安装 
+systemctl restart iptables.service
+systemctl enable iptables.service
+3.
+查看有没有装SAMBA
+rpm -qa | grep -i samba
+查看samba的配置文件
+rpm -qc samba samba-common
+安装samba
+yum install samba samba-client samba-common
+设置开机自启动在3,5运行级上
+chkconfig --level 35 smb on
+chkconfig --level 35 nmb on
+添加samba用户
+smbpasswd -a dongxw(如果没用户dongxw,需要用adduser命令先添加linux用户)
+设置访问目录，打开smb.conf并编辑
+vi /etc/samba/smb.conf
+[dongxw]
+        path = /home/dongxw
+        public = yes
+        valid users = dongxw
+        browseable = yes
+        writeable = yes
+        guest ok = yes
+重启Samba
+service smb restart
+service nmb restart
+查看samba状态
+smbstatus
+
+五. 安装SVN
+查看是否可以从yum软件仓库找到SVN安装包
+yum list *svn*
+从使用yum软件仓库安装SVN，执行
+yum install subversion.i686
+创建版本库目录
+mkdir -p /home/svn/leqiandao
+创建版本库
+svnadmin create /home/svn/leqiandao
+进入配置目录
+cd /home/svn/leqiandao/conf
+配置相关文件
+vi passwd(更改 dongxw=shenlin)
+vi authz(最后添加 [/] dongxw=rw)
+vi svnserve.conf
+(
+更改
+anon-access=read
+auth-access=write
+password-db=passwd
+authz-db=authz
+)
+配置防火墙，打开3690端口
+vi /etc/sysconfig/iptables
+添加“-A INPUT -m state --state NEW -m tcp -p tcp --dport 3690 -j ACCEPT”
+/etc/rc.d/init.d/iptables restart
+启动SVN
+svnserve -d -r /home/svn/
+
+六.安装桌面环境
+yum groupinstall "Desktop"
+yum groupinstall "X Window System"
+
+七.安装APACHE
+1)gcc如果没装先安装gcc
+2)yum install gcc
+ 下载解压httpd-2.2.29.tar.bz2
+3)编译安装
+ ./configure --prefix=/home/dongxw/http_server/Apache-2.2.29 --enable-so --enable-rewrite=share --enable-proxy=share --enable-proxy-ajp=share --enable-dav=share --enable-dav-fs
+ 或
+ ./configure --prefix=/home/dongxw/http_server/Apache-2.2.29  --enable-module=so  --enable-ssl=sharedSSL --enable-rewrite=shared  --enable-proxy=shared  --enable-deflate=shared --with-mpm=worker --enable-expires=shared --enable-speling=shared --enable-mods-shared=all --enable-module=most --enable-mods-shared=all --with-apr=/usr/local/apr --with-apr-util=/usr/local/apr-util
+ make 
+ make install
+4)复制初始化文件和设置Apache开机启动
+sudo cp build/rpm/httpd.init /etc/init.d/httpd
+sudo chmod 755 /etc/init.d/httpd
+sudo chkconfig --add httpd
+sudo chkconfig --level 35 httpd on
+5）创建符号链接
+检查/etc/init.d/httpd看所需要的文件
+CONFFILE=/etc/httpd/conf/httpd.conf
+httpd=${HTTPD-/usr/sbin/httpd}
+pidfile=${PIDFILE-/var/log/httpd/${prog}.pid}
+lockfile=${LOCKFILE-/var/lock/subsys/${prog}}
+
+符号链接如下：
+sudo ln -s /home/dongxw/http_server/Apache-2.2.29/ /etc/httpd
+sudo ln -s /home/dongxw/http_server/Apache-2.2.29/bin/httpd /usr/sbin/httpd
+sudo ln -s /home/dongxw/http_server/Apache-2.2.29/bin/apachectl /usr/sbin/apachectl
+sudo ln -s /home/dongxw/http_server/Apache-2.2.29/logs /var/log/httpd
+6）启动/停止服务
+killall -9 httpd
+service httpd restart
+service httpd start
+/usr/local/apache/bin/apachectl start
+/usr/local/apache/bin/apachectl stop
+/usr/local/apache/bin/apachectl status
+/etc/init.d/httpd start
+/etc/init.d/httpd stop
+/etc/init.d/httpd restart
+
+7)一些问题
+如果不能访问，需要检查
+selinux 要关闭（vi /etc/sysconfig/selinux）
+防火墙端口要打开（vi /etc/sysconfig/iptables）
+目录权限要打开,包括上级目录（chmod 777 home;chmod 777 dongxw; chmod -R 777 htdoc）
+八.安装PHP
+1)
+1)安装开发工具
+yum groupinstall "Development tools"
+安装apr-1.5.1.tar.bz2，apr-util-1.5.4.tar.bz2
+可以用 rpm -qa | grep apr 查询有没有安装
+先安装其他一些包
+sudo yum install libxml2 libxml2-devel curl curl-devel libjpeg libjpeg-devel libpng libpng-devel libmcrypt libmcrypt-devel libtool-ltdl-devel
+如果出现 No package mcrypt相关
+yum  install epel-release  //扩展包更新包
+#不更新内核
+yum --exclude="kernel* centos-release" update
+vi /etc/yum.conf
+# 在 [main]后添加：
+exclude=kernel* centos-release*
+yum  update //更新yum源
+yum install libmcrypt libmcrypt-devel mcrypt mhash  就ok了
+2)开始安装PHP
+tar -jxvf php-5.6.8.tar.bz2
+./configure --prefix=/home/dongxw/http_server/php-5.6.8 --with-apxs2=/home/dongxw/http_server/Apache-2.2.29/bin/apxs --with-curl --with-mcrypt --enable-mbstring --with-iconv --with-gd -with-jpeg-dir=/usr/lib64 --enable-pdo --with-pdo-mysql=mysqlnd --with-mysqli=mysqlnd --with-mysql=mysqlnd
+或
+#./configure --prefix=/home/dongxw/http_server/php-5.6.8 --with-mysql=/home/dongxw/http_server/mysql --with-openssl --with-mysqli=/home/dongxw/http_server/mysql/bin/mysql_config --enable-mbstring --with-freetype-dir --with-jpeg-dir --with-png-dir --with-zlib --with-libxml-dir=/usr --enable-xml  --enable-sockets --with-apxs2=/home/dongxw/http_server/Apache-2.2.29/bin/apxs --with-mcrypt  --with-config-file-path=/etc --with-config-file-scan-dir=/etc/php.d --with-bz2  --enable-maintainer-zts
+#./configure --prefix=/home/dongxw/http_server/php-5.6.8 --enable-pdo --with-pdo-mysql=/home/dongxw/http_server/mysql --with-mysql=/home/dongxw/http_server/mysql --with-mysqli=/home/dongxw/http_server/mysql/bin/mysql_config --with-apxs2=/home/dongxw/http_server/Apache-2.2.29/bin/apxs --with-curl --with-mcrypt --enable-mbstring --with-iconv --with-gd --with-jpeg-dir=/usr/lib64
+如果编译过程中遇到下列信息：
+PEAR package PHP_Archive not installed: generated phar will require PHP's phar extension be enabled.
+这说明没有安装PEAR，解决方案有两种：
+1、./configure时附加--without-pear
+2、从http://pear.php.net/go-pear下列未打包的pear安装包并执行，步骤如下：
+# wget http://pear.php.net/go-pear.phar 
+# /usr/local/webserver/php/bin/php go-pear.phar
+3)配置
+sudo cp php.ini-development /home/dongxw/http_server/php-5.6.8/lib/php.ini
+sudo ln -s /home/dongxw/http_server/php-5.6.8/bin/php /usr/bin/php
+sudo vi /home/dongxw/http_server/php-5.6.8/lib/php.ini
+
+把include_path前面的分号删除，改成include_path = "/home/dongxw/http_server/php-5.6.8/lib/php"
+#sudo vi /home/dongxw/http_server/Apache-2.2.29/conf/httpd.conf
+#在最下面加入一行AddHandler application/x-httpd-php .php
+#sudo /home/dongxw/http_server/Apache-2.2.29/bin/httpd -k restart
+#sudo vi /home/dongxw/http_server/Apache-2.2.29/htdocs/phpinfo.php
+#或者
+#cp php.ini-production /etc/php.ini
+编辑apache配置文件httpd.conf，以apache支持php
+#vim /etc/httpd/httpd.conf
+#添加如下二行
+AddType application/x-httpd-php  .php
+AddType application/x-httpd-php-source  .phps
+定位至DirectoryIndex index.html 
+修改为：
+DirectoryIndex  index.php  index.html
+
+九.安装mysql
+1)卸载旧版本
+rpm -qa | grep mysql
+rpm -e mysql   //普通删除模式
+rpm -e --nodeps mysql    // 强力删除模式，如果使用上面命令删除时，提示有依赖的其它文件，则用该命令可以对其进行强力删除
+2）安装相关包
+yum install make gcc-c++ cmake bison-devel  ncurses-devel
+3）下载
+wget http://dev.mysql.com/get/Downloads/MySQL-5.6/mysql-5.6.24.tar.gz/from/http://cdn.mysql.com/
+wget http://mirrors.sohu.com/mysql/MySQL-5.6/mysql-5.6.24.tar.gz
+4）编译安装
+cmake \
+-DCMAKE_INSTALL_PREFIX=/home/dongxw/http_server/mysql \
+-DMYSQL_DATADIR=/home/dongxw/http_server/mysql/data \
+-DSYSCONFDIR=/etc \
+-DWITH_MYISAM_STORAGE_ENGINE=1 \
+-DWITH_INNOBASE_STORAGE_ENGINE=1 \
+-DWITH_MEMORY_STORAGE_ENGINE=1 \
+-DWITH_READLINE=1 \
+-DMYSQL_UNIX_ADDR=/var/lib/mysql/mysql.sock \
+-DMYSQL_TCP_PORT=3306 \
+-DENABLED_LOCAL_INFILE=1 \
+-DWITH_PARTITION_STORAGE_ENGINE=1 \
+-DEXTRA_CHARSETS=all \
+-DDEFAULT_CHARSET=utf8 \
+-DDEFAULT_COLLATION=utf8_general_ci
+
+make && make install
+5）配置
+使用下面的命令查看是否有mysql用户及用户组
+cat /etc/passwd 查看用户列表
+cat /etc/group  查看用户组列表
+如果没有就创建
+groupadd mysql
+useradd -g mysql mysql
+修改/home/dongxw/http_server/mysql权限
+chown -R mysql:mysql /home/dongxw/http_server/mysql
+进入安装路径，执行初始化配置脚本，创建系统自带的数据库和表
+scripts/mysql_install_db --basedir=/home/dongxw/http_server/mysql --datadir=/home/dongxw/http_server/mysql/data --user=mysql
+注：在启动MySQL服务时，会按照一定次序搜索my.cnf，先在/etc目录下找，找不到则会搜索"$basedir/my.cnf"，在本例中就是 /usr/local/mysql/my.cnf，这是新版MySQL的配置文件的默认位置！
+注意：在CentOS 6.4版操作系统的最小安装完成后，在/etc目录下会存在一个my.cnf，需要将此文件更名为其他的名字，如：/etc/my.cnf.bak，否则，该文件会干扰源码安装的MySQL的正确配置，造成无法启动。
+在使用"yum update"更新系统后，需要检查下/etc目录下是否会多出一个my.cnf，如果多出，将它重命名成别的。否则，MySQL将使用这个配置文件启动，可能造成无法正常启动等问题。
+
+6）启动
+添加服务，拷贝服务脚本到init.d目录，并设置开机启动
+cp support-files/mysql.server /etc/init.d/mysql
+chkconfig mysql on
+service mysql start  --启动MySQL
+7）配置用户
+MySQL启动成功后，root默认没有密码，我们需要设置root密码。
+设置之前，我们需要先设置PATH，要不不能直接调用mysql
+修改/etc/profile文件，在文件末尾添加
+vi /etc/profile
+PATH=/home/dongxw/http_server/mysql/bin:$PATH
+export PATH
+source /etc/profile
+现在，我们可以在终端内直接输入mysql进入，mysql的环境了
+执行下面的命令修改root密码
+mysql -uroot  
+mysql> SET PASSWORD = PASSWORD('123456');
+若要设置root用户可以远程访问，执行
+mysql> GRANT ALL PRIVILEGES ON *.* TO 'root'@'172.16.%' IDENTIFIED BY 'password' WITH GRANT OPTION;
+"password"为远程访问时，root用户的密码，可以和本地不同。
+8)配置防火墙
+防火墙的3306端口默认没有开启，若要远程访问，需要开启这个端口
+
+打开/etc/sysconfig/iptables
+
+在“-A INPUT –m state --state NEW –m tcp –p –dport 22 –j ACCEPT”，下添加：
+-A INPUT -m state --state NEW -m tcp -p -dport 3306 -j ACCEPT
+然后保存，并关闭该文件，在终端内运行下面的命令，刷新防火墙配置：
+service iptables restart
+OK，一切配置完毕，你可以访问你的MySQL了~
+9)
+
+CentOS 7中默认使用Firewalld做防火墙，所以修改iptables后，在重启系统后，根本不管用。
+
+Firewalld中添加端口方法如下：
+
+firewall-cmd --zone=public --add-port=3306/tcp --permanent
+
+firewall-cmd --reload
+
+十.安装 java 7
+
+1).首先卸载原有openjdk.
+java -version  
+rpm -qa|grep java  
+2).安装 oracle jdk7
+http://www.oracle.com/technetwork/java/javase/downloads/jdk7-downloads-1880260.html
+mkdir /usr/java
+cd /usr/java/
+sudo tar -xvf jdk-7u79-linux-i586.gz 或 rpm -ivh jdk-7u79-linux-i586.rpm
+sudo ln -s jdk1.7.0_79 jdk
+sudo vi /etc/profile
+添加（export JAVA_HOME=/usr/java/jdk
+export PATH=$JAVA_HOME/bin:$PATH
+export CLASSPATH=.:$JAVA_HOME/LIB/dt.jar:$JAVA_HOME/lib/tools.jar）
+source /etc/profile
+java -version
+会提示，安装成功
+"
+java version "1.7.0_79"
+Java(TM) SE Runtime Environment (build 1.7.0_79-b15)
+Java HotSpot(TM) Client VM (build 24.79-b02, mixed mode)
+"
+2)安装mysql的JDBC驱动
+tar -xvf mysql-connector-java-5.1.25.tar.gz
+sudo mv mysql-connector-java-5.1.25 /usr/java/
+sudo ln -s mysql-connector-java-5.1.25 mysql-connector-java
+sudo vi /etc/profile
+export CLASSPATH=.:$JAVA_HOME/LIB/dt.jar:$JAVA_HOME/lib/tools.jar:/usr/java/mysql-connector-java/mysql-connector-java-5.1.25-bin.jar
+source /etc/profile
+
+十一.安装tigcase
+十二.安装openfire
+1).http://www.igniterealtime.org/downloads/index.jsp#openfire
+如果下载的是rpm
+#rpm -ivh openfire-3.6.2-1.i386.rpm
+默认安装到/opt/openfire目录下
+如果下载的是tar包
+tar -xvf openfire_3_10_0.tar.gz 
+ mv openfire /opt
+2)启动
+/opt/openfire/bin/openfire 
+/opt/openfire/bin/openfire start
+配置防火墙，打开9090端口
+vi /etc/sysconfig/iptables
+添加“-A INPUT -m state --state NEW -m tcp -p tcp --dport 9090 -j ACCEPT”
+/etc/rc.d/init.d/iptables restart
+3）.打开浏览器，输入http://[公网或私网ip]:9090/进入配置界面
+依次设置完后，如果用spark客户端不能访问，请注意关闭防火墙试试（"/etc/rc.d/init.d/iptables stop"）
+

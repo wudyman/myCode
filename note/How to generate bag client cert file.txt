@@ -1,0 +1,39 @@
+1¡¢support SSL
+clientcertsigned.pem: Client certificate in PEM format.
+clientcertkey.pem: Private key of client certificate in PEM format.  (not encrypted)
+
+2¡¢How to create kbgen.out which is used for compression/decompression
+step1:enter \nettv_2k16_mtk\TPV_internal
+step2: make keybag_clean -> make libkeybag -> make keybag
+step3£ºunder /nettv_2k16_mtk/TPV_internal/mnettv_app/videostore_mw/tool£¬you can find the file kbgen.out
+step4£ºin makefile£¬it will copy kgben.out  into /nettv3/TPV_internal/mnettv_app/videostore_mw/tool/keys
+cp -f /nettv3/TPV_internal/mnettv_app/videostore_mw/tool/kbgen.out /nettv3/TPV_internal/mnettv_app/videostore_mw/tool/keys
+
+3¡¢On platform we will use kbgen.out to decompress ClientCert.bag£¬then get two pem files.
+step1£ºcd /nettv_2k16_mtk/mnettvK2k16/opera/data/opera_dir£¬you can find ClientCert.bag
+step2£ºcopy kbgen.out and ClientCert.bag into USB¡£
+step3£ºplug usb into TV SET, and then cd /mnt/usb/sda1
+step4: Decompress the file ClientCert.bag by kbgen.out
+./kbgen.out -h
+./kbgen.out -xn ClientCert.bag
+
+sh-3.2# cd output/
+sh-3.2# ls
+clientcertkey.pem clientcert.p12  clientcertsigned.pem
+
+4¡¢In build server, create client.p12 file with two pem files.
+ openssl pkcs12 -export -password "pass:" -in clientcertsigned.pem -inkey clientcertkey.pem -out client.p12
+
+5¡¢Rename client.p12 to clientcert.p12 and then creat .bag file
+./kbgen.out -cn Client.bag ./output/clientcertkey.pem ./output/clientcert.p12 ./output/clientcertsigned.pem
+
+
+6¡¢rename Client.bag to ClientCert.bag,Then copy it into /nettv_2k16_mtk/mnettvK2k16/opera/data/opera_dir/
+
+
+
+dongxw mark here:
+./kbgen.out -cn Client.bag e13m_group_dev_key.pem clientcert.p12 e13m_group_dev_cert.pem
+./kbgen.out -xn Client.bag
+./kbgen.out -cn Client.bag e13m_group_dev_key.pem e13m_group_dev_cert.pem
+./kbgen.out -cn Client.bag group_key.pem group_cert.pem

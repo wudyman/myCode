@@ -1,0 +1,35 @@
+发送方：group
+1.获取group cert(数字证书)信息
+ openssl x509 -in groupcert.pem -inform pem -noout -text
+2.从group数字证书中提取公钥
+  openssl x509 -in groupcert.pem -pubkey -out dpub.pem>&grouppub.pem
+3.从group私钥中提取公钥
+   openssl rsa -pubout -in groupkey.pem -out grouppub2.pem
+  
+4.用unique的公钥加密数据
+openssl rsautl -encrypt -pubin -inkey uniquepub.pem -in data.txt -out edata.txt
+5.计算数据的摘要
+openssl dgst -sha1 -out md.txt data.txt
+6.用group的私钥给消息摘要签名：
+openssl rsautl -sign -inkey groupkey.pem -in md.txt -out signature.bin
+
+把edata.txt和signature.bin 发给接收方。
+
+接收方： unique
+1.获取unique cert(数字证书)信息
+ openssl x509 -in uniquecert.pem -inform pem -noout -text
+2.从unique数字证书中提取公钥
+  openssl x509 -in uniquecert.pem -pubkey -out dpub.pem>&uniquepub.pem
+3.从unique私钥中提取公钥
+   openssl rsa -pubout -in uniquekey.pem -out uniquepub2.pem
+   
+4.用unique的私钥解密数据
+openssl rsautl -decrypt -inkey uniquekey.pem -in edata.txt -out data.txt
+5.计算data.txt的信息摘要：
+openssl dgst -sha1 -out ms2.txt data.txt
+6.用group的公钥解密数字签名：
+openssl rsautl -verify -pubin -inkey grouppub.pem -in signature.bin -out ms3.txt
+
+最后比较：ms2.txt 和ms3.txt内容完全相同：
+SHA1(data.txt)= 4b960a44159e05717e00b8089863799d09545686
+

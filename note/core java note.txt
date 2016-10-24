@@ -1,0 +1,188 @@
+Chapter 1-An Intrlduction to Java
+
+	That is nothing to note
+	
+Chapter 2-The Java Programming Enviroment
+
+2.1 		use javac -version to test whether the Java Install success.
+2.2 		the source code of Java is src.zip.
+
+Chapter 3-Fundamental Programming Structures in Java
+
+3.1 		The standard naming convention of class is that,first letter with an uppercase letter. if a name consist of multiple words,fisrt letter of each word use uppercase letter.like CamelCase called "camel case".
+3.2 		You need to make the file name for the  source code the same as the name of the public class,with the extension .java appended.
+3.3 		Java is strongly typed language.this means that every variable must have a declared type. There are eight primitive in Java.Four of them are integer types(byte,short,int ,long);two are float-point number types(float,double)
+				one is character type char,used for code units in the Unicode encoding scheme,and one is a boolean type for truth values.
+3.4 		boolean type has two values,true and false.you cannot be convert between integers and boolean values.
+3.5 		after you declare a variable,you must explicitly initialize it by means of an assignment statement.you can never use the value of an uninitialized variable.
+3.6 		you use the keyword final to denote a constant.it is customary to name constants in all uppercase.
+3.7 		If either of the operands is of type double,the other one will be converted to a double.
+				Otherwise,if either of the operands is of type float,the other one will be converted to a float.
+				Otherwise,if either of the operands is of type long,the other one will be converted to a long.
+				Otherwise,both operands will be converted to an int.
+3.8			you can extract a substring from a larger string with the substring method of the string class.
+				Java,like most programming languages,allow you to use + to join(concatenate)two strings.
+    		every java object can be converted to a string by use "".
+    		In Java,it is hard to modify a string,instead you can make a new string by building strings.
+3.9 		To test whethre two strings are equal,use the equals method.for example,s.equals(t).reruns true if the string s and t are equal,false otherwise.
+				The empty string "" is a string of length 0.you can test whether a string is empty by calling if(str.length()==0) or if(str.equals(""))
+				To test whether a string is null,use the condition if (str==null)
+				sometimes,you need to test that a string is neigther null or empty.then use the condition if(str!=null && str.length()!=0)
+3.10		about  string builder . StringBuilder builder=new StringBuilder() builder.append(ch) String completeString=builder.toString();
+3.11  	about output and input. use System.out.println to output,alse can formate output.
+				for input, use scanner. for example,Scanner in=new Scanner(System.in);String name=in.nextLine(); read a single word use in.next().read a integer use in.nextInt();
+				when read password,please use System.console.
+				the function of String.formate can formate a string. 
+3.12  	To read from a file,construct a Scanner object like this: 
+					Scanner in=new Scanner(Paths.get("myfile.txt"));
+				To write a file,construct a PrintWriter object.In the constructor,simply supply the file name:
+					PrintWriter out=new PrintWriter("myfile.txt");if the file does not exist,it is created.you can use the print,println,and printf commands as you did when pointing to System.out.
+3.13		Break and continues statement can skip to a lable;Notice that the lable should be place at outside of loop.
+3.14 		you can use BigNumer to create a very big number ,big than long type.
+3.15  	java can use "for each" loop.
+
+Chapter 4-objects and classes
+4.1			Introduction to Object Oriented Programming
+4.2			use predefine class,like Math Date String Random
+4.3			class field is static field, object field is instance field.
+				instance field should better define as private,you can define class field as public static or public static final for constant.
+				if you define a field as static,then there is only one such field per class.In contrast, each object has its own copy of all instance fields.
+4.4			when outside invoke static method,you can use classname.method or object.method. but invoke instance method,you must use objec.method. 
+				static method just only access static field and static method. but instance method can access staic filed ,static method,instance filed and instance method.
+				static mthod can be invoke by classname.method,it is means that invoke before object construct, instance field maybe not get a real object.
+4.5   	every class can have a main method,this can be used  for unit test.
+4.6   	Let us review the computer science terms that describe how parameters can be passed to a method in a programming language.The term call by value
+				means that the method gets just the value that the caller provider.In contrast,call by reference means that the method gets the location of the variable that the caller provides.
+				Thus ,a method can modify the value stored in a variable passed by reference but not in one passed by value.
+				The java programming  language always uses call by value.That means that the method gets a copy of all parameter values.
+				notice that: object and copy of object reference to the same location.
+4.7			If you don`t set a field explicitly in a constructor,it is automatically set to a default value: numbers to 0, boolean values to false,
+				and object references to null.some people consider it poor programming practice to rely on the defaults.
+4.8			If you write a class with no constructors whatsoever,then a no-argument constructor is provided for you.	This constructor sets all the instance fields to their default values.
+				If a class supplies at least one constructor but does not supply a no-argument constructor,	it is illegal to construct objects without supplying arguments.
+4.9			The keyword this refers to the implicit parameter of a method. However,this keyword has a second meaning.
+				If the first statement of a constructor has the form this(...), then the constructor calss another constructor of the same class
+4.10  	Java have three ways to initialize a data field: one is By setting a value in a constructor;	the second is By assigning a value in the declaration;	the third is initialization block.
+4.11		use the classpath;for example, you hava the package com.dxw.package1 at the path c:\java_test\src\com\dxw\package1\. 
+				before you import com.dxwe.package1.*; you should set the classpath,can use the enviroment or use javac -classpath c:\java_test\src\com\dxw\package1\
+				notice: classloader load a lot of class before excute your java app.
+			
+chapter 5-Inheritance
+5.1			super is not a reference to an object.For example,you cannot assign the value super to another object variable. Instead,super is a special keyword 
+				that directs the compiler to invoke the superclass method.
+5.2			In java, you do not need to declare a method as virtual.Dynamic binding is the default behavior.If you do not want a method to be virtual,you tag it as final.
+5.3			In the java programming language,object variables are polymorphic. A variable of type Employee can refer to an object of type Employee or to an object of
+				any subclass of the Employee class(Such as Manager,Executive,Secretary,and so on).
+5.4			a class with one or more abstract methods must itself be declared abstract.	abstract classes can have fields and concrete methods.
+				a class can even be declared as abstract even though it has no abstract method.
+				abstract class cannot be instantiated.that is ,if a class is declared as abstract, no objects of that class can be created.however,you can create objects of concrete sub classes.
+				notice that you can still create object variables of an abstract class,but such a variable must refer to an object of a nonabstract subclass.
+5.5			private is visible to the class only.
+				public is visible to the world.
+				protected is visible to the package and all subclass.
+				default is visible to the packge.
+5.6   	In Java,only the primitive types(numbers,characters,and boolean values)are not objects. All array types,no matter whether they are arrays of objects or array of primitive types, are class types that extend the object class.
+5.7   	ArrayList is a generic class with a type parameter. To specify the type of the element objects that the  array list holds,you append a class name enclose in angle brackets, such as ArrayList<Employee>.
+5.8			Object Wrappers and Autoboxing. occasionally,you need to convert a primitive type like int to an object. All primitive types hava class counterparts. for example, a class Integer corresponds to the primitive type int. These kinds of classes are usually called wrappers.
+				The wrapper classes have obvious names:Integer,Long,Float,Double,Short,Byte,Character,Void,and Boolean.
+				you cannot use ArrayList<int>, here,the Interger wrapper clas comes in. you can use ArrayList<Integer>.
+5.9 		Methods with a Variable Number of Parameters. like public void fun(Object... args). Here,the ellipsis ... is part of the java code. It denotes that the  method can receive an arbitrary number of objects.
+5.10		Enumeraton classes 
+5.11		Reflection
+5.12		Design Hints for Inheritance
+				1 Place common operatons and fields in the superclass.
+				2	Don`t use protected fields.
+				3	Use inheritance to model the "is-a" relationship.
+				4	Don`t use inheritance unless all inherited methods make sense.
+				5 Don`t change the expected behavior when you override a method.
+				6 Use Polymorphism, not type information.
+				7 Don`t overuse reflection.
+			
+Chapter 6-Interfaces and Inner Classes
+6.1			In the Java programming language,an interface is not a class but a set of requirement for the classes that want to conform to the interface.
+				All methods of an interface are automatically public. For that reason, it is not necessary to supply the keyword public when declaring a method in a interface.
+				Interfaces can have multiple methods, can also define constants.
+6.2			Interfaces never have instance fields, and the methods are never implemented in the interface,but in java1.8,you can use default to implementd methods in interface. Supplying instance fields and method implementations is the job of the classess that 
+				implement the interface. You can think of an interface as being similar to an abstract class with no instance fields.
+6.3			To make a class implement an interface,you carry out two steps;
+				1 you declare  that your class intends to implement the given interface. use the implements keyword: class Employee implements Comparable
+				2 you supply definitions for all methods in the interface.
+6.4			Properties of Interfaces: Interfaces are not classes. In particular, you can never use the new operator to instantiate an interface.
+				However,even though you can`t construct interface objects,you can still declare interface variable, an interface variable must refer to an object of a class that implements the interface. 
+				Just as you use instanceof to check whether an object if of a specific class, you can use instanceof to check whether an object implements an interface: if(anObject instanceof anInterface){..}.
+				Just as you can build hierarchies of classes, you can extend interfaces.
+				Although you cannot put instance fields or static methods in an interface, you can supply constants in them. 
+				Just as methods in an interface are automatically public, fields are always public static final.
+6.5   	In general,Inner class have 4 type. Member inner class, local inner class,anonymous inner class,static inner class.
+6.6			Member inner class just a class inside in another class.for example, class in inside of class out. class in can easy access all fields and methods of class out(include static and private). 
+				But class out access class in is diffcult,need first instance class in and then access the fields and methods of class in.
+				why class in can direct access class out: although the class in has no-argument constructor, the compiler add a argument for constructor in default. like "out this$0", it reference a out class instance.so calss in can access class out by this.
+				that`s why you instance a class in,must instance a class out in first.
+				if class in and class out have the same name field, class in can use "out.this.fieldname" to access out.
+				inner class can use private,public,protect and default(package access) modifiers. outter class can just only use public and defalt modifiers.
+6.7			Local inner class is a kind of class that define in the methods or scope. Not like member inner class,local inner class can be just only access in methods or scope.
+				notice that: local inner class like local variable in methods ,can not use the modifiers public ,private,protected ,static.
+				when local inner class access local variable,the local variable should be define as final modifier.
+6.8   	Anonymous inner class is special local inner class.also belong to local inner class. can not have modifiers public,private,protected,static like local inner class.
+				anonymous inner class hava no constrctor.In general,use for interface callback,use for inheritant other class or implement other interface.
+6.9			Static inner class do not need outer class instance,this is like static class member. static inner class can not access none-static fields and methods of outer class. can use public,private,protected modifiers.			
+6.10  	none-static inner class can not define static member like static fields and methods.
+6.11		about inheritance of member inner class. must have reference to out.in, constructor must have reference to out,and use out.super();
+				like: class out{ class in{}} ;class InheritIn extends out.in{InheritIn(out){out.super();}} 
+			
+Chapter 7-Graphics Programming
+				That is nothong to note
+			
+Chapter 8-Event Handling
+				That is nothing to note
+			
+Chapter 9-User interface comments with swing
+				That is nothing to note
+			
+Chapter 10-Depolying Applications and Applets
+				That is nothing to note
+
+Chapter 11-Exceptions,Assertions,Logging,Debugging
+11.1		In the Java programming language,an exception object is always an instance of a class derived from "Throwable".
+				you can create your own exception classes if the ones built into java do not suit your needs.
+11.2		Notice that all exception descend from Throwable,but the hierarchy immediately splits into two branches:Error and Exception.
+				The Error hierarchy describes internal errors and resource exhaustion	situations inside the Java runtime system.You should not throw an object of this type.
+11.3		When doing Java programming,you focus on the Exception hierarchy. The Exception hierarchy also splits into two branches:exceptions that derive from RuntimException and those that do not.
+				The general rule is this: A RuntimeException happens because you made a programming error.Any other exception occurs because a bad thing,such as an I/O error,happened to your otherwise good program.
+				Exceptions that inherit from RuntimeException include such problems as " A bad cast, An out-of-bounds array access, A null pointer access". like c++ logic error.
+				Exceptions that do not inherit from RuntimeException include "Trying to read past the end of a file, Trying to open a file that doesn`t exist, Trying to find a Class object for a string that does not denote an existing class(reflect)". like c++ runtime error.
+				The rule "If it is a RuntimeException,it was your fault" works pretty well.
+11.4		Notice that: try,catch,finally can not appeared lonely. cath can have one or more. finally have only one.
+				each code block of try,catch,finally,  can not access fields each other.
+				when havae multi catch block,just only deal with the adapter one.
+				after the statement of throw, can not have other statement.
+				if method A invoke method B and the method B declared throws Exception. the method A must deal with the Exception or throw again.   
+				Throw is inside of the methods,Throws is behind the name of methods.
+11.5		prevent too bigger try statement block happening, put the statements cause Exception into try block, the others statement push out the try block.
+				you`d better do that one catch block capture one Exception. 
+				
+Chapter 12-General Programming
+12.1		Generic programming means writing code that can be reused for objects of many different types.like template of c++.
+12.2		Generic programming only used for object type,can not used for base type like "int ,long",you can use "Integer,Long" instead.
+12.3		You can define Generic class and Generic methods.
+12.4		Bounds for Type variables, like "<T extends BoundingType>". you can have multiple bounds like "T extends Comparable & Serializable", the class bound must before the interface bound.
+12.5		You cannot create Arrays of Parameterized Types, you cannot Instantiate Type Variables like "new T or T.class".
+				Type Variables are not valid in tatic contexts of generic classes. You cannot Throw or Catch Instances of Generic class.
+12.6		wildcard type use "? extends type" or "? super type" or  "?"
+
+Chapter 13-Collections
+13.1		Collections divide into 4 part: list,set,map,queue. list is a order collection;set is un-duplicate and un-order collection;map is key-value collection;queue can not access random,only can access from first,last or use iterator.
+13.2		ArrayList is an indexed sequence that grows and shrinks dynamically(use Object[]). it easy to access element random,but hard to add or delete element in middle position.
+13.3    LinkedList is an ordered sequence that allows effcient insertion and removal at any location,but hard to access random.
+13.4    HashSet is an unordered collection that rejects duplicates. you can use add or remove,itrator. can not access random.
+13.5    TreeSet is an sorted set.
+13.6		EnumSet is a set of enumrated type values, it only can use enumerated type .
+13.7    LinkedHashSet is a set that remember the order in which element were inserted
+13.8		HashMap is a data structure that stores key/value associations.
+13.9		TreeMap is a map which the keys are sorted. 
+13.10		LinkedHashMap is map that remember the order in which entries were added.
+13.11		EnumMap is a map in which the keys belong to an enumerated type.
+13.12		WeakHashMap is a map with values that can be reclaimed by the garbage collector if they are not used elsewhere
+13.13 	IdentityHashMap is a map with keys that are compared by == ,not equals.
+13.14		ArrayDeque is a double-ended queue that is implemented as a circular array.
+13.15		PriorityQueue is a collection that allows efficient removal of the smallest element	

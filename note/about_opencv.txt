@@ -1,0 +1,59 @@
+ 一. mingw+opencv+cmake+eclipse
+ 1.  下载安装mingw,并设置环境变量C:\MinGW\bin;C:\MinGW\msys\1.0\bin
+ 2.  下载并解压opencv
+	1) 笔者下载最新的版本是2.14.13 for linux "opencv-2.4.13.zip"
+	2) 解压并改名到任意目录，笔者解压到F盘“F:\opencv\opencv-2.4.13-linux”
+	3）创建目录sources,并把所有解压的所有文件移动到该目录中“F:\opencv\opencv-2.4.13-linux\sources”
+	4) 创建目录“F:\opencv\opencv-2.4.13-linux\build\x86\mingw”
+ 3.  下载并安装cmake，配置编译
+	1)笔者下载“cmake-2.8.12.2-win32-x86.exe”，运行并解压到F盘“F:\opencv\CMake 2.8”
+	2）运行目录“F:\opencv\CMake 2.8\bin”中的“cmake-gui.exe”
+	3）设置"where is the source code" 为“F:/opencv/opencv-2.4.13-linux/sources”；“where to build the binaries" 为"F:/opencv/opencv-2.4.13-linux/build/x86/mingw"
+	4) 点击configure按钮， 出现对话框选择”mingw-makefile“,然后默认选择
+		注：如果出现红色warning "CPACK_PACKAGE_VERSION does not match version provided by version.hpp",这是因为通过git 获取版本失败，导致与本地版本比较出错
+			解决办法：打开“F:\opencv\opencv-2.4.13-linux\sources\CMakeLists.txt”,在410行左右，把set(OPENCV_VCSVERSION "unknown")改为set(OPENCV_VCSVERSION "2.4.13")
+	5）点击generate按钮
+ 4.	 编译opencv
+	1)  cmd进入“F:\opencv\opencv-2.4.13-linux\build\x86\mingw”,运行“mingw32-make”,然后运行“mingw32-make install”
+		注：编译时出现两个错误
+		    .出现“BTNS_AUTOSIZE”相关错误，解决方法：打开“C:\MinGW\include\commctrl.h”，把“#if 0 #define _WIN32_IE	0x0300 #endif” 改为 “#if 1 #define _WIN32_IE	0x0500 #endif”
+			.出现“strcasecmp”相关错误，解决方法：打开“F:\opencv\opencv-2.4.13-linux\sources\modules\legacy\src\precomp.hpp”,添加头文件#include "strings.h"
+ 5.  添加opencv 环境变量
+	1） 把“F:\opencv\opencv-2.4.13-linux\build\x86\mingw\bin” 添加到系统变量path中
+ 6.  eclipse 安装 c语言插件CDT
+ 7.  创建c++ 项目，并设置
+	1） 例如创建opencv_test项目，并创建opencv_test.cpp
+		#include <iostream>
+		#include <opencv2/highgui/highgui.hpp>
+		#include <opencv2/imgproc/imgproc.hpp>
+		#include <opencv2/opencv.hpp>
+
+		using namespace std;
+		using namespace cv;
+
+		int main()
+		{
+			cout<<"000000000"<<endl;
+			Mat img = imread("shebao1.png", CV_LOAD_IMAGE_COLOR);
+			int w = img.cols;  //宽度
+			int h = img.rows;  //高度
+			Size s = Size(w, h);
+
+			Mat grayImg = Mat(s, CV_8UC1);
+			cvtColor(img, grayImg, COLOR_RGB2GRAY);
+
+			namedWindow("Image", CV_WINDOW_AUTOSIZE);
+			imshow("Image", img);
+
+			namedWindow("Gray", CV_WINDOW_AUTOSIZE);
+			imshow("Gray", grayImg);
+
+			waitKey(0);
+
+			cout<<"11111111"<<endl;
+			return 0;
+		}
+	2) 右键项目->Properties->C/C++ Build->Setting
+		设置GCC G++ Compiler->Includes 为 F:\opencv\opencv-2.4.13-linux\build\x86\mingw\install\include
+		设置MinGW C++ linker->Libraries 为 F:\opencv\opencv-2.4.13-linux\build\x86\mingw\install\include 并添加所有库
+	3）编译并运行

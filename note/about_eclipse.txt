@@ -1,0 +1,127 @@
+1.  JDK 1.8
+	下载解压JDK，并添加环境变量(添加系统变量JAVA_HOME指向JDK,并在path变量增加%JAVA_HOME%\bin)，
+	然后进入CMD，输入“java -verison”检查是否成功
+2.  eclipse neon
+	下载解压eclipse，进入解压目录直接运行“eclipse”
+3.  tomcat 8.0
+	下载解压Tomcat, 在环境变量里添加系统变量CATALINA_HOME=F:\eclipse\apache-tomcat-8.0.36-windows-x64\apache-tomcat-8.0.36, 
+        然后运行解压路径bin目录里的”startup.bat“启动，浏览器输入“http://localhost:8080/”测试是否正常。
+4.  mysql 5.7.14
+	1).下载解压mysql 5.7,在解压目录下增加文件“my.ini”并添加以下内容：
+		basedir="F:\eclipse\mysql-5.7.14-winx64"
+		datadir="F:\eclipse\mysql-5.7.14-winx64\data"
+		tmpdir="F:\eclipse\mysql-5.7.14-winx64\data"
+		socket="F:\eclipse\mysql-5.7.14-winx64\data\mysql.sock"
+		log-error="F:\eclipse\mysql-5.7.14-winx64\data\mysql_error.log"
+		port=3306
+    2). 解压目录下添加空文件夹data。
+	3). 管理员身份打开CMD,进入解压路径bin,运行“mysqld --initialize --user=mysql --console” ，记录生成的随机密码。
+	4). 运行命令“mysqld --install”安装，然后运行命令“net start mysql”启动
+	5). 命令“mysql -u root -p”，后输入之前记录的随机密码，进入mysql.
+	6). 输入命令set password for root@localhost = password('123456'); （注意分号） 更改root密码为123456.
+	7). 命令“show variables like '%character%';" 查看是否utf8,如果不是在my.ini中[mysqld]添加如”[mysqld]“。
+	8). 创建utf8或GBK数据库：
+	    GBK: create database test2 DEFAULT CHARACTER SET gbk COLLATE gbk_chinese_ci;  
+      UTF8: CREATE DATABASE test2 DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci; 
+5. tomcat 配置https
+	1).创建证书： "keytool -genkey -alias dongxwcom -keyalg RSA -keystore dongxwcom.store"
+	   提示输入name时一定要写dongxw.com.
+	   在本机C:\Windows\System32\drivers\etc\hosts 中添加 127.0.0.1 dongxw.com
+	2).导出证书：keytool -export -file dongxwcom.crt -alias dongxwcom -keystore dongxwcom.store
+	3).为客户端JVM导入证书：keytool -importcert -keystore ""C:\Program Files\Java\jre1.8.0_102\lib\security\cacerts"" -file dongxwcom.crt -alias dongxwcom
+	   默认密码是“changeit”
+	4).tomcat的server.xml中添加如下：    
+	           <Connector port="8443" protocol="org.apache.coyote.http11.Http11NioProtocol"
+               maxThreads="150" SSLEnabled="true" scheme="https" secure="true"
+			   keystoreFile="F:\eclipse\workspace\CertTestPath\dongxwcom.keystore" keystorePass="123456"
+               clientAuth="false" sslProtocol="TLS" />
+	5).浏览器访问输入“https://dongxw.com:8443” 提示不信任，可以把证书dongxwcom.crt 安装到系统的受信任的根证书。
+	6).配置双向信任：
+		a.创建client端证书库
+			keytool -genkey -v -alias wudy -keyalg RSA -keystore dongxwcom.p12 -storetype PKCS12
+		b.导出证书
+		    keytool -export -alias wudy -file wudy.cer -keystore dongxwcom.p12 -storetype PKCS12
+		c.双击dongxwcom.p12安装到windows个人证书中
+		d.tomcat的server.xml中更改如下：
+		    <Connector port="8443" protocol="org.apache.coyote.http11.Http11NioProtocol"
+               maxThreads="150" SSLEnabled="true" scheme="https" secure="true"
+			   keystoreFile="F:\eclipse\workspace\CertTestPath\dongxwcom.keystore" keystorePass="123456"
+			   truststoreFile="F:\eclipse\workspace\CertTestPath\dongxwcom.p12" truststorePass="123456"
+               clientAuth="true" sslProtocol="TLS" />
+	    e.现在可以使用浏览器双向认证访问“https://dongxw.com:8443”了。
+	7). eclipse 配置默认访问HTTPS
+		在项目的web.xml中添加：
+			<login-config>
+			<!-- Authorization setting for SSL -->
+			<auth-method>CLIENT-CERT</auth-method>
+			<realm-name>Client Cert Users-only Area</realm-name>
+			</login-config>
+			<security-constraint>
+			<!-- Authorization setting for SSL -->
+			<web-resource-collection >
+			<web-resource-name >SSL</web-resource-name>
+			<url-pattern>/*</url-pattern>
+			</web-resource-collection>
+			<user-data-constraint>
+			<transport-guarantee>CONFIDENTIAL</transport-guarantee>
+			</user-data-constraint>
+			</security-constraint>
+		
+6.	c语言使用libcurl访问https
+	1).安装Mingw,环境变量中添加“C:\MinGW\bin;C:\MinGW\msys\1.0\bin”，cmd中使用“gcc -v”验证是否安装成功
+	2).编译库libcurl+ssl+zlib
+		a. 创建目录“C:\MinGW\wudy”,下载并解压“curl-7.50.3.tar.gz”，“openssl-1.0.2a.tar.gz”，“zlib-1.2.8.tar.gz”到该目录下。
+		b. 进入msys: 双击“C:\MinGW\msys\1.0\msys.bat”, "cd /mingw"
+	    c. 编译openssl: "cd openssl-1.0.2a ; ./config -t; ./config threads shared no-capieng; make depend; make" .
+		d. 编译zlib: "cd zlib-1.2.8; cp win32/makefile.gcc makefile.gcc; mingw32-make -f makefile.gcc".
+		e. 编译libcurl: 确认curl-7.50.3的 lib和src目录中的“makefile.m32”文件中“OPENSSL_PATH = ../../openssl-1.0.2a 和 ZLIB_PATH = ../../zlib-1.2.8” 。
+		                 然后"cd curl-7.50.3; mingw32-make mingw32-ssl-zlib"
+		f. 整理库和头文件：创建目录curl,并在curl中拷贝“curl-7.50.3\include” 文件夹，
+		                   curl中创建lib目录，其中拷贝入“libcrypto.a ，libcrypto.dll.a，libcurl.a，libcurldll.a，libssl.a，libssl.dll.a，libz.a，libz.dll.a”。
+						   在“C:\MinGW\bin”中拷贝入“ssleay32.dll，libeay32.dll”
+		g. 编译测试文件Ctest.cpp: "g++ -Icurl/include -Lcurl/lib Ctest.cpp -lcurl -lssl -lcrypto -lz -lwldap32 -lws2_32 -DCURL_STATICLIB"
+	3）证书文件生成：
+		a. dongxw.pem: "openssl x509 -in dongxwcom.crt -inform DER -out dongxw.pem -outform  PEM",反过来转换“openssl x509 -in dongxwcom.pem -inform PEM -out dongxwcom.crt -outform DER ”
+		b. client.pem: "openssl pkcs12 -in dongxwcom.p12 -out client.pem -nokeys"
+		c. client_key.pem: "openssl pkcs12 -in dongxwcom.p12 -out client_key.pem -nocerts -nodes"
+		d. all.pem : "openssl pkcs12 -in dongxwcom.p12 -out all.pem -nodes"
+
+	4). 测试文件Ctest.cpp:
+						#include <iostream>
+						#include <curl/curl.h>
+						using namespace std;
+
+						int main() {
+						CURL *curl;
+						CURLcode res;
+						cout << "!!!Hello World!!!!!" << endl; // prints !!!Hello World!!!
+
+						curl=curl_easy_init(); 
+						#if 1
+						if(curl)
+						{
+						//open ssl(https)
+
+						//curl_easy_setopt(curl,CURLOPT_CAPATH,"./certs");  
+						curl_easy_setopt(curl,CURLOPT_SSL_VERIFYPEER,1L);
+						curl_easy_setopt(curl,CURLOPT_SSL_VERIFYHOST,1L); 
+						curl_easy_setopt(curl,CURLOPT_CAINFO,"certs/dongxwcom.pem"); 
+
+						#if 1 
+						///双向认证
+						curl_easy_setopt(curl,CURLOPT_SSLCERT,"certs/client.pem");  
+						curl_easy_setopt(curl,CURLOPT_SSLCERTPASSWD,"123456");  
+						curl_easy_setopt(curl,CURLOPT_SSLCERTTYPE,"PEM");  
+						curl_easy_setopt(curl,CURLOPT_SSLKEY,"certs/client_key.pem");  
+						curl_easy_setopt(curl,CURLOPT_SSLKEYPASSWD,"123456");  
+						curl_easy_setopt(curl,CURLOPT_SSLKEYTYPE,"PEM");  
+						#endif  
+						curl_easy_setopt(curl,CURLOPT_URL,"https://dongxw.com:8443/Test/HelloWorld.jsp");
+						res=curl_easy_perform(curl);
+						//??3ycurl2ù×÷.
+						curl_easy_cleanup(curl);
+						}
+						#endif
+						return 0;
+
+						}
