@@ -1,0 +1,47 @@
+一.编译ffmpeg 包含 x264 encoder
+1. 下载并解压x264源码
+	./configure --prefix=/usr/local/x264 --enable-shared --enable-static --enable-yasm
+	make
+	make install
+2. 下载并解压ffmpeg
+	./configure --prefix=/usr/local/ffmpeg --enable-shared --enable-yasm --enable-libx264 --enable-gpl --enable-pthreads --extra-cflags=-I/usr/local/x264/include --extra-ldflags=-L/usr/local/x264/lib
+	make 
+	make install
+3.
+	FFMPEG=/usr/local/ffmpeg
+	X264=/usr/local/x264
+	YASM=/usr/local/yasm
+	export FFMPEG X264 YASM
+	export PATH=$PATH:$FFMPEG/bin:$X264/bin:$YASM/bin
+	export LD_LIBRARY_PATH=$YASM/lib:$X264/lib:$FFMPEG/lib:$LD_LIBRARY_PATH
+	
+二：编译ffmpeg 包含 x264 x265(hevc) encoder
+1. 下载并解压x264源码
+	./configure --prefix=/usr/local/x264 --enable-shared --enable-static --enable-yasm
+	make
+	make install
+2. 下载并解压x265源码
+    cd x265/build/linux
+	cmake -G "Unix Makefiles" -DCMAKE_INSTALL_PREFIX=/usr/local/x265 -DENABLE_SHARED:bool=off ../../source
+	make
+	make install
+3. 设置pkg-config path
+    export PKG_CONFIG_PATH=/usr/local/x264/lib/pkgconfig/: /usr/local/x265/lib/pkgconfig/ 
+4. 下载并解压ffmpeg
+	./configure --prefix=/usr/local/ffmpeg --pkg-config-flags="--static" --enable-shared --enable-yasm --enable-libx264 --enable-libx265 --enable-gpl --enable-pthreads 
+	make 
+	make install
+
+ffmpeg 转换视频为YUV格式
+	ffmpeg -i test.mp4 -vcodec rawvideo -an test_720_404.yuv
+
+vlc 播放 YUV格式
+	vlc.exe --demux rawvideo --rawvid-fps 29.970029 --rawvid-width 720 --rawvid-height 404 --rawvid-chroma I420 test_720_404.yuv
+	
+x264 转换YUV为H264
+	x264 -o test.h264 --fps 30000/1001 --input-res 720x404 test_720_404.yuv
+	
+
+编译x264程序	
+gcc simplest_x264_encoder.cpp -I. -L. -lx264 -lm -lpthread -ldl
+

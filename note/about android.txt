@@ -1,0 +1,558 @@
+一. UBUNTU 平台 编译ffmpeg
+1. 下载
+http://www.ffmpeg.org/ 下载ffmpeg的源码，我这儿下载的是ffmpeg-3.2.2.tar.bz2
+
+2. 简单编译
+解压后，进入ffmpeg的源码目录
+sudo apt-get install yasm    //这儿需要先安装yasm,否则configure会报错
+mkdir install                //创建一个Install目录，存放编译好之后的东东
+./configure --prefix=./install //安装到install目录
+Creating config.mak, config.h, and doc/config.texi...     //这儿说明configure成功，可以编译了
+make -j16
+
+3. 生成ffplay
+之所以默认编译没有生成ffplay的原因是系统中没有安装SDL, ffplay是依赖SDL显示的
+sudo apt-get install libsdl1.2-dev   
+安装完SDL库之后，重新按照步骤2编译一遍就可以生成ffplay了
+
+4.生成动态库
+按照上述2编译出来的是静态库，要想生成动态库,需要在configure时加入--enable-shared 
+sudo apt-get install yasm    //这儿需要先安装yasm,否则configure会报错
+mkdir install                //创建一个Install目录，存放编译好之后的东东
+./configure --enable-shared --prefix=./install //安装到install目录
+Creating config.mak, config.h, and doc/config.texi...     //这儿说明configure成功，可以编译了
+make -j16
+
+4.1 如果出现如下错误
+/usr/bin/ld: libavcodec/mqc.o: relocation R_X86_64_32 against `.rodata' can not be used when making a shared object; recompile with -fPIC
+libavcodec/mqc.o: error adding symbols: Bad value
+collect2: error: ld returned 1 exit status
+解决方法是:
+
+config.mak L75加入 -fPIC，然后重新编译
+HOSTCFLAGS=-O3 -g -std=c99 -Wall -fPIC
+
+
+二. android studio 集成 ffmpeg
+
+1. http://developer.android.com/ 下载linux平台的android ndk，我这儿下载的是android-ndk-r13b-linux-x86_64.zip
+2. 解压后添加环境
+sudo gedit ~/.bashrc 在最后一行添加 
+export NDK_HOME=/home/wudy/study/software/android-ndk-r13b
+export PATH=$NDK_HOME:$PATH
+然后输入命令：# source ~/.bashrc
+3.输入命令 ndk-build -v ，提示以下信息，表示成功
+GNU Make 4.1
+Built for x86_64-pc-linux-gnu
+Copyright (C) 1988-2014 Free Software Foundation, Inc.
+License GPLv3+: GNU GPL version 3 or later <http://gnu.org/licenses/gpl.html>
+This is free software: you are free to change and redistribute it.
+There is NO WARRANTY, to the extent permitted by law.
+4.配置ffmpeg编译选项
+4.1 修改ffmpeg-3.2.2/configure  文件
+如果直接按照未修改的配置进行编译，结果编译出来的so文件类似libavcodec.so.55.39.101，版本号位于so之后，Android上似乎无法加载。因此需要按如下修改：
+将该文件中的如下四行：
+SLIBNAME_WITH_MAJOR='$(SLIBNAME).$(LIBMAJOR)'
+LIB_INSTALL_EXTRA_CMD='$$(RANLIB)"$(LIBDIR)/$(LIBNAME)"'
+SLIB_INSTALL_NAME='$(SLIBNAME_WITH_VERSION)'
+SLIB_INSTALL_LINKS='$(SLIBNAME_WITH_MAJOR)$(SLIBNAME)'
+替换为：
+SLIBNAME_WITH_MAJOR='$(SLIBPREF)$(FULLNAME)-$(LIBMAJOR)$(SLIBSUF)'
+LIB_INSTALL_EXTRA_CMD='$$(RANLIB)"$(LIBDIR)/$(LIBNAME)"'
+SLIB_INSTALL_NAME='$(SLIBNAME_WITH_MAJOR)'
+SLIB_INSTALL_LINKS='$(SLIBNAME)'
+
+4.2  在ffmpeg 源码目录下创建build_android.sh,并添加内容
+#!/bin/bash
+NDK=/home/wudy/study/software/android-ndk-r13b
+SYSROOT=$NDK/platforms/android-9/arch-arm/
+TOOLCHAIN=$NDK/toolchains/arm-linux-androideabi-4.9/prebuilt/linux-x86_64
+ 
+function build_one
+{
+./configure \
+	--prefix=$PREFIX \
+	--enable-shared \
+	--disable-static \
+    --disable-doc \
+    --disable-ffserver \
+    --enable-cross-compile \
+    --cross-prefix=$TOOLCHAIN/bin/arm-linux-androideabi- \
+    --target-os=linux \
+    --arch=arm \
+    --sysroot=$SYSROOT \
+    --extra-cflags="-Os -fpic $ADDI_CFLAGS" \
+    --extra-ldflags="$ADDI_LDFLAGS" \
+    $ADDITIONAL_CONFIGURE_FLAG
+}
+CPU=arm
+PREFIX=$(pwd)/android/$CPU
+ADDI_CFLAGS="-marm"
+build_one
+
+5.编译ffmpeg库
+$chmod+x build_android.sh  
+$./build_android.sh  
+$make  
+$make install  
+
+生成动态库
+
+6. 创建android studio 2.2的工程helloffmpeg 并编译运行
+6.1 
+首先需要最新的android studio2.2，并且安装好cmake和ndk。然后新建工程，可以开始了。 
+新建工程取名为helloffmpeg，然后选中include c++ support，然后下一步直到新建完成为止。
+
+6.2 CMakeLists.txt如下：
+# Sets the minimum version of CMake required to build the native
+# library. You should either keep the default value or only pass a
+# value of 3.4.0 or lower.
+
+cmake_minimum_required(VERSION 3.4.1)
+
+# Creates and names a library, sets it as either STATIC
+# or SHARED, and provides the relative paths to its source code.
+# You can define multiple libraries, and CMake builds it for you.
+# Gradle automatically packages shared libraries with your APK.
+
+add_library( # Sets the name of the library.
+             native-lib
+
+             # Sets the library as a shared library.
+             SHARED
+
+             # Provides a relative path to your source file(s).
+             # Associated headers in the same location as their source
+             # file are automatically included.
+             src/main/cpp/native-lib.cpp )
+
+# Searches for a specified prebuilt library and stores the path as a
+# variable. Because system libraries are included in the search path by
+# default, you only need to specify the name of the public NDK library
+# you want to add. CMake verifies that the library exists before
+# completing its build.
+
+#set(distribution_DIR ${CMAKE_SOURCE_DIR}/../../../../libs)
+
+add_library( avutil-55
+             SHARED
+             IMPORTED )
+set_target_properties( avutil-55
+                       PROPERTIES IMPORTED_LOCATION
+                       ${CMAKE_SOURCE_DIR}/libs/armeabi-v7a/libavutil-55.so )
+
+add_library( swresample-2
+             SHARED
+             IMPORTED )
+set_target_properties( swresample-2
+                       PROPERTIES IMPORTED_LOCATION
+                       ${CMAKE_SOURCE_DIR}/libs/armeabi-v7a/libswresample-2.so )
+add_library( avcodec-57
+             SHARED
+             IMPORTED )
+set_target_properties( avcodec-57
+                       PROPERTIES IMPORTED_LOCATION
+                       ${CMAKE_SOURCE_DIR}/libs/armeabi-v7a/libavcodec-57.so )
+add_library( avfilter-6
+             SHARED
+             IMPORTED)
+set_target_properties( avfilter-6
+                       PROPERTIES IMPORTED_LOCATION
+                       ${CMAKE_SOURCE_DIR}/libs/armeabi-v7a/libavfilter-6.so )
+add_library( swscale-4
+             SHARED
+             IMPORTED)
+set_target_properties( swscale-4
+                       PROPERTIES IMPORTED_LOCATION
+                       ${CMAKE_SOURCE_DIR}/libs/armeabi-v7a/libswscale-4.so )
+add_library( avdevice-57
+             SHARED
+             IMPORTED)
+set_target_properties( avdevice-57
+                       PROPERTIES IMPORTED_LOCATION
+                       ${CMAKE_SOURCE_DIR}/libs/armeabi-v7a/libavdevice-57.so )
+add_library( avformat-57
+             SHARED
+             IMPORTED)
+set_target_properties( avformat-57
+                       PROPERTIES IMPORTED_LOCATION
+                       ${CMAKE_SOURCE_DIR}/libs/armeabi-v7a/libavformat-57.so )
+
+#set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=gnu++11")
+include_directories(libs/include)
+
+
+find_library( # Sets the name of the path variable.
+              log-lib
+
+              # Specifies the name of the NDK library that
+              # you want CMake to locate.
+              log )
+
+# Specifies libraries CMake should link to your target library. You
+# can link multiple libraries, such as libraries you define in the
+# build script, prebuilt third-party libraries, or system libraries.
+
+target_link_libraries( # Specifies the target library.
+                       native-lib avutil-55 swresample-2 avcodec-57 avfilter-6 swscale-4 avdevice-57 avformat-57
+
+                       # Links the target library to the log library
+                       # included in the NDK.
+                       ${log-lib} )
+	
+	
+6.3 app 下的build.gradle 如下：
+
+apply plugin: 'com.android.application'
+
+android {
+    compileSdkVersion 25
+    buildToolsVersion "25.0.0"
+    defaultConfig {
+        applicationId "com.example.wudydong.helloffmpeg"
+        minSdkVersion 15
+        targetSdkVersion 25
+        versionCode 1
+        versionName "1.0"
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+        externalNativeBuild {
+            cmake {
+                cppFlags ""
+            }
+        }
+        ndk{
+            abiFilters "armeabi-v7a"
+        }
+    }
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+
+    sourceSets {
+        main {
+            jniLibs.srcDirs = ['libs']
+            aidl.srcDirs = ['src/main/aidl']
+        }
+    }
+
+    externalNativeBuild {
+        cmake {
+            path "CMakeLists.txt"
+        }
+    }
+}
+
+dependencies {
+    compile fileTree(dir: 'libs', include: ['*.jar'])
+    androidTestCompile('com.android.support.test.espresso:espresso-core:2.2.2', {
+        exclude group: 'com.android.support', module: 'support-annotations'
+    })
+    compile 'com.android.support:appcompat-v7:25.0.0'
+    testCompile 'junit:junit:4.12'
+}
+
+
+6.4  activity_main 的 layout 如下：
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/activity_main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    tools:context="com.example.wudydong.helloffmpeg.MainActivity">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <Button
+            android:id="@+id/btn_protocol"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="2dp"
+            android:text="Protocol"
+            android:textAllCaps="false" />
+
+        <Button
+            android:id="@+id/btn_format"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="2dp"
+            android:text="Format"
+            android:textAllCaps="false" />
+
+        <Button
+            android:id="@+id/btn_codec"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="2dp"
+            android:text="Codec"
+            android:textAllCaps="false" />
+
+        <Button
+            android:id="@+id/btn_filter"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="2dp"
+            android:text="Filter"
+            android:textAllCaps="false" />
+    </LinearLayout>
+
+
+    <TextView
+        android:id="@+id/sample_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Hello World!" />
+</RelativeLayout>
+
+6.5 native-lib.cpp 如下：
+
+#include <jni.h>
+#include <string>
+#include <iostream>
+#include <sstream>
+
+extern "C"
+{
+#include <libavcodec/avcodec.h>
+#include <libavformat/avformat.h>
+#include <libavfilter/avfilter.h>
+
+jstring
+Java_com_example_wudydong_helloffmpeg_MainActivity_stringFromJNI(
+        JNIEnv *env, jobject) {
+    std::string hello = "Hello from C++";
+    return env->NewStringUTF(hello.c_str());
+}
+
+jstring
+Java_com_example_wudydong_helloffmpeg_MainActivity_urlprotocolinfo(
+        JNIEnv *env, jobject) {
+/*
+    std::stringstream ss;
+    av_register_all();
+
+    struct URLProtocol *pup = NULL;
+
+    struct URLProtocol **p_temp = &pup;
+    avio_enum_protocols((void **) p_temp, 0);
+
+    while ((*p_temp) != NULL) {
+        ss<<avio_enum_protocols((void **) p_temp, 0);
+    }
+    pup = NULL;
+    avio_enum_protocols((void **) p_temp, 1);
+    while ((*p_temp) != NULL) {
+        ss<<avio_enum_protocols((void **) p_temp, 1);
+    }
+    std::string info = ss.str();
+    return env->NewStringUTF(info.c_str());
+*/
+
+    char info[40000] = {0};
+    av_register_all();
+
+    struct URLProtocol *pup = NULL;
+
+    struct URLProtocol **p_temp = &pup;
+    avio_enum_protocols((void **) p_temp, 0);
+
+    while ((*p_temp) != NULL) {
+        sprintf(info, "%sInput: %s\n", info, avio_enum_protocols((void **) p_temp, 0));
+    }
+    pup = NULL;
+    avio_enum_protocols((void **) p_temp, 1);
+    while ((*p_temp) != NULL) {
+        sprintf(info, "%sInput: %s\n", info, avio_enum_protocols((void **) p_temp, 1));
+    }
+    return env->NewStringUTF(info);
+
+}
+
+jstring
+Java_com_example_wudydong_helloffmpeg_MainActivity_avformatinfo(
+        JNIEnv *env, jobject) {
+/*
+    std::string info = "Avformatinfo_C";
+    return env->NewStringUTF(info.c_str());
+    */
+
+    char info[40000] = {0};
+
+    av_register_all();
+
+    AVInputFormat *if_temp = av_iformat_next(NULL);
+    AVOutputFormat *of_temp = av_oformat_next(NULL);
+    while (if_temp != NULL) {
+        sprintf(info, "%sInput: %s\n", info, if_temp->name);
+        if_temp = if_temp->next;
+    }
+    while (of_temp != NULL) {
+        sprintf(info, "%sOutput: %s\n", info, of_temp->name);
+        of_temp = of_temp->next;
+    }
+    return env->NewStringUTF(info);
+
+}
+
+jstring
+Java_com_example_wudydong_helloffmpeg_MainActivity_avcodecinfo(
+        JNIEnv *env, jobject) {
+    char info[40000] = {0};
+
+    av_register_all();
+
+    AVCodec *c_temp = av_codec_next(NULL);
+
+    while (c_temp != NULL) {
+        if (c_temp->decode != NULL) {
+            sprintf(info, "%sdecode:", info);
+        } else {
+            sprintf(info, "%sencode:", info);
+        }
+        switch (c_temp->type) {
+            case AVMEDIA_TYPE_VIDEO:
+                sprintf(info, "%s(video):", info);
+                break;
+            case AVMEDIA_TYPE_AUDIO:
+                sprintf(info, "%s(audio):", info);
+                break;
+            default:
+                sprintf(info, "%s(other):", info);
+                break;
+        }
+        sprintf(info, "%s[%10s]\n", info, c_temp->name);
+        c_temp = c_temp->next;
+    }
+
+    return env->NewStringUTF(info);
+}
+
+jstring
+Java_com_example_wudydong_helloffmpeg_MainActivity_avfilterinfo(
+        JNIEnv *env, jobject) {
+    char info[40000] = {0};
+    avfilter_register_all();
+
+    AVFilter *f_temp = (AVFilter *)avfilter_next(NULL);
+    while(f_temp != NULL) {
+        sprintf(info, "%s%s\n", info, f_temp->name);
+        f_temp = f_temp->next;
+    }
+    return env->NewStringUTF(info);
+}
+}
+
+6.6 Java 主程序 MainActivity.java如下：
+package com.example.wudydong.helloffmpeg;
+
+import android.support.v7.app.AppCompatActivity;
+import android.os.Bundle;
+import android.util.Log;
+import android.widget.Button;
+import android.widget.TextView;
+
+import android.view.View;
+import android.view.View.OnClickListener;
+
+import static java.lang.System.loadLibrary;
+
+public class MainActivity extends AppCompatActivity implements View.OnClickListener{
+
+    // Used to load the 'native-lib' library on application startup.
+    private Button btn_protocol;
+    private Button btn_format;
+    private Button btn_codec;
+    private Button btn_filter;
+    TextView tv;
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
+        // Example of a call to a native method
+        tv = (TextView) findViewById(R.id.sample_text);
+        //tv.setText(urlprotocolinfo());
+        Log.d("dxw","yyyyyyyyyyyyyyyyyyy");
+
+        btn_protocol = (Button) findViewById(R.id.btn_protocol);
+        btn_protocol.setOnClickListener(this);
+
+        btn_format = (Button) findViewById(R.id.btn_format);
+        btn_format.setOnClickListener(this);
+
+        btn_format = (Button) findViewById(R.id.btn_codec);
+        btn_format.setOnClickListener(this);
+
+        btn_format = (Button) findViewById(R.id.btn_filter);
+        btn_format.setOnClickListener(this);
+    }
+
+    @Override
+    public void onClick(View view) {
+        tv = (TextView) findViewById(R.id.sample_text);
+        switch (view.getId()) {
+            case R.id.btn_protocol:
+                tv.setText(urlprotocolinfo());
+                break;
+            case R.id.btn_format:
+                tv.setText(avformatinfo());
+                break;
+            case R.id.btn_codec:
+                tv.setText(avcodecinfo());
+                break;
+            case R.id.btn_filter:
+                tv.setText(avfilterinfo());
+                break;
+            default:
+                break;
+        }
+    }
+
+    /**
+     * A native method that is implemented by the 'native-lib' native library,
+     * which is packaged with this application.
+     */
+    public native String stringFromJNI();
+
+    public native String urlprotocolinfo();
+    public native String avformatinfo();
+    public native String avcodecinfo();
+    public native String avfilterinfo();
+
+    // Used to load the 'native-lib' library on application startup.
+    static {
+        loadLibrary("native-lib");
+        loadLibrary("avutil-55");
+        loadLibrary("avcodec-57");
+        loadLibrary("swresample-2");
+        loadLibrary("avformat-57");
+        loadLibrary("swscale-4");
+        loadLibrary("avfilter-6");
+        loadLibrary("avdevice-57");
+    }
+
+    /**
+     * A native method that is implemented by the 'native-lib' native library,
+     * which is packaged with this application.
+     */
+   // public native String stringFromJNI();
+}
+
+参考  http://blog.csdn.net/eastmoon502136/article/details/52806640
+
+
+
+
+
+   

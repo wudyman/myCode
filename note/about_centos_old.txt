@@ -209,7 +209,6 @@ sudo ln -s /home/dongxw/http_server/Apache-2.2.29/bin/httpd /usr/sbin/httpd
 sudo ln -s /home/dongxw/http_server/Apache-2.2.29/bin/apachectl /usr/sbin/apachectl
 sudo ln -s /home/dongxw/http_server/Apache-2.2.29/logs /var/log/httpd
 6）启动/停止服务
-killall -9 httpd
 service httpd restart
 service httpd start
 /usr/local/apache/bin/apachectl start
@@ -224,6 +223,7 @@ service httpd start
 selinux 要关闭（vi /etc/sysconfig/selinux）
 防火墙端口要打开（vi /etc/sysconfig/iptables）
 目录权限要打开,包括上级目录（chmod 777 home;chmod 777 dongxw; chmod -R 777 htdoc）
+
 八.安装PHP
 1)
 1)安装开发工具
@@ -243,7 +243,7 @@ yum  update //更新yum源
 yum install libmcrypt libmcrypt-devel mcrypt mhash  就ok了
 2)开始安装PHP
 tar -jxvf php-5.6.8.tar.bz2
-./configure --prefix=/home/dongxw/http_server/php-5.6.8 --with-apxs2=/home/dongxw/http_server/Apache-2.2.29/bin/apxs --with-curl --with-mcrypt --enable-mbstring --with-iconv --with-gd -with-jpeg-dir=/usr/lib64 --enable-pdo --with-pdo-mysql=mysqlnd --with-mysqli=mysqlnd --with-mysql=mysqlnd
+./configure --prefix=/home/dongxw/http_server/php-5.6.8 --with-apxs2=/home/dongxw/http_server/Apache-2.2.29/bin/apxs --with-curl --with-mcrypt --enable-mbstring --with-iconv --with-gd -with-jpeg-dir=/usr/lib --enable-pdo --with-pdo-mysql=mysqlnd --with-mysqli=mysqlnd --with-mysql=mysqlnd
 或
 #./configure --prefix=/home/dongxw/http_server/php-5.6.8 --with-mysql=/home/dongxw/http_server/mysql --with-openssl --with-mysqli=/home/dongxw/http_server/mysql/bin/mysql_config --enable-mbstring --with-freetype-dir --with-jpeg-dir --with-png-dir --with-zlib --with-libxml-dir=/usr --enable-xml  --enable-sockets --with-apxs2=/home/dongxw/http_server/Apache-2.2.29/bin/apxs --with-mcrypt  --with-config-file-path=/etc --with-config-file-scan-dir=/etc/php.d --with-bz2  --enable-maintainer-zts
 #./configure --prefix=/home/dongxw/http_server/php-5.6.8 --enable-pdo --with-pdo-mysql=/home/dongxw/http_server/mysql --with-mysql=/home/dongxw/http_server/mysql --with-mysqli=/home/dongxw/http_server/mysql/bin/mysql_config --with-apxs2=/home/dongxw/http_server/Apache-2.2.29/bin/apxs --with-curl --with-mcrypt --enable-mbstring --with-iconv --with-gd --with-jpeg-dir=/usr/lib64
@@ -284,7 +284,6 @@ rpm -e --nodeps mysql    // 强力删除模式，如果使用上面命令删除时，提示有依赖的其
 yum install make gcc-c++ cmake bison-devel  ncurses-devel
 3）下载
 wget http://dev.mysql.com/get/Downloads/MySQL-5.6/mysql-5.6.24.tar.gz/from/http://cdn.mysql.com/
-wget http://mirrors.sohu.com/mysql/MySQL-5.6/mysql-5.6.24.tar.gz
 4）编译安装
 cmake \
 -DCMAKE_INSTALL_PREFIX=/home/dongxw/http_server/mysql \
@@ -357,54 +356,4 @@ Firewalld中添加端口方法如下：
 firewall-cmd --zone=public --add-port=3306/tcp --permanent
 
 firewall-cmd --reload
-
-十.安装 java 7
-
-1).首先卸载原有openjdk.
-java -version  
-rpm -qa|grep java  
-2).安装 oracle jdk7
-http://www.oracle.com/technetwork/java/javase/downloads/jdk7-downloads-1880260.html
-mkdir /usr/java
-cd /usr/java/
-sudo tar -xvf jdk-7u79-linux-i586.gz 或 rpm -ivh jdk-7u79-linux-i586.rpm
-sudo ln -s jdk1.7.0_79 jdk
-sudo vi /etc/profile
-添加（export JAVA_HOME=/usr/java/jdk
-export PATH=$JAVA_HOME/bin:$PATH
-export CLASSPATH=.:$JAVA_HOME/LIB/dt.jar:$JAVA_HOME/lib/tools.jar）
-source /etc/profile
-java -version
-会提示，安装成功
-"
-java version "1.7.0_79"
-Java(TM) SE Runtime Environment (build 1.7.0_79-b15)
-Java HotSpot(TM) Client VM (build 24.79-b02, mixed mode)
-"
-2)安装mysql的JDBC驱动
-tar -xvf mysql-connector-java-5.1.25.tar.gz
-sudo mv mysql-connector-java-5.1.25 /usr/java/
-sudo ln -s mysql-connector-java-5.1.25 mysql-connector-java
-sudo vi /etc/profile
-export CLASSPATH=.:$JAVA_HOME/LIB/dt.jar:$JAVA_HOME/lib/tools.jar:/usr/java/mysql-connector-java/mysql-connector-java-5.1.25-bin.jar
-source /etc/profile
-
-十一.安装tigcase
-十二.安装openfire
-1).http://www.igniterealtime.org/downloads/index.jsp#openfire
-如果下载的是rpm
-#rpm -ivh openfire-3.6.2-1.i386.rpm
-默认安装到/opt/openfire目录下
-如果下载的是tar包
-tar -xvf openfire_3_10_0.tar.gz 
- mv openfire /opt
-2)启动
-/opt/openfire/bin/openfire 
-/opt/openfire/bin/openfire start
-配置防火墙，打开9090端口
-vi /etc/sysconfig/iptables
-添加“-A INPUT -m state --state NEW -m tcp -p tcp --dport 9090 -j ACCEPT”
-/etc/rc.d/init.d/iptables restart
-3）.打开浏览器，输入http://[公网或私网ip]:9090/进入配置界面
-依次设置完后，如果用spark客户端不能访问，请注意关闭防火墙试试（"/etc/rc.d/init.d/iptables stop"）
 
