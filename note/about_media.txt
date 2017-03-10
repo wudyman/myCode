@@ -45,3 +45,68 @@ x264 转换YUV为H264
 编译x264程序	
 gcc simplest_x264_encoder.cpp -I. -L. -lx264 -lm -lpthread -ldl
 
+三：使用FFMPEG 切片HLS并在Ubuntu的 tomcat 服务器下播放
+1. 安装JDK:
+	1). 下载并解压“jdk-8u112-linux-x64.tar.gz”
+	2).  vi ~/.bashrc,添加：
+	    JAVA_HOME=/home/wudy/software/jdk1.8.0_112
+		export JAVA_HOME
+		export PATH=$PATH:$JAVA_HOME/bin
+		export CLASSPATH=$CLASSPATH:$JAVA_HOME/lib/dt.jar:$JAVA_HOME/lib/tools.jar
+		后，执行source ~/.bashrc
+2. 安装tomcat
+	1). 下载并解压“apache-tomcat-8.5.11.tar.gz”
+	2).  运行tomcat的bin目录下的startup.sh
+	3).  输入网址http://192.168.56.101:8080， 应能看到tomcat开始页面
+3. 使用ffmpeg 进行hls分片
+	1).  创建hlstest 目录 apache-tomcat-8.5.11\webapps\ROOT\hlstest，并拷贝测试视频文件mp4_basic.mp4
+	2).  执行切片 “ffmpeg -i mp4_basic.mp4 -hls_time 10 -hls_list_size 10  -f hls mp4_basic.m3u8”
+4.  使用vlc 播放 hls
+    打开vlc的媒体菜单下的“打开网络串流”选项输入“http://192.168.56.101:8080/hlstest/mp4_basic.m3u8” 进行播放
+5.  浏览器播放hls
+	1). 苹果safari浏览器直接支持
+	2). chrome浏览器目前不支持，需要插件
+		i. 下载 https://github.com/videojs/video.js 和 https://github.com/videojs/videojs-contrib-hls
+		ii. 分别使用其中的video.js和videojs-contrib-hls.min.js，测试网页如下hlstest.html：
+			<link href="video-js-5.18.0/video-js.css" rel="stylesheet">
+			<video id=example-video width=600 height=300 class="video-js vjs-default-skin" controls>
+				<source
+				src="http://192.168.56.101:8080/hlstest/mp4_basic.m3u8"
+				type="application/x-mpegURL">
+			</video>
+			<script src="video-js-5.18.0/video.js"></script>
+			<script src="videojs-contrib-hls.min.js"></script>
+			<script>
+			var player = videojs('example-video');
+			player.play();
+			</script>
+		iii. 浏览器输入网址“http://192.168.56.101:8080/hlstest/hlstest.html”播放
+		
+四：使用FFMPEG 切片 mpeg-dash 并用浏览器播放
+1. 使用FFMPEG 切片
+   #ffmpeg -i udp://10.0.224.28:1234 -c copy -f dash -window_size 5 -min_seg_duration 3000000 -single_file 0 -init_seg_name initavatar-stream\$RepresentationID\$.m4s -media_seg_name chunkavatar-stream\$RepresentationID\$-\$Number%05d\$.m4s -use_template 0 -bsf:a aac_adtstoasc  ftp://user:password@192.168.32.188/liang/liangc.mpd
+   ffmpeg -i mp4_basic.mp4 -c copy -f dash -min_seg_duration 3000000 -single_file 0 -init_seg_name initavatar-stream\$RepresentationID\$.m4s -media_seg_name chunkavatar-stream\$RepresentationID\$-\$Number%04d\$.m4s -use_template 0 -bsf:a aac_adtstoasc  mp4_basic.mpd
+   如果音频是ac3无法转换可以先转为aac:  ffmpeg -i mp4_basic.mp4 -acodec aac mp4_basic_aac.mp4
+2. google浏览器需要用插件才能播放mpeg-dash,例如dash.js，从以下地址下载，并使用其中的“dash.all.min.js”:
+    https://github.com/Dash-Industry-Forum/dash.js/releases/tag/v2.4.1
+3. 创建播放网页并播放，dashPlayer.html:
+<!DOCTYPE html>
+<html>
+<head>
+  <style>
+video {
+  width: 80%;
+  height: 80%;
+}
+</style>
+<script src="js/dash.all.min.js"></script>
+  <title>
+  Adaptive Streaming in HTML5
+  </title>
+
+</head>
+  <body>
+    <h1>Adaptive Streaming with HTML5</h1>
+    <video data-dashjs-player autoplay src="http://192.168.56.101:8080/mpeg-dash/mp4_basic.mpd" controls></video>
+  </body>
+</html>
