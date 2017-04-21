@@ -4,6 +4,11 @@
 
 #include <MpxType.h>
 #include "MpxVersion.h"
+#include "Mpx_FileByteStream.h"
+#include "Mpx_BoxFactory.h"
+#include "MpxLog.h"
+
+
 #define BANNER "MPX File Dump - Version 0.0.1\n"\
                "(Mpx Version " MPX_VERSION_NAME ")\n"\
                "(c) 2002-2017 Axiomatic Systems, LLC"
@@ -38,7 +43,8 @@ int main(int argc,char **argv)
 	int verbosity;
 	int track_id;
 	int format;
-	MPX_ByteStream *input=NULL;
+	Mpx_ByteStream *pInput=NULL;
+	Mpx_ByteStream *pOutput=NULL;
 	const char *filename=NULL;
 	if(argc<2)
 		PrintUsageAndExit();
@@ -60,10 +66,27 @@ int main(int argc,char **argv)
 			filename=*argv;
 			}
 		}
-	printf("filename=%s\n",filename);
+	printf("filename=%s,track_id=%d,format=%d,verbosity=%d\n",filename,track_id,format,verbosity);
 
-	//MPX_Result=Mpx_FileByteStream
-	printf("size of long=%d\n",sizeof(long long));
-	
+	MPX_Result Result=Mpx_FileByteStream::Create("stdc0",filename,Mpx_FileByteStream::STREAM_MODE_READ,pInput);
+	if(MPX_SUCCESS!=Result)
+		return MPX_FAILURE;
+
+	Result=Mpx_FileByteStream::Create("stdc0",STDOUT,Mpx_FileByteStream::STREAM_MODE_WIRTE,pOutput);
+	if(MPX_SUCCESS!=Result)
+		return MPX_FAILURE;
+
+    Mpx_BoxInspector *pBoxInspector =NULL;
+	MpxBox *pBox=NULL;
+
+	pBoxInspector=new Mpx_TextBoxInspector(*pOutput);
+	Mpx_DefaultBoxFactory DefaultBoxFactory;
+	while(MPX_SUCCESS==DefaultBoxFactory.CreateBoxFromStream(pInput,pBox))
+		{
+		MPX_Position Position;
+		pInput->Tell(Position);
+		pBox->Inspect(pBoxInspector);
+		pInput->Seek(Position);
+		}
 }
 

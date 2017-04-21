@@ -4,7 +4,7 @@
 #define MPX_TRUE 1
 #define MPX_FALSE 0
 
-
+using namespace std;
 typedef bool MPX_Bool;
 typedef char MPX_S8;
 typedef unsigned char MPX_U8;
@@ -16,8 +16,10 @@ typedef unsigned int MPX_U32;
 typedef long long MPX_S64;
 typedef unsigned long long MPX_U64;
 typedef MPX_U32 MPX_Size;
+typedef MPX_U64 MPX_LargeSize;
+typedef MPX_U64 MPX_Position;
+
 
 typedef int MPX_Result;
-typedef long MPX_Position;
 
 #endif
