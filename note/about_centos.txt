@@ -408,3 +408,109 @@ vi /etc/sysconfig/iptables
 3）.打开浏览器，输入http://[公网或私网ip]:9090/进入配置界面
 依次设置完后，如果用spark客户端不能访问，请注意关闭防火墙试试（"/etc/rc.d/init.d/iptables stop"）
 
+十三：apache2.29+python3.6.1+mod_wsgi 4.5.15+django1.11
+1). sudo yum install openssl-devel zlib-devel sqlite-devel
+2). 安装apache2.29
+3). 安装python3.6.1
+	1.下载并解压
+		wget https://www.python.org/ftp/python/3.6.1/Python-3.6.1.tgz
+		tar -xvf Python-3.6.1.tgz
+	2.配置并编译安装
+		./configure --prefix=/home/dongxw/http_server/python3.6.1 --enable-shared
+		make
+		make install
+	3. 添加动态库
+		vi ~/.bash_profile 后添加 export LD_LIBRARY_PATH=/home/dongxw/http_server/python3.6.1/lib:$LD_LIBRARY_PATH
+		PATH=$PATH:$HOME/bin:/home/dongxw/http_server/python3.6.1/bin
+
+		source ~/.bash_profile
+		
+		sudo vi /etc/ld.so.conf  后添加 /home/dongxw/http_server/python3.6.1/lib
+		sudo ldconfig -v	
+		
+	4.取消python2,默认python3
+		sudo mv python python2.6.6
+		sudo ln -s /home/dongxw/http_server/python3.6.1/bin/python3 /usr/bin/python
+		python -V (显示python 版本为python3.6.1)
+	5. sudo vi /usr/bin/yum
+		#!/usr/bin/python 改为#!/usr/bin/python2.6
+
+4). 安装setuptools和pip
+	1.安装pip
+		https://pypi.python.org/pypi/pip#downloads
+		python setup.py build
+		sudo python setup.py install
+	2. 安装setuptools
+		https://pypi.python.org/pypi/setuptools
+		unzip setuptools-35.0.2.zip
+		sudo python setup.py install
+	3.如果安装中提示缺少包，如six,appdirs
+		chmod -R 777 /home/dongxw/http_server/python3.6.1
+		pip --trusted-host pypi.python.org install six
+		pip install appdirs
+5). 安装配置django1.11
+	1)安装django
+		pip install django==1.11
+		sudo ln -s /home/dongxw/http_server/python3.6.1/bin/django-admin.py /usr/bin/django-admin.py
+	2)部署简单测试网站
+		django-admin.py startproject mysite
+		cd mysite
+		python manage.py runserver 0.0.0.0:8005
+		浏览器打开 http://120.25.173.129:8005/ 验证成功
+6). 编译安装mod_wsgi
+	1.下载并解压
+		https://codeload.github.com/GrahamDumpleton/mod_wsgi/tar.gz/4.5.15
+	2.配置编译
+		./configure --with-apxs=/home/dongxw/http_server/Apache-2.2.29/bin/apxs --with-python=/usr/bin/python
+		make
+		make install
+		chmod 755 /home/dongxw/http_server/Apache-2.2.29/modules/mod_wsgi.so
+7). 配置apache
+	1.配置二级域名解析如dq.djs10.com
+	2.打开/home/dongxw/http_server/www/mysite/mysite/wsgi.py  添加：
+	   import sys
+       sys.path.append('/home/dongxw/http_server/www/mysite')
+	2.打开/home/dongxw/http_server/Apache-2.2.29/conf/httpd.conf
+	  取消注释Include conf/extra/httpd-vhosts.conf
+	3.打开/home/dongxw/http_server/Apache-2.2.29/conf/extra/httpd-vhosts.conf添加以下内容：
+	<VirtualHost *:80>
+    ServerAdmin webmaster@djs10.com
+    DocumentRoot "/home/dongxw/http_server/www/mysite"
+    ServerName dq.djs10.com
+    ServerAlias www.dq.djs10.com
+    ErrorLog "logs/dq.djs10.com-error_log"
+    CustomLog "logs/dq.djs10.com-access_log" common
+    <Directory "/home/dongxw/http_server/www/mysite">
+      Options Indexes FollowSymLinks
+      AllowOverride None
+      Order allow,deny
+      Allow from all
+    </Directory>
+    DirectoryIndex index.php index.html
+    WSGIScriptAlias / "/home/dongxw/http_server/www/mysite/mysite/wsgi.py"
+    LoadModule wsgi_module modules/mod_wsgi.so
+    </VirtualHost>
+
+    <VirtualHost *:80>
+    ServerAdmin webmaster@djs10.com
+    DocumentRoot "/home/dongxw/http_server/www/home"
+    ServerName djs10.com
+    ServerAlias www.djs10.com
+    ErrorLog "logs/djs10.com-error_log"
+    CustomLog "logs/djs10.com-access_log" common
+    <Directory "/home/dongxw/http_server/www/home">
+      Options Indexes FollowSymLinks
+      AllowOverride None
+      Order allow,deny
+      Allow from all
+    </Directory>
+    DirectoryIndex index.php index.html
+    </VirtualHost>
+8）.重启apache
+	sudo service httpd restart
+	
+	  
+	
+
+	
+
