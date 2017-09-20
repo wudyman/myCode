@@ -1,0 +1,721 @@
+<html xmlns="http://www.w3.org/1999/xhtml"><head>
+    <title>HomePage</title>
+    <!--<link rel="stylesheet" href="http://cache.zeasn.tv/webstatic/homepage_web/css/public.css"/>-->
+    <link rel="stylesheet" href="../css/index.css">
+    <link rel="stylesheet" href="../css/language/en.css">
+    <!--<link rel="stylesheet" href="http://cache.zeasn.tv/webstatic/homepage_web/css/tou.css"/>-->
+
+    <script type="text/javascript">
+        var _option = {
+            "title": "{Terms of Use}".replace("}", "").replace("{", ""),
+            "adult": ['Switch off 18+ apps locking','Switch on 18+ apps locking'],
+            "personal": ['Switch Off Personalization','Switch On Personalization'],
+            "sta": "Statistics",
+            "privateSetting": "Privacy Settings"
+        }
+
+    </script>
+    <script onerror="if(window.reload) window.reload();" src="http://cache.zeasn.tv/webstatic/homepage_web/js/jquery-3.1.1.min.js"></script>
+    <script onerror="if(window.reload) window.reload();" src="../js/loadData.js"></script>
+    <script onerror="if(window.reload) window.reload();" type="text/javascript">
+        //<![CDATA[
+		var video_flag = true;
+        var basePath = "http://cache.zeasn.tv/webstatic/homepage_web";
+        var basePath1 = "/homepage_api";
+        var moveImg = "";
+        var sort = 0;
+        var app_id = "";
+        var test;
+        var _data = {"apps":[{"addDeviceInfo":0,"enableParentApi":0,"hasKey":0,"icon":"http://cache.zeasn.tv/acc/static/3059/thumbnails/7798_96X96.png","id":"62792","isAdult":0,"isDel":0,"launchNewWindow":1,"launchType":0,"sendGudid":0,"sendThreeDParameter":0,"sort":1,"title":"App Gallery","url":"https://acc-smarttv.zeasn.tv/app_gallery_web/homepage/search.html?productId=8"},{"addDeviceInfo":0,"enableParentApi":0,"hasKey":0,"icon":"http://cache.zeasn.tv/acc/static/5715/thumbnails/18309_96X96.png","id":"63623","isAdult":0,"isDel":1,"launchNewWindow":1,"launchType":0,"sendGudid":0,"sendThreeDParameter":0,"sort":2,"title":"Netflix","url":"localfunction:gotonetflix"},{"addDeviceInfo":0,"enableParentApi":0,"hasKey":0,"icon":"http://cache.zeasn.tv/acc/static/6454/thumbnails/30979_96X96.png","id":"63702","isAdult":0,"isDel":1,"launchNewWindow":1,"launchType":1,"sendGudid":0,"sendThreeDParameter":0,"sort":3,"title":"YouTube","url":"https://www.youtube.com/tv?launch=menu&additionalDataUrl=http://localhost:56789/apps/YouTube/dial_data"},{"addDeviceInfo":0,"enableParentApi":0,"hasKey":0,"icon":"http://cache.zeasn.tv/acc/static/1969/thumbnails/7788_96X96.png","id":"53901","isAdult":0,"isDel":1,"launchNewWindow":1,"launchType":0,"sendGudid":0,"sendThreeDParameter":0,"sort":53902,"title":"Picasa","url":"https://picasa.nettvservices.com"},{"addDeviceInfo":0,"enableParentApi":0,"hasKey":0,"icon":"http://cache.zeasn.tv/acc/static/1984/thumbnails/7805_96X96.png","id":"53919","isAdult":0,"isDel":1,"launchNewWindow":1,"launchType":0,"sendGudid":0,"sendThreeDParameter":0,"sort":53920,"title":"Dailymotion","url":"https://www.dailymotion.com/tvapps/live/philips/"},{"addDeviceInfo":0,"enableParentApi":0,"hasKey":0,"icon":"http://cache.zeasn.tv/acc/static/2830/thumbnails/8039_96X96.png","id":"54207","isAdult":0,"isDel":1,"launchNewWindow":1,"launchType":0,"sendGudid":0,"sendThreeDParameter":1,"sort":54208,"title":"AUPEO Personal Radio","url":"http://www.aupeo.com/opera_widget/index.cehtml"},{"addDeviceInfo":0,"enableParentApi":0,"hasKey":0,"icon":"http://cache.zeasn.tv/acc/static/3077/thumbnails/8056_96X96.png","id":"54333","isAdult":0,"isDel":1,"launchNewWindow":1,"launchType":0,"sendGudid":0,"sendThreeDParameter":0,"sort":54334,"title":"Cinetrailer","url":"http://nettv.cinetrailer.it/philips/region/uk"},{"addDeviceInfo":0,"enableParentApi":0,"hasKey":0,"icon":"http://cache.zeasn.tv/acc/static/3134/thumbnails/8069_96X96.png","id":"54378","isAdult":0,"isDel":1,"launchNewWindow":1,"launchType":1,"sendGudid":0,"sendThreeDParameter":0,"sort":54379,"title":"iConcerts","url":"https://www3.iconcerts.com/tvapps/nettv/index.html"},{"addDeviceInfo":0,"enableParentApi":0,"hasKey":0,"icon":"http://cache.zeasn.tv/acc/static/3358/thumbnails/8000_96X96.png","id":"54501","isAdult":0,"isDel":1,"launchNewWindow":1,"launchType":0,"sendGudid":0,"sendThreeDParameter":0,"sort":54502,"title":"Euronews","url":"http://www.euronews.com/_partners/philipstest/"},{"addDeviceInfo":1,"enableParentApi":0,"hasKey":0,"icon":"http://cache.zeasn.tv/acc/static/3497/thumbnails/7834_96X96.png","id":"54610","isAdult":0,"isDel":1,"launchNewWindow":1,"launchType":1,"sendGudid":1,"sendThreeDParameter":0,"sort":54611,"title":"Viewster","url":"http://www.viewster.tv/Viewster_v5/index.html"},{"addDeviceInfo":0,"enableParentApi":0,"hasKey":0,"icon":"http://cache.zeasn.tv/acc/static/3738/thumbnails/8001_96X96.png","id":"54723","isAdult":1,"isDel":1,"launchNewWindow":1,"launchType":0,"sendGudid":0,"sendThreeDParameter":0,"sort":54724,"title":"Vimeo","url":"http://vimeoapps.com/smarttv"},{"addDeviceInfo":0,"enableParentApi":0,"hasKey":0,"icon":"http://cache.zeasn.tv/acc/static/3783/thumbnails/7942_96X96.png","id":"54760","isAdult":0,"isDel":1,"launchNewWindow":1,"launchType":0,"sendGudid":0,"sendThreeDParameter":0,"sort":54761,"title":"MeteoNews.TV","url":"http://meteo.dotscreen.com/2.0/phg.phcehtml?utm_source=NetTV&utm_medium=portal&utm_campaign=V2"},{"addDeviceInfo":0,"enableParentApi":0,"hasKey":0,"icon":"http://cache.zeasn.tv/acc/static/4333/thumbnails/7902_96X96.png","id":"55405","isAdult":0,"isDel":1,"launchNewWindow":1,"launchType":1,"sendGudid":0,"sendThreeDParameter":0,"sort":55406,"title":"Social TV","url":"https://epgacc.corio.com/smarttvid/socialtv"},{"addDeviceInfo":0,"enableParentApi":0,"hasKey":0,"icon":"http://cache.zeasn.tv/acc/static/4404/thumbnails/7729_96X96.png","id":"55641","isAdult":0,"isDel":1,"launchNewWindow":1,"launchType":0,"sendGudid":0,"sendThreeDParameter":0,"sort":55642,"title":"blinkbox","url":"https://verification.nettvservices.com/blinkbox.php"},{"addDeviceInfo":0,"enableParentApi":0,"hasKey":0,"icon":"http://cache.zeasn.tv/acc/static/4643/thumbnails/7977_96X96.png","id":"56494","isAdult":0,"isDel":1,"launchNewWindow":1,"launchType":1,"sendGudid":0,"sendThreeDParameter":0,"sort":56495,"title":"Cloud Explorer","url":"https://epgacc.corio.com/smarttvid/cloudexplorer"},{"addDeviceInfo":0,"enableParentApi":0,"hasKey":0,"icon":"http://cache.zeasn.tv/acc/static/6495/thumbnails/31957_96X96.png","id":"60001","isAdult":0,"isDel":1,"launchNewWindow":1,"launchType":0,"sendGudid":0,"sendThreeDParameter":0,"sort":60002,"title":"CATAL(MT5802)","url":"localfunction:gotobbc:https://www.live.bbctvapps.co.uk/catal?config=precert"},{"addDeviceInfo":0,"enableParentApi":0,"hasKey":0,"icon":"http://cache.zeasn.tv/acc/static/6496/thumbnails/31966_96X96.png","id":"60003","isAdult":0,"isDel":1,"launchNewWindow":1,"launchType":0,"sendGudid":0,"sendThreeDParameter":0,"sort":60004,"title":"iPlayer(MT5802)","url":"localfunction:gotobbc:https://www.live.bbctvapps.co.uk/tap/iplayer?config=precert"},{"addDeviceInfo":0,"enableParentApi":0,"hasKey":0,"icon":"http://cache.zeasn.tv/acc/static/6497/thumbnails/31975_96X96.png","id":"60005","isAdult":0,"isDel":1,"launchNewWindow":1,"launchType":0,"sendGudid":0,"sendThreeDParameter":0,"sort":60006,"title":"News(MT5802)","url":"localfunction:gotobbc: https://www.live.bbctvapps.co.uk/tap/news?config=precert"},{"addDeviceInfo":0,"enableParentApi":0,"hasKey":0,"icon":"http://cache.zeasn.tv/acc/static/6498/thumbnails/31984_96X96.png","id":"60007","isAdult":0,"isDel":1,"launchNewWindow":1,"launchType":0,"sendGudid":0,"sendThreeDParameter":0,"sort":60008,"title":"Sport(MT5802)","url":"localfunction:gotobbc:https://www.live.bbctvapps.co.uk/tap/sport?config=precert"},{"addDeviceInfo":0,"enableParentApi":0,"hasKey":0,"icon":"http://cache.zeasn.tv/acc/static/2825/thumbnails/7791_96X96.png","id":"62611","isAdult":0,"isDel":1,"launchNewWindow":1,"launchType":0,"sendGudid":0,"sendThreeDParameter":0,"sort":62612,"title":"Foreca","url":"http://nettv.foreca.com"},{"addDeviceInfo":0,"enableParentApi":0,"hasKey":0,"icon":"http://cache.zeasn.tv/acc/static/4044/thumbnails/7780_96X96.png","id":"63423","isAdult":0,"isDel":1,"launchNewWindow":1,"launchType":0,"sendGudid":0,"sendThreeDParameter":0,"sort":63424,"title":"Absolute Radio","url":"http://tv.absoluteradio.co.uk/philips"},{"addDeviceInfo":0,"enableParentApi":0,"hasKey":0,"icon":"http://cache.zeasn.tv/acc/static/4768/thumbnails/8045_96X96.png","id":"63588","isAdult":0,"isDel":1,"launchNewWindow":1,"launchType":0,"sendGudid":0,"sendThreeDParameter":0,"sort":63589,"title":"France24","url":"http://connected-tv.france24.com/v2/nettv/index.phcehtml"},{"addDeviceInfo":1,"enableParentApi":0,"hasKey":0,"icon":"http://cache.zeasn.tv/acc/static/1588/thumbnails/7766_96X96.png","id":"53782","isAdult":0,"isDel":1,"launchNewWindow":1,"launchType":0,"sendGudid":0,"sendThreeDParameter":0,"sort":63590,"title":"Miniportal","url":"https://miniportal.nettvservices.com/miniportal.php"},{"addDeviceInfo":0,"enableParentApi":0,"hasKey":0,"icon":"http://cache.zeasn.tv/acc/static/6382/thumbnails/30520_96X96.png","id":"63555","isAdult":0,"isDel":1,"launchNewWindow":1,"launchType":1,"sendGudid":0,"sendThreeDParameter":0,"sort":63591,"title":"APP-SPOT 2k17","url":"https://2017-dot-qual-e.appspot.com/?hdr=1&temp=youtube"}],"deviceFunction":{"ads":1,"nowOnTvs":1,"tods":1,"vods":1,"youtube":1},"nowOnTvs":[],"tods":[{"icon":"http://static.euronews.com/articles/318310/330x450_318310.jpg","id":"69000005234547","tag":"https://epgacc.corio.com/interfaces/GetCatchupChannelLogo.ashx?itemid=2900483","title":"On the catwalk in Karachi and with Chanel in the Cinecitta film studios","url":"https://epgacc.corio.com/catchuptv.aspx?itemid=2900483"},{"icon":"http://static.euronews.com/articles/319240/330x450_319240.jpg","id":"69000005237998","tag":"https://epgacc.corio.com/interfaces/GetCatchupChannelLogo.ashx?itemid=2910187","title":"Berlin museum pays tribute to German master Adolph Menzel","url":"https://epgacc.corio.com/catchuptv.aspx?itemid=2910187"},{"icon":"http://static.euronews.com/articles/319024/330x450_319024.jpg","id":"69000005239952","tag":"https://epgacc.corio.com/interfaces/GetCatchupChannelLogo.ashx?itemid=2912939","title":"‘Jurassic’ summer, but ‘Star Wars’ strikes back with record-breaking year-end: 2015 Box Office Review","url":"https://epgacc.corio.com/catchuptv.aspx?itemid=2912939"},{"icon":"http://static.euronews.com/articles/317511/330x450_317511.jpg","id":"69000005242313","tag":"https://epgacc.corio.com/interfaces/GetCatchupChannelLogo.ashx?itemid=2891898","title":"Switzerland, winter is comming","url":"https://epgacc.corio.com/catchuptv.aspx?itemid=2891898"},{"icon":"http://static.euronews.com/articles/318975/330x450_318975.jpg","id":"69000005242632","tag":"https://epgacc.corio.com/interfaces/GetCatchupChannelLogo.ashx?itemid=2908366","title":"Harrison Ford and Mark Hamill reunite at ‘Star Wars: The Force Awakens’ World Premiere","url":"https://epgacc.corio.com/catchuptv.aspx?itemid=2908366"},{"icon":"http://static.euronews.com/articles/318459/330x450_318459.jpg","id":"69000005243302","tag":"https://epgacc.corio.com/interfaces/GetCatchupChannelLogo.ashx?itemid=2902321","title":"Bill Murray makes waves at Marrakech film festival","url":"https://epgacc.corio.com/catchuptv.aspx?itemid=2902321"},{"icon":"http://static.euronews.com/articles/319968/330x450_319968.jpg","id":"69000005246099","tag":"https://epgacc.corio.com/interfaces/GetCatchupChannelLogo.ashx?itemid=2915477","title":"Greek drivers surrender car plates to avoid heavy taxation","url":"https://epgacc.corio.com/catchuptv.aspx?itemid=2915477"},{"icon":"http://static.euronews.com/articles/318512/330x450_318512.jpg","id":"69000005248362","tag":"https://epgacc.corio.com/interfaces/GetCatchupChannelLogo.ashx?itemid=2903249","title":"Ron Howard digs deep to reveal horrors “In the Heart of the Sea”","url":"https://epgacc.corio.com/catchuptv.aspx?itemid=2903249"},{"icon":"http://static.euronews.com/articles/315800/330x450_315800.jpg","id":"69000005252016","tag":"https://epgacc.corio.com/interfaces/GetCatchupChannelLogo.ashx?itemid=2862659","title":"South African students break down a fence around government buildings","url":"https://epgacc.corio.com/catchuptv.aspx?itemid=2862659"},{"icon":"http://static.euronews.com/articles/318950/330x450_318950.jpg","id":"69000005253541","tag":"https://epgacc.corio.com/interfaces/GetCatchupChannelLogo.ashx?itemid=2907651","title":"Andrew Lloyd Webber’s ‘School of Rock’ opens on Broadway","url":"https://epgacc.corio.com/catchuptv.aspx?itemid=2907651"},{"icon":"http://static.euronews.com/articles/319972/330x450_319972.jpg","id":"69000005259751","tag":"https://epgacc.corio.com/interfaces/GetCatchupChannelLogo.ashx?itemid=2915475","title":"Chicago police officer pleads not guilty to gunning down black teen","url":"https://epgacc.corio.com/catchuptv.aspx?itemid=2915475"},{"icon":"http://static.euronews.com/articles/319853/330x450_319853.jpg","id":"69000005261751","tag":"https://epgacc.corio.com/interfaces/GetCatchupChannelLogo.ashx?itemid=2914941","title":"Syria: at least 32 dead, 90 wounded in Homs explosions – reports","url":"https://epgacc.corio.com/catchuptv.aspx?itemid=2914941"},{"icon":"http://static.euronews.com/articles/317937/330x450_317937.jpg","id":"69000005264486","tag":"https://epgacc.corio.com/interfaces/GetCatchupChannelLogo.ashx?itemid=2896378","title":"An unlikely friendship","url":"https://epgacc.corio.com/catchuptv.aspx?itemid=2896378"},{"icon":"http://static.euronews.com/articles/315808/330x450_315808.jpg","id":"69000005265073","tag":"https://epgacc.corio.com/interfaces/GetCatchupChannelLogo.ashx?itemid=2862658","title":"A rocky start of the first World Indigenous Games","url":"https://epgacc.corio.com/catchuptv.aspx?itemid=2862658"},{"icon":"http://static.euronews.com/articles/319884/330x450_319884.jpg","id":"69000005266662","tag":"https://epgacc.corio.com/interfaces/GetCatchupChannelLogo.ashx?itemid=2914934","title":"Stopped at the final hurdle: migrants blocked at Russia-Finland border","url":"https://epgacc.corio.com/catchuptv.aspx?itemid=2914934"},{"icon":"http://static.euronews.com/articles/319425/330x450_319425.jpg","id":"69000005267147","tag":"https://epgacc.corio.com/interfaces/GetCatchupChannelLogo.ashx?itemid=2913457","title":"A great duo in Paris: Kaufmann and Terfel","url":"https://epgacc.corio.com/catchuptv.aspx?itemid=2913457"},{"icon":"http://static.euronews.com/articles/319262/330x450_319262.jpg","id":"69000005269139","tag":"https://epgacc.corio.com/interfaces/GetCatchupChannelLogo.ashx?itemid=2910186","title":"Morocco celebrates a new generation of filmmakers","url":"https://epgacc.corio.com/catchuptv.aspx?itemid=2910186"},{"icon":"http://static.euronews.com/articles/318152/330x450_318152.jpg","id":"69000005272661","tag":"https://epgacc.corio.com/interfaces/GetCatchupChannelLogo.ashx?itemid=2899246","title":"The Gangnam Style star is back with his seventh album","url":"https://epgacc.corio.com/catchuptv.aspx?itemid=2899246"},{"icon":"http://static.euronews.com/articles/317448/330x450_317448.jpg","id":"69000005273719","tag":"https://epgacc.corio.com/interfaces/GetCatchupChannelLogo.ashx?itemid=2891186","title":"New Zealand: students’ haka in honour of Jonah Lomu","url":"https://epgacc.corio.com/catchuptv.aspx?itemid=2891186"},{"icon":"http://static.euronews.com/articles/319894/330x450_319894.jpg","id":"69000005275536","tag":"https://epgacc.corio.com/interfaces/GetCatchupChannelLogo.ashx?itemid=2914932","title":"Ghastly weather across US","url":"https://epgacc.corio.com/catchuptv.aspx?itemid=2914932"}],"vods":[]};
+    
+
+        var _language = "en";
+        if (_language == "" || _language == undefined) {
+            _language = "en";
+        }
+        var _arr_ = [];
+        document.cookie = "prelanguage=" + _language;
+        document.cookie = "lastLand=" + new Date().getTime();
+        for (var _i = 0; _i < _data.apps.length; _i++) {
+            _arr_.push(_data.apps[_i].id);
+        }
+        localStorage.ids = JSON.stringify(_arr_);
+        history.pushState("", "", window.location.href.replace("index1","index"));
+        //]]>
+    </script>
+    <style>
+        .MsoNormal {
+            font-size: 22px;
+            margin-bottom: 20px;
+
+        }
+        
+        #videoadcontainer:focus, #videoadcontainer_close:focus{
+        	border: 2px solid red;
+        	box-sizing:border-box;
+        }
+
+        body {
+            background: url("http://cache.zeasn.tv/webstatic/homepage_web/images/bg.png");
+        }
+
+        .head {
+            background: url("http://cache.zeasn.tv/webstatic/homepage_web/images/nav_bg.png") repeat-x;
+        }
+
+        #main, #tv, #video,#nowOnTv  {
+            background-color: rgba(26, 40, 49, 0.953);
+            background-image: -o-linear-gradient(top, rgba(0, 0, 0, 0.561) 0px, rgba(0, 0, 0, 0.545) 1%, rgba(0, 0, 0, 0.545) 7%, rgba(0, 0, 0, 0.514) 8%, rgba(0, 0, 0, 0.455) 13%, rgba(3, 3, 3, 0.439) 15%, rgba(15, 15, 15, 0.275) 24%, rgba(31, 31, 31, 0.141) 32%, rgba(35, 35, 35, 0.110) 34%, rgba(50, 50, 50, 0.055) 41%, rgba(64, 64, 64, 0.016) 46%, rgba(80, 80, 80, 0) 52%, rgba(105, 105, 105, 0) 61%, rgba(255, 255, 255, 0) 62%, rgba(255, 255, 255, 0) 100%);
+        }
+
+        #youtube {
+            background: url("http://cache.zeasn.tv/webstatic/homepage_web/images/APPs.png");
+        }
+
+        .bottom {
+            background: #000;
+        }
+
+        #tab1 {
+            background: url("../images/normal.png");
+        }
+
+        #tab1.changed {
+            background: url("../images/activated.png");
+        }
+
+        #tab1:focus {
+            background: url("../images/pressed.png");
+        }
+
+        #tab2 {
+            background: url("http://cache.zeasn.tv/webstatic/homepage_web/images/btn_APPs_def.png");
+        }
+
+        #tab2.changed {
+            background: url("http://cache.zeasn.tv/webstatic/homepage_web/images/btn_APPs_not-focus.png");
+        }
+
+        #tab2:focus {
+            background: url("http://cache.zeasn.tv/webstatic/homepage_web/images/btn_APPs_pre.png")
+        }
+
+        #tab3 {
+            background: url("http://cache.zeasn.tv/webstatic/homepage_web/images/btn_video_def.png");
+        }
+
+        #tab3.changed {
+            background: url("http://cache.zeasn.tv/webstatic/homepage_web/images/btn_video_not-focus.png");
+        }
+
+        #tab3:focus {
+            background: url("http://cache.zeasn.tv/webstatic/homepage_web/images/btn_video_pre.png");
+        }
+
+        #tab4 {
+            background: url("http://cache.zeasn.tv/webstatic/homepage_web/images/btn_replay_def.png");
+        }
+
+        #tab4.changed {
+            background: url("http://cache.zeasn.tv/webstatic/homepage_web/images/btn_replay_not-focus.png");
+        }
+
+        #tab4:focus {
+            background: url("http://cache.zeasn.tv/webstatic/homepage_web/images/btn_replay_pre.png");
+        }
+
+        ._tab4 {
+            background: url("http://cache.zeasn.tv/webstatic/homepage_web/images/btn_replay_pre.png");
+        }
+
+        .head .right .search-box .search-selected:focus {
+            background: url("http://cache.zeasn.tv/webstatic/homepage_web/images/280_40.png") no-repeat;
+        }
+
+        .feedback .app-feedback .app-content s {
+            background: url("http://cache.zeasn.tv/webstatic/homepage_web/images/type_not_checked.png");
+            margin-right: 14px;
+        }
+
+        .feedback .app-feedback .app-content label .focus {
+            background: url("http://cache.zeasn.tv/webstatic/homepage_web/images/type_checked.png");
+        }
+
+        .detail {
+            background: url("http://cache.zeasn.tv/webstatic/homepage_web/images/detail-bg.jpg");
+        }
+
+        #video .cover {
+            background: url("http://cache.zeasn.tv/webstatic/homepage_web/images/height40.png");
+        }
+
+        #tv .cover {
+            background: url("http://cache.zeasn.tv/webstatic/homepage_web/images/height60.png");
+        }
+
+        #appLine1-7 img:nth-child(2) {
+            display: none;
+        }
+    </style>
+<script src="https://adacc.nettvservices.com/adserver/www/delivery/fc.php?script=bannerTypeHtml:tpvVastBanners:tpvVastInternalBanners&amp;device_zone_identifier=2k14MyApps_360x96&amp;elementid=ad_contrainer&amp;adtxtid=&amp;cntry=GB&amp;lang=en&amp;manid=0008c6&amp;ctn=43PUS6162/05&amp;cb=6485183845&amp;adHandleId=1&amp;charset=UTF-8&amp;loc=https%3A%2F%2Facc-smarttv.zeasn.tv%2Fhomepage_api%2Fdevice%2Findex%3Fproductid%3D7&amp;referer=https%3A%2F%2Facc-smarttv.zeasn.tv%2Fhomepage_api%2Fdevice%2Findex%3Fproductid%3D7&amp;lang=en&amp;format=jsonp&amp;callbackfunc=myfunc"></script></head>
+<body>
+
+<object type="philips/options-menu" id="optionsmenu" style="position: absolute; top: 10px; left: 600px; width: 10px; height: 10px; visibility: hidden;"></object>
+<object type="application/NetTV_objectFactory" id="nettvObjectFactory" style="position: absolute; top: 0px; left: 0px; width: 0px; height: 0px;"></object>
+<div style="position: absolute;left: -9999px">
+    <img src="http://cache.zeasn.tv/webstatic/homepage_web/images/btn_APPs_not-focus.png">
+    <img src="http://cache.zeasn.tv/webstatic/homepage_web/images/btn_APPs_pre.png">
+    <img src="http://cache.zeasn.tv/webstatic/homepage_web/images/btn_APPs_def.png">
+    <img src="http://cache.zeasn.tv/webstatic/homepage_web/images/btn_video_not-focus.png">
+    <img src="http://cache.zeasn.tv/webstatic/homepage_web/images/btn_video_pre.png">
+    <img src="http://cache.zeasn.tv/webstatic/homepage_web/images/btn_video_def.png">
+    <img src="http://cache.zeasn.tv/webstatic/homepage_web/images/btn_replay_not-focus.png">
+    <img src="http://cache.zeasn.tv/webstatic/homepage_web/images/btn_replay_pre.png">
+    <img src="http://cache.zeasn.tv/webstatic/homepage_web/images/btn_replay_def.png">
+    <img src="http://cache.zeasn.tv/webstatic/homepage_web/images/term_up.png">
+    <img src="http://cache.zeasn.tv/webstatic/homepage_web/images/term_up1.png">
+    <img src="http://cache.zeasn.tv/webstatic/homepage_web/images/term_down.png">
+    <img src="http://cache.zeasn.tv/webstatic/homepage_web/images/term_down1.png">
+    <img src="http://cache.zeasn.tv/webstatic/homepage_web/images/btn_search_icon_def.png">
+</div>
+<div id="videoadcontainer" tabindex="1" style="position: absolute; width: 360px; height:221px; left: 858px;  z-index: 444; background-color: #ddd;top: 442px;display:none;" show="1"></div>
+<div id="videoadcontainer_close" _hidden="true" tabindex="1" style="color:#fff;position: absolute; width: auto; height:auto; padding:1px 5px; left: 1218px; top: 442px; z-index: 444; background-color: #ddd;display: none;">X</div>
+
+<div id="pipcontainer">
+    <object id="pipVideoObject" type="video/broadcast" style="position: absolute;z-index:-1; left: 0px; top:0px;width: 1280px; height: 720px;" del="del"></object>
+</div>
+
+<div class="head clearfix">
+    <div class="left">
+        <h1 id="_title" class="apps"></h1>
+        <span id="_test" style="background-color: rgba(255, 0,0,.5); display:block;
+         color: white; position: absolute; left: 24px; top: 40px;
+-        word-wrap:break-word;z-index: 300;width: 300px;"></span>
+
+        <span id="_test1" style="background-color: rgba(255, 0,0,.5); display:block;
+         color: white; position: absolute; left: 24px; top: 10px;
+-        word-wrap:break-word;z-index: 300;width: 800px;word-break:break-all;"></span>
+    </div>
+    <form id="jumpOption" action="" method="post" target="_blank"></form>
+    <div id="_tab" class="middle" style="display: block; left: 480px;">
+
+        <!--<div name="youtube" class="imgBox">-->
+        <!--<div tabindex="9999" _text="Youtube" class="tab" id="tab1"></div>-->
+        <!--</div>-->
+        <div name="nowOnTv" class="imgBox">
+              <div tabindex="9999" _text="Now on TV" class="tab mouseSelected" id="tab1"></div>
+        </div>
+        <div name="apps" class="imgBox">
+            <div tabindex="9999" class="tab changed mouseSelected" _text="Apps" id="tab2"></div>
+        </div>
+
+        <div name="vods" class="imgBox">
+            <div tabindex="9999" _text="Video on Demand" class="tab mouseSelected" id="tab3"></div>
+        </div>
+
+        <div name="tods" class="imgBox">
+            <div tabindex="9999" _text="TV on Demand" class="tab mouseSelected" id="tab4"></div>
+        </div>
+
+        <p id="_text" style="white-space:nowrap;color:#f7f9fc;font-size: 20px;font-weight: 500;line-height: 24px; position: absolute;top: 70px;"></p>
+    </div>
+    <div class="right">
+        <input type="text" id="tab5" class="tab mouseSelected en" maxlength="500">
+        <span id="search" class="en"></span>
+
+        <p id="searchDetail"></p>
+        <img id="tab6" class="tab mouseSelected" tabindex="9999" src="http://cache.zeasn.tv/webstatic/homepage_web/images/btn_search_icon_def.png">
+
+        <div class="search-box"></div>
+    </div>
+</div>
+
+<!--占位-->
+<div class="placeholder">
+    <img id="up" src="http://cache.zeasn.tv/webstatic/homepage_web/images/btn_top.png" alt="" class="clickBtn mouseSelected" tabindex="1">
+         <!--<div id="upButton" class="upButton clickButtonDiv mouseSelected">-->
+        <!--<img src="http://cache.zeasn.tv/webstatic/homepage_web/images/btn_up.png" alt=""/>-->
+        <!--</div>-->
+</div>
+
+<!--主题APP内容-->
+<div id="main" class="main">
+    <div id="_apps" class="scroll clearfix">
+        <ul class="line clearfix">
+            <li>
+                <div class="app mouseSelected" id="appLine1-1" tabindex="1" _url="https://acc-smarttv.zeasn.tv/app_gallery_web/homepage/search.html?productId=8" _id="62792" adddeviceinfo="0" title="App Gallery" isadult="0" _sort="1" isdel="0" haskey="0" sendgudid="0" launchtype="0" launchnewwindow="1" enableparentapi="0">
+
+                <img onerror="SomeJavaScriptCode(this)" class="main_img" src="http://cache.zeasn.tv/acc/static/3059/thumbnails/7798_96X96.png"><img class="movedIcon" alt="" style="width:0px;height:0px; position:relative; top:-72px;left:-35px;z-index:11;" src="http://cache.zeasn.tv/webstatic/homepage_web/images/test.png"><div class="cover" style="display: block;"><p class="animate" style="position: absolute; left: 44px;">App Gallery</p></div></div>
+            </li>
+            <li>
+                <div class="app mouseSelected" id="appLine1-2" tabindex="1" _url="localfunction:gotonetflix" _id="63623" adddeviceinfo="0" title="Netflix" isadult="0" _sort="2" isdel="1" haskey="0" sendgudid="0" launchtype="0" launchnewwindow="1" enableparentapi="0"><img onerror="SomeJavaScriptCode(this)" class="main_img" src="http://cache.zeasn.tv/acc/static/5715/thumbnails/18309_96X96.png"><img class="movedIcon" alt="" style="width:0px;height:0px; position:relative; top:-72px;left:-35px;z-index:11;" src="http://cache.zeasn.tv/webstatic/homepage_web/images/test.png"><div class="cover"><p class="animate">Netflix</p></div></div>
+            </li>
+            <li>
+                <div class="app mouseSelected" id="appLine1-3" tabindex="1" _url="https://www.youtube.com/tv?launch=menu&amp;additionalDataUrl=http://localhost:56789/apps/YouTube/dial_data" _id="63702" adddeviceinfo="0" title="YouTube" isadult="0" _sort="3" isdel="1" haskey="0" sendgudid="0" launchtype="1" launchnewwindow="1" enableparentapi="0"><img onerror="SomeJavaScriptCode(this)" class="main_img" src="http://cache.zeasn.tv/acc/static/6454/thumbnails/30979_96X96.png"><img class="movedIcon" alt="" style="width:0px;height:0px; position:relative; top:-72px;left:-35px;z-index:11;" src="http://cache.zeasn.tv/webstatic/homepage_web/images/test.png"><div class="cover"><p class="animate">YouTube</p></div></div>
+            </li>
+            <li>
+                <div class="app mouseSelected" id="appLine1-4" tabindex="1" _url="https://picasa.nettvservices.com" _id="53901" adddeviceinfo="0" title="Picasa" isadult="0" _sort="53902" isdel="1" haskey="0" sendgudid="0" launchtype="0" launchnewwindow="1" enableparentapi="0"><img onerror="SomeJavaScriptCode(this)" class="main_img" src="http://cache.zeasn.tv/acc/static/1969/thumbnails/7788_96X96.png"><img class="movedIcon" alt="" style="width:0px;height:0px; position:relative; top:-72px;left:-35px;z-index:11;" src="http://cache.zeasn.tv/webstatic/homepage_web/images/test.png"><div class="cover"><p class="animate">Picasa</p></div></div>
+            </li>
+            <li>
+                <div class="app mouseSelected" id="appLine1-5" tabindex="1" _url="https://www.dailymotion.com/tvapps/live/philips/" _id="53919" adddeviceinfo="0" title="Dailymotion" isadult="0" _sort="53920" isdel="1" haskey="0" sendgudid="0" launchtype="0" launchnewwindow="1" enableparentapi="0"><img onerror="SomeJavaScriptCode(this)" class="main_img" src="http://cache.zeasn.tv/acc/static/1984/thumbnails/7805_96X96.png"><img class="movedIcon" alt="" style="width:0px;height:0px; position:relative; top:-72px;left:-35px;z-index:11;" src="http://cache.zeasn.tv/webstatic/homepage_web/images/test.png"><div class="cover"><p class="animate">Dailymotion</p></div></div>
+            </li>
+            <li>
+                <div class="app mouseSelected" id="appLine1-6" tabindex="1" _url="http://www.aupeo.com/opera_widget/index.cehtml" _id="54207" adddeviceinfo="0" title="AUPEO Personal Radio" isadult="0" _sort="54208" isdel="1" haskey="0" sendgudid="0" launchtype="0" launchnewwindow="1" enableparentapi="0"><img onerror="SomeJavaScriptCode(this)" class="main_img" src="http://cache.zeasn.tv/acc/static/2830/thumbnails/8039_96X96.png"><img class="movedIcon" alt="" style="width:0px;height:0px; position:relative; top:-72px;left:-35px;z-index:11;" src="http://cache.zeasn.tv/webstatic/homepage_web/images/test.png"><div class="cover"><p class="animate">AUPEO Personal Radio</p></div></div>
+            </li>
+            <li>
+                <div class="app ad mouseSelected" id="appLine1-7" tabindex="1">
+                    <a href="https://adacc.nettvservices.com/adserver/www/delivery/ck.php?oaparams=2__bannerid=1013__zoneid=367__rnd=bc69663913__oadest=https%3A%2F%2Facc-smarttv.zeasn.tv%2Fhomepage_api%2Fdevice%2Fadvdetail%3Fappid%3D63623" id="ad_contrainer"><img src="https://ad.nettvservices.com/adserver/www/images/19a4d1ed872af602d79cc4292699fe7f.jpg" border="0"><img src="https://adacc.nettvservices.com/adserver/www/delivery/lg-tpv.php?b[]=1013&amp;c[]=216&amp;z[]=367&amp;referer=https%3A%2F%2Facc-smarttv.zeasn.tv%2Fhomepage_api%2Fdevice%2Findex%3Fproductid%3D7&amp;rnd=bc69663913" width="0" height="0" border="0"></a>
+                </div>
+            </li>
+        </ul>
+        <ul class="line clearfix">
+            <li>
+                <div class="app mouseSelected" id="appLine2-1" tabindex="1" _url="http://nettv.cinetrailer.it/philips/region/uk" _id="54333" title="Cinetrailer" isadult="0" _sort="54334" isdel="1" adddeviceinfo="0" haskey="0" sendgudid="0" launchtype="0" launchnewwindow="1" enableparentapi="0"><img alt=" " onerror="SomeJavaScriptCode(this)" class="main_img" src="http://cache.zeasn.tv/acc/static/3077/thumbnails/8056_96X96.png"><img class="movedIcon" style="width:0px;height:0px; position:relative; top:-72px;left:-35px;z-index:11;" src="http://cache.zeasn.tv/webstatic/homepage_web/images/test.png"><div class="cover"><p class="animate">Cinetrailer</p></div></div>
+            </li>
+            <li>
+                <div class="app mouseSelected" id="appLine2-2" tabindex="1" _url="https://www3.iconcerts.com/tvapps/nettv/index.html" _id="54378" title="iConcerts" isadult="0" _sort="54379" isdel="1" adddeviceinfo="0" haskey="0" sendgudid="0" launchtype="1" launchnewwindow="1" enableparentapi="0"><img alt=" " onerror="SomeJavaScriptCode(this)" class="main_img" src="http://cache.zeasn.tv/acc/static/3134/thumbnails/8069_96X96.png"><img class="movedIcon" style="width:0px;height:0px; position:relative; top:-72px;left:-35px;z-index:11;" src="http://cache.zeasn.tv/webstatic/homepage_web/images/test.png"><div class="cover"><p class="animate">iConcerts</p></div></div>
+            </li>
+            <li>
+                <div class="app mouseSelected" id="appLine2-3" tabindex="1" _url="http://www.euronews.com/_partners/philipstest/" _id="54501" title="Euronews" isadult="0" _sort="54502" isdel="1" adddeviceinfo="0" haskey="0" sendgudid="0" launchtype="0" launchnewwindow="1" enableparentapi="0"><img alt=" " onerror="SomeJavaScriptCode(this)" class="main_img" src="http://cache.zeasn.tv/acc/static/3358/thumbnails/8000_96X96.png"><img class="movedIcon" style="width:0px;height:0px; position:relative; top:-72px;left:-35px;z-index:11;" src="http://cache.zeasn.tv/webstatic/homepage_web/images/test.png"><div class="cover"><p class="animate">Euronews</p></div></div>
+            </li>
+            <li>
+                <div class="app mouseSelected" id="appLine2-4" tabindex="1" _url="http://www.viewster.tv/Viewster_v5/index.html" _id="54610" title="Viewster" isadult="0" _sort="54611" isdel="1" adddeviceinfo="1" haskey="0" sendgudid="1" launchtype="1" launchnewwindow="1" enableparentapi="0"><img alt=" " onerror="SomeJavaScriptCode(this)" class="main_img" src="http://cache.zeasn.tv/acc/static/3497/thumbnails/7834_96X96.png"><img class="movedIcon" style="width:0px;height:0px; position:relative; top:-72px;left:-35px;z-index:11;" src="http://cache.zeasn.tv/webstatic/homepage_web/images/test.png"><div class="cover"><p class="animate">Viewster</p></div></div>
+            </li>
+            <li>
+                <div class="app mouseSelected" id="appLine2-5" tabindex="1" _url="http://vimeoapps.com/smarttv" _id="54723" title="Vimeo" isadult="1" _sort="54724" isdel="1" adddeviceinfo="0" haskey="0" sendgudid="0" launchtype="0" launchnewwindow="1" enableparentapi="0"><img alt=" " onerror="SomeJavaScriptCode(this)" class="main_img" src="http://cache.zeasn.tv/acc/static/3738/thumbnails/8001_96X96.png"><img class="movedIcon" style="width:0px;height:0px; position:relative; top:-72px;left:-35px;z-index:11;" src="http://cache.zeasn.tv/webstatic/homepage_web/images/test.png"><div class="cover"><p class="animate">Vimeo</p></div></div>
+            </li>
+            <li>
+                <div class="app mouseSelected" id="appLine2-6" tabindex="1" _url="http://meteo.dotscreen.com/2.0/phg.phcehtml?utm_source=NetTV&amp;utm_medium=portal&amp;utm_campaign=V2" _id="54760" title="MeteoNews.TV" isadult="0" _sort="54761" isdel="1" adddeviceinfo="0" haskey="0" sendgudid="0" launchtype="0" launchnewwindow="1" enableparentapi="0"><img alt=" " onerror="SomeJavaScriptCode(this)" class="main_img" src="http://cache.zeasn.tv/acc/static/3783/thumbnails/7942_96X96.png"><img class="movedIcon" style="width:0px;height:0px; position:relative; top:-72px;left:-35px;z-index:11;" src="http://cache.zeasn.tv/webstatic/homepage_web/images/test.png"><div class="cover"><p class="animate">MeteoNews.TV</p></div></div>
+            </li>
+            <li>
+                <div class="app weather mouseSelected" id="appLine2-7" tabindex="1" style="background-image: url(&quot;http://cache.zeasn.tv/webstatic/homepage_web/images/weather_bg_n.png&quot;);"><div class="today"><img src="http://cache.zeasn.tv/webstatic/homepage_web/images/currentnight/2n.png"><i>20°C</i><span>20°</span></div><div class="future-day"><img src="http://cache.zeasn.tv/webstatic/homepage_web/images/forecast/2f.png"><i>mer.</i><i>25°</i><i class="text-span">19°</i></div><div class="future-day"><img src="http://cache.zeasn.tv/webstatic/homepage_web/images/forecast/2f.png"><i>jeu.</i><i>22°</i><i class="text-span">19°</i></div><div class="future-day"><img src="http://cache.zeasn.tv/webstatic/homepage_web/images/forecast/2f.png"><i>ven.</i><i>24°</i><i class="text-span">18°</i></div><div class="future-day"><img src="http://cache.zeasn.tv/webstatic/homepage_web/images/forecast/7f.png"><i>sam.</i><i>28°</i><i class="text-span">19°</i></div></div>
+            </li>
+        </ul>
+    <ul class="line clearfix"><li><div id="appLine3-1" class="app mouseSelected" isdel="1" _sort="55406" adddeviceinfo="0" sendgudid="0" launchtype="1" launchnewwindow="1" tabindex="1" haskey="0" _url="https://epgacc.corio.com/smarttvid/socialtv" _id="55405" iconbig="undefined" title="Social TV" isadult="0" enableparentapi="0"><img onerror="SomeJavaScriptCode(this)" class="main_img" src="http://cache.zeasn.tv/acc/static/4333/thumbnails/7902_96X96.png"><img alt=" " style="z-index:11;width:55px;height:55px; position:relative; top:-72px;left:-35px;" src="http://cache.zeasn.tv/webstatic/homepage_web/images/test.png"> <div class="cover"><p class="animate">Social TV</p></div></div></li><li><div id="appLine3-2" class="app mouseSelected" isdel="1" _sort="55642" adddeviceinfo="0" sendgudid="0" launchtype="0" launchnewwindow="1" tabindex="1" haskey="0" _url="https://verification.nettvservices.com/blinkbox.php" _id="55641" iconbig="undefined" title="blinkbox" isadult="0" enableparentapi="0"><img onerror="SomeJavaScriptCode(this)" class="main_img" src="http://cache.zeasn.tv/acc/static/4404/thumbnails/7729_96X96.png"><img alt=" " style="z-index:11;width:55px;height:55px; position:relative; top:-72px;left:-35px;" src="http://cache.zeasn.tv/webstatic/homepage_web/images/test.png"> <div class="cover"><p class="animate">blinkbox</p></div></div></li><li><div id="appLine3-3" class="app mouseSelected" isdel="1" _sort="56495" adddeviceinfo="0" sendgudid="0" launchtype="1" launchnewwindow="1" tabindex="1" haskey="0" _url="https://epgacc.corio.com/smarttvid/cloudexplorer" _id="56494" iconbig="undefined" title="Cloud Explorer" isadult="0" enableparentapi="0"><img onerror="SomeJavaScriptCode(this)" class="main_img" src="http://cache.zeasn.tv/acc/static/4643/thumbnails/7977_96X96.png"><img alt=" " style="z-index:11;width:55px;height:55px; position:relative; top:-72px;left:-35px;" src="http://cache.zeasn.tv/webstatic/homepage_web/images/test.png"> <div class="cover"><p class="animate">Cloud Explorer</p></div></div></li><li><div id="appLine3-4" class="app mouseSelected" isdel="1" _sort="60002" adddeviceinfo="0" sendgudid="0" launchtype="0" launchnewwindow="1" tabindex="1" haskey="0" _url="localfunction:gotobbc:https://www.live.bbctvapps.co.uk/catal?config=precert" _id="60001" iconbig="undefined" title="CATAL(MT5802)" isadult="0" enableparentapi="0"><img onerror="SomeJavaScriptCode(this)" class="main_img" src="http://cache.zeasn.tv/acc/static/6495/thumbnails/31957_96X96.png"><img alt=" " style="z-index:11;width:55px;height:55px; position:relative; top:-72px;left:-35px;" src="http://cache.zeasn.tv/webstatic/homepage_web/images/test.png"> <div class="cover"><p class="animate">CATAL(MT5802)</p></div></div></li><li><div id="appLine3-5" class="app mouseSelected" isdel="1" _sort="60004" adddeviceinfo="0" sendgudid="0" launchtype="0" launchnewwindow="1" tabindex="1" haskey="0" _url="localfunction:gotobbc:https://www.live.bbctvapps.co.uk/tap/iplayer?config=precert" _id="60003" iconbig="undefined" title="iPlayer(MT5802)" isadult="0" enableparentapi="0"><img onerror="SomeJavaScriptCode(this)" class="main_img" src="http://cache.zeasn.tv/acc/static/6496/thumbnails/31966_96X96.png"><img alt=" " style="z-index:11;width:55px;height:55px; position:relative; top:-72px;left:-35px;" src="http://cache.zeasn.tv/webstatic/homepage_web/images/test.png"> <div class="cover"><p class="animate">iPlayer(MT5802)</p></div></div></li><li><div id="appLine3-6" class="app mouseSelected" isdel="1" _sort="60006" adddeviceinfo="0" sendgudid="0" launchtype="0" launchnewwindow="1" tabindex="1" haskey="0" _url="localfunction:gotobbc: https://www.live.bbctvapps.co.uk/tap/news?config=precert" _id="60005" iconbig="undefined" title="News(MT5802)" isadult="0" enableparentapi="0"><img onerror="SomeJavaScriptCode(this)" class="main_img" src="http://cache.zeasn.tv/acc/static/6497/thumbnails/31975_96X96.png"><img alt=" " style="z-index:11;width:55px;height:55px; position:relative; top:-72px;left:-35px;" src="http://cache.zeasn.tv/webstatic/homepage_web/images/test.png"> <div class="cover"><p class="animate">News(MT5802)</p></div></div></li><li><div id="appLine3-7" class="app mouseSelected" isdel="1" _sort="60008" adddeviceinfo="0" sendgudid="0" launchtype="0" launchnewwindow="1" tabindex="1" haskey="0" _url="localfunction:gotobbc:https://www.live.bbctvapps.co.uk/tap/sport?config=precert" _id="60007" iconbig="undefined" title="Sport(MT5802)" isadult="0" enableparentapi="0"><img onerror="SomeJavaScriptCode(this)" class="main_img" src="http://cache.zeasn.tv/acc/static/6498/thumbnails/31984_96X96.png"><img alt=" " style="z-index:11;width:55px;height:55px; position:relative; top:-72px;left:-35px;" src="http://cache.zeasn.tv/webstatic/homepage_web/images/test.png"> <div class="cover"><p class="animate">Sport(MT5802)</p></div></div></li><li><div id="appLine3-8" class="app mouseSelected" isdel="1" _sort="62612" adddeviceinfo="0" sendgudid="0" launchtype="0" launchnewwindow="1" tabindex="1" haskey="0" _url="http://nettv.foreca.com" _id="62611" iconbig="undefined" title="Foreca" isadult="0" enableparentapi="0"><img onerror="SomeJavaScriptCode(this)" class="main_img" src="http://cache.zeasn.tv/acc/static/2825/thumbnails/7791_96X96.png"><img alt=" " style="z-index:11;width:55px;height:55px; position:relative; top:-72px;left:-35px;" src="http://cache.zeasn.tv/webstatic/homepage_web/images/test.png"> <div class="cover"><p class="animate">Foreca</p></div></div></li><li><div id="appLine3-9" class="app mouseSelected" isdel="1" _sort="63424" adddeviceinfo="0" sendgudid="0" launchtype="0" launchnewwindow="1" tabindex="1" haskey="0" _url="http://tv.absoluteradio.co.uk/philips" _id="63423" iconbig="undefined" title="Absolute Radio" isadult="0" enableparentapi="0"><img onerror="SomeJavaScriptCode(this)" class="main_img" src="http://cache.zeasn.tv/acc/static/4044/thumbnails/7780_96X96.png"><img alt=" " style="z-index:11;width:55px;height:55px; position:relative; top:-72px;left:-35px;" src="http://cache.zeasn.tv/webstatic/homepage_web/images/test.png"> <div class="cover"><p class="animate">Absolute Radio</p></div></div></li></ul><ul class="line clearfix"><li><div id="appLine4-1" class="app mouseSelected" isdel="1" _sort="63589" adddeviceinfo="0" sendgudid="0" launchtype="0" launchnewwindow="1" tabindex="1" haskey="0" _url="http://connected-tv.france24.com/v2/nettv/index.phcehtml" _id="63588" iconbig="undefined" title="France24" isadult="0" enableparentapi="0"><img onerror="SomeJavaScriptCode(this)" class="main_img" src="http://cache.zeasn.tv/acc/static/4768/thumbnails/8045_96X96.png"><img alt=" " style="z-index:11;width:55px;height:55px; position:relative; top:-72px;left:-35px;" src="http://cache.zeasn.tv/webstatic/homepage_web/images/test.png"> <div class="cover"><p class="animate">France24</p></div></div></li><li><div id="appLine4-2" class="app mouseSelected" isdel="1" _sort="63590" adddeviceinfo="1" sendgudid="0" launchtype="0" launchnewwindow="1" tabindex="1" haskey="0" _url="https://miniportal.nettvservices.com/miniportal.php" _id="53782" iconbig="undefined" title="Miniportal" isadult="0" enableparentapi="0"><img onerror="SomeJavaScriptCode(this)" class="main_img" src="http://cache.zeasn.tv/acc/static/1588/thumbnails/7766_96X96.png"><img alt=" " style="z-index:11;width:55px;height:55px; position:relative; top:-72px;left:-35px;" src="http://cache.zeasn.tv/webstatic/homepage_web/images/test.png"> <div class="cover"><p class="animate">Miniportal</p></div></div></li><li><div id="appLine4-3" class="app mouseSelected" isdel="1" _sort="63591" adddeviceinfo="0" sendgudid="0" launchtype="1" launchnewwindow="1" tabindex="1" haskey="0" _url="https://2017-dot-qual-e.appspot.com/?hdr=1&amp;temp=youtube" _id="63555" iconbig="undefined" title="APP-SPOT 2k17" isadult="0" enableparentapi="0"><img onerror="SomeJavaScriptCode(this)" class="main_img" src="http://cache.zeasn.tv/acc/static/6382/thumbnails/30520_96X96.png"><img alt=" " style="z-index:11;width:55px;height:55px; position:relative; top:-72px;left:-35px;" src="http://cache.zeasn.tv/webstatic/homepage_web/images/test.png"> <div class="cover"><p class="animate">APP-SPOT 2k17</p></div></div></li></ul></div>
+</div>
+
+<!--主题tv内容-->
+<div id="tv" style="display: none"></div>
+
+<!--主题video部分-->
+<div id="video" style="display: none"></div>
+
+<!--主题youtube-->
+<div id="youtube" style="display: none"></div>
+<!--主题now_on_tv-->
+<div id="nowOnTv" style="display: none"></div>
+
+<!--提示-->
+<p class="openTips" id="openTips">No Data</p>
+<input style="display: none" id="data_cate" type="hidden" value="&quot;8b15&quot;, &quot;8b34&quot;, &quot;8ced&quot;, &quot;902f&quot;, &quot;904e&quot;, &quot;9096&quot;, &quot;9c40&quot;, &quot;9c67&quot;, &quot;a206&quot;, &quot;a232&quot;, &quot;a251&quot;, &quot;a2c6&quot;, &quot;a3ad&quot;, &quot;a3c9&quot;, &quot;a3f8&quot;, &quot;a42b&quot;, &quot;a45b&quot;, &quot;a47c&quot;, &quot;a4ee&quot;, &quot;a513&quot;, &quot;a535&quot;, &quot;a593&quot;, &quot;a5d9&quot;, &quot;a607&quot;, &quot;a644&quot;, &quot;a65e&quot;, &quot;a691&quot;, &quot;92d8&quot;, &quot;a754&quot;, &quot;a754&quot;">
+<input style="display: none" type="hidden" id="timeMonths" value="'January','February','March','April','May','June','July','August','September','October','November','December'">
+<input style="display: none" type="hidden" id="timeWeeks" value="'Monday','Tuesday','Wednesday','Thursday','Friday','Saturday','Sunday'">
+
+<!--底部部分-->
+<div class="bottom">
+    <div class="bottomLeft">
+        <div class="keysHidden" id="keysHidden" style="display: none;">
+            <div class="color-key red">
+            </div>
+            <div class="color-key green">
+            </div>
+            <div class="color-key yellow">
+            </div>
+            <div class="color-key blue">
+            </div>
+        </div>
+
+        <div class="keysShow" id="keysShow" style="display: none;">
+            <div class="color-key red">
+                <span id="_remove"></span>
+            </div>
+            <div class="color-key green">
+                <span></span>
+            </div>
+            <div class="color-key yellow">
+                <span></span>
+            </div>
+            <div class="color-key blue">
+            </div>
+        </div>
+
+        <div class="keysShow" id="detailShow" style="display: none;">
+            <div class="color-key red">
+                <span id="remove" class="remove"></span>
+            </div>
+            <div class="color-key green">
+            </div>
+            <div class="color-key yellow">
+                <span></span>
+            </div>
+            <div class="color-key blue">
+            </div>
+        </div>
+
+        <div class="keysShow" id="appGallery" style="display: block;">
+            <div class="color-key red">
+            </div>
+            <div class="color-key green">
+                <span></span>
+            </div>
+            <div class="color-key yellow">
+                <span></span>
+            </div>
+            <div class="color-key blue">
+            </div>
+        </div>
+
+        <div class="keysShow" id="move_Option" style="display: none;">
+            <div class="color-key red">
+            </div>
+            <div class="color-key green">
+                <span id="_cancel"></span>
+            </div>
+            <div class="color-key yellow">
+            </div>
+            <div class="color-key blue">
+
+            </div>
+        </div>
+
+    </div>
+    <div class="bottomMiddle clearfix">
+        <img src="http://cache.zeasn.tv/webstatic/homepage_web/images/btn_upward.png" id="down" class="clickBtn mouseSelected" tabindex="1" style="display: block;">
+        <!--<div id="downButton" class="downButton clickButtonDiv mouseSelected">-->
+            <!--<img src="http://cache.zeasn.tv/webstatic/homepage_web/images/btn_down.png" alt=""/>-->
+        <!--</div>-->
+    </div>
+    <div class="bottomRight clearfix">08:58 Wednesday,20 September</div>
+</div>
+-
+<!--页面数量-->
+<ul class="pages" id="pages"></ul>
+
+<!--提示信息-->
+<div id="dialogs">
+    <div class="overlay delete-box">
+        <!--删除-->
+        <div class="delete">
+            <h1></h1>
+
+            <p></p>
+
+            <div class="line"></div>
+            <button tabindex="1" id="delete-btn1" class="btn-left delete-btn button-text1 mouseSelected"></button>
+            <button tabindex="2" id="delete-btn2" class="btn-right delete-btn button-text2 mouseSelected"></button>
+        </div>
+    </div>
+
+    <div class="overlay invalid-box">
+        <!--失效-->
+        <div class="invalid">
+            <h1></h1>
+
+            <p></p>
+
+            <div class="line"></div>
+            <button tabindex="1" id="invalid-btn" class="btn-right invalid-btn mouseSelected"></button>
+        </div>
+    </div>
+
+    <div class="overlay personal-box">
+        <!--个性化-->
+        <div class="personal">
+            <h1></h1>
+
+            <div class="line1"></div>
+            <div class="personal-txt">Your Smart TV offers “Personalized Viewing Recommendations”. This is a service which offers personal viewing suggestions on the basis of your zap behavior. If you enable this service, your zap behavior is monitored by your Smart TV, and stored in a cookie on your Smart TV. The content of that cookie is shared regularly with our servers in order to make and provide the Personalized Recommendations. <br><br>If you press [Enable], the Personalized Recommendations service will be switched on, and you indicate to us that you agree with the use of such cookies. If you press [Disable] the Personalized Recommendations service will not be switched on, and no such cookies will be used. You can change your choice at any time in the future in the options-menu of your Smart TV. <br>Further information on the use of cookies for Personalized Recommendations can be found in the Smart TV Privacy Statement and the Smart TV Cookie Policy, which can both be found on our website.</div>
+            <div class="line"></div>
+            <button tabindex="1" id="special-btn1" class="btn-left special-btn button-text1 mouseSelected"></button>
+            <button tabindex="2" id="special-btn2" class="btn-right special-btn button-text2 mouseSelected"></button>
+        </div>
+    </div>
+
+    <div class="overlay adult-box">
+        <!--18+-->
+        <div class="adult">
+            <h1></h1>
+
+            <div class="line1"></div>
+            <p></p>
+
+            <div class="line"></div>
+            <button tabindex="1" id="adult-btn1" class="btn-left button-text1 adult-btn mouseSelected"></button>
+            <button tabindex="2" id="adult-btn2" class="btn-right button-text2 adult-btn mouseSelected"></button>
+        </div>
+    </div>
+
+    <div class="overlay code-input-box">
+        <!--18+visited-->
+        <div class="code-input">
+            <h1><span id="appTitle"></span></h1>
+
+            <div class="line"></div>
+            <p></p>
+
+            <p></p>
+            <input onkeyup="this.value=this.value.replace(/\D/g,'')" style="input-format:numeric;" readonly="readonly" type="password" maxlength="4" id="input-pincode" class="mouseSelected">
+            <img src="http://cache.zeasn.tv/webstatic/homepage_web/images/cursor-gif.gif" alt="" class="flash">
+            <span></span>
+
+            <div class="line1"></div>
+            <button tabindex="1" id="code-input-btn-left" class="btn-left mouseSelected"></button>
+            <button tabindex="2" id="code-input-btn-right" class="btn-right mouseSelected"></button>
+        </div>
+    </div>
+
+    <div class="overlay revise-pincode-box">
+        <!--revise-pincode-->
+        <div class="revise-pincode">
+            <h1></h1>
+
+            <div class="line1"></div>
+            <p></p>
+
+            <p></p>
+            <input onkeyup="this.value=this.value.replace(/\D/g,'')" style="input-format:numeric;" readonly="readonly" type="password" maxlength="4" id="revise-pincodePassword" class="mouseSelected">
+            <img src="http://cache.zeasn.tv/webstatic/homepage_web/images/cursor-gif.gif" alt="" class="flash">
+            <span></span>
+
+            <div class="line2"></div>
+            <button tabindex="1" id="revise-btn-left" class="btn-left cancel mouseSelected"></button>
+            <button tabindex="2" id="revise-btn-right" class="btn-right submit mouseSelected"></button>
+        </div>
+    </div>
+
+    <div class="overlay pincode-box">
+        <!--pincode-->
+        <div class="pincode">
+            <h1></h1>
+
+            <div class="line1"></div>
+            <p class="firstLine"></p>
+
+            <p class="tips"></p>
+
+            <p class="tips"></p>
+            <input onkeyup="this.value=this.value.replace(/\D/g,'')" style="input-format:numeric;" readonly="readonly" type="password" maxlength="4" id="pincodePassword" class="mouseSelected">
+            <img src="http://cache.zeasn.tv/webstatic/homepage_web/images/cursor-gif.gif" alt="" class="flash">
+            <span></span>
+        </div>
+    </div>
+
+    <div class="overlay repincode-box">
+        <!--Repincode-->
+        <div class="repincode">
+            <h1></h1>
+
+            <div class="line1"></div>
+            <p></p>
+
+            <p class="wrong" style="display: none"></p>
+            <input onkeyup="this.value=this.value.replace(/\D/g,'')" style="input-format:numeric;" readonly="readonly" type="password" maxlength="4" id="rePincodePassword" class="mouseSelected">
+            <img src="http://cache.zeasn.tv/webstatic/homepage_web/images/cursor-gif.gif" alt="" class="flash">
+            <span></span>
+        </div>
+    </div>
+
+    <div class="overlay feedback-box">
+        <!--feedback-->
+        <div id="feedback" class="feedback">
+            <h1><span style="font-size: 34px;line-height: 34px;" id="feedback_title"></span></h1>
+            <!--<div class="line1"></div>-->
+            <div class="app-feedback">
+                <div class="app-icon">
+                    <img src="http://cache.zeasn.tv/webstatic/homepage_web/images/feedback-icon.png">
+                </div>
+                <div class="app-content">
+                    <ul class="feedbcakSelected" id="feedbcakSelected">
+                        <li>
+                            <img tabindex="1" class="feedbacklike mouseSelected focus" id="like" src="http://cache.zeasn.tv/webstatic/homepage_web/images/type_checked.png" alt="">
+                            <span></span>
+                        </li>
+                        <li>
+                            <img tabindex="1" class="feedbacklike mouseSelected" id="dislike" src="http://cache.zeasn.tv/webstatic/homepage_web/images/type_not_checked.png" alt="">
+                            <span></span>
+                        </li>
+                        <li>
+                            <img tabindex="1" class="feedbacklike mouseSelected" id="diswork" src="http://cache.zeasn.tv/webstatic/homepage_web/images/type_not_checked.png" alt="">
+                            <span></span>
+                        </li>
+                    </ul>
+                    <textarea class="feedback-textarea mouseSelected" maxlength="500" id="feedback-textarea"></textarea>
+
+                    <p class="feedback-tips" id="feedback-tips"></p>
+                </div>
+            </div>
+            <!--<div class="line2"></div>-->
+            <div class="feedbackBtnBox">
+                <button class="btn-left feedback-btn button-text1 mouseSelected" id="feedback-btn1"></button>
+                <button class="btn-right feedback-btn button-text2 mouseSelected" id="feedback-btn2"></button>
+            </div>
+        </div>
+    </div>
+
+    <!--detail-->
+    <div class="detail">
+        <div class="detail-top">
+            <div class="checked return-apps">
+                <img src="http://cache.zeasn.tv/webstatic/homepage_web/images/selectedArrow.png">
+                <span></span>
+            </div>
+            <div class="unchecked return-apps">
+                <img src="http://cache.zeasn.tv/webstatic/homepage_web/images/unseletedArrow.png" alt="">
+                <span></span>
+            </div>
+        </div>
+        <div class="detail-bottom">
+            <div class="detail-left">
+                <img class="detail-img">
+                <button class="detail-button button-text mouseSelected" tabindex="1" id="detail-button"></button>
+                <button class="detail-cancel detail-button mouseSelected" tabindex="1" id="detail-button1" style="display: none">Cancel</button>
+            </div>
+            <div class="detail-right">
+                <span class="detail-title"></span>
+                <img src="http://cache.zeasn.tv/webstatic/homepage_web/images/tag.png" alt="">
+                <span class="tagTxt"></span>
+
+                <p class="desc"></p>
+                <img tabindex="1" class="img-big mouseSelected" id="detail-image">
+                <img tabindex="1" class="img-big mouseSelected" id="detail-image1">
+            </div>
+        </div>
+        <img tabindex="1" id="detail-big-image" style="position: fixed;top: 0;left: 0;width: 1280px;height: 720px;display: none;z-index: 999999" class="mouseSelected">
+    </div>
+
+    <!--tou-->
+    <div class="overlay term-box">
+        <div class="term">
+            <div class="term-left">
+                <span></span>
+
+                <div class="term-up term-selected mouseSelected" tabindex="1" id="term-up"></div>
+                <img class="up-key  mouseSelected" tabindex="1" src="http://cache.zeasn.tv/webstatic/homepage_web/images/term_up.png">
+
+                <div class="term-down term-selected mouseSelected" tabindex="1" id="term-down"></div>
+                <img class="down-key  mouseSelected" tabindex="1" src="http://cache.zeasn.tv/webstatic/homepage_web/images/term_down.png">
+                <button type="button" class="term-enter term-selected mouseSelected" tabindex="1" id="term-enter"></button>
+                <button type="button" class="term-cancle term-selected mouseSelected" tabindex="1" id="term-cancle"></button>
+            </div>
+            <div class="term-right">
+                <div id="termOfUse"><div style="TEXT-ALIGN: justify"><p style="TEXT-ALIGN: center;margin:0">SMART TV TERMS OF SERVICE</p><p style="TEXT-ALIGN: center;margin:0">Date: January 2014</p><br><p style="margin:0">THESE SMART TV TERMS OF SERVICE (""TERMS"") SET OUT THE TERMS PURSUANT TO WHICH TP VISION EUROPE B.V. (""WE"" or ""US"") IS WILLING TO PROVIDE YOU, OR THE LEGAL ENTITY REPRESENTED BY YOU, (""YOU"" or ""YOUR"") WITH ACCESS TO THE SMART TV PORTAL. </p><br><p style="margin:0">WE ARE TP VISION EUROPE B.V., REGISTERED AT PRINS BERNHARDPLEIN 200 (1097 JB) AMSTERDAM, THE NETHERLANDS. WE ARE A 100% SUBSIDIARY OF TP VISION HOLDING B.V.</p><br><p style="margin:0">WE ARE THE EXCLUSIVE BRAND LICENSEE OF ""PHILIPS"" FOR TVS FOR EUROPE, RUSSIA, THE MIDDLE-EAST, BRAZIL, ARGENTINA, URUGUAY, PARAGUAY AND A NUMBER OF APAC COUNTRIES (EXCLUDING CHINA AND INDIA), AND OFFER THE SMART TV SERVICES IN THAT CAPACITY. </p><br><p style="margin:0">PLEASE READ THESE TERMS CAREFULLY, INCLUDING THE INFORMATION ABOUT THE PROCESSING OF PERSONAL INFORMATION IN CLAUSE 12, BEFORE PRESSING THE ""ACCEPT"" BUTTON. PRESSING THE ""ACCEPT"" BUTTON MEANS THAT YOU ACCEPT THESE TERMS AND THAT YOU AGREE THAT THEY ARE APPLICABLE TO YOUR ACCESS TO AND USE OF THE SMART TV PORTAL. YOUR ACCEPTANCE CONSTITUTES THE EXECUTION OF A LEGALLY BINDING AGREEMENT BETWEEN YOU AND US REGARDING YOUR ACCESS TO AND USE OF THE SMART TV PORTAL (""AGREEMENT""). IF YOU DO NOT AGREE TO THESE TERMS, YOU SHOULD TERMINATE THE REGISTRATION PROCESS BY CLICKING ""CANCEL"" OR THE ""BACK"" BUTTON. IF YOU PRESS ""CANCEL"" OR THE ""BACK"" BUTTON, YOU WILL NOT BE ALLOWED TO ACCESS THE PORTAL. </p><br><p style="margin:0">WE STRONGLY SUGGEST THAT YOU DOWNLOAD OR SAVE A LOCAL COPY OF THESE TERMS FOR FUTURE REFERENCE. YOU CAN ACCESS THE TERMS VIA WWW.TPVISION.COM/LEGAL-INFORMATION.</p><br><p style="margin:0">1. Basic Terms. These Terms govern your access to, and use of, the SMART TV portal (""Portal"") on your Internet-connected product (""Device""). The Portal contains a large number of applications (""APP(s)"") offered by third parties (""Content Partner(s)""). Each APP is identified by an icon on the homepage or in the APP gallery of the Portal. If you click on the icon of an APP, you leave the Portal and are redirected to the website of the Content Partner (""Website""). On its Website, the Content Partner will provide you with an offer to access its services (""Services""). These Services may involve providing you with access to all kinds of content, information and other materials (together referred to as ""Content""). Services are offered to you by the Content Partner, and your use of Services and related Content is subject to your acceptance of the terms of service of the respective Content Partner. The manufacturer of your Device is hereinafter referred to as ""Device Manufacturer"". </p><br><p style="margin:0">All electronic television programme information and related data (""Television Programme Data"") provided to you as part of the IP-Electronic Programming Guide (""IP-EPG"") in the Portal is delivered to you by <span class="SpellE">Gracenote</span> Inc. in co-operation with <span class="SpellE">Gracenote</span> GmbH. By accepting these terms of service, you are also accepting the terms of use that <span class="SpellE">Gracenote</span> has defined for the delivery of Television Programme Data to you as included in Schedule A to these Terms. Your acceptance of the <span class="SpellE">Gracenote</span> terms of use establishes a direct agreement between you and <span class="SpellE">Gracenote</span> Inc.</p><br><p style="margin:0">You may not use the Portal if: (a) you are not of legal age to form a binding contract with us, or (b) you are a person who is barred or otherwise legally prohibited from accessing Content under the laws of the country in which you are resident. Notwithstanding the foregoing, you must be at least 14 years of age to assume the responsibilities under these Terms. If you are under 14 years of age, you may use the Portal ONLY if one of your parents or legal guardians consents. If you use the Portal, we will assume that you are 14 years of age or older or, if you are under 14 years of age, that your parent or legal guardian has consented to your use of the Portal.</p><br><p style="margin:0">These Terms supplement any terms, conditions and disclaimers that were provided with your purchase of the Device, which will not change and will remain in full force and effect.</p><br><p style="margin:0">2. Copyright, Trademarks and Other rights. All copyrights, trademarks and other rights, title and interest in and on the Portal (excluding the Services, Content and brand features of the Content Partners) are and shall remain the property of the Device Manufacturer and us. Nothing in the Terms gives you a right to use any of the trademarks, logos, domain names or other distinctive brand features of the Device Manufacturer, the Content Partners or us. Any feedback, comments or suggestions you may provide to us are provided on an entirely voluntary basis, and we shall be free to use such feedback, comments or suggestions as we see fit and without any obligation to you. You retain your rights to any content you post or display on the Portal. By submitting, posting or displaying content you grant us a worldwide, non-exclusive, royalty-free licence (with the right to sublicense) to use, copy, reproduce, process, adapt, modify, publish, transmit, display and distribute such content via any and all media or distribution methods. This licence specifically includes a right to use your content for marketing purposes related to the marketing of Devices and the Portal. </p><br><p style="margin:0">3. Usage of Portal, Term of Agreement. You agree not to exploit the Portal, Services or Content in any unauthorised way, including, but not limited to, by trespass, burdening network or server capacity or using the Portal, Services or Content for purposes other than those authorized. Copyright and other intellectual property laws protect the Portal, Services and Content, and you agree to abide by and maintain all notices, licence information and restrictions contained therein. Unless expressly permitted herein or otherwise permitted in a separate agreement with us, you may not modify, publish, network, rent, lease, loan, transmit, sell, participate in the transfer or sale of, reproduce, create derivative works based on, redistribute, perform, display or in any way exploit the Portal, Services or Content in whole or in part. You may not decompile, reverse engineer, disassemble, change, replace or attempt to root any software or security components of your Device, the Portal or the Content unless specifically permitted by applicable mandatory law. Use of the Portal, Services or Content to violate, tamper with or circumvent the security of any computer network, software, passwords, encryption codes or technological protection measures, or to otherwise engage in any kind of illegal activity, or to enable others to do so, is expressly prohibited. </p><br><p style="margin:0">The Agreement is effective for the duration of your access to and use of the Portal. You may terminate it at any time by stopping your access to and use of the Portal. We also may terminate or suspend the Agreement, at any time, without notice, and accordingly deny you access to the Portal, if in our sole discretion you fail to comply with any of these Terms, or your continued access and use is harmful to the interests of any third party or is in violation of any applicable law. </p><br><p style="margin:0">4. Disclaimer Regarding Content. Unless specifically stated otherwise by us, we are not responsible for any APP, Service or Content, or your use thereof, or for any comment or content you post on a website or the consequences thereof. It may be possible for the comments or content you <span>submit,</span> post or display on the website to be viewed by other consumers in accordance with the terms and conditions and privacy policy of the Content Partner offering the Service. Services and Content are not controlled, reviewed or programmed by TPV. Any such APPs, Services or Content are offered to you by the Content Partners without any form of control by us. When you click on an icon of an APP on the homepage or in the app gallery in the Portal, the Portal will redirect your Device to the Website of a Content Partner where you can gain access to the Services. </p><br><p style="margin:0">You understand that by using the Services, you may be exposed to Content that might be offensive, harmful, inaccurate or otherwise inappropriate, or in some cases, postings that have been mislabelled or are otherwise deceptive. We disclaim all liability for any Content, including, but not limited to, any errors or omissions in any Content, or any loss or damage of any kind incurred as a result of the use of any Content posted, emailed, transmitted or otherwise made available to you via the Portal on your Devices. </p><br><p style="margin:0">5. No Warranty. WE, AND OUR AFFILIATES, SUBSIDIARIES, OFFICERS, DIRECTORS, EMPLOYEES, AGENTS, PARTNERS AND LICENSEES (COLLECTIVELY, "TPV" FOR THE PURPOSES OF THESE SECTIONS 5 AND 6) DO NOT REPRESENT, WARRANT OR PROMISE THAT THE PORTAL, WEBSITES OR CONTENT, OR ANY OTHER INFORMATION OR MATERIALS THAT YOU RECEIVE OR ARE GIVEN ACCESS TO VIA THE PORTAL WILL BE ACCURATE, RELIABLE, TIMELY, SECURE, ERROR-FREE OR UNINTERRUPTED, OR THAT ANY DEFECTS WILL BE CORRECTED. THE PORTAL IS PROVIDED ON AN "AS-IS" AND "AS-AVAILABLE" BASIS, AND IS SUBJECT TO CHANGE WITHOUT NOTICE. TPV CANNOT ENSURE THAT ANY APP, SERVICE OR CONTENT (INCLUDING FILES, INFORMATION OR OTHER DATA) THAT YOU ACCESS OR DOWNLOAD FROM OR VIA THE PORTAL WILL BE FREE OF VIRUSES, CONTAMINATION OR DESTRUCTIVE FEATURES. TPV EXPLICITLY DISCLAIMS ALL WARRANTIES, EXPRESS OR IMPLIED, INCLUDING ANY WARRANTIES OF ACCURACY, NON-INFRINGEMENT, MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE. </p><br><p style="margin:0">6. Limitation of Liability. TPV DISCLAIMS ANY AND ALL LIABILITY FOR THE ACTS, OMISSIONS AND CONDUCT OF ANY THIRD PARTIES IN CONNECTION WITH OR RELATED TO YOUR ACCESS TO OR USE OF THE PORTAL, WEBSITES, SERVICES OR CONTENT. YOU ASSUME TOTAL RESPONSIBILITY FOR AND ALL RISKS IN RELATION TO YOUR ACCESS THERETO OR USE THEREOF, INCLUDING, BUT NOT LIMITED TO, ANY INFORMATION OBTAINED THEREON. YOUR SOLE REMEDY AGAINST TPV FOR ANY DAMAGE, COSTS OR DISSATISFACTION CAUSED BY ACCESS TO OR USE OF THE PORTAL, OR OF ANY OF THE APPS, WEBSITES OR CONTENT, IS TO STOP USING THE PORTAL OR THE RESPECTIVE APPS, WEBSITE, SERVICES OR CONTENT. </p><br><p style="margin:0">7. Indemnification. You agree to indemnify and defend us and hold us harmless against all claims, demands, causes of action, losses, expenses, damages and costs, including any reasonable legal fees, resulting or arising from or relating to your access to or use of the Portal, Websites, Services or Content, your conduct on the Portal, any activity related to your account (in the case of Single Sign-On) by you or any other person, any material that you submit to, post on or transmit through the Portal, your breach of these Terms or your infringement or violation of any rights of another party.</p><br><p style="margin:0">8. Limitation on Access and Export Control. We reserve the right (but will not have any obligation) to refuse access to APPs on the Portal. We also reserve the right to access, read, preserve and disclose any usage information as we reasonably believe is necessary to (<span class="SpellE">i</span>) comply with any applicable law, regulation, legal process or governmental request, (ii) enforce the Terms, including investigation of potential violations hereof, (iii) detect, prevent or otherwise address fraud, security or technical issues, (iv) respond to user support requests or (v) protect the rights, property or safety of us, our users and the public. We may, at our sole discretion, add or remove access to any of the APPs or websites in the Portal at any time. </p><br><p style="margin:0">Furthermore, we reserve the right, at any time and at our sole discretion, to limit the availability and accessibility of the Portal to any person, geographic area or jurisdiction we choose. The Portal is subject to the export control laws of, among others, the Netherlands and the United States, and may not be accessed by (<span class="SpellE">i</span>) a national or resident of Cuba, Libya, North Korea, Iran, Syria or any other country to which the U.S. has embargoed goods; or (ii) anyone on the U.S. Treasury Department's list of Specially Designated Nationals or the U.S. Commerce Department's Table of Deny Orders. By using the Portal, you represent and warrant that you are not located in, under the control of, or a national or resident of any such country or on any such list. Use, duplication or disclosure by the U.S. Government is subject to restrictions as set forth in these Terms and any amendments hereto, as applicable.</p><br><p style="margin:0">9. Changes to Device, Portal and/or Terms. We may, at our discretion, change, <span>update</span> or upgrade features or the software of the Device or the Portal, for example by adding or removing APPs or features or by providing you with an update to the software. If such changes have an impact on these Terms, you will receive a notice about the updating of these Terms. You understand and agree that if you use the Portal after the date on which the Terms change, we will treat your use as acceptance of the updated Terms. </p><br><p style="margin:0">10. Single Sign-On. We may choose to provide you with a single sign-on option in the Portal. This option will offer you the possibility of linking your access to and use of multiple features of the Portal to a single user account. You are responsible for safeguarding the username and password that you have selected for this account. We encourage you to use "strong" passwords (passwords that use a combination of upper and lower case letters, numbers and symbols) with your account. We cannot and will not be liable for any loss or damage arising from your failure to comply with the above requirements.</p><br><p style="margin:0">11. Payment Services. Our Content Partners may offer you paid Content. If you wish to purchase paid Content from a Content Partner, you will need to enter into a separate agreement with such Content Partner. We are not part of that agreement, and we do not bear any liability for such an agreement. You can make a payment using either the Smart TV Payment Service or, if the Content Partner uses a third-party payment service provider, the payment service offered by the Content Partner. You shall be responsible for all charges incurred through your payment account, as well as for paying any applicable taxes. We provide the Smart TV Payment Service to you subject to your acceptance of the current Smart TV Payment Terms of Use. If you wish to use the payment service offered by the Content Partner, you may need to open an account with a third-party payment service provider. When you open this account, this payment service provider will require that you accept separate terms and conditions that are applicable to its payment service. </p><br><p style="margin:0">12. Privacy and cookies. We strongly believe in protecting your privacy and informing you about the way we collect, use and store your personal data. Any personal data that you provide to us, or that is collected by us, is subject to our Privacy Policy. Our Privacy Policy is accessible at www.tpvision.com/legal-information. </p><br><p style="margin:0">The Portal makes use of ""cookies"" to collect and store some of your personal data. A ""cookie"" is a small text file sent to your Device, which allows us to recognise your Device the next time you visit. Our cookie use is described in our Cookie Policy, which can be accessed at www.tpvision.com/legal-information. </p><br><p style="margin:0">13. Removals Policy. We reserve the right to remove comments and content that you have posted or displayed on the Portal that allegedly infringe the rights of third parties, without prior notice and at our sole discretion. Conversely, should you find that someone else has posted, submitted or uploaded content, or is using content, that infringes your intellectual property rights, you can let us know via the feedback function using the blue button on your remote control unit.</p><br><p style="margin:0">14. Governing Law. Your agreement with us shall be governed by and is construed under and in accordance with the laws of The Netherlands, excluding its conflict of law provisions. The court of Amsterdam, The Netherlands, shall be the only competent court to settle any disputes between you and us arising out of or relating to the Agreement, unless applicable mandatory consumer law requires otherwise.</p><br><p style="margin:0">15. Miscellaneous. Our failure to enforce any right or provision of these Terms will not be deemed a waiver of such right or provision. In the event that any provision of these Terms is held to be invalid or unenforceable, the remaining provisions of these Terms will remain in full force and effect. No addition to or removal or modification of any of the provisions of these Terms will be binding upon us, unless made in writing and signed by our authorised representative. These Terms and our Privacy Policy are the entire agreement between you and us regarding your use of the Portal. </p><br><p style="margin:0">You agree that, regardless of any statute or law to the contrary, any claim or cause of action arising from or relating to use of the Portal, or this Agreement, must be filed within 13 (thirteen) calendar months after such claim or cause of action arose, or will be considered expired. The ""No Warranty"" and ""Limitation of Liability"" provisions of this Agreement are for the benefit of us as defined therein, and each of these individuals or entities shall have the right to assert and enforce these provisions directly against you on its own behalf.</p><br><p style="margin:0">16. <span>About</span> Us. The Portal is provided to you by:</p><br><p style="margin:0"><span>TP Vision Europe B.V.</span></p><p style="margin:0"><span class="SpellE">Prins</span> <span class="SpellE">Bernhardplein</span> 200</p><p style="margin:0">1097 JB Amsterdam</p><p style="margin:0">The Netherlands</p><p style="margin:0">Trade Register Number 53045394</p><p style="margin:0">VAT Number NL850721854B01 </p><br><p style="margin:0">If you have any comments or questions regarding the Portal or this Agreement, or wish to report any violation of these Terms, please contact us at smarttv@tpvision.com. </p><br><p style="TEXT-ALIGN: center;margin:0"><u>SCHEDULE A: GRACENOTE TERMS OF SERVICE</u></p><br><p style="margin:0">The use of Television Programme Information that is made available as part of the Service (""Service"") provided by <span class="SpellE">Gracenote</span>, Inc. of Emeryville, California, and <span class="SpellE">Gracenote</span> GmbH of Berlin, Germany, (jointly ""<span class="SpellE">Gracenote</span>"") is provided solely in accordance with these Terms of Use. <span class="SpellE">Gracenote</span> reserves the right to block or suspend access to the Service or to the Data if you are in breach of these Terms of Use.</p><br><p style="margin:0">1. Description of the Service </p><br><p style="margin:0">a. <span class="SpellE">Gracenote</span> makes the Service available to you on Devices. </p><br><p style="margin:0">b. The Service consists of the aggregation, arrangement and delivery of the Data, in particular in the form of texts and images. The receipt and display of the Television Programme Information on the Device is not a part of the Service and falls solely within scope of the responsibility and liability of the manufacturer of the Device.</p><br><p style="margin:0">2. Operation of the Service </p><br><p style="margin:0">a. <span class="SpellE">Gracenote</span> endeavours to enable you to use the Television Programme Information. <span class="SpellE">Gracenote</span> further endeavours to take care that the content of the Television Programme Information made available to you is up to date, complete and accurate. However, <span class="SpellE">Gracenote</span> cannot give any warranty and you do not have any claim against <span class="SpellE">Gracenote</span> in this respect. If the Television Programme Information cannot be used or is not up to date, complete and/or accurate, this does not constitute a defect of the Service and therefore does not entitle you to assert any claim against <span class="SpellE">Gracenote</span>. GRACENOTE DISCLAIMS ALL WARRANTIES, EXPRESS OR IMPLIED, INCLUDING, BUT NOT LIMITED TO, IMPLIED WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE, TITLE AND NON-INFRINGEMENT. GRACENOTE DOES NOT WARRANT THE RESULTS THAT WILL BE OBTAINED BY YOUR USE OF THE GRACENOTE <span class="SpellE">eyeQ</span> SERVICE.</p><br><p style="margin:0">b. <span class="SpellE">Gracenote</span> is not responsible for the proper setup, connection or (if applicable) equipment of a Device so that the Service can be received. This is solely your responsibility. </p><br><p style="margin:0">c. <span class="SpellE">Gracenote</span> may amend or remove Television Programme Information with or without advance notice and may block or modify access to Television Programme Information or the Service. You do not have any claim against <span class="SpellE">Gracenote</span> arising out of such change, removal, blocking or modification.</p><br><p style="margin:0">d. PLEASE NOTE that in order to use the Television Programme Information, specific technical prerequisites, such as a Device, software programs, methods of transfer, telecommunication services and other third-party services, usually need to be met, for which additional costs, in particular connection charges, can be incurred. You will have to pay for these separately. <span class="SpellE">Gracenote</span> does not provide such end-user devices, software programs, methods of transfer, telecommunication services or other services and does not accept any liability for services of third parties.</p><br><p style="margin:0">3. Restriction of use of Data</p><br><p style="margin:0">a. The Television Programme Data made available within the scope of the Service may be protected by copyright or other statutory provisions. </p><br><p style="margin:0">b. You may use the Television Programme Data made available to you for private and non-commercial purposes only, to the extent that this is necessary and permitted by the End-User Device's intended use. </p><br><p style="margin:0"><span>c</span>. PLEASE NOTE that, in particular, you are not entitled to:</p><br><p style="margin:0"><span class="SpellE">i</span>. forward the Television Programme Data or any part of it to third parties or enable third parties to have access to it, with the exception of members of your household; </p><br><p style="margin:0">ii. <span>amend</span>, edit or modify the Television Programme Data in any way; and/or</p><br><p style="margin:0">iii. <span>use</span> the Television Programme Data for the creation of a database and/or an information service;</p><br><p style="margin:0">iv. <span>and</span> you undertake to refrain from these acts.</p><br><p style="margin:0">4. Restriction of Liability </p><br><p style="margin:0"><span>a</span>. PLEASE NOTE that you are using the Service at your own risk. The downloading or any other receipt of content, in particular the downloading of data in connection with the Service, is also at your own risk and you are solely responsible for any damage to a Device or for any other damage, including loss of data, arising out of such actions. </p><br><p style="margin:0">b. <span class="SpellE">Gracenote</span> shall not be liable for the functioning of the Service or any part of it without interruptions or defects, for Television Programme Data being available at all times or for the Service being fit for a specific purpose. <span class="SpellE">Gracenote</span> shall not be liable for the accuracy, completeness and/or correctness of the Television Programme Data made available by <span class="SpellE">Gracenote</span>. In particular, spelling mistakes and software errors can occur. </p><br><p style="margin:0">c. <span class="SpellE">Gracenote</span> shall not be liable for disturbances that prevent access to the Service, in particular any disruptions and/or limitations of access to the Service or the Television Programme Data that are due to a force majeure event or circumstances outside of <span class="SpellE">Gracenote's</span> responsibility, such as a breakdown or disturbance of the Internet or telecommunications networks other than <span class="SpellE">Gracenote's</span> own systems.</p><br><p style="margin:0">d. GRACENOTE SHALL NOT BE LIABLE FOR ANY CONSEQUENTIAL OR INCIDENTAL DAMAGES OR FOR ANY LOST PROFITS OR LOST REVENUES. <span class="SpellE">Gracenote</span> shall only be liable for wilful misconduct or gross negligence (the limitation of liability set out above does not apply to death or personal injury or any other liability that cannot be excluded by law). </p><br></div></div>
+                <div id="cookie" style="display: none;"><div style="line-height: normal; margin-bottom: 0pt;"><span style="font-family: Arial, sans-serif; font-size: 14pt;">Smart TV Privacy Statement and Smart TV Cookie Policy <br> <br>This document consists of three parts:  <br> <br>Part 1: Summary of the Smart TV Privacy Statement and Cookie Policy <br>Part 2: Smart TV Privacy Statement  <br>Part 3: Smart TV Cookie Policy  <br></span><p><br></p><p style="line-height: normal; margin-bottom: 0pt;"><span style="font-family: Arial, sans-serif; font-size: 14pt;">PART 1<br>SUMMARY OF THE SMART TV PRIVACY STATEMENT AND COOKIE POLICY<br><br>In this document, we, TP Vision Europe B.V., describe how we collect and use personal data when making the Smart TV services available. <br><br>Because the full privacy statement can be complex at times, we have summarised the main points in this summary. For full details on how we collect and use personal data, please refer to the full text of the privacy statement and the cookie policy below. <br><br>Smart TV is offered to you by TP Vision Europe B.V. We are the exclusive brand licensee of "Philips" for televisions in Europe (and elsewhere). When offering the Smart TV services, we collect and process certain personal data, and place and read cookies on the TV. Because we use such data and cookies to offer you the Smart TV services and improve the Smart TV services, we are considered the controller of such data with regard to the Smart TV services. For some of the services, we use third parties from within and outside the EU, which process the data for us in order for us to provide the Smart TV services. We have signed mandatory data processor agreements with such parties in order to protect the data and limit the use thereof. <br><br>§ About the Privacy Statement<br>When Smart TV is started for the first time, the TV will connect to our servers to register. During this registration process, our servers will allocate several unique numbers to the TV so that it can be recognised when it connects to the servers again. That way, you do not have to go through the registration process each time Smart TV is started subsequently. <br><br>These numbers are used by the servers to recognise the TV so the servers know what APPs have been installed, where they are located on the Smart TV Portal, whether you have registered for Smart TV payment and which websites have been saved in the browser. If you register a tablet or smartphone with the TV, for example in order to use the "MyRemote APP", a unique number is allocated to the mobile device as well so it can be recognised when it is used again. <br><br>If you enable "Personal Recommendations" during the Smart TV registration process, the TV will monitor a number of elements of the user's viewing behaviour. These elements are: the moment the TV is switched on and off, the TV programmes that are watched regularly when selected via the electronic programming guide, online programmes watched via the Smart TV Portal (for example catch-up TV) and any films ordered via the Smart TV Portal. Our servers then use this information to make recommendations and send them back to the TV. <br><br>Furthermore, aggregated statistics are gathered about overall use of the Smart TV Portal. We use such statistics to maintain the Smart TV Portal, find and correct errors and generally improve the Smart TV Portal offering and experience. <br><br>We generally do not keep personal data for more than three months, after which this data is either destroyed or made anonymous. This may not be the case in certain limited instances, for example if the deletion would have a negative impact on the user experience (e.g. remembering which APPs have been installed), or in the case of details on financial transactions, which must be kept on file for legal reasons. We have also formalised these arrangements with the third-party suppliers. <br><br>Personal data can also be deleted by the user by selecting the option "Delete Internet history" or "Reinstall device" from the configuration menu on the TV. We strongly suggest that users use this option when selling or giving away the TV. <br><br>§ About the Cookie Policy<br>In order to provide the Smart TV services, we use a number of cookies. Cookies are small text files that are placed on your TV by our servers. When you use Smart TV, the following cookies may be placed on your Device: <br>- Cookies used for the proper functioning of the Smart TV Portal;<br>- Cookies used to enhance the Smart TV experience. These are cookies that keep track of which apps you have installed and where you have placed these apps on the Portal, cookies that allow for a localised weather forecast to be shown on the Portal and cookies that are used to enable a link to be established with one or more of your social media apps;<br>- First- and Third-Party cookies to offer you (personalised) advertisements, keep track of which advertisements have been shown on your screen and make sure that advertisements are not repeated unnecessarily;<br>- Cookies that record your interactions (including viewing behaviour) in order to provide personal recommendations (if service is activated).<br><br>Non-functional cookies shall only be used after, and in line with, your consent to use such cookies during your initial registration for use on the Smart TV portal. <br><br>Cookies can be deleted using the "Delete Internet History" or "Reinstall Device" option in the configurations menu of the TV. We strongly recommend using the "Reinstall Device" option before you sell or give away your TV.  <br><br></span></p> <p style="line-height: normal; margin-bottom: 0pt;"><span style="font-family: Arial, sans-serif; font-size: 14pt;">PART 2<br>FULL-TEXT PRIVACY STATEMENT<br><br>IN THIS PRIVACY STATEMENT WE DESCRIBE HOW WE COLLECT, STORE OR OTHERWISE PROCESS PERSONAL DATA IN RELATION TO YOUR USE OF THE SMART TV PORTAL AND FOR WHICH SPECIFIC AND LEGITIMATE PURPOSES SUCH PROCESSING TAKES PLACE. IN ADDITION TO THIS PRIVACY STATEMENT WE ALSO HAVE A COOKIE POLICY, WHICH IS ACCESSIBLE AT HTTP://WWW.TPVISION.COM/LEGAL-INFORMATION/. <br><br>WE ARE TP VISION EUROPE B.V. WITH OFFICES AT PRINS BERNHARDPLEIN 200 (1097 JB) AMSTERDAM, THE NETHERLANDS. PLEASE REGARD US AS THE DATA CONTROLLER FOR YOUR PERSONAL DATA. WE USE VARIOUS OUTSOURCING PARTNERS TO PROCESS PERSONAL DATA ON OUR BEHALF, AND SOME OF THESE PARTNERS PROCESS YOUR PERSONAL DATA.</span> <br><span style="font-family: Calibri, sans-serif; font-size: 11pt;"> <br>"APP" means an application that is displayed in the Portal by means of a branded Icon, which provides access to a Content Partner website.<br>"Content Partner Website" means a website offered by a third party that is accessible via a hyperlink on the Portal through which you can obtain access to its content.<br>"Consumer ID" means a unique number to identify a consumer on the Platform.<br>"My Philips" means a customer loyalty programme operated by Philips.<br>"Device" means any product connected to the Internet that is capable of accessing the Portal and has been certified by us.<br>"Device Manufacturer" means the third party that manufactured a Device.<br>"Device Portal" means a Device authentication server, used to authenticate and identify Devices.<br>"IP-EPG" means the Electronic Programme Guide provided by us, which can be accessed by pushing the "Guide" button on the remote control of the Device, or by using the menu on the Device.<br> The IP-EPG is available on selected Devices for selected countries and TV networks.<br>"Mobile Device" means a smartphone, tablet computer or other mobile product connected to the Internet.<br>"Personal Data" means any information relating to an identified or identifiable natural person, like a name, email address or IP number.<br>"Philips" means Koninklijke Philips N.V. and/or its subsidiaries.<br>"Platform" means the technical IT infrastructure that is used by us to manage and operate the Portal and the services we provide via the Portal, which includes (web) servers, databases and related network infrastructure.<br>"Portal" means our Smart TV Portal.<br>"Processing of personal data" means any operation or set of operations performed by us or on our behalf on personal data, whether or not by automatic means, including, but not limited to, collection, storage, transmission and adaptation.<br>"URL" means uniform resource locator. This is the web address of a site, which is entered in the navigation bar of the browser of your Device.<br>"You" means the natural person whose personal data is collected and processed by us.<br><br>Below we will first describe what data is collected in relation to your Device. We will then tell you how we process this data and for what purposes. At the end of this privacy statement we will describe how we keep your data secure, whether data is transmitted outside of the European Union and how you can use your statutory rights to ask us to change or delete personal data. Please note that we are not responsible for all of the data processing described below. However, because this processing is related to your use of a Device, we have included a description of it in our privacy statement.<br><br>TP Vision may use third parties when providing you with the Smart TV Portal and services. These third parties may process your personal information for TP Vision if so instructed by TP Vision, but are not authorised to use such personal information for their own purposes. TP Vision remains responsible for ensuring that such information is handled in accordance with all applicable laws, and has signed dedicated processor agreements based on the EU Model Contracts for such agreements with such third parties for such purposes. <br><br>What types of data are collected?<br>Identification numbers<br>Consumer-ID: For each Device that is authenticated on a Device Portal, that Device Portal will generate and store a unique number to enable it to distinguish between different Device owners. This is the Consumer-ID. As explained below, the Consumer-ID may be linked to personal data provided by you during registration with My Philips or a customer loyalty programme or warranty registration from a Device Manufacturer. If you do not register for such a programme or for warranty purposes, the Consumer-ID is anonymous. Depending on your Device, Philips or the Device Manufacturer that manufactured your Device is the data controller for the Consumer-ID. We receive the Consumer-ID without the corresponding registration data. <br><br>Device-ID: For each Device that is authenticated on a Device Portal, that Device Portal will generate and store a fixed unique number to enable us to authenticate and identify the Device on the Platform. This number is called the Device-ID. We provide the Device-ID to selected content partners for authentication purposes. These content partners use the Device-ID to authenticate your Device for access to a Content Partner Website, provide us with viewing data for Video on Demand Titles and offer promotions and discounts. If you use a Mobile Device to use some Portal features, for example by using our "MyRemote APP", we will assign such use to the Device-ID of the Device in order to allow the Mobile Device to be identified by, and communicate with, the Device.<br><br>Mobile Device-ID: If you use a Mobile Device to use some Portal features, we will store a unique identifier for that Mobile Device in order to allow the Device to recognise and identify the Mobile Device.<br><br> Data collected during initialisation<br>Registration: When you initialise your Device you may be given the option to register your Philips Device with My Philips. For other Devices you may be given the option to register your Device with a customer loyalty programme from the Device Manufacturer or register your Device for warranty purposes with the Device Manufacturer. As part of this registration you will need to provide personal data, such as your name, email address and country of residence, and specific details about your Device such as type and serial number. Registration is not obligatory, and if you do not want to register, you can skip this registration.  This will not affect your use or your statutory warranty on the Device. As the personal data is sent directly to the Device Manufacturer, we do not receive or process any of the data relating to your registration. The Device Portal only transmits information to us regarding whether you have registered or not, and whether you have accepted the Portal terms and conditions. This information is linked to the Consumer-ID.<br><br>Portal sign-on data: Whenever you connect your Device to the Internet, it will automatically connect to its Device Portal. The Device Portal will authenticate your Device as being certified for access to the Portal. For authentication purposes, the Device Portal contains one or more unique numeric identifiers linked to your Device. Upon authentication your Device receives a Device-ID and will be redirected to the Portal. The Device Portal is managed by one of our outsourcing partners. If you do not have a Philips Device, the Device Portal can also be managed by the Device Manufacturer or by an outsourcing partner of the Device Manufacturer.<br><br>APP placement: As part of the standard functionality of the Portal you can manually arrange the order in which APPs are displayed on your home screen in the Portal. We will store your initial arrangement and any changes you make afterwards and link them to the Consumer-ID and the Device-ID.<br><br>Device-specific information: When you first log on to the Portal, the Device-ID is linked to a record of specific Device-related information. This information includes the Device type, and the language and country that have been configured on the Device.<br><br>Data collected during use<br>Advertising: In-video and display advertisements (banners) are supplied within the Portal, the IP-EPG and content that is accessible by means of Content Partner Websites. These advertisements are supplied by us, or by third parties using an advertising inventory assigned by us. All advertisements are supplied by means of, or via, our advertising server, which fulfils a co-ordinating role for the supply of advertisements. Our advertising server or the third-party advertising server will set a cookie on the Portal, the IP-EPG or a Content Partner Website. Please refer to our Cookie Policy for more information about these cookies.<br><br>Portal and Content Partner Website traffic, browser history and APP click behaviour: When you use the Portal you will generate direct Internet traffic between your Device and the Portal and Content Partner Websites that are accessible through the Portal. As part of this traffic we receive the IP address of your Internet connection and the language and country that have been configured on your Device. This information is stored in a database on the Platform. We also store IP addresses within the database of the IP-EPG server log. This information is stored for a period of time not exceeding three (3) months, after which the data is either deleted or anonymised. <br><br>Each URL that is entered by you in the navigation bar of the browser of your Device is stored on the Platform and linked to the Consumer-ID and the Device-ID. When you click on an APP we will only store this click and the date and time when you clicked. Your APP clicks are stored in a database record linked to the Consumer-ID and the Device-ID. This information is stored until you remove the bookmarked pages from the overview using the options menu that can be accessed using your remote control.<br><br> For data that is linked to the Consumer-ID and the Device-ID, you have the option to unlink it from those identifiers by means of the "Clear Net TV Memory" or "Reinstall Device" option in the menu on your Device. After unlinking, this data will no longer be linked to the Consumer-ID or the Device-ID, but may remain stored anonymously for aggregate statistics. Using the option to unlink the data not only deletes all cookies and local browser storage, but also unregisters your Device from any registrations. On newer Devices, this option is called "Reinstall Device". These newer Devices also have a "Clear App Memory" option, which deletes all cookies and local browser storage, but does not unregister your Device. It is highly advisable always to use "Clear Net TV Memory" or "Reinstall Device" prior to selling your Device or giving it away.<br>The Portal is managed by one of our outsourcing partners.<br>When you visit a Content Partner Website, the content partner in question will receive the IP address of your Internet connection and the language and country configured on your Device. We do not store or otherwise process actual Internet traffic between your Device and a Content Partner Website, nor can we view this traffic. The content partner is the data controller for any personal data it receives by means of a Content Partner Website.<br><br>Viewing behaviour: If you have activated personalised recommendations, we will periodically store viewing behaviour. By viewing behaviour we mean which television programmes were watched on or via your Device and how users of your Device change between television channels. In general, we periodically store the currently watched channel in a cookie on your Device. When this cookie is refreshed we receive a copy of the data stored in the cookie. This data is then stored within the recommendation engine of the Portal. The recommendation engine is part of the Platform and is responsible for providing Device-specific viewing recommendations in the Portal and in the electronic programming guide by translating the data into recommendations. The information about viewing behaviour is stored for a period of time not exceeding three (3) months, after which the data is either deleted or anonymised. If you use a Mobile Device to access the electronic programming guide feature, we will also store the system name of the Mobile Device. The recommendation engine is managed by one of our outsourcing partners.<br><br>Rented Video on Demand titles: Some content partners provide us with an overview of the rented Video on Demand titles for each Device-ID if such titles are ordered using Smart TV payment. This overview is subsequently stored within the recommendation engine for the purpose of making recommendations, and stored for a period of time not exceeding three (3) months, after which the data is either deleted or anonymised.<br><br>Catch-Up TV APP viewing data: Our Catch-Up TV APP, available in selected countries, enables you to obtain an overview of the most-viewed television programmes that have already been broadcast in your country. When this APP is used, we will store the television programmes that have been watched. This information is linked to the Device-ID and is subsequently stored within the recommendation engine for the purpose of making recommendations. The information is stored for a period of time not exceeding three (3) months, after which the data is either deleted or anonymised.<br><br>Data collected as part of Smart TV payment transactions: In the Portal we provide the possibility of opening a Smart TV payment account. When you open an account you will be asked to provide your name, country of residence and email address and information related to the payment method you wish to use (credit card, bank debit etc.). For security purposes we will link your payment account to the Device-ID of your Device. Any data that we store in relation to a Smart TV payment account is processed by our payment service provider in accordance with all applicable security standards, as we will explain further below, and stored in accordance with the retention requirements dictated by law for financial transactions. <br><br>Smart TV ID for establishing a link with social media applications: Specifically for the social TV applications provided by us, such as 'Social TV Share' (links with Facebook and Twitter), 'Social TV' (links with Facebook and Twitter) and 'Cloud Explorer' (links with Dropbox). The first time you launch one of these applications, you will be prompted to create a Smart TV ID. The Smart TV ID is a combination of a unique identifier, a chosen username, a chosen PIN, a photo source and authentication codes for Facebook, Twitter and/or Dropbox. This information is stored in a cookie on your Device (the 'socialtv cookie'). This Smart TV ID is then used to establish a link between one or more of our social TV applications and your account with Facebook, Twitter and/or Dropbox. It is possible to create multiple Smart TV IDs per Device for different users. If you choose not to create a Smart TV ID, no automatic link will be established with your Facebook, Twitter and/or Dropbox account. Please refer to our Cookie Policy for more information about the socialtv cookie and the use thereof.<br><br>What do we do with the data we collect?<br>We process collected data for the following purposes:<br>§ Maintaining and operating the Portal: We use the IP address, Consumer-ID, Device-ID and country and language configured on your Device to provide your Device with access to the Portal and Content Partner Websites, and provide it with the correct APP view. This includes but is not limited to use for the purposes of authentication, abuse handling, management of security incidents, monitoring of availability of the Portal and Content Partner Websites and providing backup services for user preferences.<br>§ Optimising the Portal user experience: We use aggregate and anonymised usage data like APP click behaviour, APP preferences, browser history and your interaction with the Portal to improve and further develop the Portal user experience.<br>§ Payment Transactions: We use the information in your Smart TV payment account to process and authorise your payment transactions.<br>§ Improving open Internet browsing: We use your browser history to enable us to generate thumbnails for URLs that have been entered in the navigation window of the browser of the Device and to enable an autocomplete function for these URLs.<br>§ Optimising advertisement experience: We use data related to advertising views and clicks on advertisements to optimise consumers' advertising experience in the Portal.<br>§ Device-specific viewing recommendations: Provided you have activated personalised viewing recommendations in the Portal, we use the viewing behaviour, rented Video on Demand titles, Catch-Up TV and APP viewing data related to your Device-ID to generate Device-specific recommendations for viewing television programmes and Video on Demand in the recommendations section of the Portal and the IP-EPG.<br>§ Discounts: We provide the Device-ID to selected content partners to enable these partners to identify to what extent they can provide you with free access to Video on Demand titles in their collections.<br>§ Supply of Advertisements: We use the information in the aforementioned advertising cookies to allow the system to log which advertisements have been shown on your Device in order to make sure that you do not receive too many similar advertisements, and to allow us to comply with our commercial arrangements with our advertising partners. External advertisers that supply advertisements on the Portal, the IP-EPG or Content Partner Websites after co-ordination by our advertising server may also use cookies to track you over multiple websites, and to supply advertisements that reflect your personal preferences. <br>§ Authentication: We provide the Device-ID to selected Content Partners for authentication purposes.<br>§ Linking to Social Media Apps: If you have created one or more Smart TV IDs, the current Smart TV ID is used (after the PIN has been entered) when the 'Social TV Share', 'Social TV' and/or ‘Cloud Explorer’ application is started in order to establish an automatic link with the Facebook, Twitter and/or Dropbox account linked to that Smart TV ID. This means that you do not need to establish this link yourself every time you use these Social TV Applications.  <br>§ Law enforcement: We may be required to provide data to competent law enforcement officials or judicial authorities. If we do so it will always be subject to a binding legal instrument, such as a warrant or a judicial order, or other rule of applicable statutory law that would require us to co-operate with law enforcement or judicial authorities.<br><br> Is data transmitted outside of the European Union?<br>All personal data that is processed by us and by our outsourcing partners is stored and processed on servers that are based in the European Union or the United States of America. Where such personal data is transmitted to the United States of America, we shall ensure that the applicable outsourcing party either operates within the Safe Harbour Rules or is bound by adequate contractual documentation in line with mandatory EU model agreements. Furthermore, we use the AKAMAI content distribution system to ensure that content relating to the Portal is cached near the geographic location of your Device to improve speed and user experience. There are also AKAMAI servers outside of the European Union. Content distribution and dissemination via AKAMAI is initiated on the basis of your use of content that is accessible by means of the Portal. If a number of Devices request the same content, the AKAMAI system will automatically cache such content on a node that is geographically near to these Devices, e.g. if multiple TVs in Russia request content, content may be cached on an AKAMAI node that is located in Russia. For more information on AKAMAI, please visit http://www.akamai.com.<br><br> How secure is your personal data?<br>The connection between your Device and the Device Portal is encrypted. The state of this encryption has been audited by a reputable firm of auditors and has been confirmed to be suitably secure.<br>All Internet traffic between your Device, the Portal and the IP-EPG is secured by SSL (secure sockets layer) or an equivalent encryption technology. Whether or not a connection between your Device and a Content Partner Website is encrypted depends on the settings on the Content Partner Website. When your Device is connected to a Content Partner Website, you can check the encryption status of the connection in the Portal. Please check the manual of your Device.<br>Your stored personal data is maintained in a secure environment, which is regularly audited in accordance with accredited audit standards. Access to this data is password-protected and role-based, i.e. limited to our employees and those of our outsourcing partners who need to access it as part of their job description.<br>The credit card information you provide to us is stored in accordance with the most recent version of the Payment Card Industry Data Security Standard (PCI-DSS Tier 1). If you would like to know more about PCI-DSS, please visit https://www.pcisecuritystandards.org/.<br><br>Contacting us<br>You can send us an email via privacy@tpvision.com in your own language. You can use this email address if you have any questions regarding our privacy policy, if you would like to request a copy of your personal data or if you want us to change or delete your personal data.<br><br></span></p><p style="line-height: normal; margin-bottom: 0pt;"><span style="font-family: Arial, sans-serif; font-size: 14pt;">PART 3<br>SMART TV COOKIE POLICY<br><br>IN THIS COOKIE POLICY WE DESCRIBE WHICH COOKIES WE SET ON YOUR DEVICE AND YOUR MOBILE DEVICE IN THE CONTEXT OF YOUR USE OF THE SMART TV PORTAL. <br><br>WE ARE TP VISION EUROPE B.V. WITH OFFICES AT PRINS BERNHARDPLEIN 200 (1097 JB), THE NETHERLANDS. ALL PERSONAL DATA THAT IS GENERATED IN RELATION TO ANY COOKIES THAT HAVE BEEN SET BY US IS PROCESSED IN ACCORDANCE WITH OUR CURRENT PRIVACY STATEMENT.<br><br></span><span style="font-family: Calibri, sans-serif; font-size: 11pt;"> <br>"My Philips" means a consumer loyalty programme exclusively operated and maintained by Philips.<br>"Device" means any product connected to the Internet that is capable of accessing the Portal and has been certified by us.<br>"IP-EPG" means the Electronic Programme Guide provided by us, which can be accessed by pushing the "Guide" button on the remote control of the Device, or by using the menu on the Device.<br>"Mobile Device" means a smartphone, tablet computer or other mobile product connected to the Internet.<br>"Personal Data" means any information relating to an identified or identifiable natural person, such as a name, email address or IP number.<br>"Platform" means the technical IT infrastructure that is used by us to manage and operate the Portal and the services we provide via the Portal, which includes (web) servers, databases and related network infrastructure.<br>"Portal" means our Smart TV Portal.<br>"Processing of personal data" means any operation or set of operations performed by us or on our behalf on personal data, whether or not by automatic means, including, but not limited to, collection, storage, transmission and adaptation.<br>"You" means the natural person whose personal data is collected and processed by us.<br><br> What is a cookie?<br>A cookie is a small piece of text that is sent by a web server to a visiting browser. The purpose of sending a cookie is to have the visiting browser return the text during any subsequent visits to that same web server. If the browser does so, it will enable the web server to recognise the browser and attach a set of actions and/or settings to its visit. The web browser stores the cookie.<br><br> We make a distinction between functional cookies and non-functional cookies. Functional cookies are cookies that are needed specifically for the purpose of enabling a Device to access and make use of the Portal and Content Partner Websites and for web servers to provide the right content to a Device. Non-functional cookies are all other cookies.<br><br>This Cookie Policy relates to cookies that are placed by us, as well as advertising cookies that may be placed by third parties on your Device. This Cookie Policy does not relate to cookies that may be placed when you use the Portal to access third-party websites or applications. For these cookies, we refer you to the respective cookie policies of such third parties.<br><br> If and to the extent that we process any personal data in relation to a cookie, our processing of such personal data is governed by our Privacy Statement. You can access our Privacy Statement at http://www.tpvision.com/legal-information/.<br><br> Which non-functional cookies do we use?<br>Viewing behaviour: If you have activated personalised recommendations, we will periodically store viewing behaviour. By viewing behaviour we mean which television programmes were watched on or via your Device and how users of your Device change between television channels. In general, we periodically store the currently watched channel in a cookie on your Device. When this cookie is refreshed we receive a copy of the data stored in the cookie. This data is then stored within the recommendation engine of the Portal for a period not exceeding three (3) months for the purpose of making personalised recommendations, after which the data is either deleted or anonymised. The recommendation engine is managed by one of our outsourcing partners. By opting in for personalised recommendations, you give us permission to set the cookie. We use the data that is included in the cookie to provide you with personalised viewing recommendations in the IP-EPG and in the Portal. You can manually deactivate the recommendations functionality at any time using the Options menu after placing the focus on the recommendations section on the Portal home screen.<br><br>Weather Forecast: In the top-right corner of the Portal a weather forecast is shown. To allow this weather forecast to be tailored to the generic location where the Device is being used (i.e. county or city), your Device will send a request for the weather forecast that includes your IP address. This IP address is used to determine your generic location, which then allows the server to send a location-specific weather forecast to your product. These details, as well as any other locations you may want to save, are then stored in a cookie on your Device and used to determine your generic location. <br><br>Advertising: In-video and display advertisements (banners) are supplied within the Portal, the IP-EPG and Content Partner Websites. These advertisements can be supplied by us or by third parties via, or as co-ordinated by, our advertising server, which performs a central co-ordinating role in relation to the supply of such advertisements. All advertisements will be supplied by means of our advertising server. <br><br>Our advertising server or a third-party advertising server will set a cookie on your Device. By means of this cookie, an ad server will register whether an advertisement has been supplied to your Device or whether someone using your Device has clicked on an advertisement. We use the information saved in this advertising cookie to record which advertisements have been supplied to your Device so we can make sure that not too many of the same advertisements are supplied to any particular Device, and so that we are able to comply with our commercial arrangements with our advertising partners. We shall not use this information to supply targeted advertisements. In addition to the foregoing, third parties may use our advertising system to supply advertisements on the Portal and the IP-EPG, as well as on Content Partner Websites, and place cookies on your Device when such advertisements are supplied. These are cookies from one or more of the following providers: <br><br>• Nuggad: http://www.nugg.ad/  <br>• Adnologies: http://ads.heias.com/ <br>• GroupM Targ.Ad: http://www.targad.info/ <br> • Google (DoubleClick): http://www.google.com/privacy/ads/ <br>• Adconion: http://adconiondirect.com/  <br><br>These cookies contain, among other things, information about the advertisements supplied, information on the application or domain in which such advertisements are supplied and your IP address. This is done to record how often a particular advertisement is shown, and in order to prevent the same advertisement being shown too often. External third-party advertisers that may place advertisements on the Portal, the IP-EPG or a Content Partner Website after co-ordination by our advertisement server may also use cookies to track your activity over multiple websites, and to provide advertisements that correspond to your personal preferences. <br><br>'Socialtv Cookie' (Smart TV ID) used for establishing a link with social media applications: Specifically for the social TV applications provided by us, such as 'Social TV Share' (which links with Facebook and Twitter), 'Social TV' (which links with Facebook and Twitter) and 'Cloud Explorer' (which links with Dropbox). You will be offered the opportunity to create a Smart TV ID when you first start one of these applications. The Smart TV ID is a combination of a unique identifier, a chosen username, a chosen PIN, a photo source and authentication codes for Facebook, Twitter and/or Dropbox. This information is stored on your Device in a cookie (the 'socialtv cookie'). <br><br>Every time you start one of the social TV applications, such as 'Social TV Share', 'Social TV' or 'Cloud Explorer', the application will read the cookie in order to establish a link between that application and your account with Facebook, Twitter and/or Dropbox. This way, you do not need to register with Facebook, Twitter and/or Dropbox again when using one of the social TV applications. If you delete the cookies on your Device by reinstalling the Device or deleting the Internet history, this cookie is also deleted. If you want to enable the link between the social TV applications and your account with Facebook, Twitter and/or Dropbox after that, you will need to create a new Smart TV ID. <br><br>Third-Party Websites<br>When you visit websites of third parties via your Device's internal browser, it is possible that such websites will place cookies on your device, and that such cookies will track and store your interactions on those websites. This does not happen at the request of TP Vision, and TP Vision does not use such information. We hereby refer you to the respective cookie and privacy policies of such websites for more information about the use of such cookies on and by such websites. <br><br>Cookie deletion<br>Your Device allows you to delete all cookies and other local browser storage from the Device. On older Devices, this can be done with the "Clear Net TV Memory" option in the menu on your Device. This option not only deletes all cookies and local browser storage, but also unregisters your Device from any registrations, for example for a Device manufacturer loyalty programme and for Smart TV Payments. On newer Devices, this option is called "Reinstall Device". These newer Devices also have a "Clear App Memory" option, which deletes all cookies and local browser storage, but does not unregister the Device. Deleting all cookies normally means that you have to log in again on all Apps. It is highly advisable always to use "Clear Net TV Memory" or "Reinstall Device" prior to selling or giving away your Device.<br><br> Contacting us<br>If you have any questions regarding our cookie policy, you can send us an email via privacy@tpvision.com in your own language.<br><br></span></p></div></div>
+                <div id="sta" style="display: none;"><p class="MsoNormal" style="text-align:justify">We want you to enjoy the Smart TV Service. For this, we need to understand how you use your Smart TV. We can create this understanding when you share specific data from your Smart TV with us such as your APP click behavior, channel zap behavior and other interaction that you may have with your Smart TV, like time and date of a click. This is called analytical data. <o:p></o:p></p><p class="MsoNormal" style="text-align:justify">In order to troubleshoot abnormal behavior on your Smart TV, it will also store data on hardware/software related failures and the interaction with your Smart TV from just before the failure occurred. Your Smart TV will send this information, in an anonymized manner, to our servers for the sole purpose of problem solving. This data shall be stored for a maximum of two years after collection.<o:p></o:p></p> <p></p> <p class="MsoNormal" style="text-align:justify">Analytical data is sent (compressed) from your Smart TV to our servers via an encrypted Internet connection and consequently stored on a secure server. When we receive analytical data we immediately throw away the connected Device-ID. As a consequence it no longer can tell us anything about you, the data has been anonymised.<o:p></o:p></p></div>
+            </div>
+        </div>
+    </div>
+
+    <!--tips-->
+    <div class="overlay tips-box">
+        <div class="errorTips">
+            <span id="tipTime"></span>
+        </div>
+    </div>
+
+    <!--推送-->
+    <div class="overlay push-box">
+        <!--消息推送-->
+        <div class="push">
+            <h1 id="push-title">Push news</h1>
+
+            <div class="line1"></div>
+            <div class="push-txt" id="push-txt"></div>
+            <div class="line"></div>
+            <button tabindex="1" id="push-btn1" class="btn-left push-btn button-text1 mouseSelected">Remind me later</button>
+            <button tabindex="2" id="push-btn2" class="btn-right push-btn button-text2 mouseSelected">OK</button>
+        </div>
+    </div>
+</div>
+
+<script type="text/javascript">
+
+    if (document.cookie.indexOf("privurl") > -1) {
+        var _script = document.createElement('script');
+      
+        _script.type = 'text/javascript';
+        _script.src = '../js/index1.js';
+        document.body.appendChild(_script);
+    } else {
+        var _script = document.createElement('script');
+        _script.type = 'text/javascript';
+        _script.src = '../js/index.js';
+        document.body.appendChild(_script);
+    }
+
+    var categoryid = loadData.getCookie("devicecategoryid");
+
+    var categoryIdJudge = true;
+    var _useragent = navigator.userAgent.indexOf("Opera") > -1 || navigator.userAgent.indexOf("opera") > -1;
+    var categeryIdArr = [];
+
+    document.cookie = "tcaccepted=" + escape("") + ";expires=" + new Date().toGMTString();
+    loadData.setCookie("tcaccepted", "true", 1000000000);
+    var nettvObjectFactory = document.getElementById("nettvObjectFactory");
+
+    var optionsmenu = document.getElementById('optionsmenu');
+
+
+</script><script type="text/javascript" src="../js/index.js"></script>
+
+<script onerror="if(window.reload) window.reload();" src="https://epgacc.corio.com/Ad/SmartTV_ad_SDK_ACC.js"></script>
+    <script type="text/javascript">
+    //<![CDATA[
+   
+    var obj = {
+        "vods": _data.deviceFunction["vods"] == 1,
+        "tods": _data.deviceFunction["tods"] == 1
+    }
+
+    if (!localStorage.country) {
+        localStorage.country = loadData.getCookie("country");
+    }
+
+    for (var i in obj) {
+        var ele = $("div [name='" + i + "']");
+        if (!obj[i]) {
+            ele.remove();
+        }
+    }
+
+    var apps = document.getElementById("_tab");
+    apps.style.display = "block";
+    apps.style.left = (1280 - apps.offsetWidth) / 2 + "px";
+    loadData.getApps(_data.apps);
+
+
+    if (_data.deviceFunction["ads"] == 0) {
+        $("#appLine1-7").html("");
+    } else {
+        var param = "cntry=" + loadData.getCookie("country") + "&lang="
+                + _language + "&manid="
+                + loadData.getCookie("manufacturerid") + "&ctn=" + loadData.getCookie("profileid").split("_")[0]
+        var test11 = new SmartTV_NormalBanner("2k14MyApps_360x96", "ad_contrainer", "", param);
+        test11.startAd();
+    }
+
+	function setCookie(name,value) {
+		var Days = 7;
+		var exp = new Date();
+		exp.setTime(exp.getTime() + Days*24*60*60*1000);
+		document.cookie = name + "="+ escape (value) + ";expires=" + exp.toGMTString();
+	}
+	
+	if (loadData.getCookie("loginTime") == null)  {
+		setCookie("loginTime", "loginTime");
+	}
+   
+    setTimeout(function () {
+        var _script = document.createElement('script');
+        _script.type = 'text/javascript';
+        _script.src = 'http://meteo.dotscreen.com/api/net-tv-2/portal.js';
+        document.body.appendChild(_script);
+
+    }, 3000);
+
+
+
+    //]]>
+
+</script>
+
+<style type="text/css">*:focus { outline:none; }</style><style type="text/css">body{overflow:hidden;}</style><script>var smarttvAds_imgUrl='https://ad.nettvservices.com/adserver/www/images/19a4d1ed872af602d79cc4292699fe7f.jpg';var smarttvAds_txt='';var smarttvAds_anchor=document.getElementById('ad_contrainer');smarttvAds_anchor.href='https://adacc.nettvservices.com/adserver/www/delivery/ck.php?oaparams=2__bannerid=1013__zoneid=367__rnd=bc69663913__oadest=https%3A%2F%2Facc-smarttv.zeasn.tv%2Fhomepage_api%2Fdevice%2Fadvdetail%3Fappid%3D63623';var element = document.createElement('img');element.setAttribute('src', 'https://ad.nettvservices.com/adserver/www/images/19a4d1ed872af602d79cc4292699fe7f.jpg');element.setAttribute('border', '0');smarttvAds_anchor.appendChild(element);var element1 = document.createElement('img');element1.setAttribute('src', 'https://adacc.nettvservices.com/adserver/www/delivery/lg-tpv.php?b[]=1013&c[]=216&z[]=367&referer=https%3A%2F%2Facc-smarttv.zeasn.tv%2Fhomepage_api%2Fdevice%2Findex%3Fproductid%3D7&rnd=bc69663913');element1.setAttribute('width', '0');element1.setAttribute('height', '0');element1.setAttribute('border', '0');smarttvAds_anchor.appendChild(element1);if ('' != ''){ document.getElementById('').innerHTML=smarttvAds_txt; } </script><script type="text/javascript" src="http://meteo.dotscreen.com/api/net-tv-2/portal.js"></script></body></html>

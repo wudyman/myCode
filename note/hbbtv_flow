@@ -1,0 +1,18 @@
+participant Opera
+participant CBwsWindowImpl.cpp
+participant Adapter.cpp
+HbbtvUtil.cpp->Hbbtv_integration_util.cpp:initHbbtvIntegration():
+Hbbtv_integration_util.cpp->Hbbtv_integration_util.cpp:browserInitBroadcast
+Hbbtv_integration_util.cpp->hbbtv_videobroadcast_backend.cpp:HbbtvVideoBroadcastBackend::init
+hbbtv_videobroadcast_backend.cpp->hbbtv_videobroadcast_backend.cpp:getChannelList
+hbbtv_videobroadcast_backend.cpp->hbbtv_channel_config.cpp:getChannelList
+hbbtv_channel_config.cpp->hbbtv_channel_list.cpp:HbbtvUVAChannelList::\n getInstance()
+hbbtv_videobroadcast_backend.cpp->hbbtv_channel_list.cp:getCurrChannel
+hbbtv_videobroadcast_backend.cpp->HbbtvAIT.cpp:HbbtvAIT
+MTK->HbbtvAIT.cpp:notify "OPERA_HBBTV_SI_\nLOADER_AIT_UPDATE"  via\n hbbtvAITNfyCallback
+HbbtvAIT.cpp->HbbtvAIT.cpp:hbbtvAITThreadMain handle \n HBBTV_AIT_TABLE_UPDATED
+HbbtvAIT.cpp->Hbbtv_integration_util.cpp:sendHbbtvMsg2Sdk(\n opera::msg::ParseAIT)
+Hbbtv_integration_util.cpp->HbbtvUtil.cpp:sendHbbtvMessage(\n opera::msg::ParseAIT)
+HbbtvUtil.cpp->Adapter.cpp:sendHbbtvMessage(\n opera::msg::ParseAIT)
+Adapter.cpp->CBwsWindowImpl.cpp:sendHbbtvMessage(\n opera::msg::ParseAIT)
+CBwsWindowImpl.cpp->Opera:m_pOpera->post\n((Message*)msg)

@@ -1,0 +1,39 @@
+participant index.html
+participant load
+participant base
+participant deps
+participant shaka-player.uncompiled
+participant assets
+participant main
+participant asset_section
+participant log_section
+index.html->load:
+index.html->assets:
+index.html->main:
+main->main:window.addEventListener\n ('load', shakaDemo.init);
+index.html->asset_section:
+index.html->log_section:
+load->base:loadRelativeScript+ \n importScript
+load->deps:loadRelativeScript+ \n importScript
+load->shaka-player.uncompiled:loadRelativeScript+ \n importScript
+deps->base:goog.addDependency( \newma.js \nall.js \nfullscreen.js \n...)
+shaka-player.uncompiled->base:goog.require(fullscreen)
+base->base:writeScripts_
+base->base:importScript_(fullscreen)
+base->load:importScript
+load->Fullscreen:
+Fullscreen->Fullscreen:shaka.polyfill.register(\n shaka.polyfill.Fullscreen.install)
+main->main:shakaDemo.init;
+main->main:shakaDemo.getParams_();
+main->log_section:shakaDemo.setupLogging_
+main->main:shakaDemo.\n preBrowserCheckParams_;
+main->all:shaka.polyfill.installAll
+all->Fullscreen:shaka.polyfill.polyfills_ \nby shaka.polyfill.register
+main->player:shaka.Player.probeSupport
+main->main:anonymous function
+main->player:new shaka.Player
+main->asset_section:shakaDemo.setupAssets_
+asset_section->assets:shakaAssets.testAssets
+asset_section->asset_section:document.getElementById\n ('loadButton').addEventListener\n ('click', shakaDemo.load);
+asset_section->asset_section:shakaDemo.load
+asset_section->player:load

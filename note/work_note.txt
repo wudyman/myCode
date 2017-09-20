@@ -1,0 +1,128 @@
+network:
+\\172.16.144.38\study$
+\\172.16.144.38\doc$
+\\172.16.144.38\ic$
+\\172.16.144.38\public$
+
+192.168.56.101
+
+LOG
+
+2k13:
+2k14:
+2k15:
+2k16:
+2k17:
+    显示打印状态： /3rd/nettv/opera/opera_dir/nettvlog -c
+	打印全开：/3rd/nettv/opera/opera_dir/nettvlog -c -a 1 
+	打印恢复： /3rd/nettv/opera/opera_dir/nettvlog -c -r
+	
+	/3rd/nettv/opera/nettvlog -m nettv_app_module -d 1 -v 1
+	/3rd/nettv/opera/nettvlog -m mmb_proxy -d 1 -v 1
+	/3rd/nettv/opera/opera_dir/nettvlog -c -m nettv_platform_api -a 1 
+	/3rd/nettv/opera/opera_dir/nettvlog -c -m uva_media_backend -a 1 
+	
+	/3rd/nettv/opera/opera_dir/nettvlog -c -m uva_drm_backend -a 1 
+	/3rd/nettv/opera/opera_dir/nettvlog -c -m drm_service -a 1 
+	
+	/3rd/nettv/opera/opera_dir/nettvlog -c -m mmb_proxy  -d 1 -v 1 
+	
+	/3rd/nettv/opera/nettvlog -c -m nettv_app_module -a 1
+	/3rd/nettv/opera/nettvlog -c -m mmb_proxy -a 1
+	/3rd/nettv/opera/nettvlog -c -m nettv_platform_api -a 1
+	/3rd/nettv/opera/nettvlog -c -m nettv_opera -a 1
+	
+	/3rd/nettv/opera/opera_dir/nettvlog -c -m media_object -a 1 
+	/3rd/nettv/opera/opera_dir/nettvlog -c -m media_proxy -a 1 
+	
+	/3rd/nettv/opera/opera_dir/nettvlog -c -m browser_proxy -a 1
+	/3rd/nettv/opera/opera_dir/nettvlog -c -m browser_controller -a 1
+	/3rd/nettv/opera/opera_dir/nettvlog -c -m nettv_app_module -a 1
+	/3rd/nettv/opera/opera_dir/nettvlog -c -m videostore_mw -a 1
+	/3rd/nettv/opera/opera_dir/nettvlog -c -m tpv_videobroadcast_backend -a 1
+	/3rd/nettv/opera/opera_dir/nettvlog -c -m media_backend_factory -a 1
+	/3rd/nettv/opera/opera_dir/nettvlog -c -m vbobj_backend -a 1
+
+    
+	1. From the Linux prompt type the following commands 
+		a. cd /3rd/nettv/opera 
+		b. ./nettvlog_drm.sh 
+	2. How to set MTK log level 
+		a. From the CLI prompt type the TAB key 
+		b. Type app.nettv.dl 5 
+		
+		
+youtube
+
+echo "-3 2 https://qual-e.appspot.com/awebp.html" > /tmp/brctl_cmd 
+
+https://www.youtube.com/tv?launch=menu&additionalDataUrl=http://localhost:56789/apps/YouTube/dial_data#/watch/video/idle?v=z2z857RSfhk&resume 
+
+echo "-3 2 https://www.youtube.com/tv?launch=menu&additionalDataUrl=http://localhost:56789/apps/YouTube/dial_data#/watch/video/control?v=Xs1sMqpc1oM&resume  " > /tmp/brctl_cmd 
+
+
+git:
+
+Jun Gao 高建军 10:43
+/home/jun.gao/HBBTV/2K17_5596L_5800 
+210
+Jun Gao 高建军 13:56
+https://172.16.0.31/tpv-review/#/ <https://172.16.0.31/tpv-review/#/>  
+Jun Gao 高建军 14:15
+git pull origin 2K17_FVP_branch 
+git push origin HEAD:refs/for/2K17_FVP_branch 
+2017/3/24
+Jun Gao 高建军 10:54
+git pull origin 2K17_FVP_branch 
+
+
+mtk command:
+/basic/tty_man
+
+mtk: phone
+郑义：
+0551-65317511   Ext.82063 
+
+
+
+hbbtv:
+1). Reboot the platform and input following shell command to enter cli mode: 
+o	su 
+o	basic/tty_man
+2). Press CTRL+I to enter mw cli mode; 
+3). Input following mandatory cli command: 
+o	mw.oh.el 1 // Enable browser and Hbbtv log 
+4). Reboot the platform: 
+5). enter CLI mode again with step 1~2, then input cli command: 
+o	mw.oh.sdl ie 
+6). Reproduce the issue and capture & Saved the log. 
+
+Note: If you want to disable the log, you can input following cli command in mw cli mode. 
+mw.oh.el 0 //Disable hbbtv log 
+
+opera sdk integrate:
+$rm -rf work_release/apollo/third_party/cust_app/TPV_Vision/TPV/opera-devices-sdk
+$mkdir $_ #$_ means last parameter in last command.
+$tar -xzvf opera-devices-sdk-4.9.0.121.Wagoner.42-MTK5800.tar.gz --strip-components 1 -C $_ #decompress opersdk
+
+global_env_setup.ini:
+W:\work\hbbtv\work_release\apollo\mtk_obj\TPV_linux\PHILIPS_2K17_MT5802_UHD_EU\rel\output\basic\3rd_ini\browser_engine
+
+
+2k16 opera:
+echo "-3 2 https://qual-e.appspot.com/awebp.html" > /tmp/brctl_cmd 
+echo "-3 2 http://192.168.1.14:8080/test3" > /tmp/brctl_cmd 
+echo "-3 0 http://192.168.1.14:8080/test3" > /tmp/brctl_cmd 
+echo "-3 0 http://192.168.1.14:8080/test4" > /tmp/brctl_cmd 
+
+echo "-3 0 http://172.16.246.5:8080/mpeg-dash/dashPlayer.html" > /tmp/brctl_cmd
+echo "-3 0 http://192.168.1.8:8080/shaka-player/demo/index.html" > /tmp/brctl_cmd
+echo "-3 0 http://172.16.246.5:8080/mpeg-dash/test.html" > /tmp/brctl_cmd   
+echo "-3 0 http://172.16.246.5:8080/MsePlayer/index.html" > /tmp/brctl_cmd
+echo "-3 0 http://172.16.246.5:8080/test6/smartv_homepage.html" > /tmp/brctl_cmd  
+
+
+
+
+
+

@@ -1,0 +1,25 @@
+participant Opera Uva
+participant Media_backend
+participant Media_proxy
+participant Media_object
+participant Mtk api
+Opera Uva->Media_backend:initBackend
+Media_backend->Media_proxy:mmbpxy_webaudio_set_sources_description
+Media_proxy->Media_object:MOBJ_IPC_CMD_WEBAUDIO_INIT_BACKEND
+Media_object->Mtk api:IMnettvR_plf_stream_InitBackEnd
+
+Opera Uva->Media_backend:play
+Media_backend->Media_proxy:mmbpxy_webaudio_play
+Media_proxy->Media_object:MOBJ_IPC_CMD_WEBAUDIO_PLAY
+Media_object->Mtk api:IMnettvR_plf_stream_pb_start
+
+Mtk api->Media_object:IMnettvP_plf_stream_NeedData
+Media_object->Media_proxy:MOBJ_IPC_EVT_WEBAUDIO_NEED_DATA
+Media_proxy->Media_backend:_mmb_webaudio_ntf_evt_callback
+Media_backend->Opera Uva:_handleNeedDataEvent
+
+Opera Uva->Media_backend:writeData
+Media_backend->Media_proxy:mmbpxy_webaudio_write_opera_data
+Media_proxy->Media_object:MOBJ_IPC_CMD_WEBAUDIO_BUFFER_WRITTEN
+Media_object->Mtk api:IMnettvR_plf_stream_WriteData
+

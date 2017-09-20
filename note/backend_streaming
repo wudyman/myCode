@@ -1,0 +1,1417 @@
+[  349.808011] [IR]RC6 raw:0x202e002[dtv_ap3
+mtk]>[NETTV][M]>>>>>>>>>>[NetTVInputEventHandler.cpp][807], _filter_key_event() Feature active status is 0x0 .
+[dtv_app_mtk]>[NETTV][M]>>>>>>>>>>[_key_notify][1020][LOG_TIME]BTN_SELECT/LEFT/RIGHT Received at [1503041900.510 S]
+[dtv_app_mtk]>  V   imnettv.c 0587 IMnettvP_SendSystemKey  keycode = 323584 ,keystate = NETTVAPP_SYSTEM_KEY_DOWN ####
+[dtv_app_mtk]>  V   imnettv.c 0749 IMnettvP_SendSystemKey  [0x4f000] => [0xd]
+[dtv_app_mtk]>  V   nettvapp.c 0664 nettvapp_process_msg_async  msg 4: enter
+[dtv_app_mtk]>  D   browser_proxy.c 1397 brpxy_get_current_url  https://certification.nettvservices.com/test_environment/testroom/Media_files/Video/MP4/
+[dtv_app_mtk]>  I   browser_proxy.c 1525 brpxy_Get_RCpointer_enable  1
+[dtv_app_mtk]>  V   nettvapp.c 2860 _nettvapp_proc_key  key=13,status=0,multitap=1,MouseSupport=1,uPoint=1,presource =0
+[dtv_app_mtk]>  I   browser_proxy.c 1525 brpxy_Get_RCpointer_enable  1
+[dtv_app_mtk]>  D   browser_proxy.c 1652 brpxy_ui_is_nettv_status_shown  0
+[dtv_app_mtk]>  D   nettvapp_stubs.c 0152 nettvapp_proc_rc_keys  b_will_show_keyboard is false
+[dtv_app_mtk]>  V   browser_proxy.c 1440 brpxy_send_key  Sending Key=13 KeyState=0
+[dtv_app_mtk]>  V   nettvapp.c 0697 nettvapp_process_msg_async  msg 4: exit
+[dtv_app_mtk]>  V   browser_controller.cc 6394 brctl_handle_ext_message  opw = 2, cmd = BRCTL_CMD_KEY
+[dtv_app_mtk]>  I   browser_controller.cc 6739 brctl_handle_ext_message  brctl_handle_ext_message->BRCTL_CMD_KEY: RC and KB key input, opw_win=2, key = 0xd, is_down = 1
+[dtv_app_mtk]>  V   open_internet.cc 0092 open_inet_handle_key  opera win=2, state=1, key=13, is_down=1, ime=0, multitap=0
+[dtv_app_mtk]>  V   browser_controller.cc 3616 brctl_handle_key  key=13, videmode=2, bbc=0,video_playing=0
+[dtv_app_mtk]>  V   browser_input.cc 1785 brwui_send_key_input  E_KEY_INPUT[0x0 + 0xd][Enter][DOWN]
+[dtv_app_mtk]>  V   nettv_opera.cc 2753 opera_msg_key_input  key Enter (virtual key: 13) is down.
+[dtv_app_mtk]>  V   nettv_opera.cc 2763 opera_msg_key_input  key Enter was consumed
+[dtv_app_mtk]>  V   nettv_opera.cc 1098 opera_evt_loading_started  entry
+[dtv_app_mtk]>  I   browser_controller.cc 8168 brctl_evt_handler  handle opera event -> LoadingStarted::TYPE Window = 384(opw=2) Loading of URL 'https://certification.nettvservices.com//test_environment/testroom/Media_files/MediaObjectTest.php?file=https://certification.nettvservices.com/test_environment/testroom/Media_files/Video/MP4/000003__%20MPEG-4_2Mbps_AVC_720x480_2Mbps_3CFR_AAC.mp4' started
+[dtv_app_mtk]>  D   open_internet.cc 0289 open_inet_handle_loading  opera win=2, open_inet_state = 1, event = 10987421379362118951
+[dtv_app_mtk]>  V   browser_controller.cc 5247 brctl_IsOpenInternet_app  brctl_IsOpenInternet_app 2
+[dtv_app_mtk]>  V   open_internet.cc 0579 open_inet_handle_mime  opw_win=2, original_mime = text/html
+[dtv_app_mtk]>  V   open_internet.cc 0651 open_inet_handle_mime  mime = text/html,SET e_state = 1
+[dtv_app_mtk]>  V   nettv_opera.cc 2682 opera_msg_set_pref  (2,default_background_color,#FFFFFF)
+[dtv_app_mtk]>  V   nettv_opera.cc 0489 msg_set_pref  window_id = 384
+[dtv_app_mtk]>  V   nettv_opera.cc 0496 msg_set_pref  No error.
+[dtv_app_mtk]>  V   open_internet.cc 0653 open_inet_handle_mime  E_SET_DEFAULT_BACKGROUND_COLOR[#FFFFFF] at win 2
+[dtv_app_mtk]>  V   open_internet.cc 0332 open_inet_set_state  opera win=2, open_inet_state = from 1  ----> 1
+[dtv_app_mtk]>  V   open_internet.cc 0327 open_inet_handle_loading  state = 1, event = 10987421379362118951, b_check_mime = 0 b_loading_start = 0
+[dtv_app_mtk]>  V   browser_controller.cc 3380 brctl_show_loading  enter function brctl_show_loading(), opw = 2, b_show = 1
+[dtv_app_mtk]>  V   nettv_opera.cc 3296 opera_is_window_created  The given window id(opw = 16) doesn't identify an existing window
+[dtv_app_mtk]>  V   browser_controller.cc 1384 dfb_get_height  [1080]
+[dtv_app_mtk]>  V   browser_controller.cc 2052 brctl_create_windows  CREATE WINDOW[16] [loading]
+[dtv_app_mtk]>  V   nettv_opera.cc 1860 opera_msg_create_window  opw = 16
+[dtv_app_mtk]>  V   nettv_opera.cc 1867 opera_msg_create_window  opw = 16, window_id = -1
+[dtv_app_mtk]>  V   browser_proxy.c 0229 _brpxy_thread  event 12, res 1 at opera win 2
+[dtv_app_mtk]>  V   nettvapp.c 0664 nettvapp_process_msg_async  msg 6: enter
+[dtv_app_mtk]>  D   nettvapp.c 2202 _nettvapp_proc_brpxy  Event 10, Result 0 at opera win 2
+[dtv_app_mtk]>  V   imnettv.c 2589 nettvapp_intfR_SendMessage  nettvapp_intfR_SendMessage==[IN]=NettvappOSD = [0]===
+[dtv_app_mtk]>  D   imnettv.c 2632 nettvapp_intfR_SendMessage  Calling IMnettvR_SendMessage -- [LOADING_START]--
+[dtv_app_mtk]>  V   nettvapp.c 0697 nettvapp_process_msg_async  msg 6: exit
+[dtv_app_mtk]>  V   nettv_opera.cc 0686 opera_add_window_id  opw = 16
+[dtv_app_mtk]>  I   nettv_opera.cc 0145 add  added opw: 16, win_id: 448
+[dtv_app_mtk]>  V   nettv_opera.cc 0745 opera_set_window_show_condition  opw = 16, condition = 0
+[dtv_app_mtk]>  V   browser_controller.cc 2099 brctl_create_windows  set windows content_resolution
+[dtv_app_mtk]>  V   nettv_opera.cc 2682 opera_msg_set_pref  (16,content_resolution,209x41)
+[dtv_app_mtk]>  V   nettv_opera.cc 0489 msg_set_pref  window_id = 448
+[dtv_app_mtk]>  V   nettv_opera.cc 0496 msg_set_pref  No error.
+[dtv_app_mtk]>  V   nettv_opera.cc 2682 opera_msg_set_pref  (16,default_background_color,#000000)
+[dtv_app_mtk]>  V   nettv_opera.cc 0489 msg_set_pref  window_id = 448
+[dtv_app_mtk]>  V   nettv_opera.cc 0496 msg_set_pref  No error.
+[dtv_app_mtk]>  V   nettv_opera.cc 2682 opera_msg_set_pref  (16,transparent,true)
+[dtv_app_mtk]>  V   nettv_opera.cc 0489 msg_set_pref  window_id = 448
+[dtv_app_mtk]>  V   nettv_opera.cc 0496 msg_set_pref  No error.
+[dtv_app_mtk]>  V   nettv_opera.cc 2217 opera_msg_load_url  opw: 16, url: file:///usr/opera/opera_dir/pages/loading/page.html
+[dtv_app_mtk]>  V   nettv_opera.cc 2222 opera_msg_load_url  window_id = 448
+[dtv_app_mtk]>  V   nettv_opera.cc 2230 opera_msg_load_url  window_id = 448
+[dtv_app_mtk]>  V   browser_controller.cc 2115 brctl_create_windows  E_OPEN_BROWSER: Create Windows 16 with x=792 y=999 w=313 h=61 title=loading
+[dtv_app_mtk]>  V   browser_controller.cc 4720 IsSocailTV_app  not Socailtv URL = https://certification.nettvservices.com//test_environment/testroom/Media_files/MediaObjectTest.php?file=https://certification.nettvservices.com/test_environment/testroom/Media_files/Video/MP4/000003__%20MPEG-4_2Mbps_AVC_720x480_2Mbps_3CFR_AAC.mp4
+[dtv_app_mtk]>  D   nettv_opera.cc 1103 opera_evt_loading_started  Loading of URL 'https://certification.nettvservices.com//test_environment/testroom/Media_files/MediaObjectTest.php?file=https://certification.nettvservices.com/test_environment/testroom/Media_files/Video/MP4/000003__%20MPEG-4_2Mbps_AVC_720x480_2Mbps_3CFR_AAC.mp4' started
+[dtv_app_mtk]>  V   nettv_opera.cc 1098 opera_evt_loading_started  entry
+[dtv_app_mtk]>  I   browser_controller.cc 8168 brctl_evt_handler  handle opera event -> LoadingStarted::TYPE Window = 448(opw=16) Loading of URL 'file:///usr/opera/opera_dir/pages/loading/page.html' started
+[dtv_app_mtk]>  V   browser_controller.cc 8185 brctl_evt_handler  the opw_win = 16 is out of the range
+[dtv_app_mtk]>  D   nettv_opera.cc 1103 opera_evt_loading_started  Loading of URL 'file:///usr/opera/opera_dir/pages/loading/page.html' started
+[dtv_app_mtk]>  V   nettv_opera.cc 1833 opera_evt_visible_ssl_state_changed  entry
+[dtv_app_mtk]>  V   browser_controller.cc 9824 brctl_evt_handler  handle opera event -> VisibleSSLStateChanged::TYPE window = 448, security_state = 1, content_status = 0, subject = , issuer = , is_ev = 0
+[dtv_app_mtk]>  V   nettv_opera.cc 1186 opera_evt_url_changed  entry
+[dtv_app_mtk]>  V   browser_controller.cc 9071 brctl_evt_handler  handle opera event -> URLChanged::TYPE Window = 448(opw=16) Change to URL 'file:///usr/opera/opera_dir/pages/loading/page.html'
+[dtv_app_mtk]>  V   browser_controller.cc 9088 brctl_evt_handler  the opw_win = 16 is out of the range
+[dtv_app_mtk]>  V   nettv_opera.cc 1811 opera_evt_mime_type_retrieved  entry
+[dtv_app_mtk]>  V   browser_controller.cc 9785 brctl_evt_handler  MimeTypeRetrieved::TYPE, mime_type=text/html, content_type=, url=file:///usr/opera/opera_dir/pages/loading/page.html
+[dtv_app_mtk]>  V   NetTV_objectFactory.cpp 0013 js_init_global_context  entry
+[dtv_app_mtk]>  V   vlomain.cpp 0024 js_init_global_context  entry
+[dtv_app_mtk]>  V   main.cpp 0021 js_init_global_context  entry
+[dtv_app_mtk]>  D   main.cpp 0023 js_init_global_context  global conetext is 0x815dc4
+[dtv_app_mtk]>[NETTV][M]>>>>>>>>>>[NetTVInputEventHandler.cpp][807], _filter_key_event() Feature active status is 0x0 .
+[dtv_app_mtk]>[NETTV][M]>>>>>>>>>>[_key_notify][1020][LOG_TIME]BTN_SELECT/LEFT/RIGHT Received at [1503041900.721 S]
+[dtv_app_mtk]>  V   imnettv.c 0587 IMnettvP_SendSystemKey  keycode = 323584 ,keystate = NETTVAPP_SYSTEM_KEY_UP ####
+[dtv_app_mtk]>  V   imnettv.c 0749 IMnettvP_SendSystemKey  [0x4f000] => [0xd]
+[dtv_app_mtk]>  V   nettvapp.c 0664 nettvapp_process_msg_async  msg 4: enter
+[dtv_app_mtk]>  D   browser_proxy.c 1397 brpxy_get_current_url  https://certification.nettvservices.com/test_environment/testroom/Media_files/Video/MP4/
+[dtv_app_mtk]>  I   browser_proxy.c 1525 brpxy_Get_RCpointer_enable  1
+[dtv_app_mtk]>  V   nettvapp.c 2860 _nettvapp_proc_key  key=13,status=2,multitap=1,MouseSupport=1,uPoint=1,presource =0
+[dtv_app_mtk]>  I   browser_proxy.c 1525 brpxy_Get_RCpointer_enable  1
+[dtv_app_mtk]>  D   browser_proxy.c 1652 brpxy_ui_is_nettv_status_shown  0
+[dtv_app_mtk]>  D   nettvapp_stubs.c 0152 nettvapp_proc_rc_keys  b_will_show_keyboard is false
+[dtv_app_mtk]>  V   browser_proxy.c 1440 brpxy_send_key  Sending Key=13 KeyState=2
+[dtv_app_mtk]>  V   nettvapp.c 0697 nettvapp_process_msg_async  msg 4: exit
+[dtv_app_mtk]>  V   browser_controller.cc 6394 brctl_handle_ext_message  opw = 2, cmd = BRCTL_CMD_KEY
+[dtv_app_mtk]>  I   browser_controller.cc 6739 brctl_handle_ext_message  brctl_handle_ext_message->BRCTL_CMD_KEY: RC and KB key input, opw_win=2, key = 0xd, is_down = 0
+[dtv_app_mtk]>  V   open_internet.cc 0092 open_inet_handle_key  opera win=2, state=1, key=13, is_down=0, ime=0, multitap=0
+[dtv_app_mtk]>  V   browser_controller.cc 3616 brctl_handle_key  key=13, videmode=2, bbc=0,video_playing=0
+[dtv_app_mtk]>  V   browser_input.cc 1785 brwui_send_key_input  E_KEY_INPUT[0x0 + 0xd][Enter][UP]
+[dtv_app_mtk]>  V   nettv_opera.cc 2753 opera_msg_key_input  key Enter (virtual key: 13) is up.
+[dtv_app_mtk]>  V   nettv_opera.cc 2763 opera_msg_key_input  key Enter was consumed
+[dtv_app_mtk]>  V   nettv_opera.cc 1823 opera_evt_unhandled_key_input  entry
+[dtv_app_mtk]>  V   browser_controller.cc 9790 brctl_evt_handler  handle opera event -> UnhandledKeyInput::TYPE
+[dtv_app_mtk]>  V   browser_controller.cc 9797 brctl_evt_handler  UnhandledKeyInput::TYPE bInputStatus = 0, virtual_key = 13, event_type= 1
+[dtv_app_mtk]>  D   bbciplayer.c 0123 bbcIplayer_global_getname  bbcIplayer_global_getname: open_inet_show_bbc_iplayer
+[dtv_app_mtk]>
+[dtv_app_mtk]>  D   bbciplayer.c 0145 bbcIplayer_global_getname  bbcIplayer_global_getname found 0
+[dtv_app_mtk]>  D   bbciplayer.c 0158 bbcIplayer_NetTV_ShowBbcIplayer  bbcIplayer_NetTV_ShowBbcIplayer : 0
+[dtv_app_mtk]>  V   browser_controller.cc 6394 brctl_handle_ext_message  opw = 2, cmd = BRCTL_CMD_BBC_SHOW
+[dtv_app_mtk]>  V   browser_controller.cc 8121 brctl_handle_ext_message  BRCTL_CMD_BBC_SHOW is called success
+[dtv_app_mtk]>  V   browser_controller.cc 8122 brctl_handle_ext_message  disableZoom message 0
+[dtv_app_mtk]>  V   open_internet.cc 0750 open_inet_show_bbc_iplayer  open_inet_show_bbc_iplayer is called!!
+[dtv_app_mtk]>  V   nettv_opera.cc 1113 opera_evt_loading_finished  entry
+[dtv_app_mtk]>  I   browser_controller.cc 8226 brctl_evt_handler  handle opera event -> LoadingFinished::TYPE Window = 448(opw=16) Loading of URL 'file:///usr/opera/opera_dir/pages/loading/page.html' finished
+[dtv_app_mtk]>  V   browser_controller.cc 8229 brctl_evt_handler  brctl_evt_handler()->LoadingFinished->error_code = 0
+[dtv_app_mtk]>  V   browser_controller.cc 8230 brctl_evt_handler  brctl_evt_handler()->LoadingFinished->error_message = net::OK
+[dtv_app_mtk]>  V   browser_controller.cc 8231 brctl_evt_handler  brctl_evt_handler()->LoadingFinished->http_status_code = 0
+[dtv_app_mtk]>  I   browser_controller.cc 1013 brctl_show_window  opw = 16
+[dtv_app_mtk]>  V   nettv_opera.cc 3291 opera_is_window_created  opw = 16, window_id = 448
+[dtv_app_mtk]>  V   nettv_opera.cc 3212 opera_msg_stack[  351.563863]
+[  351.563863] [Panel] get index 224
+[  351.567922] [NPTV] Set HDR Enable = 0
+[  351.569536]
+[  351.569536] [Panel] get index 224
+[  351.576356] [NPTV] Set HDR Enable = 0
+_at_top  opw = 16
+[dtv_app_mtk]>  D   nettv_opera.[  351.587289]
+[  351.587289] [Panel] get index 224
+[  351.588996] [NPTV] Set HDR Enable = 0
+[  351.590067] [AUD]_AudDspChannelVolChange, u1DecId (0), eChannel (8)
+[  351.590101] [AUD] PEQ : _AUD_DspUpdatePEQ : Dec(0) u1ModeIdx(1) u1StartPEQSet(7)
+[  351.590121] [AUD]_AudDspChannelVolChange, u1DecId (0), eChannel (9)
+[  351.590132] [AUD] PEQ : _AUD_DspUpdatePEQ : Dec(0) u1ModeIdx(1) u1StartPEQSet(7)
+[  351.596393] [FBM][FBM_ReleaseGroup-2977]Fbg(0) release.
+[  351.596423] [FBM]FBM free addr 0x36cee000
+[  351.596432] [FBM]Release Fbm Pool Type(5)
+[  351.596459] [FBM]release Done.
+[  351.596514] [VDEC][0] flush es
+[  351.596526] [VDEC][0] clear dpb
+[  351.596542] [VDEC][0] 0 data flushed
+[  351.596578] [VDEC][0] stop notify done
+[  351.596587] [VDEC][0] stop done
+[  351.596604] [VDEC][0] play -> stop
+[  351.597362] [VDP]VDP(0) disable B2R(0)
+[  351.598116] [AUD]Clear NetFlixFlag
+[  351.624761] <IMvideoP_GetBackLightPWMFrequency:1015]> Mvideo: IMvideoP_GetBackLightPWMFrequency() wFrequency = 0, freq = 50
+[  351.624761]
+[  351.628791] [AUD]AUD_GetAudioPts prAudioPts=0x690e8445, u4Pts=0x690e8445
+[  351.649675] [VDP]DTV Unmute B2R Switch VDP(0)
+[  351.649703] [VDP]DTV Unmute B2R Switch VDP(1)
+[  351.652352] [VDEC][0] flush es
+[  351.652377] [VDEC][0] clear dpb
+[  351.652391] [VDEC][0] 0 data flushed
+[  351.653638] [FBM]FBM free addr 0x5ec00000
+[  351.660403] [AUD]_AudDspChannelVolChange, u1DecId (0), eChannel (8)
+[  351.660433] [AUD] PEQ : _AUD_DspUpdatePEQ : Dec(0) u1ModeIdx(1) u1StartPEQSet(7)
+[  351.660453] [AUD]_AudDspChannelVolChange, u1DecId (0), eChannel (9)
+[  351.660463] [AUD] PEQ : _AUD_DspUpdatePEQ : Dec(0) u1ModeIdx(1) u1StartPEQSet(7)
+[  351.662620] [AUD]_AudDspChannelVolChange, u1DecId (0), eChannel (0)
+[  351.662641] [AUD](_AudDspChannelVolChange,3315) u4Volumn(0x1088) u8ChlVol(0x0)
+[  351.662677] [AUD] PEQ : _AUD_DspUpdatePEQ : Dec(0) u1ModeIdx(1) u1StartPEQSet(7)
+[  351.662698] [AUD]_AudDspChannelVolChange, u1DecId (0), eChannel (1)
+[  351.662707] [AUD](_AudDspChannelVolChange,3315) u4Volumn(0x1088) u8ChlVol(0x0)
+[  351.662721] [AUD] PEQ : _AUD_DspUpdatePEQ : Dec(0) u1ModeIdx(1) u1StartPEQSet(7)
+[  351.664439] [AUD]_AudDspChannelVolChange, u1DecId (0), eChannel (8)
+[  351.664468] [AUD] PEQ : _AUD_DspUpdatePEQ : Dec(0) u1ModeIdx(1) u1StartPEQSet(7)
+[  351.664487] [AUD]_AudDspChannelVolChange, u1DecId (0), eChannel (9)
+[  351.664497] [AUD] PEQ : _AUD_DspUpdatePEQ : Dec(0) u1ModeIdx(1) u1StartPEQSet(7)
+[  351.664918] [AUD]_AudDspChannelVolChange, u1DecId (0), eChannel (8)
+[  351.664943] [AUD] PEQ : _AUD_DspUpdatePEQ : Dec(0) u1ModeIdx(1) u1StartPEQSet(7)
+[  351.664976] [AUD]_AudDspChannelVolChange, u1DecId (0), eChannel (9)
+[  351.664987] [AUD] PEQ : _AUD_DspUpdatePEQ : Dec(0) u1ModeIdx(1) u1StartPEQSet(7)
+[  351.670879]
+[  351.670879] [Panel] get index 224
+[  351.672775] [NPTV] Set HDR Enable =cc 3219 0
+[  351.674453]
+[  351.674453] [Panel] get index 224
+[  351.675500] [NPTV] Set HDR Enable = 0
+[  351.679805]
+[  351.679805] [Panel] get index 224
+[  351.680975] [NPTV] Set HDR Enable = 0
+[  351.681732]
+[  351.681732] [Panel] get index 224
+[  351.682830] [NPTV] Set HDR Enable = 0
+ opera_msg_stack_at_top  window_id = 448
+[dtv_app_mtk]>  V   nettv_opera.cc 2098 opera_msg_show_window  (16)
+[dtv_app_mtk]>  V   nettv_opera.cc 2108 opera_msg_show_window  window_id = 448
+[dtv_app_mtk]>  V   nettv_opera.cc 0704 opera_set_window_visible  opw = 16, visible = 1
+[dtv_app_mtk]>  V   nettv_opera.cc 0179 set_visible  set visibility of opw 16 to 1
+[dtv_app_mtk]>  I   browser_controller.cc 1103 brctl_show_window  E_SHOW_WINDOW[16] top[0] focus[0]
+[dtv_app_mtk]>  V   browser_controller.cc 8444 brctl_evt_handler  the opw_win = 16 is out of the range
+[dtv_app_mtk]>  V   app2app.cpp 0052 App2AppPluginClass_allow_access  protocol = https, host = certification.nettvservices.com, port = 443
+[dtv_app_mtk]>  V   browser_ipc_plugin.c 0828 bipc_get_access  https, certification.nettvservices.com, 443
+[dtv_app_mtk]>  V   browser_ipc_plugin.c 0834 bipc_get_access  return 0
+[dtv_app_mtk]>  V   NetTV_objectFactory.cpp 0036 my_allow_access  entry
+[dtv_app_mtk]>  D   NetTV_objectFactory.cpp 0044 my_allow_access  NetTV_objectFactory access protocol is also OK!!!
+[dtv_app_mtk]>  D   oipfRecordingScheduler.cpp 0052 my_allow_access  NetTV_objectFactory access is called!!! host [certification.nettvservices.com]
+[dtv_app_mtk]>  D   oipfRecordingScheduler.cpp 0055 my_allow_access  plugin_check_accessibility return[1]
+[dtv_app_mtk]>  V   vlomain.cpp 0056 vloplugin_allow_access  entry
+[dtv_app_mtk]>  D   vlomain.cpp 0059 vloplugin_allow_access  plugin_check_accessibility return[1]
+[dtv_app_mtk]>  D   socialshare.c 0162 ss_allow_access  https, certification.nettvservices.com, 443
+[dtv_app_mtk]>  D   socialshare.c 0166 ss_allow_access  return 1
+[dtv_app_mtk]>  D   youtube_lb_plugin.c 0358 ytlb_get_access  https, certification.nettvservices.com, 443
+[dtv_app_mtk]>  V   youtube_lb_plugin.c 0370 ytlb_get_access  return 1
+[dtv_app_mtk]>  D   bbciplayer.c 0112 bbcIplayer_allow_access  bbcIplayer_allow_access [https://certification.nettvservices.com:443]
+[ACFG_CUST]acfg_custom_zoom_stretch_update, Overscan: Match index = 2, top = 100, bottom = 100, left = 100, right = 100
+[dtv_app_mtk]>  D   channelsyncjse.c 0130 channelsyncJse_allow_access  channelsyncJse_allow_access [https://certification.nettvservices.com:443]
+{MHEG5 SCT} ACFG set_default_overscan(0, 0, 0, 0) to MHEG5
+[dtv_app_mtk]>
+[ACFG_CUST]LINE44104 NETTV !!!timing:720 x 576, frmrate:2500
+[dtv_app_mtk]>  V   NetTV_objectFactory.cpp 0013 js_init_global_context  entry
+[CMPB_MW][LOG]IMtkPb_Ctrl_Open-9386::cmpb do IMtkPb_Ctrl_Open
+[dtv_app_mtk]>  V   vlomain.cpp 0024 js_init_global_context  entry
+[CMPB_MW][LOG]_cmpb_util_log_info_from_cfg_file-208::cmpb: no cmpb_cfg file
+[CMPB_MW][LOG]_cmpb_util_log_info_from_cfg_file-254::cmpb: no cmpb_time file
+[dtv_app_mtk]>  V   main.cpp 0021 js_init_global_context  entry
+[CMPB_MW][LOG]_cmpb_util_log_info_from_cfg_file-281::cmpb: no cmpb_log_file
+[CMPB_MW][LOG]_cmpb_ctrl_get_thumb_mem_info-8807::[DEBUG]cmpb get thumb mem info
+[dtv_app_mtk]>  D   main.cpp 0023 js_init_global_context  global conetext is 0x88bf54
+[DEBUG]get thumb mem info enter
+[DEBUG]SVCTX_COMMON_GET_THUMB_MEM_INFO: ui4_phy_share_mem(5600000), ui4_mem_size(131072)
+[CMPB_MW][ERR]_cmpb_ctrl_get_thumb_mem_info-8836::[DEBUG]CMPB_SVCTX_GET(THUMB_MEM_INFO): (5600000, 131072)
+[dtv_app_mtk]>  V   browser_ipc_plugin2.cpp 0041 BrowserIpcPluginClass_allow_access  protocol = https, host = certification.nettvservices.com, port = 443
+[CMPB_MW][LOG]IMtkPb_Ctrl_Open-9811::cmpb finish IMtkPb_Ctrl_Open
+[CMPB_MW][LOG]IMtkPb_Ctrl_SetEngineParamAsync-11548::cmpb do IMtkPb_Ctrl_SetEngineParamAsync
+[dtv_app_mtk]>  V   cul_tou.cpp 0045 CulTouClass_allow_access  protocol = https, host = certification.nettvservices.com, port = 443
+[CMPB_MW][LOG]_cmpb_ctrl_setengineparam-11885::cmpb do CMPB_SVCTX_MEDIA_OPEN begin
+[dtv_app_mtk]>  V   nettv_opera.cc 1833 opera_evt_visible_ssl_state_changed  entry
+[TEST] pt_state->ui4_curr_state(6),evn(2000003)
+[TEST] pt_state->ui4_curr_state(6),evn(3000003)
+{SVCTX} _player_close_sess x_handle_valid(pt_player->h_sess) invalid
+{scdb} error at scdb_api.c:176,ret=-4,h_scdb:18161535
+{scdb} error at scdb_api.c:1923,ret=-4,h_scdb:18161535
+{SVCTX} _player_close_sess x_handle_valid(pt_player->h_sess) invalid
+{SVCTX} INFO: [REC_HDLR] Close connection (17516589). (L5091)
+[dtv_app_mtk]>  V   browser_controller.cc 9824 brctl_evt_handler  handle opera event -> VisibleSSLStateChanged::TYPE window = 384, security_state = 3, content_status = 1, subject = *.nettvservices.com, issuer = thawte, Inc., is_ev = 0
+[MWIF2-VDP](_VdpXlatDispFmtCallBackMw)(4623) e_type(0) VDP_MW is disconnect!
+[dtv_app_mtk]>  V   nettv_opera.cc 1186 opera_evt_url_changed  entry
+[dtv_app_mtk]>[ACFG_CUST]acfg_custom_zoom_stretch_update, Overscan: Match index = 2, top = 100, bottom = 100, left = 100, right = 100
+{MHEG5 SCT} ACFG set_default_overscan(100, 100, 100, 100) to MHEG5
+[dtv_app_mtk]>
+[ACFG_CUST]LINE44104 NETTV !!!timing:0 x 0, frmrate:0
+[MWIF2-VDP](_VdpXlatDispFmtCallBackMw)(4623) e_type(0) VDP_MW is disconnect!
+[dtv_app_mtk]>  V   browser_controller.cc 9071 brctl_evt_handler  handle opera event -> URLChanged::TYPE Window = 384(opw=2) Change to URL 'https://certification.nettvservices.com//test_environment/testroom/Media_files/MediaObjectTest.php?file=https://certification.nettvservices.com/test_environment/testroom/Media_files/Video/MP4/000003__%20MPEG-4_2Mbps_AVC_720x480_2Mbps_3CFR_AAC.mp4'
+[dtv_app_mtk]>[ACFG_CUST]acfg_custom_zoom_stretch_update, Overscan: Match index = 2, top = 100, bottom = 100, left = 100, right = 100
+{MHEG5 SCT} ACFG set_default_overscan(100, 100, 100, 100) to MHEG5
+[dtv_app_mtk]>
+[dtv_app_mtk]>  V   open_internet.cc 0735 open_inet_notify_specific_url_change  notify specific URL change : 1
+[ACFG_CUST]LINE44104 NETTV !!!timing:0 x 0, frmrate:0
+EDB _edb_dvb_process_root_nfy 10511
+EDB _edb_dvb_free_table 4052
+EDB _edb_dvb_free_table 4060
+EDB _edb_dvb_free_table 4062
+EDB _edb_dvb_free_table 4060
+EDB _edb_dvb_free_table 4062
+EDB _edb_dvb_free_table 4060
+EDB _edb_dvb_free_table 4062
+EDB _edb_dvb_free_table 4060
+EDB _edb_dvb_free_table 4062
+EDB _edb_dvb_free_table 4081
+[dtv_app_mtk]>  V   browser_controller.cc 4704 IsSpotify_app  not Spotify URL = https://certification.nettvservices.com//test_environment/testroom/Media_files/MediaObjectTest.php?file=https://certification.nettvservices.com/test_environment/testroom/Media_files/Video/MP4/000003__%20MPEG-4_2Mbps_AVC_720x480_2Mbps_3CFR_AAC.mp4
+EDB _edb_dvb_free_table 4083
+EDB _edb_dvb_free_table 4128
+EDB _edb_dvb_process_root_nfy 10513
+[dtv_app_mtk]>  V   browser_controller.cc 4720 IsSocailTV_app  not Socailtv URL = https://certification.nettvservices.com//test_environment/testroom/Media_files/MediaObjectTest.php?file=https://certification.nettvservices.com/test_environment/testroom/Media_files/Video/MP4/000003__%20MPEG-4_2Mbps_AVC_720x480_2Mbps_3CFR_AAC.mp4
+[dtv_app_mtk]>  V   browser_controller.cc 4752 IsSkype_app  not skype URL = https://certification.nettvservices.com//test_environment/testroom/Media_files/MediaObjectTest.php?file=https://certification.nettvservices.com/test_environment/testroom/Media_files/Video/MP4/000003__%20MPEG-4_2Mbps_AVC_720x480_2Mbps_3CFR_AAC.mp4
+[dtv_app_mtk]>  D   open_internet.cc 0228 open_inet_handle_url_change  opera win=2, pc_url=https://certification.nettvservices.com//test_environment/testroom/Media_files/MediaObjectTest.php?file=https://certification.nettvservices.com/test_environment/testroom/Media_files/Video/MP4/000003__%20MPEG-4_2Mbps_AVC_720x480_2Mbps_3CFR_AAC.mp4, state=1
+[dtv_app_mtk]>  V   browser_controller.cc 5247 brctl_IsOpenInternet_app  brctl_IsOpenInternet_app 2
+[dtv_app_mtk]>  V   open_internet.cc 0579 open_inet_handle_mime  opw_win=2, original_mime = text/html
+[dtv_app_mtk]>  V   open_internet.cc 0651 open_inet_handle_mime  mime = text/html,SET e_state = 1
+[dtv_app_mtk]>  V   nettv_opera.cc 2682 opera_msg_set_pref  (2,default_background_color,#FFFFFF)
+[dtv_app_mtk]>  V   nettv_opera.cc 0489 msg_set_pref  window_id = 384
+[dtv_app_mtk]>  V   browser_proxy.c 0229 _brpxy_thread  event 46, res 0 at opera win 2
+[dtv_app_mtk]>  V   nettvapp.c 0664 nettvapp_process_msg_async  msg 6: enter
+[dtv_app_mtk]>  D   nettvapp.c 2202 _nettvapp_proc_brpxy  Event 41, Result 0 at opera win -1
+[dtv_app_mtk]>  I   nettvapp.c 2513 _nettvapp_proc_brpxy  BRPXY_EVT_SPECIFIC_URL_CHANGE nettvapp.b_multi_view_allow = true
+[dtv_app_mtk]>  V   nettvapp.c 0697 nettvapp_process_msg_async  msg 6: exit
+[dtv_app_mtk]>  V   nettv_opera.cc 0496 msg_set_pref  No error.
+[dtv_app_mtk]>  V   open_internet.cc 0653 open_inet_handle_mime  E_SET_DEFAULT_BACKGROUND_COLOR[#FFFFFF] at win 2
+[dtv_app_mtk]>  V   open_internet.cc 0332 open_inet_set_state  opera win=2, open_inet_state = from 1  ----> 1
+[dtv_app_mtk]>  V   browser_controller.cc 9175 brctl_evt_handler  opw_url_current = https://certification.nettvservices.com//test_environment/testroom/Media_files/MediaObjectTest.php?file=https://certification.nettvservices.com/test_environment/testroom/Media_files/Video/MP4/000003__%20MPEG-4_2Mbps_AVC_720x480_2Mbps_3CFR_AAC.mp4, ac_url_current = https://certification.nettvservices.com//test_environment/testroom/Media_files/MediaObjectTest.php?file=https://certification.nettvservices.com/test_environment/testroom/Media_files/Video/MP4/000003__%20MPEG-4_2Mbps_AVC_720x480_2Mbps_3CFR_AAC.mp4
+[dtv_app_mtk]>  V   nettv_opera.cc 1811 opera_evt_mime_type_retrieved  entry
+[dtv_app_mtk]>  V   browser_controller.cc 9785 brctl_evt_handler  MimeTypeRetrieved::TYPE, mime_type=application/ce-html+xml, content_type=application/ce-html+xml; charset=utf-8, url=https://certification.nettvservices.com//test_environment/testroom/Media_files/MediaObjectTest.php?file=https://certification.nettvservices.com/test_environment/testroom/Media_files/Video/MP4/000003__%20MPEG-4_2Mbps_AVC_720x480_2Mbps_3CFR_AAC.mp4
+[dtv_app_mtk]>  V   browser_controller.cc 4838 brctl_handle_opera_sync_message  SYNC_SET_WIN_ID_REQUEST : Start JavaScript setWindowId(2)....
+[dtv_app_mtk]>  V   nettv_opera.cc 1833 opera_evt_visible_ssl_state_changed  entry
+[dtv_app_mtk]>  V   nettv_opera.cc 3291 opera_is_window_created  opw = 2, window_id = 384
+[dtv_app_mtk]>  V   browser_controller.cc 0446 brctl_exec_js  setWindowId(2); at window = 2
+[dtv_app_mtk]>  V   nettv_opera.cc 3012 opera_msg_send_platform_event  (2,setWindowId(2);)
+[dtv_app_mtk]>  V   browser_controller.cc 9824 brctl_evt_handler  handle opera event -> VisibleSSLStateChanged::TYPE window = 384, security_state = 3, content_status = 0, subject = *.nettvservices.com, issuer = thawte, Inc., is_ev = 0
+[dtv_app_mtk]>  D   bbciplayer.c 0123 bbcIplayer_global_getname  bbcIplayer_global_getname: open_inet_show_bbc_iplayer
+[dtv_app_mtk]>
+[dtv_app_mtk]>  D   bbciplayer.c 0145 bbcIplayer_global_getname  bbcIplayer_global_getname found 0
+[dtv_app_mtk]>  D   bbciplayer.c 0158 bbcIplayer_NetTV_ShowBbcIplayer  bbcIplayer_NetTV_ShowBbcIplayer : 0
+[dtv_app_mtk]>  V   browser_controller.cc 6394 brctl_handle_ext_message  opw = 2, cmd = BRCTL_CMD_BBC_SHOW
+[dtv_app_mtk]>  V   browser_controller.cc 8121 brctl_handle_ext_message  BRCTL_CMD_BBC_SHOW is called success
+[dtv_app_mtk]>  V   browser_controller.cc 8122 brctl_handle_ext_message  disableZoom message 0
+[dtv_app_mtk]>  V   open_internet.cc 0750 open_inet_show_bbc_iplayer  open_inet_show_bbc_iplayer is called!!
+[dtv_app_mtk]>  V   media_backend_factory.cpp 0025 UVA_RequestBackend  entry
+[dtv_app_mtk]>  D   media_backend_factory.cpp 0026 UVA_RequestBackend  type = 0
+[dtv_app_mtk]>  V   media_backend_factory.cpp 0034 UVA_RequestBackend  exit
+[dtv_app_mtk]>  V   media_backend.cpp 2974 _add_backend_to_lut_unsafe  backend added to the list of active backends: instance id:[2], new list size: [2]
+[dtv_app_mtk]>  D   media_backend.cpp 0124 media_backend  constructing backend: 2, type: 0
+[dtv_app_mtk]>  D   media_backend.cpp 0174 media_backend  create the mmb backend
+[dtv_app_mtk]>  D   media_proxy.cpp 1072 mmbpxy_create_backend  backend type=[0]
+[dtv_app_mtk]>  V   media_proxy.cpp 0239 mmbpxy_register_callback  entry
+[dtv_app_mtk]>  D   media_backend.cpp 0193 media_backend  done constructing backend: 2, type 0
+[dtv_app_mtk]>  V   media_backend.cpp 0865 setWindowId  window_id: 384
+[dtv_app_mtk]>  V   media_object_ipc.c 0788 _mobj_ipc_task  MediaObject Received CMD -> MTK : 0
+[dtv_app_mtk]>  V   media_object_ipc.c 0794 _mobj_ipc_task  MOBJ_IPC_CMD_INIT
+[dtv_app_mtk]>  V   media_object.c 1070 mobj_notify_plugin_event  0
+[dtv_app_mtk]>[NETTV][M]>>>>>>>>>>[IMnettvR_plf_stream_CreateBackEnd][108][LOG_TIME]CreateBackend(0) at [1503041902.215 S]
+[CMPB_MW][LOG]_cmpb_ctrl_setengineparam-11899::cmpb do CMPB_SVCTX_MEDIA_OPEN done
+[dtv_app_mtk]> [NETTV:11:57:14]!=!=!=!===========   D   media_backend.cpp 0428 initBackend  instance id: 2, origin: https://certification.nettvservices.com//test_environment/testroom/Media_files/MediaObjectTest.php?file=https://certification.nettvservices.com/test_environment/testroom/Media_files/Video/MP4/000003__%20MPEG-4_2Mbps_AVC_720x480_2Mbps_3CFR_AAC.mp4, sources: 0x763b00, auto_key: 1
+[dtv_app_mtk]>CreateBackEnd id: 0, type: 0
+[dtv_app_mtk]> [NETTV:11:57:14]!=!=!=!=========== getBackend:47 can not find backend by id: 0
+[dtv_app_mtk]>  D   media_backend.cpp 0473 initBackend  _HostURL: https://certification.nettvservices.com//test_environment/testroom/Media_files/MediaObjectTest.php?file=https://certification.nettvservices.com/test_environment/testroom/Media_files/Video/MP4/000003__%20MPEG-4_2Mbps_AVC_720x480_2Mbps_3CFR_AAC.mp4
+[dtv_app_mtk]>  D   media_backend.cpp 0499 initBackend  total sources provided: 1
+[dtv_app_mtk]>  D   media_backend.cpp 0505 initBackend  source type provided: 3
+[dtv_app_mtk]>  D   media_backend.cpp 0527 initBackend  backend streaming _MimeType: video/mpeg4, url: https://certification.nettvservices.com/test_environment/testroom/Media_files/Video/MP4/000003__%20MPEG-4_2Mbps_AVC_720x480_2Mbps_3CFR_AAC.mp4
+[dtv_app_mtk]>  D   media_backend.cpp 0579 initBackend  setting url to https://certification.nettvservices.com/test_environment/testroom/Media_files/Video/MP4/000003__%20MPEG-4_2Mbps_AVC_720x480_2Mbps_3CFR_AAC.mp4
+[dtv_app_mtk]>  V   media_proxy.cpp 0260 mmbpxy_set_url  entry
+[dtv_app_mtk]>  D   media_backend.cpp 0651 initBackend  instance id: 2, ret: 1
+[dtv_app_mtk]>  V   media_backend.cpp 1964 setLoop  value[1]
+[dtv_app_mtk]> [NETTV:11:57:14]!=!=!=!=========== create backend set media backend id: 0 @ drmB_stat:-1
+[dtv_app_mtk]>  D   media_backend.cpp 1760 setVolume  instance id: 2, volume: 1.000000
+[dtv_app_mtk]>  V   media_backend.cpp 1933 setVisibility  visible[0]
+[dtv_app_mtk]>  D   media_backend.cpp 1384 setVideoWindowAndClip  video_window, x: 0, y: 0, w: 0, h: 0
+[dtv_app_mtk]>  V   media_backend.cpp 1385 setVideoWindowAndClip  clip_rect is not supported and will be ignored
+[dtv_app_mtk]>  D   media_proxy.cpp 0738 mmbpxy_set_window  d_scale=1.000000
+[dtv_app_mtk]>  D   media_proxy.cpp 0739 mmbpxy_set_window  ui2_brw_height=1080
+[dtv_app_mtk]>  D   media_proxy.cpp 0740 mmbpxy_set_window  ui2_brw_width =1920
+[dtv_app_mtk]>  D   media_proxy.cpp 0741 mmbpxy_set_window  x =0
+[dtv_app_mtk]>  D   media_proxy.cpp 0742 mmbpxy_set_window  y =0
+[dtv_app_mtk]>  D   media_proxy.cpp 0743 mmbpxy_set_window  w =0
+[dtv_app_mtk]>  D   media_proxy.cpp 0744 mmbpxy_set_window  h =0
+[dtv_app_mtk]>  V   media_backend.cpp 1943 setFullScreen  fullscreen[0]
+[dtv_app_mtk]>  D   media_proxy.cpp 0738 mmbpxy_set_window  d_scale=1.000000
+[dtv_app_mtk]>  D   media_proxy.cpp 0739 mmbpxy_set_window  ui2_brw_height=1080
+[dtv_app_mtk]>  D   media_proxy.cpp 0740 mmbpxy_set_window  ui2_brw_width =1920
+[dtv_app_mtk]>  D   media_proxy.cpp 0741 mmbpxy_set_window  x =0
+[dtv_app_mtk]>  D   media_proxy.cpp 0742 mmbpxy_set_window  y =0
+[dtv_app_mtk]>  D   media_proxy.cpp 0743 mmbpxy_set_window  w =0
+[dtv_app_mtk]>  D   media_proxy.cpp 0744 mmbpxy_set_window  h =0
+[dtv_app_mtk]>** WARNING ** deprecated functionality used: UVAMediaBackend::getPlaybackSpeedRanges(UVA::stl_type<SpeedRange>::vector&) not implemented, will use the deprecated getPlaySpeeds(UVA::stl_type<double>::vector&)
+[dtv_app_mtk]>  D   media_backend.cpp 0663 play  instance id: 2, _PlayState: 0
+[dtv_app_mtk]>  D   media_backend.cpp 1409 setPlaybackRate  InsID[2], rate[1.000000], _RequestedPlaySpeed[1]
+[dtv_app_mtk]>  V   media_backend.cpp 1153 getDuration  duration inf, uva_ret 3
+[dtv_app_mtk]>  V   media_backend.cpp 1153 getDuration  duration inf, uva_ret 3
+[dtv_app_mtk]>  V   nettv_opera.cc 1113 opera_evt_loading_finished  entry
+[dtv_app_mtk]>  I   browser_controller.cc 8226 brctl_evt_handler  handle opera event -> LoadingFinished::TYPE Window = 384(opw=2) Loading of URL 'https://certification.nettvservices.com//test_environment/testroom/Media_files/MediaObjectTest.php?file=https://certification.nettvservices.com/test_environment/testroom/Media_files/Video/MP4/000003__%20MPEG-4_2Mbps_AVC_720x480_2Mbps_3CFR_AAC.mp4' finished
+[dtv_app_mtk]>  V   browser_controller.cc 8229 brctl_evt_handler  brctl_evt_handler()->LoadingFinished->error_code = 0
+[dtv_app_mtk]>  V   browser_controller.cc 8230 brctl_evt_handler  brctl_evt_handler()->LoadingFinished->error_message = net::OK
+[dtv_app_mtk]>  V   browser_controller.cc 8231 brctl_evt_handler  brctl_evt_handler()->LoadingFinished->http_status_code = 200
+[dtv_app_mtk]>  V   open_internet.cc 0050 get_cur_opw_zoom_value  opera win=2, zoom = 100
+[dtv_app_mtk]>  V   open_internet.cc 0063 set_cur_opw_zoom_value  opera win=2, zoom = 100 --> 100
+[dtv_app_mtk]>  V   nettv_opera.cc 3296 opera_is_window_created  The given window id(opw = 13) doesn't identify an existing window
+[dtv_app_mtk]>  V   nettv_opera.cc 2267 opera_msg_page_zoom  (2,1.000000)
+[dtv_app_mtk]>  V   nettv_opera.cc 2274 opera_msg_page_zoom  window_id = 384
+[dtv_app_mtk]>  V   nettv_opera.cc 3296 opera_is_window_created  The given window id(opw = 17) doesn't identify an existing window
+[dtv_app_mtk]>  V   browser_controller.cc 1384 dfb_get_height  [1080]
+[dtv_app_mtk]>  V   browser_controller.cc 2052 brctl_create_windows  CREATE WINDOW[17] [lock]
+[dtv_app_mtk]>  V   nettv_opera.cc 1860 opera_msg_create_window  opw = 17
+[dtv_app_mtk]>  V   nettv_opera.cc 1867 opera_msg_create_window  opw = 17, window_id = -1
+[dtv_app_mtk]>  V   nettv_opera.cc 0686 opera_add_window_id  opw = 17
+[dtv_app_mtk]>  I   nettv_opera.cc 0145 add  added opw: 17, win_id: 512
+[dtv_app_mtk]>  V   nettv_opera.cc 0745 opera_set_window_show_condition  opw = 17, condition = 0
+[dtv_app_mtk]>  V   browser_controller.cc 2099 brctl_create_windows  set windows content_resolution
+[dtv_app_mtk]>  V   nettv_opera.cc 2682 opera_msg_set_pref  (17,content_resolution,41x41)
+[dtv_app_mtk]>  V   nettv_opera.cc 0489 msg_set_pref  window_id = 512
+[dtv_app_mtk]>  V   nettv_opera.cc 0496 msg_set_pref  No error.
+[dtv_app_mtk]>  V   nettv_opera.cc 2682 opera_msg_set_pref  (17,default_background_color,#000000)
+[dtv_app_mtk]>  V   nettv_opera.cc 0489 msg_set_pref  window_id = 512
+[dtv_app_mtk]>  V   nettv_opera.cc 0496 msg_set_pref  No error.
+[dtv_app_mtk]>  V   nettv_opera.cc 2682 opera_msg_set_pref  (17,transparent,true)
+[dtv_app_mtk]>  V   nettv_opera.cc 0489 msg_set_pref  window_id = 512
+[dtv_app_mtk]>  V   nettv_opera.cc 0496 msg_set_pref  No error.
+[dtv_app_mtk]>  V   nettv_opera.cc 2217 opera_msg_load_url  opw: 17, url: file:///usr/opera/opera_dir/pages/lock/page.html
+[dtv_app_mtk]>  V   nettv_opera.cc 2222 opera_msg_load_url  window_id = 512
+[dtv_app_mtk]>  V   nettv_opera.cc 2230 opera_msg_load_url  window_id = 512
+[dtv_app_mtk]>  V   browser_controller.cc 2115 brctl_create_windows  E_OPEN_BROWSER: Create Windows 17 with x=1104 y=999 w=61 h=61 title=lock
+[dtv_app_mtk]>  D   open_internet.cc 0289 open_inet_handle_loading  opera win=2, open_inet_state = 1, event = 17841602265079778880
+[dtv_app_mtk]>  V   browser_controller.cc 5247 brctl_IsOpenInternet_app  brctl_IsOpenInternet_app 2
+[dtv_app_mtk]>  V   open_internet.cc 0579 open_inet_handle_mime  opw_win=2, original_mime = application/ce-html+xml; charset=utf-8
+[dtv_app_mtk]>  V   open_internet.cc 0587 open_inet_handle_mime  opw_win=2, mime type extension: supportspointer = (null)
+[dtv_app_mtk]>  V   open_internet.cc 0651 open_inet_handle_mime  mime = application/ce-html+xml,SET e_state = 0
+[dtv_app_mtk]>  V   nettv_opera.cc 2682 opera_msg_set_pref  (2,default_background_color,#000000)
+[dtv_app_mtk]>  V   nettv_opera.cc 0489 msg_set_pref  window_id = 384
+[dtv_app_mtk]>  V   browser_proxy.c 0229 _brpxy_thread  event 11, res 0 at opera win 2
+[dtv_app_mtk]>  V   browser_proxy.c 0229 _brpxy_thread  event 1, res 0 at opera win 2
+[dtv_app_mtk]>  V   nettvapp.c 0664 nettvapp_process_msg_async  msg 6: enter
+[dtv_app_mtk]>  D   nettvapp.c 2202 _nettvapp_proc_brpxy  Event 8, Result 0 at opera win 2
+[dtv_app_mtk]>  V   imnettv.c 2589 nettvapp_intfR_SendMessage  nettvapp_intfR_SendMessage==[IN]=NettvappOSD = [7]===
+[dtv_app_mtk]>  D   imnettv.c 2632 nettvapp_intfR_SendMessage  Calling IMnettvR_SendMessage -- [SECURE_PAGE]--
+[dtv_app_mtk]>  V   nettvapp.c 0697 nettvapp_process_msg_async  msg 6: exit
+[dtv_app_mtk]>  V   nettvapp.c 0664 nettvapp_process_msg_async  msg 6: enter
+[dtv_app_mtk]>  D   nettvapp.c 2202 _nettvapp_proc_brpxy  Event 0, Result 0 at opera win 2
+[dtv_app_mtk]>  D   browser_proxy.c 1156 brpxy_enable_history  1
+[dtv_app_mtk]>  V   nettvapp.c 0697 nettvapp_process_msg_async  msg 6: exit
+[dtv_app_mtk]>  V   ipepg_mw.c 0785 ipepgmw_epgctl_process_message  [IPEPG MW] received command [EPGCTL_CMD_LOAD_COMPLETE]
+[dtv_app_mtk]>
+[dtv_app_mtk]>  V   browser_controller.cc 6394 brctl_handle_ext_message  opw = 2, cmd = BRCTL_CMD_ENABLE_HISTORY
+[dtv_app_mtk]>  V   browser_controller.cc 6607 brctl_handle_ext_message  Send SYNC_SEND_ENABLE_HISTORY[50]
+[dtv_app_mtk]>  V   browser_controller.cc 4952 brctl_handle_opera_sync_message  SYNC_SEND_ENABLE_HISTORY
+[dtv_app_mtk]> [NETTV:11:57:14]!=!=!=!=========== start thread id(1699144784): detached(1),name:Ntv3
+[dtv_app_mtk]>  I   IMnettvPlf.c 0669 nettvplf_intfR_stream_create_backend  Created backend (instance id = 0) of type 0
+[dtv_app_mtk]>  V   media_object_ipc.c 1466 _mobj_ipc_clear_window  entry
+[dtv_app_mtk]>  V   IMnettvPlf.c 0617 nettvplf_intfR_stream_clear_window  entry
+[dtv_app_mtk]>  V   nettv_opera.cc 0496 msg_set_pref  No error.
+[dtv_app_mtk]>  V   open_internet.cc 0653 open_inet_handle_mime  E_SET_DEFAULT_BACKGROUND_COLOR[#000000] at win 2
+[dtv_app_mtk]>  V   open_internet.cc 0332 open_inet_set_state  opera win=2, open_inet_state = from 1  ----> 0
+[dtv_app_mtk]>  V   open_internet.cc 0063 set_cur_opw_zoom_value  opera win=2, zoom = 100 --> 100
+[dtv_app_mtk]>  V   nettv_opera.cc 3296 opera_is_window_created  The given window id(opw = 13) doesn't identify an existing window
+[dtv_app_mtk]>  V   nettv_opera.cc 2267 opera_msg_page_zoom  (2,1.000000)
+[dtv_app_mtk]>  V   nettv_opera.cc 2274 opera_msg_page_zoom  window_id = 384
+[dtv_app_mtk]>  V   browser_controller.cc 5247 brctl_IsOpenInternet_app  brctl_IsOpenInternet_app 2
+[dtv_app_mtk]>  V   open_internet.cc 0327 open_inet_handle_loading  state = 0, event = 17841602265079778880, b_check_mime = 0 b_loading_start = 0
+[dtv_app_mtk]>  V   browser_controller.cc 3380 brctl_show_loading  enter function brctl_show_loading(), opw = 2, b_show = 0
+[dtv_app_mtk]>  V   browser_controller.cc 1109 brctl_hide_window  opw = 16
+[dtv_app_mtk]>  V   browser_controller.cc 4868 brctl_handle_opera_sync_message  SYNC_SEND_FOCUS_BLUR_REQUEST ert win 2
+[dtv_app_mtk]>  V   browser_proxy.c 0229 _brpxy_thread  event 12, res 0 at opera win 2
+[dtv_app_mtk]>  V   nettv_opera.cc 3291 opera_is_window_created  opw = 2, window_id = 384
+[dtv_app_mtk]>  V   browser_controller.cc 0446 brctl_exec_js  var event = document.createEvent('HTMLEvents');event.initEvent('focus', false, false);window.dispatchEvent(event); at window = 2
+[dtv_app_mtk]>  V   nettv_opera.cc 3012 opera_msg_send_platform_event  (2,var event = document.createEvent('HTMLEvents');event.initEvent('focus', false, false);window.dispatchEvent(event);)
+[dtv_app_mtk]>  V   nettvapp.c 0664 nettvapp_process_msg_async  msg 6: enter
+[dtv_app_mtk]>  D   nettvapp.c 2202 _nettvapp_proc_brpxy  Event 11, Result 0 at opera win 2
+[dtv_app_mtk]>  V   imnettv.c 2589 nettvapp_intfR_SendMessage  nettvapp_intfR_SendMessage==[IN]=NettvappOSD = [2]===
+[dtv_app_mtk]>  D   imnettv.c 2632 nettvapp_intfR_SendMessage  Calling IMnettvR_SendMessage -- [LOADING_END]--
+[dtv_app_mtk]>  V   nettvapp.c 0697 nettvapp_process_msg_async  msg 6: exit
+[dtv_app_mtk]>  V   nettv_opera.cc 3291 opera_is_window_created  opw = 16, window_id = 448
+[dtv_app_mtk]>  V   nettv_opera.cc 2073 opera_msg_hide_window  opw: 16
+[dtv_app_mtk]>  V   nettv_opera.cc 2080 opera_msg_hide_window  window_id = 448
+[dtv_app_mtk]>  V   nettv_opera.cc 0704 opera_set_window_visible  opw = 16, visible = 0
+[dtv_app_mtk]>  V   nettv_opera.cc 0179 set_visible  set visibility of opw 16 to 0
+[dtv_app_mtk]>  V   browser_controller.cc 1189 brctl_hide_window  E_HIDE_WINDOW[16]
+[dtv_app_mtk]>  V   nettv_opera.cc 1888 opera_msg_destroy_window  opw = 16
+[dtv_app_mtk]>  V   nettv_opera.cc 1895 opera_msg_destroy_window  window_id = 448
+[dtv_app_mtk]>  V   nettv_opera.cc 0697 opera_del_window_id  opw = 16
+[dtv_app_mtk]>  V   nettv_opera.cc 0165 remove  deleted opw 16
+[dtv_app_mtk]>  V   browser_controller.cc 5153 brctl_pointrc_handle_when_loading_end  page loaded, current status for Point RC:0
+[dtv_app_mtk]>  V   browser_controller.cc 2187 brctl_UpdateIfSupportMouse  <MOUSE>social share, support!
+[dtv_app_mtk]>  V   browser_controller.cc 2190 brctl_UpdateIfSupportMouse  <MOUSE>p_shm_info->b_open_internet = 0
+[dtv_app_mtk]>  V   browser_controller.cc 2191 brctl_UpdateIfSupportMouse  <MOUSE>p_shm_info->b_internet_mouse_support = 0
+[dtv_app_mtk]>  V   browser_controller.cc 2192 brctl_UpdateIfSupportMouse  <MOUSE>b_is_support_pointer[opw=2] = 0
+[dtv_app_mtk]>  V   browser_controller.cc 2193 brctl_UpdateIfSupportMouse  <MOUSE>p_shm_info->ac_url_current = https://certification.nettvservices.com//test_environment/testroom/Media_files/MediaObjectTest.php?file=https://certification.nettvservices.com/test_environment/testroom/Media_files/Video/MP4/000003__%20MPEG-4_2Mbps_AVC_720x480_2Mbps_3CFR_AAC.mp4
+[dtv_app_mtk]>  V   browser_controller.cc 2144 brctl_SetMouseSupport  <MOUSE> bSupport =0
+[dtv_app_mtk]>  V   browser_controller.cc 2138 brctl_GetMouseSupport  <MOUSE> bCurPageMouseSupport =1
+[dtv_app_mtk]>  V   browser_proxy.c 0229 _brpxy_thread  event 27, res 0 at opera win -1
+[dtv_app_mtk]>  V   nettvapp.c 0664 nettvapp_process_msg_async  msg 6: enter
+[dtv_app_mtk]>  D   nettvapp.c 2202 _nettvapp_proc_brpxy  Event 20, Result 0 at opera win -1
+[dtv_app_mtk]>  D   browser_proxy.c 1258 brpxy_get_nettvapp_status  1
+[dtv_app_mtk]>  V   imnettv.c 2747 nettvapp_intfR_IsMouseSupport  nettv is activate, Send OnOff: 0
+[dtv_app_mtk]>  V   browser_proxy.c 1507 nettvapp_SetMouseSupportStatus  bCurPageMouseSupport: 0
+[dtv_app_mtk]>  V   nettvapp.c 0697 nettvapp_process_msg_async  msg 6: exit
+[dtv_app_mtk]>  V   nettv_opera.cc 1647 opera_evt_window_destroyed
+[dtv_app_mtk]>  V   media_object.c 0935 mobj_clear_window  nettvplf_intfR_stream_clear_window ret 0
+[dtv_app_mtk]>  V   media_object_ipc.c 1474 _mobj_ipc_update_fullscreen  previous fullscreen=0 new=0
+[dtv_app_mtk]>  V   media_object_ipc.c 0788 _mobj_ipc_task  MediaObject Received CMD -> MTK : 18
+[dtv_app_mtk]>  V   media_object_ipc.c 1291 _mobj_ipc_task  MOBJ_IPC_CMD_OBJ_INC
+[dtv_app_mtk]>  V   media_object.c 1710 mobj_obj_counter  bInc=1, old counter=0
+[dtv_app_mtk]>  D   imnettv.c 3679 nettvapp_intfR_RequestFullView  Calling nettvapp_intfR_RequestFullView, nettvapp.b_multi_view=0
+[dtv_app_mtk]>  V   browser_proxy.c 2353 brpxy_Stop_VB_PIP  entry
+[dtv_app_mtk]>  V   media_object_ipc.c 0788 _mobj_ipc_task  MediaObject Received CMD -> MTK : 9
+[dtv_app_mtk]>  V   media_object_ipc.c 1012 _mobj_ipc_task  MOBJ_IPC_CMD_SET_URL
+[dtv_app_mtk]>  D   media_object_ipc.c 1017 _mobj_ipc_task  url=https://certification.nettvservices.com/test_environment/testroom/Media_files/Video/MP4/000003__%20MPEG-4_2Mbps_AVC_720x480_2Mbps_3CFR_AAC.mp4,mimetype=video/mpeg4
+[dtv_app_mtk]>  V   nettvapp.c 0664 nettvapp_process_msg_async  msg 6: enter
+[dtv_app_mtk]>  D   nettvapp.c 2202 _nettvapp_proc_brpxy  Event 43, Result 0 at opera win -1
+[dtv_app_mtk]>  V   media_object_ipc.c 0759 mobj_ipc_update_network_state  buffer state is 0
+[dtv_app_mtk]>  D   media_object.c 0262 mobj_set_url  pc_url: https://certification.nettvservices.com/test_environment/testroom/Media_files/Video/MP4/000003__%20MPEG-4_2Mbps_AVC_720x480_2Mbps_3CFR_AAC.mp4, pc_mime_type: video/mpeg4
+[dtv_app_mtk]>  V   imnettv.c 3071 nettvapp_intfR_stop_video_broadcast  entry
+[dtv_app_mtk]>  V   media_object.c 1097 mobj_request_player_resource  Enter platformReady:7727
+[dtv_app_mtk]>  V   media_object.c 1103 mobj_request_player_resource  mtk_stream_request_player_resource_dummy
+[dtv_app_mtk]>  D   browser_proxy.c 1894 brpxy_get_current_active_window  Current_Win=2
+[dtv_app_mtk]>  V   imnettv.c 1742 IMnettvP_vb_SetStatus  Current state = STOPPED
+[dtv_app_mtk]>  V   media_object.c 1108 mobj_request_player_resource  Exit platformReady:39249
+[dtv_app_mtk]>  D   video_broadcast_object.c 1049 vbobjctrl_setVideoBroadcastObjectPlayState  vb_state = 3
+[dtv_app_mtk]>  D   video_broadcast_object.c 1068 vbobjctrl_setVideoBroadcastObjectPlayState  t_mtk_state = 2
+[dtv_app_mtk]>  D   video_broadcast_object.c 0482 vbobjctrl_notify_playback_state   t_mtk_state = 2, e_state = 3
+[dtv_app_mtk]>  D   video_broadcast_object.c 0483 vbobjctrl_notify_playback_state   -> VBOBJ_STOPPED
+[dtv_app_mtk]>  D   video_broadcast_object_ipc.c 0148 vbobj_ipc_update_state  VBOBJ: update state[VBOBJ_IPC_PRESENTING]-> [VBOBJ_IPC_STOPPED]
+[dtv_app_mtk]>  D   video_broadcast_object_ipc.c 0182 vbobj_ipc_update_state  VBOBJ: Sending EVT_STATE: VBOBJ_IPC_STOPPED to VBOBJ_INTF
+[dtv_app_mtk]>  D   vbobj_backend.cpp 0336 vbo_notify_task  New State=3
+[dtv_app_mtk]>[NETTV][M]>>>>>>>>>>[IMnettvR_plf_stream_InitBackEnd][174][LOG_TIME]InitBackend(0) at [1503041902.292 S]
+[dtv_app_mtk]>  V   media_backend.cpp 1630 _mmb_ntf_evt_callback  MOBJ_IPC_EVT_NETWORK_STATE
+[dtv_app_mtk]>  D   media_backend.cpp 1655 _mmb_ntf_evt_callback  buffer state is MOBJ_BUFF_UNERRUN
+[dtv_app_mtk]>  D   media_backend.cpp 1657 _mmb_ntf_evt_callback  [BufferingStreamUnderrunEvent] ret[1] [OK], src_id: 0
+[dtv_app_mtk]>[NETTV][M]>>>>>>>>>>[singlemarlin.cpp][448], nettv_stream_marlin_setkey()
+[dtv_app_mtk]>[NETTV][M]>>>>>>>>>>[IMnettvR_plf_stream_InitBackEnd][215][LOG_TIME]InitBackend(0) End at [1503041902.343 S]
+[dtv_app_mtk]>  I   IMnettvPlf.c 0647 nettvplf_intfR_stream_init_backend  Backend (instance id = 0) initialized
+[dtv_app_mtk]>  V   media_object.c 0302 mobj_set_url  nettvplf_intfR_stream_init_backend(https://certification.nettvservices.com/test_environment/testroom/Media_files/Video/MP4/000003__%20MPEG-4_2Mbps_AVC_720x480_2Mbps_3CFR_AAC.mp4) ret 0
+[dtv_app_mtk]>  V   media_object_ipc.c 0759 mobj_ipc_update_network_state  buffer state is 2
+[dtv_app_mtk]>  V   media_backend.cpp 1630 _mmb_ntf_evt_callback  MOBJ_IPC_EVT_NETWORK_STATE
+[dtv_app_mtk]>  D   media_backend.cpp 1684 _mmb_ntf_evt_callback  buffer state is MOBJ_BUFF_IDLE
+[dtv_app_mtk]>  D   media_backend.cpp 1686 _mmb_ntf_evt_callback  [BufferingIdle] ret[2] [NOK]
+[dtv_app_mtk]>  V   IMnettvPlf.c 0589 nettvplf_intfR_stream_get_duration  entry
+[dtv_app_mtk]> [NETTV:11:57:14]!=!=!=!=========== get_duration_time:875, pull player total return -3
+[dtv_app_mtk]> [NETTV:11:57:14]!=!=!=!=========== mtk_stream_get_duration_time failed -1
+{unknown_mfmtrecg.c} Mem recognize done! ok!
+x_minfo_mopen,469, pull mode, ui8_file_size=72759082
+[dtv_app_mtk]>  V   media_object.c 0949 mobj_get_duration  nettvplf_intfR_stream_get_duration(0.000000) ret -1
+File parsing: begin parse file!
+[dtv_app_mtk]>  V   media_object_ipc.c 1488 _mobj_update_duration  0s
+[dtv_app_mtk]>  V   media_object_ipc.c 1497 _mobj_update_duration  0
+[dtv_app_mtk]>  V   media_object_ipc.c 0788 _mobj_ipc_task  MediaObject Received CMD -> MTK : 5
+[dtv_app_mtk]>  V   media_object_ipc.c 1102 _mobj_ipc_task  MOBJ_IPC_CMD_SET_VOLUME
+[dtv_app_mtk]>  V   IMnettvPlf.c 0710 nettvplf_intfR_stream_get_volume  entry
+[dtv_app_mtk]>  V   media_object.c 0598 mobj_set_volume  NewVol=100,CurVol=16,PreVol=-1,SysVol=16,cur_mute=0
+[dtv_app_mtk]>  D   IMnettvPlf.c 0491 nettvplf_intfR_stream_set_volume  volume=16.000000
+[dtv_app_mtk]>  V   media_backend.cpp 1933 setVisibility  visible[1]
+[dtv_app_mtk]>  D   media_backend.cpp 1384 setVideoWindowAndClip  video_window, x: 0, y: 105, w: 960, h: 720
+[dtv_app_mtk]>  V   media_backend.cpp 1385 setVideoWindowAndClip  clip_rect is not supported and will be ignored
+[dtv_app_mtk]>  D   media_proxy.cpp 0738 mmbpxy_set_window  d_scale=1.000000
+[dtv_app_mtk]>  D   media_proxy.cpp 0739 mmbpxy_set_window  ui2_brw_height=1080
+[dtv_app_mtk]>  D   media_proxy.cpp 0740 mmbpxy_set_window  ui2_brw_width =1920
+[dtv_app_mtk]>  D   media_proxy.cpp 0741 mmbpxy_set_window  x =0
+[dtv_app_mtk]>  D   media_proxy.cpp 0742 mmbpxy_set_window  y =105
+[dtv_app_mtk]>  D   media_proxy.cpp 0743 mmbpxy_set_window  w =960
+[dtv_app_mtk]>  D   media_proxy.cpp 0744 mmbpxy_set_window  h =720
+[dtv_app_mtk]> [NETTV:11:57:14]!=!=!=!=========== start thread id(1643115600): detached(1),name:Ntv4
+[dtv_app_mtk]>  V   media_object_ipc.c 0788 _mobj_ipc_task  MediaObject Received CMD -> MTK : 21
+[dtv_app_mtk]>  V   media_object_ipc.c 1305 _mobj_ipc_task  MOBJ_IPC_CMD_SET_VISIBILITY
+[dtv_app_mtk]>  V   IMnettvPlf.c 0717 nettvplf_intfR_stream_set_visibility  entry
+[dtv_app_mtk]>  V   media_object.c 0663 mobj_set_visibilty  nettvplf_intfR_stream_set_visibility(0, 0) ret 0
+[dtv_app_mtk]>  V   media_object_ipc.c 0788 _mobj_ipc_task  MediaObject Received CMD -> MTK : 6
+[dtv_app_mtk]>  V   media_object_ipc.c 0998 _mobj_ipc_task  MOBJ_IPC_CMD_SET_WINDOW
+[dtv_app_mtk]>  V   media_object_ipc.c 1452 _mobj_ipc_set_window  0 105 960 720
+[dtv_app_mtk]>  V   media_object.c 0902 mobj_set_window  (0,0,0,0 -> 0,105,960,720)
+[dtv_app_mtk]>  V   IMnettvPlf.c 0582 nettvplf_intfR_stream_set_window_pos  entry
+[dtv_app_mtk]>  V   media_object.c 0920 mobj_set_window  nettvplf_intfR_stream_set_window_pos(0, 105, 960, 720) ret 0
+[dtv_app_mtk]>  V   browser_proxy.c 2343 brpxy_ClearLocalPlaybackUI  entry
+[dtv_app_mtk]>  V   media_object_ipc.c 1474 _mobj_ipc_update_fullscreen  previous fullscreen=0 new=0
+[dtv_app_mtk]>  V   media_object_ipc.c 0788 _mobj_ipc_task  MediaObject Received CMD -> MTK : 2
+[dtv_app_mtk]>  V   media_object_ipc.c 0836 _mobj_ipc_task  processing MOBJ_IPC_CMD_PLAY i4_speed = 1, e_state=3
+[dtv_app_mtk]>  V   media_object_ipc.c 0852 _mobj_ipc_task  state = 3, mime = video/mpeg4, speed = 1
+[dtv_app_mtk]>  V   browser_controller.cc 6394 brctl_handle_ext_message  opw = 2, cmd = BRCTL_CMD_CLEAR_LOCAL_PB_UI
+[dtv_app_mtk]>  V   browser_controller.cc 8035 brctl_handle_ext_message  brctl_handle_ext_message->BRCTL_CMD_CLEAR_LOCAL_PB_UI: bShowLocalPlaybackUI = false;
+[dtv_app_mtk]>  D   media_object.c 0312 mobj_pb_start  (isSeekStart=0)
+[dtv_app_mtk]>  V   media_object.c 1589 _mobj_set_state  mobj state 0[STOPPED]->3[CONNECTING]
+[dtv_app_mtk]>  V   media_object_ipc.c 0356 mobj_ipc_update_state  state = 3
+[dtv_app_mtk]>
+[dtv_app_mtk]>  V   media_object_ipc.c 0433 mobj_ipc_update_state  Sending MOBJ_IPC_EVT_STATE to MOPXY
+[dtv_app_mtk]>  V   media_object.c 1097 mobj_request_player_resource  Enter platformReady:39249
+[dtv_app_mtk]>  V   media_object.c 1108 mobj_request_player_resource  Exit platformReady:39249
+[dtv_app_mtk]>  V   media_backend.cpp 1531 _mmb_ntf_evt_callback  MOBJ_IPC_EVT_STATE
+[dtv_app_mtk]>  D   IMnettvPlf.c 0512 nettvplf_intfR_stream_pb_start  InstanceID[0]
+[dtv_app_mtk]>  D   media_backend.cpp 2024 _handleEventState  PlayState changing from 1 to 3, currentSpeed: -1 nextSpeed: 0, requestSpeed: 1
+[dtv_app_mtk]>  V   media_backend.cpp 2117 _handleEventState  MOBJ_IPC_CONNECTING
+[dtv_app_mtk]>[NETTV][M]>>>>>>>>>>[IMnettvR_plf_stream_pb_start][549][LOG_TIME]Start(0) at [1503041902.378 S]
+[dtv_app_mtk]>  D   media_backend.cpp 2121 _handleEventState  [BufferingStreamUnderrunEvent] ret[1] [OK]
+[dtv_app_mtk]>  D   media_object.c 0327 mobj_pb_start  nettvplf_intfR_stream_pb_start ret 0
+[dtv_app_mtk]>  V   media_object_ipc.c 0788 _mobj_ipc_task  MediaObject Received CMD -> MTK : 21
+[dtv_app_mtk]>  V   media_object_ipc.c 1305 _mobj_ipc_task  MOBJ_IPC_CMD_SET_VISIBILITY
+[dtv_app_mtk]>  V   IMnettvPlf.c 0717 nettvplf_intfR_stream_set_visibility  entry
+[dtv_app_mtk]>  V   media_object.c 0663 mobj_set_visibilty  nettvplf_intfR_stream_set_visibility(1, 0) ret 0
+[dtv_app_mtk]>  V   media_object_ipc.c 0788 _mobj_ipc_task  MediaObject Received CMD -> MTK : 6
+[dtv_app_mtk]>  V   media_object_ipc.c 0998 _mobj_ipc_task  MOBJ_IPC_CMD_SET_WINDOW
+[dtv_app_mtk]>  V   media_object_ipc.c 1452 _mobj_ipc_set_window  0 105 960 720
+[dtv_app_mtk]>  V   media_object.c 0902 mobj_set_window  (0,105,960,720 -> 0,105,960,720)
+[dtv_app_mtk]>  V   IMnettvPlf.c 0582 nettvplf_intfR_stream_set_window_pos  entry
+[dtv_app_mtk]>  V   media_object.c 0920 mobj_set_window  nettvplf_intfR_stream_set_window_pos(0, 105, 960, 720) ret 0
+[dtv_app_mtk]>  V   browser_proxy.c 2343 brpxy_ClearLocalPlaybackUI  entry
+[dtv_app_mtk]>  V   media_object_ipc.c 1474 _mobj_ipc_update_fullscreen  previous fullscreen=0 new=0
+[dtv_app_mtk]>  V   browser_controller.cc 6394 brctl_handle_ext_message  opw = 2, cmd = BRCTL_CMD_CLEAR_LOCAL_PB_UI
+[dtv_app_mtk]>  V   browser_controller.cc 8035 brctl_handle_ext_message  brctl_handle_ext_message->BRCTL_CMD_CLEAR_LOCAL_PB_UI: bShowLocalPlaybackUI = false;
+[dtv_app_mtk]>  V   nettv_opera.cc 1098 opera_evt_loading_started  entry
+[dtv_app_mtk]>  I   browser_controller.cc 8168 brctl_evt_handler  handle opera event -> LoadingStarted::TYPE Window = 512(opw=17) Loading of URL 'file:///usr/opera/opera_dir/pages/lock/page.html' started
+[dtv_app_mtk]>  V   browser_controller.cc 8185 brctl_evt_handler  the opw_win = 17 is out of the range
+[dtv_app_mtk]>  D   nettv_opera.cc 1103 opera_evt_loading_started  Loading of URL 'file:///usr/opera/opera_dir/pages/lock/page.html' started
+[dtv_app_mtk]>  V   nettv_opera.cc 1833 opera_evt_visible_ssl_state_changed  entry
+[dtv_app_mtk]>  V   browser_controller.cc 9824 brctl_evt_handler  handle opera event -> VisibleSSLStateChanged::TYPE window = 512, security_state = 1, content_status = 0, subject = , issuer = , is_ev = 0
+[dtv_app_mtk]>  V   nettv_opera.cc 1186 opera_evt_url_changed  entry
+[dtv_app_mtk]>  V   browser_controller.cc 9071 brctl_evt_handler  handle opera event -> URLChanged::TYPE Window = 512(opw=17) Change to URL 'file:///usr/opera/opera_dir/pages/lock/page.html'
+[dtv_app_mtk]>  V   browser_controller.cc 9088 brctl_evt_handler  the opw_win = 17 is out of the range
+[dtv_app_mtk]>  V   nettv_opera.cc 1811 opera_evt_mime_type_retrieved  entry
+[dtv_app_mtk]>  V   browser_controller.cc 9785 brctl_evt_handler  MimeTypeRetrieved::TYPE, mime_type=text/html, content_type=, url=file:///usr/opera/opera_dir/pages/lock/page.html
+[dtv_app_mtk]>  V   nettvapp.c 0697 nettvapp_process_msg_async  msg 6: exit
+[dtv_app_mtk]>  V   nettvapp.c 0664 nettvapp_process_msg_async  msg 13: enter
+[dtv_app_mtk]>  V   nettvapp.c 2990 _nettvapp_proc_media_state  Enter, MOBJ media state=3
+[dtv_app_mtk]>  V   browser_proxy.c 1574 brpxy_ui_hide  4
+[dtv_app_mtk]>  V   imnettv.c 2589 nettvapp_intfR_SendMessage  nettvapp_intfR_SendMessage==[IN]=NettvappOSD = [2]===
+[dtv_app_mtk]>  D   imnettv.c 2632 nettvapp_intfR_SendMessage  Calling IMnettvR_SendMessage -- [LOADING_END]--
+[dtv_app_mtk]>  V   browser_proxy.c 1574 brpxy_ui_hide  1
+[dtv_app_mtk]>  V   browser_proxy.c 1594 brpxy_ui_update  1 0
+[dtv_app_mtk]>  V   nettvapp_stubs.c 0072 nettvapp_control_scrn_svr  entry
+[dtv_app_mtk]>  V   nettvapp.c 3124 _nettvapp_proc_media_state  Exit, MOBJ media
+[dtv_app_mtk]>  V   nettvapp.c 0697 nettvapp_process_msg_async  msg 13: exit
+[dtv_app_mtk]>  V   browser_controller.cc 6394 brctl_handle_ext_message  opw = 2, cmd = BRCTL_CMD_UI_HIDE
+[dtv_app_mtk]>  V   browser_controller.cc 7058 brctl_handle_ext_message  brctl_handle_ext_message->BRCTL_CMD_UI_HIDE: e_type = 4
+[dtv_app_mtk]>  V   browser_controller.cc 6394 brctl_handle_ext_message  opw = 2, cmd = BRCTL_CMD_UI_HIDE
+[dtv_app_mtk]>  V   browser_controller.cc 7058 brctl_handle_ext_message  brctl_handle_ext_message->BRCTL_CMD_UI_HIDE: e_type = 1
+[dtv_app_mtk]>  V   browser_controller.cc 1109 brctl_hide_window  opw = 16
+line 356_mtk]>  V   nettv_opera.cc 3296 opera_is_window_created  The given window id(opw = 16) doesn't id[dtv_app_mtk]>
+0x10000 0x0 0x0
+0x0 0x10000 0x0
+0x0 0x0 0x40000000
+_mp4_optional_description_parse, data format is 0x61766331
+The video codec type 12.codec info size 52
+File parsing: end parse file, ret = 0!
+File parsing: parse file ok!
+[CMPB_MW][LOG]_cmpb_ctrl_media_open_nfy_fct_body-4283::cmpb rece SVCTX_NTFY_CODE_MEDIA_PRE_PROCESSED!
+[dtv_app_mtk]>
+{unknown_mp4_minfo.c} ERROR: mp4_minfo_get_info index > video stream num
+{unknown_mp4_minfo.c} ERROR: mp4_minfo_get_info index > audio stream num
+{unknown_mp4_minfo.c} ERROR: mp4_minfo_get_info index > sbtl stream num
+[CMPB_MW][LOG]_cmpb_ctrl_play-20120::cmpb do _cmpb_ctrl_play
+{MM_SVCTX}: x_svctx_media_set_info[10424] SVCTX_MM_SET_TYPE_AUDIO_PREPLAY_INFO
+{MM_SVCTX}: x_svctx_media_set_info line 10444, pt_audio_preplay_info ad on:0,direction :0!
+[CMPB_MW][ERR]_cmpb_ctrl_play-20563::CMPB_SVCTX_MEDIA_SET_INFO(SVCTX_MM_SET_TYPE_AUDIO_PREPLAY_INFO) ok returns 0
+{MM_HDLR}: _mm_hdlr_preproc_svc_req line 806 play from pts = 0
+{MM_HDLR}: _mm_hdlr_preproc_svc_req#831, pt_media_desc = 0xa7f56974
+[CMPB_MW][LOG]IMtkPb_Ctrl_Play-20966::cmpb finish IMtkPb_Ctrl_Play
+{MM_HDLR}: mm_hdlr_select_svc line 25524
+[MM_HDLR]mm_hdlr_select_svc at [1503041911.682 S]
+{MM_HDLR}: file (null) is playing.
+[MM_HDLR]PLAYER_NTFY_CODE_PIPE_OPENED_GET_CMDS at [1503041911.682 S]
+{MM_HDLR}: PLAYER_NTFY_CODE_PIPE_OPENED_GET_CMDS
+{CM_PLAYBACK} Connecting... (CM connection 17113139)
+{{CM_PLAYBACK} } {CM_PLAYBACK} Create pmt update delay timer failed L12283!
+[dtv_app_mtk]>
+[PHM_CI]:_phm_ch_svctx_nfy_hdlr cSVCTX_NTFY_CODE_SERVICE_CHANGING all phm_model_ci_set_ignore_enq(FALSE)
+{MM_HDLR}: force mute 0
+[MWIF2-BAGT]set BUF_AGT_SET_OPERATION_MODE,swdmxid = 0
+[dtv_app_mtk]>{MM_HDLR}: PLAYER_NTFY_CODE_CONN_CONNECTED
+[MM_HDLR]PLAYER_NTFY_CODE_CONN_CONNECTED at [1503041911.691 S]
+{MM_HDLR}: PLAYER_NTFY_CODE_SCDB_OPENED
+[MM_HDLR]PLAYER_NTFY_CODE_SCDB_OPENED at [1503041911.691 S]
+{MM_HDLR}: e_conn_cond = 6, h_scdb = 1134ae3
+{MM_HDLR}: enter _mm_hdlr_handle_cm_connected
+Func _mm_hdlr_update_scdb_recs Video rec num 1
+{MM_HDLR}: [svctx] video num:1
+{MM_HDLR}: [svctx]  fill video num:1
+{MM_HDLR}: [svctx]  audio num:1
+{MM_HDLR}: [svctx]  fill audio num:2
+{MM_HDLR}: [svctx]  sbtl num:0
+{MM_HDLR}: [svctx]  fill sbtl num:2
+{MM_HDLR}: [svctx]  Total scdb num:2
+Update scdb video,ret 0
+{MM_HDLR}: [svctx] scdb num: 2 addr:0xa1d1f56c sbtlstart:2
+{CM_PLAYBACK} seek type = 2
+[dtv_app_mtk]>  V   media_backend.cpp 1153 getDuration  duration inf, uva_ret 3
+[dtv_app_mtk]>  V   media_backend.cpp 1153 getDuration  duration inf, uva_ret 3
+[dtv_app_mtk]>  V   media_backend.cpp 1153 getDuration  duration inf, uva_ret 3
+[dtv_app_mtk]>  V   media_backend.cpp 1153 getDuration  duration inf, uva_ret 3
+[dtv_app_mtk]>> GET /test_environment/testroom/Media_files/Video/MP4/000003__%20MPEG-4_2Mbps_AVC_720x480_2Mbps_3CFR_AAC.mp4 HTTP/1.1
+[dtv_app_mtk]>Host: certification.nettvservices.com
+[dtv_app_mtk]>Range: bytes=0-
+[dtv_app_mtk]>User-Agent: Mozilla/5.0 (Linux armv7l) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/49.0.2623.112 Safari/537.36 OPR/36.0.2128.0 OMI/4.8.0.129.Driver3.25, HbbTV/1.1.1 _TV_MT5802/012.002.089.000 (Philips, PUS6162, wired) CE-HTML/1.0 NETTV/4.6.0 SignOn/2.0 SmartTvA/5.0.0 en
+[dtv_app_mtk]>Accept: */*
+[dtv_app_mtk]>
+[dtv_app_mtk]>< HTTP/1.1 206 Partial C[  362.373ont631] [FBMent
+[d]FBM alloc Feeder
+tv_[  app_362.3736m5tk]>3]< D [FBM] FBM Alloc Pool Type 0xe
+[  362.373663] [FEEDER]feeder use FEEDER_FBM_FEEDER!!!
+[  362.373719] [FEEDER]feeder create dummy queue,ret=0
+[  362.374134] [FEEDER]Feeder Task :2
+[  362.376757] [SWDMX]_SWDMX_Mp4SetStrmID(SrcId 0, AudStrmId 0x00000001)...
+[  362.377256] [SWDMX]_SWDMX_Mp4SetDecoderInfo SET_VIDEOTYPE(SrcId 0, VDecType 4)...
+[  362.378661] [SWDMX]_SWDMX_Mp4SetDecoderInfo VIDSEQHEADER @line480
+[  362.378676] [SWDMX]VidSeqHdr[0] Ptr 0xc55a00c0, Length 52/5120
+[  362.378688] [SWDMX]The first play set Video Sequnce Header Feeder Buffer 0xc55a14c0/5120
+[  362.378840] [SWDMX]AudDecType 5, AudSampleRate 44100, AudChannelNs 2
+[  362.380320] [SWDMX]Current SrcType(7)[MM] and SrcType (7)[SWDMX]
+[  362.380336] [SWDMX]_SWDMX_Mp4SetRange(fileSize 72759106, fileOff 0x18, Id 1211630080, Size 72759082, Dur 17660865, Seekable, Non-support3DTrick).[SWDMX]Total 1 AudTrack 1 VidTrack 1 KeyTrack 0 SubTrack FPS 30.
+[  362.380363] [SWDMX]Didn't find VideoTrack(IndexTable)[0] by StreamId 0x00000000! @L9411
+[  362.380590] [SWDMX]_SWDMX_Mp4SetStrmID(SrcId 0, AudStrmId 0x00000001)...
+[  362.380613] [SWDMX]SWDMX_InitDmx GetAudioPid 0 @L9756
+[  362.380628] [SWDMX]SWDMX_InitDmx GetAudioFifo Addr 0x3fdb3c00, size 294912
+[  362.380678] [DMX]_DMXMMAllocBuf - Pidx 0 sets buffer addr 0x3fdb3c00
+[  362.380733] [SWDMX]_SWDMX_Mp4EnableStrm(0) Aud
+[  362.380837] [SWDMX]_SWDMX_Mp4SetStrmID(SrcId 0, VidStrmId 0x00000002)...
+[  362.380863] [SWDMX]SWDMX_InitDmx DecType 4(SearchStartCode TRUE) VidPid 1 VFifo 0x5ec00000/0x1400000 @L9738
+[  362.380880] [DMX]_DMXMMAllocBuf - Pidx 1 sets buffer addr 0x5ec00000
+[  362.381293] [SWDMX]_SWDMX_Mp4EnableStrm(0) Vid
+[  362.381316] [VDEC][VDEC-SET 0] Disp direction(0->0)
+[  362.381473] [AUD]Non-Netflix mode
+[  362.381807] [SWDMX]_SWDMX_Mp4SetRange(fileSize 72759106, fileOff 0x18, Id 1211630080, Size 72759082, Dur 17660865, Seekable, Non-support3DTrick).[SWDMX]Total 1 AudTrack 1 VidTrack 1 KeyTrack 0 SubTrack FPS 30.
+[  362.382215] [AUD] PEQ : _AUD_DspUpdatePEQ : Dec(0) u1ModeIdx(1) u1StartPEQSet(7)
+[  362.382235] [AUD][SourceGain] -1, input src id=0, inputsrcVol=0
+[  362.382245] [AUD][SourceGain]u1DecId(0) dbtoShm = 0x1e35b
+[  362.382254] [AUD] PEQ : _AUD_DspUpdatePEQ : Dec(0) u1ModeIdx(1) u1StartPEQSet(7)
+[  362.382267] [AUD]_AudDspChannelVolChange, u1DecId (0), eChannel (20)
+[  362.382276] [AUD]_InputDecVolume is conflict with inpt src vol offset
+[  362.382284] [AUD] PEQ : _AUD_DspUpdatePEQ : Dec(0) u1ModeIdx(1) u1StartPEQSet(7)
+[  362.382313] [AUD]_AudDspChannelVolChange, u1DecId (0), eChannel (0)
+[  362.382322] [AUD](_AudDspChannelVolChange,3315) u4Volumn(0x1088) u8ChlVol(0x0)
+[  362.382334] [AUD]_AudDspChannelVolChange, u1DecId (0), eChannel (1)
+[  362.382342] [AUD](_AudDspChannelVolChange,3315) u4Volumn(0x1088) u8ChlVol(0x0)
+[  362.382353] [AUD]_AudDspChannelVolChange, u1DecId (0), eChannel (2)
+[  362.382362] [AUD]_AudDspChannelVolChange, u1DecId (0), eChannel (3)
+[  362.382372] [AUD]_AudDspChannelVolChange, u1DecId (0), eChannel (4)
+[  362.382381] [AUD]_AudDspChannelVolChange, u1DecId (0), eChannel (5)
+[  362.382390] [AUD]_AudDspChannelVolChange, u1DecId (0), eChannel (6)
+[  362.382411] [AUD]_AudDspChannelVolChange, u1DecId (0), eChannel (7)
+[  362.382421] [AUD]_AudDspChannelVolChange, u1DecId (0), eChannel (8)
+[  362.382430] [AUD]_AudDspChannelVolChange, u1DecId (0), eChannel (9)
+[  362.554439] [VDP]VDP(0) Enable B2R(0)
+[  362.554633] [VDEC][0] FMT -> H264
+[  362.554710] [AUD][A]Reinit vAprocPcmr: mmdType(0,0), drc(1,0)
+[  362.554779] [VDEC][H264-M] alloc dec info 0xcbf13020
+[  362.554847] [VDEC]Update delta pts for netflix 3 7 0
+[  362.554861] [VDEC][0] stop -> init
+[  362.554874] [VDEC][0] dummy es...
+[  362.554884] [VDEC][0] dummy es...
+[  362.555340] [AUD]_AudDspChannelVolChange, u1DecId (0), eChannel (8)
+[  362.555357] [AUD] PEQ : _AUD_DspUpdatePEQ : Dec(0) u1ModeIdx(1) u1StartPEQSet(7)
+[  362.555375] [AUD]_AudDspChannelVolChange, u1DecId (0), eChannel (9)
+[  362.555384] [AUD] PEQ : _AUD_DspUpdatePEQ : Dec(0) u1ModeIdx(1) u1StartPEQSet(7)
+[  362.555805] [AUD]_AudDspChannelVolChange, u1DecId (0), eChannel (8)
+[  362.555818] [AUD] PEQ : _AUD_DspUpdatePEQ : Dec(0) u1ModeIdx(1) u1StartPEQSet(7)
+[  362.555834] [AUD]_AudDspChannelVolChange, u1DecId (0), eChannel (9)
+[  362.555844] [AUD] PEQ : _AUD_DspUpdatePEQ : Dec(0) u1ModeIdx(1) u1StartPEQSet(7)
+[  362.558618] [SWDMX]VidStartRenderPts 0, AudStartRenderPts 0, StartPosPtsInRange 0
+[  362.558660] [SWDMX]Set VdecRenderFromPts and StcValue 0x1770(0.066s) @L1995
+[  362.558672] [SWDMX]AUD_SetStartPts(0, 0x0(0.000s)) and TriggerAudPts @L2002
+[  362.558709] [SWDMX]Begin to Play @L2057
+[  362.558718] [SWDMX]Begin to Play u1CurATrack = 0
+[  362.558728] [VDEC][0] dummy es...
+[  362.558746] [VDEC][0] init -> pause
+[  362.559056] [SWDMX]_SWDMX_Mp4GetDataFromFeeder Invalid. CurrentReqTimes 1 @L10772
+[  362.559070] [SWDMX]_SWDMX_Mp4GetDataFromFeeder failed @L4773.
+[  362.559088] [SWDMX]_SWDMX_Mp4RequestData failed @L4485
+ate: Fri, 18 Aug 2017 07:37:04 GMT
+[dtv_app_mtk]>< Server: Apache/2.4.7 (Ubuntu)
+{MM_HDLR}: _mm_hdlr_update_scdb_recs, line 13579, ret 0
+[dtv_app_mtk]>< Last-Modified: Thu, 28 Jul 2016 12:08:00 GMT
+[dtv_app_mtk]>< ETag: "456372a-538b0fc38e200"
+[dtv_app_mtk]>< Accept-Ranges: bytes
+[dtv_app_mtk]>< Content-Length: 72759082
+[dtv_app_mtk]>< Content-Range: bytes 0-72759081/72759082
+[dtv_app_mtk]>< Content-Type: video/mp4
+[dtv_app_mtk]><
+[MWIF2-BAGT]buf_agt_set_feedersrc,swdmxid = 0
+[dtv_app_mtk]>[MWIF2-BAGT]set feeder src,id = 0
+[dtv_app_mtk]>[MM_HDLR]PLAYER_NTFY_CODE_SCDB_UPDATED at [1503041913.076 S]
+{MM_HDLR}: e_media_type =4 ,e_strm_type =2
+{MM_HDLR}: PLAYER_NTFY_CODE_SESS_OPENED
+[MM_HDLR]PLAYER_NTFY_CODE_SESS_OPENED at [1503041913.077 S]
+{MM_HDLR}: e_media_type =4 ,e_strm_type =2
+{MM_HDLR}: e_media_type =4 ,e_strm_type =1
+API: mm_hdlr_open_strm#12059, pt_svctx = 0xad8cac9c, strm_type = 1
+{MM_HDLR}: mm_hdlr_open_strm line 12121 open stream type ST_VIDEO
+{MM_HDLR}: e_media_type =4 ,e_strm_type =0
+[CMPB_MW][ERR]_cmpb_audio_strm_comp_filter-5935::[lzl]ui2_idx=0, enc=0
+API: mm_hdlr_open_strm#12059, pt_svctx = 0xad8cac9c, strm_type = 0
+{MM_HDLR}: mm_hdlr_open_strm line 12224 open stream type ST_AUDIO
+Info:mm_hdlr_open_strm#12258: b_ad_enabled = 0, b_aux_audio = 0
+Video strm_id 2,ui1_idx 0
+The 0 key_info strm_id is 2
+[SM] VS(0x0103204F), set video codec(VID_ENC_H264)
+=======mp4_midxbuld_mopen line 4552 end=======
+{MM_HDLR}: this file create index table success !!line10769
+Video strm_id 2,ui1_idx 0
+=====start pts: 0, end: 1800000, file_start:0 , dur: 17660865=====
+{MM_HDLR}: _mm_hdlr_handle_strm_msg line 16788 open stream(1) OK
+{MM_HDLR}: _mm_hdlr_handle_strm_msg line 16788 open stream(0) OK
+Function _mm_hdlr_set_strm_codec_spec_info ,line 8671,print Audio fomat = 6 before sending to SM
+mem indexing ui4_number_of_entry = 630
+***************** range info start*********************
+start    pts: 0x       0
+end      pts: 0x  1cd6cf
+start tbl pts: 0x    1770
+end  tbl pts: 0x  1cd6d0
+start sample: 0x       1
+end   sample: 0x     276
+start offset: 0x      28
+end   offset: 0x  824bfb
+***************** range info end*********************
+---------ui4_pts: 0x1770, ofst: 0x28, size: 0x1063  --------
+---------ui4_pts: 0x4650, ofst: 0x108b, size: 0x314  --------
+---------ui4_pts: 0x2ee0, ofst: 0x139f, size: 0x103  --------
+---------ui4_pts: 0x2328, ofst: 0x14a2, size: 0x89  --------
+---------ui4_pts: 0x3a98, ofst: 0x152b, size: 0x53  --------
+---------ui4_pts: 0x1ca7f0, ofst: 0x81177b, size: 0x3326  --------
+---------ui4_pts: 0x1ce288, ofst: 0x814aa1, size: 0x7cb7  --------
+---------ui4_pts: 0x1ccb18, ofst: 0x81d752, size: 0x41da  --------
+---------ui4_pts: 0x1cbf60, ofst: 0x82192c, size: 0x32cf  --------
+---------ui4_pts: 0x1cd6d0, ofst: 0x824bfb, size: 0x16b  --------
+mem indexing ui4_number_of_entry = 905
+***************** range info start*********************
+start    pts: 0x       0
+end      pts: 0x  1cd6cf
+start tbl pts: 0x       0
+end  tbl pts: 0x  1cd397
+start sample: 0x       1
+end   sample: 0x     389
+start offset: 0x    5015
+end   offset: 0x  81cc93
+***************** range info end*********************
+---------ui4_pts: 0x0, ofst: 0x5015, size: 0xa  --------
+---------ui4_pts: 0x829, ofst: 0x501f, size: 0xa  --------
+---------ui4_pts: 0x1053, ofst: 0x5029, size: 0xa  --------
+---------ui4_pts: 0x187d, ofst: 0x5033, size: 0x19  --------
+---------ui4_pts: 0x20a7, ofst: 0x504c, size: 0x48  --------
+[dtv_app_mtk]>  V   media_backend.cpp 1153 getDuration  duration inf, uva_ret 3
+---------ui4_pts: 0x1cb2f0, ofst: 0x7f37da, size: 0x1c2  --------
+---------ui4_pts: 0x1cbb1a, ofst: 0x81c758, size: 0x19e  --------
+[dtv_app_mtk]>  V   media_backend.cpp 1153 getDuration  duration inf, uva_ret 3
+---------ui4_pts: 0x1cc343, ofst: 0x81c8f6, size: 0x1d2  --------
+---------ui4_pts: 0x1ccb6d, ofst: 0x81cac8, size: 0x1cb  --------
+[dtv_app_mtk]>  V   media_backend.cpp 1153 getDuration  duration inf, uva_ret 3
+---------ui4_pts: 0x1cd397, ofst: 0x81cc93, size: 0x1fb  --------
+[dtv_app_mtk]>  V   media_backend.cpp 1153 getDuration  duration inf, uva_ret 3
+{MM_HDLR}: _mm_hdlr_range_info_gen,4050, pt_mm_rang_info->ui8_pb_duration = 17660865
+Get the key sample count 193,line 4378
+Get the another key!
+{MM_HDLR}: mm_hdlr add range success!
+[dtv_app_mtk]>  V   imnettv.c 1714 IMnettvP_vb_SetCurrentChannel  entry
+{MM_HDLR}: mm_hdlr_internal_msg line 26969 mm_hdlr set play sess cmd i4_ret = 1
+[MWIF2-SWDMX]PESQ call _MwDmxEnablePrebuf srcid 0 enable:1
+[dtv_app_mtk]>  V   video_broadcast_object.c 0939 vbobjctrl_setCurrentChannelData  entry
+[dtv_app_mtk]>[MWIF2-SWDMX]PESQ Enabled wait for Init
+[dtv_app_mtk]>[MWIF2-BAGT]_buf_agt_flush
+[dtv_app_mtk]>[TEST] pt_state->ui4_curr_state(3),evn(1000001)
+[dtv_app_mtk]>  D   video_broadcast_object.c 0945 vbobjctrl_setCurrentChannelData  name = HbbTV-Testsuite1, ccid = 0:1.808.0
+[TEST] pt_state->ui4_curr_state(3),evn(1000001)
+[TEST] pt_state->ui4_curr_state(3),evn(1000001)
+{SM-AD} [SM] AS: sm_audio_hdlr.c:1666.:stream handler(0x01031FE0).Audio Decoder notify 0x00000011!
+[dtv_app_mtk]>  D   video_broadcast_object.c 1013 vbobjctrl_setCurrentChannelData  cur_chn_tbl_data->name = HbbTV-Testsuite1, ccid =1.808
+{MM_HDLR}: mm_hdlr_internal_msg line 26969 mm_hdlr set play sess cmd i4_ret = 1
+{SM-CM} [SM] VS: sm_vs_state_do_started(0x0103204f), rm_get(VID_DEC_GET_TYPE_DECODE_STATUS) fail, i4_ret = -16
+[dtv_app_mtk]>  V   imnettv.c 1718 IMnettvP_vb_SetCurrentChannel  exit
+{MM_HDLR}: mm_hdlr_internal_msg line 26969 mm_hdlr set play sess cmd i4_ret = 1
+[dtv_app_mtk]>  D   IMnettvPlf.c 0153 IMnettvP_plf_stream_evt_callback  InstanceID [0],pEvent[-7]
+{MM_HDLR}: _mm_hdlr_handle_strm_msg line 16898 stream(0) started
+{MM_HDLR}: mm_hdlr_internal_msg line 26969 mm_hdlr set play sess cmd i4_ret = 0
+[dtv_app_mtk]>  D   media_object.c 1200 mobj_cb_playback_event  playback event: -7
+{MM_HDLR}: _mm_hdlr_handle_strm_msg line 16898 stream(1) started
+{MM_HDLR}: mm_hdlr_internal_msg line 26969 mm_hdlr set play sess cmd i4_ret = 0
+[dtv_app_mtk]>  V   media_object.c 1340 _mobj_thread  MOBJ_CB_EVENT,event=[-7]
+{MM_HDLR}: PLAYER_NTFY_CODE_SESS_STARTED
+[MM_HDLR]PLAYER_NTFY_CODE_SESS_STARTED at [1503041913.258 S]
+[dtv_app_mtk]>  V   media_object.c 1427 _mobj_cb_playback_event_proc  eventType=(-7)
+[CMPB_MW][LOG]_cmpb_ctrl_media_play_nfy_fct_body-5060::cmpb rece SVCTX_NTFY_CODE_NORMAL
+[dtv_app_mtk]>  D   media[  363.578561] [SWDMX]_SWDMX_Mp4GetDataFromFeeder Invalid. CurrentReqTimes 1 @L10772
+[  363.578589] [SWDMX]_SWDMX_Mp4GetDataFromFeeder failed @L4773.
+[  363.578599] [SWDMX]_SWDMX_Mp4RequestData failed @L4485
+_object.c 1552 _mobj_cb_playback_event_proc  STREAM_EVT_DURATION_CHANGED (-7)
+{MM_HDLR}: _mm_hdlr_handle_sess_started line 19051 check stream status
+{MM_HDLR}: e_media_type =4 ,e_strm_type =1
+{MM_HDLR}: e_media_type =4 ,e_strm_type =0
+[dtv_app_mtk]>  V   IMnettvPlf.c 0589 nettvplf_intfR_stream_get_duration  entry
+[dtv_app_mtk]>  V   media_object.c 0949 mobj_get_duration  nettvplf_intfR_stream_get_duration(196.000000) ret 0
+[dtv_app_mtk]>  V   media_object_ipc.c 1488 _mobj_update_duration  196s
+[dtv_app_mtk]>  V   media_object_ipc.c 1497 _mobj_update_duration  196000
+[dtv_app_mtk]>  V   media_object_ipc.c 1505 _mobj_update_duration  Sending MOBJ_IPC_EVT_DURATION_CHANGE to MOPXY
+[dtv_app_mtk]>  V   media_backend.cpp 1552 _mmb_ntf_evt_callback  MOBJ_IPC_EVT_DURATION_CHANGE
+[dtv_app_mtk]> [NETTV:11:57:14]!=!=!=!=========== start thread id(1617949776): detached(1),name:Ntv5
+[dtv_app_mtk]>  V   media_backend.cpp 1153 getDuration  duration 196.000000, uva_ret 1
+[dtv_app_mtk]>  V   media_backend.cpp 1153 getDuration  duration 196.000000, uva_ret 1
+{MM_HDLR}: DRIVAUD_CMD_AVSYNCd decoder 0 Play [dtv_app_mtk]>
+[  364.023750] [AUD]_hAudRiscEncThread is not available
+[  364.028811] [AUD]AudPll2Setting:eFs(5),prevAPll2(5),HDMIMode
+[  364.028839] [AUD]AudPll2SettinER Sg is locked!!!
+[  364.028876] [AUD]_hAudRiscEncThread is not available
+[  364.033707] [AUD]Non-Netflix mode
+[  364.037414] [SWDMX]SWDMX_Mp4AudioCb Audio is ready
+[  364.037445] [SWDMX]SWDMX_Mp4AudioCb VDP Trigger PTS = 0x00000000
+[  364.037510] [VDEC][0] pause -> init
+[  364.037526] [VDEC][0] dummy es...
+[  364.037580] [VDEC][0] pre-parse done --> (720x480 P @3000fps).
+[  364.037614] [VDEECN]D SSet status 160, Vld: 2, 3, prVdec cbf13020
+[  364.038086] [FBM] FBM Alloc Pool Type 0x60
+[  364.038149] [VDEC][0] init -> play
+[  364.038169] [VDEC][H264-0] [View-0] DEC_FLG_WAIT_NEXT_I FlushDPB
+[  364.038188] [VDEC][0] >>> cmd(3) to worker
+[  364.038398] [VDEC][H264-W] alloc dec info 0xcc464020
+[  364.038431] [VDEC]Set status 18, Vld: 0, 3, prVdec cc464020
+[  364.038448] [VDEC][0w] flush dpb
+[  364.038480] [VDEC][0] <<< cmd(3) back
+[  364.038587] [VDEC]MaxRefNums chg 1 -> 5
+[  364.038728] [AUD][A]Reinit vAprocPcmr: mmdType(0,2), drc(0,0)
+[  364.039087] [VDEC][0w] resolution change 0x0 -> 720x480 10bit 0 u1Fps 0 0
+[  364.039102]VC TX_[VDEC]Final CreaNTFY_CODE_AUDIO_FMT_UPDATE, e_aud_fmt(6), e_chte FBG, FrameRate 5 u1Fps 0
+[  364.039115] [FBM]FBM_CreateGroupExt: FbgType(2) Codec(1) HV(720, 480) 10Bit(0) UFO(0) SeamlessMannode(0) ref(4).
+[  364.039164] [FBM]Change Mode to default Target W/H (el0-0)s(
+[  364.039178] [FBM] FBM Alloc Pool Type 0x5
+[  364.039193] [FBM]ucFbgType 2 u4YSize 0x6c000 u4CSize 0x36000 u4FbWidth 0x300 u4FbHeight 0x240
+[  364.043787] [AUD][Aproc_Sync]Notify MM Aout(0) Enable
+[  364.043816] [AUD](Aproc_Sync)Dec(0)HOLD C,u4Pts=0x0
+[  364.043833] [SWDMX]SWDMX_Mp4AudioCb Audio is r4)
+[eaddtv_ay
+[MM_HDLR]SVCTX_NTFY_CO035] [FBM]CreatDE_AUDIO_FMT_UPDATE at [1503041 Fbg1 cost -> 31 ms
+[  364.071056] [FBM]Creat Fbg2 cost -> 0 ms
+[  364.071151] [VDEC][H264-W] Get FbgId 0
+[  364.071164] [VDEC]1st Frm Start Prs
+[  364.071194] [FBM]FBM_SetSeqChgFbId ucFbgId  0 ucFbId 0
+[  364.073625] [VDP]Non-preck,so set true
+[  364.073649] [FBM]u4Width 0 u4Height 0 u4OrgWidth 720 u4OrgHeight 480
+[  364.073676] [VDP]W-H(720-480) VB1(0) B2R(0)
+[  364.073689] [VDP]Timin914.725 S]
+[CMPg name: 720x480/30P, 3D: Off
+[  364.084844]
+[  364.084844] [Panel] get index 224
+[  364.086740]
+[  364.086740] [Panel] get index 224
+[  364.087937] [OSD]OSD_BASE_UpdateAutoPosition: osd timing is from front scaler
+[  364.087952] [NPTV][OSD]Before PQ Module offset:i4H=524 i4V=4
+[  364.087964] [NPTV][OSD]DBG XvYCC bypass
+[  364.087972] [NPTV][OSD]DBG Gamma position 0 or 1
+[  364.087979] [NPTV][OSD]DBG defined SMALL_OUTWINDOW_TTD_NEWSETTING
+[  364.087988] [NPTV][OSD]After PQ Module offset:i4H=381 i4V=4
+[  364.087997] [OSD]OSD_BASE_UpdateAutoPosition: HStart=381 VStart=4
+[  364.105191]
+[  364.105191] [Panel] get index 224
+[  364.107131]
+[  364.107131] [Panel] get index 224
+[  364.108337] [OSD]OSD_BASE_UpdateAutoPosition: osd timing is from front scaler
+[  364.108352] [NPTV][OSD]Before PQ Module offset:i4H=524 i4V=4
+[  364.108363] [NPTV][OSD]DBG XvYCC bypass
+[  364.108370] [NPTV][OSD]DBG Gamma positioB_MW][LOG]_cmpb_ctrl_media_playn 0 or 1
+[  364.108378] [NPTV][OSD]DBG defined SMALL_OUTWINDOW_TTD_NEWSETTING
+[  364.108386] [NPTV][OSD]After PQ Module offset:i4H=381 i4V=4
+[  364.108395] [OSD]OSD_BASE_UpdateAutoPosition: HStart=381 VStart=4
+[  364.124682] [VDP]------- in VDP_Drv3DModeChgNotify ---IsBefore=1-------
+[  364.124713] [NPTV]vDrvSetOCLKClockSchemaInit.
+[  364.124725] ###VbyOne VOPLLSet  finsih###[SA7] _fgVopllUseDDDS = True
+[  364.124739] [NPTV]@vDrvSetVOPLLClockSchema -->4KDD
+[  364.124810] [NPTV]input gamma type is undefined...
+[  364.124926] <IMvideoP_GetBackLightPWMFrequency:1015]> Mvideo: IMvideoP_GetBackLightPWMFrequency() wFrequency = 0, freq = 60
+[  364.124926]
+[  364.125373] <IMvideoP_SetCurrentSource:972]> IMvideoR_GetVideoDelay()=0x0, bPwmDelay = bContrastDelay = 0x2
+[  364.125373]
+[  364.125600]
+[  364.125600]
+[  364.125600] [IMvideoP_SetCurrentSource] Source = 9
+[  364.125600]
+[  364.126775]
+[  364.126775] [Panel] get index 224
+[  364.128207]
+[  364.128207] [Panel] get index 224
+[  364.129406] [OSD]OSD_BASE_UpdateAutoPosition: osd timing is from front scaler
+[  364.129420] [NPTV][OSD]Before PQ Module offset:i4H=524 i4V=4
+[  364.129431] [NPTV][OSD]DBG XvYCC bypass
+[  364.129439] [NPTV][OSD]DBG Gamma position 0 or 1
+[  364.129446] [NPTV][OSD]DBG defined SMALL_OUTWINDOW_TTD_NEWSETTING
+[  364.129454] [NPTV][OSD]After PQ Module offset:i4H=381 i4V=4
+[  364.129464] [OSD]OSD_BASE_UpdateAutoPosition: HStart=381 VStart=4
+[  364.129816]
+[  364.129816] [Panel] get index 224
+[  364.129825] [NPTV]SV_VP_PIP no need support min max
+[  364.130364] [SCPOS]AP set Output Window Width or Height is 0
+[  364.137306]
+[  364.137306] [Panel] get index 224
+[  364.138373] [NPTV] Set HDR Enable = 0
+[  364.139324]
+[  364.139324] [Panel] get index 224
+[  364.140234] [NPTV] Set HDR Enable = 0
+[  364.141040]
+[  364.141040] [Panel] get index 224
+[  364.141913] [NPTV] Set HDR Enable = 0
+[  364.142587]
+[  364.142587] [Panel] get index 224
+[  364.143448] [NPTV] Set HDR Enable = 0
+[  364.144404] [OSD]OSD_TimingNfy: OSD timing changed
+[  364.144439] [OSD]OSD_BASE_UpdateAutoPosition: osd timing is from front scaler
+[  364.144451] [NPTV][OSD]Before PQ Module offset:i4H=524 i4V=4
+[  364.144462] [NPTV][OSD]DBG XvYCC bypass
+[  364.144469] [NPTV][OSD]DBG Gamma position 0 or 1
+[  364.144477] [NPTV][OSD]DBG defined SMALL_OUTWINDOW_TTD_NEWSETTING
+[  364.144485] [NPTV][OSD]After PQ Module offset:i4H=381 i4V=4
+[  364.144495] [OSD]OSD_BASE_UpdateAutoPosition: HStart=381 VStart=4
+[  364.148582] [AUD]========================================
+[  364.148599] [AUD][PLAY_MUTE] Delay adjustment information
+[  364.148606] [AUD]### Video delay =   116  ,  FRC frame rate = 60
+[  364.148636] [AUD]Non-Netflix mode
+[  364.148654] [AUD]Non-Netflix mode
+[  364.148661] [AUD]### Video Final delay =     208 , NetFlixFlag:0
+[  364.148680] [AUD]Non-Netflix mode
+[  364.148690] [AUD]### Audio delay =   208
+[  364.148698] [AUD]========================================
+[  364.148705] [AUD][PLAY_MUTE] ### Stadard Main path Video delay = 116 ms, Audio delay = 208 ms
+[  364.148724] [AUD]Non-Netflix mode
+[  364.148731] [AUD]### Tunning for AAC = 168
+[  364.148748] [AUD]Non-Netflix mode
+[  364.148756] [AUD]_AUD_DspChannelDelay,10036(0, 168, -30) eChIndex:17, uDecIndex:0
+[  364.148769] [AUD]Dec 0 status is 1, source 9
+[  364.148777] [AUD]Dec 1 status is 0, source 1
+[  364.148785] [AUD]_AUD_DspChannelDelay(175, 175, 40) eChIndex:17, uDecIndex:0
+[  364.148805] [AUD]Non-Netflix mode
+[  364.148821] [AUD]Non-Netflix mode
+[  364.148828] [AUD][_AUD_DspChannelDelay]delay bank calc: 0x83, NetFlixFlag:0
+[  364.150518]
+[  364.150518] [Panel] get index 224
+[  364.152159]
+[  364.152159] [Panel] get index 224
+[  364.153074] [NPTV] Set HDR Enab_nfy_fct_body-5356::cmpb rece Sle = 0
+[  364.153598] [AUD]Non-Netflix mode
+[  364.153617] [AUD][PLAY_MUTE](0)AUD_DspChannelDelay(168)ms!!!!!
+[  364.155845]
+[  364.155845] [Panel] get index 224
+[  364.156855] [NPTV] Set HDR Enable = 0
+[  364.308965] [SWDMX]B2R Call Aout Here!
+VCTX_NTFY_CODE_AUDIO_FMT_UPDATE
+{MM_HDLR}: Get Type SVCTX_MM_GET_TYPE_AUD_INFO
+{MM_HDLR}: DRIVER SEND SVCTX_NTFY_CODE_AUDIO_FMT_UPDATE, e_aud_fmt(6), e_channels(4)
+[MM_HDLR]SVCTX_NTFY_CODE_AUDIO_FMT_UPDATE at [1503041914.740 S]
+[CMPB_MW][LOG]_cmpb_ctrl_media_play_nfy_fct_body-5356::cmpb rece SVCTX_NTFY_CODE_AUDIO_FMT_UPDATE
+{MM_HDLR}: Get Type SVCTX_MM_GET_TYPE_AUD_INFO
+{MM_HDLR}: _mm_hdlr_handle_strm_msg line 16609 DRIVER SEND VSH_DIG_DECODE_NORMAL
+[MM_HDLR]VSH_DIG_DECODE_NORMAL at [1503041914.741 S]
+{MM_HDLR}: DRIVER SEND SM_EVN_VS_VIDEO_PLAY_DONE
+[MM_HDLR]SM_EVN_VS_VIDEO_PLAY_DONE at [1503041914.776 S]
+{MM_HDLR}: DRIVER SEND SVCTX_NTFY_CODE_VIDEO_FMT_UPDATE, ui4_width(720), ui4_height(480)
+[MM_HDLR]SVCTX_NTFY_CODE_VIDEO_FMT_UPDATE at [1503041914.833 S]
+[CMPB_MW][LOG]_cmpb_ctrl_media_play_nfy_fct_body-5266::cmpb rece SVCTX_NTFY_CODE_VIDEO_FMT_UPDATE
+{MM_HDLR}: Screen mode call for video ready
+{MM_HDLR}: video ready get x 0 y 970 w 5000 h 6660
+{MM_HDLR}: force mute 0
+[ACFG_CUST]acfg_custom_zoom_stretch_update, Overscan: Match index = 2, top = 100, bottom = 100, left = 100, right = 100
+{MHEG5 SCT} ACFG set_default_overscan(100, 100, 100, 100) to MHEG5
+[dtv_app_mtk]>
+[ACFG_CUST]LINE44104 NETTV !!!timing:720 x 480, frmrate:3000
+[CMPB_MW][LOG]_cmpb_ctrl_handle_non_play_normal-8267::cmpb send IMTK_PB_CTRL_EVENT_PLAY_DONE
+{MM_HDLR}: force mute 0
+{MM_HDLR}: Disp region call for video ready
+{MM_HDLR}: video ready get x 0 y 970 w 5000 h 6660
+{MM_HDLR}: force mute 0
+{SM-SCC} [SCC] _scc_vid.c:866 rm_get(260) fail return -16
+[dtv_app_mtk]>
+[ACFG_CUST]scc get color system failed.
+[ACFG_CUST]acfg_custom_zoom_stretch_update, Overscan: Match index = 2, top = 100, bottom = 100, left = 100, right = 100
+{MHEG5 SCT} ACFG set_default_overscan(100, 100, 100, 100) to MHEG5
+[dtv_app_mtk]>
+[ACFG_CUST]LINE44104 NETTV !!!timing:720 x 480, frmrate:3000
+[dtv_app_mtk]>  D   IMnettvPlf.c 0066 IMnettvP_plf_stream_SetNativeSize  InstanceID[0],width[720], height[480], pixel[1.180000]
+[dtv_app_mtk]>  V   media_object_ipc.c 0585 mobj_ipc_update_native_size  entry
+[dtv_app_mtk]>  V   media_object_ipc.c 0590 mobj_ipc_update_native_size  Sending MOBJ_IPC_EVT_NATIVESIZE_CHANGED to MOPXY
+[dtv_app_mtk]>  D   IMnettvPlf.c 0077 IMnettvP_plf_stream_SetComponents  InstanceID[0],components[0xfd6560] size[1]
+[dtv_app_mtk]>  V   media_object.c 1272 mobj_cb_playback_components  number_of_comp 01
+[dtv_app_mtk]>  V   media_object_ipc.c 0722 mobj_ipc_cmd_components_action  action is 0
+[dtv_app_mtk]>  D   browser_proxy.c 2058 brpxy_update_audio_subtitle_language  [1]
+[dtv_app_mtk]>  D   nettvapp.c 3276 _nettvapp_cb_mobj  MOBJ_EVT_PB_COMPONENTS  AudioLang[01_en] SubtLang[00]
+[dtv_app_mtk]>  D   IMnettvPlf.c 0124 IMnettvP_plf_stream_state_change  InstanceID[0],CurrentState[1]
+[dtv_app_mtk]>  V   media_object.c 1170 mobj_cb_playback_state  state: 1
+{MM_HDLR}: Disp region call for video ready
+{MM_HDLR}: video ready get x 0 y 970 w 5000 h 6660
+{MM_HDLR}: force mute 0
+[MWIF2-VDP]{_VdpUnmuteStatusNotify, 4286} Notify VID_PLA_COND_MUTE_ALL_FINISHED to SM !!! u4VdpId 0, u4Arg1 1
+[dtv_app_mtk]>  V   media_backend.cpp 1560 _mmb_ntf_evt_callback  MOBJ_IPC_EVT_NATIVESIZE_CHANGED
+[dtv_app_mtk]>[MWIF2-VDP]{_VdpUnmuteStatusNotify, 4280} return reason: NULL == _arMwVdp[1].pfEosNfy
+[dtv_app_mtk]>  D   media_backend.cpp 1489 _handleDurationChanged  NewMetadataEvent duration 196.000000,w: 720, h: 480, pixel_aspect: 1.180000
+[dtv_app_mtk]>  D   media_backend.cpp 1491 _handleDurationChanged  [NewMetadataEvent] ret[2] [NOK]
+[dtv_app_mtk]>  V   media_backend.cpp 1716 _mmb_ntf_evt_callback  MOBJ_IPC_EVT_COMPONENT_CHANGED
+[dtv_app_mtk]>  D   media_backend.cpp 2211 _handleAVComponentChanged  mobj_ipc_comp_action is 0
+[dtv_app_mtk]>  D   media_backend.cpp 2343 _handleComponentUpdated  source_id = 0
+[dtv_app_mtk]>  D   media_backend.cpp 2289 _checkComponentAdded  av_comp->id = I_TRA_0
+[dtv_app_mtk]>  D   media_backend.cpp 2308 _addComponent  source_id = 0
+[dtv_app_mtk]>  D   media_backend.cpp 2327 _addComponent  [ComponentChangedEvent::ADDED] ret[1] [OK]
+[dtv_app_mtk]>  V   browser_controller.cc 6394 brctl_handle_ext_message  opw = 2, cmd = BRCTL_CMD_UPDATE_AUDIO_SUBTLE_LANG
+[dtv_app_mtk]>  V   browser_controller.cc 7492 brctl_handle_ext_message  brctl_handle_ext_message->BRCTL_CMD_UPDATE_AUDIO_SUBTLE_LANG: Update Option menu audio/subtitle language.
+[dtv_app_mtk]>  V   nettv_opera.cc 3291 opera_is_window_created  opw = 10, window_id = 256
+[dtv_app_mtk]>  V   browser_controller.cc 0446 brctl_exec_js  set_audio_subtitle_lang('01_en',''); at window = 10
+[dtv_app_mtk]>  V   nettv_opera.cc 3012 opera_msg_send_platform_event  (10,set_audio_subtitle_lang('01_en','');)
+[dtv_app_mtk]>  V   media_object.c 1335 _mobj_thread  MOBJ_CB_STATE,e_state=[1]
+[dtv_app_mtk]>  V   media_object.c 1405 _mobj_cb_playback_state_proc  PLAYING
+[dtv_app_mtk]>  V   media_object.c 1589 _mobj_set_state  mobj state 3[CONNECTING]->1[PLAYING]
+[dtv_app_mtk]>  V   media_object_ipc.c 0356 mobj_ipc_update_state  state = 1
+[dtv_app_mtk]>
+[dtv_app_mtk]>  V   IMnettvPlf.c 0624 nettvplf_intfR_stream_get_speed  entry
+[dtv_app_mtk]>  V   media_object.c 1048 mobj_get_mapped_play_speed  nettvplf_intfR_stream_get_speed(1)
+[dtv_app_mtk]>  V   IMnettvPlf.c 0589 nettvplf_intfR_stream_get_duration  entry
+[browser_base]>[605:729:0818/073835:364344367:INFO:CONSOLE(77)] "file:///3rd/html5/libs/mtvui/base.js:895:11 configUpdateNotifyFunc jsonStr= {"URI":"/tv/ws/notify/config_update","REQUEST":"NOTIFY","ITEMS":[{"ID":8,"TAG":1359752,"ARG1":0,"ARG2":""}]},", source: file:///3rd/html5/libs/mtvui/base.js (77)
+[dtv_app_mtk]>  V   nettv_opera.cc 3291 opera_is_window_created  opw = 10, window_id = 256
+[dtv_app_mtk]>  V   browser_controller.cc 0446 brctl_exec_js  setup_open_internet_op_menu() at window = 10
+[dtv_app_mtk]>  V   nettv_opera.cc 3012 opera_msg_send_platform_event  (10,setup_open_internet_op_menu())
+[dtv_app_mtk]>  V   media_object.c 0949 mobj_get_duration  nettvplf_intfR_stream_get_duration(196.000000) ret 0
+[dtv_app_mtk]>  V   media_object_ipc.c 1488 _mobj_update_duration  196s
+[dtv_app_mtk]>  V   media_object_ipc.c 1497 _mobj_update_duration  196000
+[dtv_app_mtk]>  V   media_object_ipc.c 1505 _mobj_update_duration  Sending MOBJ_IPC_EVT_DURATION_CHANGE to MOPXY
+[dtv_app_mtk]>  V   media_object_ipc.c 0433 mobj_ipc_update_state  Sending MOBJ_IPC_EVT_STATE to MOPXY
+[dtv_app_mtk]>  V   nettvapp.c 0664 nettvapp_process_msg_async  msg 13: enter
+[dtv_app_mtk]>  V   nettvapp.c 2990 _nettvapp_proc_media_state  Enter, MOBJ media state=1
+[dtv_app_mtk]>  V   media_object.c 1009 mobj_is_url_vs_streaming  0
+[dtv_app_mtk]>  V   browser_proxy.c 1553 brpxy_ui_show  4 1
+[dtv_app_mtk]>  V   imnettv.c 2589 nettvapp_intfR_SendMessage  nettvapp_intfR_SendMessage==[IN]=NettvappOSD = [2]===
+[dtv_app_mtk]>  D   imnettv.c 2632 nettvapp_intfR_SendMessage  Calling IMnettvR_SendMessage -- [LOADING_END]--
+[dtv_app_mtk]>  V   browser_proxy.c 1574 brpxy_ui_hide  1
+[dtv_app_mtk]>  V   nettvapp.c 3095 _nettvapp_proc_media_state   MOBJ_PLAYING, s_subtitle_on=-1, subtitle_setting=0
+[dtv_app_mtk]>  D   imnettv.c 2874 nettvapp_intfR_SetSubtitleOnOff  Calling IMnettvR_vs_SetSubtitleOnOff: 0
+[dtv_app_mtk]>  V   nettvapp_stubs.c 0072 nettvapp_control_scrn_svr  entry
+[dtv_app_mtk]>  V   nettvapp.c 3124 _nettvapp_proc_media_state  Exit, MOBJ media
+[dtv_app_mtk]>  V   nettvapp.c 0697 nettvapp_process_msg_async  msg 13: exit
+[dtv_app_mtk]>  V   media_backend.cpp 1552 _mmb_ntf_evt_callback  MOBJ_IPC_EVT_DURATION_CHANGE
+[dtv_app_mtk]>  D   media_backend.cpp 1489 _handleDurationChanged  NewMetadataEvent duration 196.000000,w: 720, h: 480, pixel_aspect: 1.180000
+[dtv_app_mtk]>  D   media_backend.cpp 1491 _handleDurationChanged  [NewMetadataEvent] ret[2] [NOK]
+[dtv_app_mtk]>  V   media_backend.cpp 1531 _mmb_ntf_evt_callback  MOBJ_IPC_EVT_STATE
+[dtv_app_mtk]>  D   media_backend.cpp 2024 _handleEventState  PlayState changing from 3 to 1, currentSpeed: 0 nextSpeed: 1, requestSpeed: 1
+[dtv_app_mtk]>  V   media_backend.cpp 2139 _handleEventState  MOBJ_IPC_PLAYING
+[dtv_app_mtk]>  D   media_backend.cpp 2144 _handleEventState  [BufferingStreamBuffered] ret[1] [OK]
+[dtv_app_mtk]>  V   browser_controller.cc 6394 brctl_handle_ext_message  opw = 2, cmd = BRCTL_CMD_UI_SHOW
+[dtv_app_mtk]>  V   browser_controller.cc 4012 brctl_ui_show_playback_progress  opw_url_current =https://certification.nettvservices.com//test_environment/testroom/Media_files/MediaObjectTest.php?file=https://certification.nettvservices.com/test_environment/testroom/Media_files/Video/MP4/000003__%20MPEG-4_2Mbps_AVC_720x480_2Mbps_3CFR_AAC.mp4
+[dtv_app_mtk]>  V   browser_controller.cc 4021 brctl_ui_show_playback_progress  brctl_ui_show_playback_progress bShowLocalPlaybackUI return
+[dtv_app_mtk]>  V   browser_controller.cc 6394 brctl_handle_ext_message  opw = 2, cmd = BRCTL_CMD_UI_HIDE
+[dtv_app_mtk]>  V   browser_controller.cc 7058 brctl_handle_ext_message  brctl_handle_ext_message->BRCTL_CMD_UI_HIDE: e_type = 1
+[dtv_app_mtk]>  V   browser_controller.cc 1109 brctl_hide_window  opw = 16
+[dtv_app_mtk]>  V   nettv_opera.cc 3296 opera_is_window_created  The given window id(opw = 16) doesn't identify an existing window
+[dtv_app_mtk]>  V   IMnettvPlf.c 0134 IMnettvP_plf_stream_playing_time  InstanceID[0],playback time:00:00:00.191
+[dtv_app_mtk]>  V   media_object.c 1345 _mobj_thread  MOBJ_CB_TIME_PLAYBACK
+[dtv_app_mtk]>  V   media_object.c 1566 _mobj_cb_playback_time_proc  Current Playback 00:00:00.191
+[dtv_app_mtk]>  V   media_object_ipc.c 0445 mobj_ipc_update_position  Sending MOBJ_IPC_EVT_PLAYPOSITION to MOPXY
+[dtv_app_mtk]>  V   media_backend.cpp 1538 _mmb_ntf_evt_callback  MOBJ_IPC_EVT_PLAYPOSITION
+[dtv_app_mtk]>  V   media_backend.cpp 0878 _handlePositionUpdate  position: 0.191000
+[dtv_app_mtk]>  V   media_backend.cpp 1544 _mmb_ntf_evt_callback  send buffering progress
+[dtv_app_mtk]>  V   media_backend.cpp 1703 _mmb_ntf_evt_callback  MOBJ_IPC_EVT_NETWORK_PROGRESSING
+[dtv_app_mtk]>  D   media_backend.cpp 1709 _mmb_ntf_evt_callback  [BufferingProgress] ret[2] [NOK]
+[dtv_app_mtk]>  V   nettvapp.c 0664 nettvapp_process_msg_async  msg 14: enter
+[dtv_app_mtk]>  V   browser_proxy.c 1594 brpxy_ui_update  1 0
+[dtv_app_mtk]>  V   nettvapp.c 0697 nettvapp_process_msg_async  msg 14: exit
+[dtv_app_mtk]>  V   browser_controller.cc 6394 brctl_handle_ext_message  opw = 2, cmd = BRCTL_CMD_UI_UPDATE
+[dtv_app_mtk]>  V   nettv_opera.cc 3296 opera_is_window_created  The given window id(opw = 20) doesn't identify an existing window
+[dtv_app_mtk]>  V   nettv_opera.cc 3296 opera_is_window_created  The given window id(opw = 8) doesn't identify an existing window
+[dtv_app_mtk]>  V   media_backend.cpp 1153 getDuration  duration 196.000000, uva_ret 1
+[dtv_app_mtk]>  V   media_backend.cpp 1153 getDuration  duration 196.000000, uva_ret 1
+[dtv_app_mtk]>  V   IMnettvPlf.c 0134 IMnettvP_plf_stream_playing_time  InstanceID[0],playback time:00:00:00.691
+[dtv_app_mtk]>  V   media_object.c 1345 _mobj_thread  MOBJ_CB_TIME_PLAYBACK
+[dtv_app_mtk]>  V   media_object.c 1566 _mobj_cb_playback_time_proc  Current Playback 00:00:00.691
+[dtv_app_mtk]>  V   media_object_ipc.c 0445 mobj_ipc_update_position  Sending MOBJ_IPC_EVT_PLAYPOSITION to MOPXY
+[dtv_app_mtk]>  V   media_backend.cpp 1538 _mmb_ntf_evt_callback  MOBJ_IPC_EVT_PLAYPOSITION
+[dtv_app_mtk]>  V   media_backend.cpp 0878 _handlePositionUpdate  position: 0.691000
+[dtv_app_mtk]>  V   media_backend.cpp 1544 _mmb_ntf_evt_callback  send buffering progress
+[dtv_app_mtk]>  V   media_backend.cpp 1703 _mmb_ntf_evt_callback  MOBJ_IPC_EVT_NETWORK_PROGRESSING
+[dtv_app_mtk]>  D   media_backend.cpp 1709 _mmb_ntf_evt_callback  [BufferingProgress] ret[2] [NOK]
+[dtv_app_mtk]>  V   nettvapp.c 0664 nettvapp_process_msg_async  msg 14: enter
+[dtv_app_mtk]>  V   browser_proxy.c 1594 brpxy_ui_update  1 0
+[dtv_app_mtk]>  V   nettvapp.c 0697 nettvapp_process_msg_async  msg 14: exit
+[dtv_app_mtk]>  V   browser_controller.cc 6394 brctl_handle_ext_message  opw = 2, cmd = BRCTL_CMD_UI_UPDATE
+[dtv_app_mtk]>  V   nettv_opera.cc 3296 opera_is_window_created  The given window id(opw = 20) doesn't identify an existing window
+[dtv_app_mtk]>  V   nettv_opera.cc 3296 opera_is_window_created  The given window id(opw = 8) doesn't identify an existing window
+[dtv_app_mtk]>  V   IMnettvPlf.c 0134 IMnettvP_plf_stream_playing_time  InstanceID[0],playback time:00:00:01.191
+[dtv_app_mtk]>  V   media_object.c 1345 _mobj_thread  MOBJ_CB_TIME_PLAYBACK
+[dtv_app_mtk]>  V   media_object.c 1566 _mobj_cb_playback_time_proc  Current Playback 00:00:01.191
+[dtv_app_mtk]>  V   media_object_ipc.c 0445 mobj_ipc_update_position  Sending MOBJ_IPC_EVT_PLAYPOSITION to MOPXY
+[dtv_app_mtk]>  V   media_backend.cpp 1538 _mmb_ntf_evt_callback  MOBJ_IPC_EVT_PLAYPOSITION
+[dtv_app_mtk]>  V   media_backend.cpp 0878 _handlePositionUpdate  position: 1.191000
+[dtv_app_mtk]>  V   media_backend.cpp 1544 _mmb_ntf_evt_callback  send buffering progress
+[dtv_app_mtk]>  V   media_backend.cpp 1703 _mmb_ntf_evt_callback  MOBJ_IPC_EVT_NETWORK_PROGRESSING
+[dtv_app_mtk]>  D   media_backend.cpp 1709 _mmb_ntf_evt_callback  [BufferingProgress] ret[2] [NOK]
+[dtv_app_mtk]>  V   nettvapp.c 0664 nettvapp_process_msg_async  msg 14: enter
+[dtv_app_mtk]>  V   IMnettvPlf.c 0589 nettvplf_intfR_stream_get_duration  entry
+[dtv_app_mtk]>  V   media_object.c 0949 mobj_get_duration  nettvplf_intfR_stream_get_duration(196.000000) ret 0
+[dtv_app_mtk]>  V   browser_proxy.c 1594 brpxy_ui_update  2 196
+[dtv_app_mtk]>  V   browser_proxy.c 1594 brpxy_ui_update  1 1
+[dtv_app_mtk]>  V   nettvapp.c 0697 nettvapp_process_msg_async  msg 14: exit
+[dtv_app_mtk]>  V   browser_controller.cc 6394 brctl_handle_ext_message  opw = 2, cmd = BRCTL_CMD_UI_UPDATE
+[dtv_app_mtk]>  V   nettv_opera.cc 3296 opera_is_window_created  The given window id(opw = 20) doesn't identify an existing window
+[dtv_app_mtk]>  V   nettv_opera.cc 3296 opera_is_window_created  The given window id(opw = 8) doesn't identify an existing window
+[dtv_app_mtk]>  V   browser_controller.cc 6394 brctl_handle_ext_message  opw = 2, cmd = BRCTL_CMD_UI_UPDATE
+[dtv_app_mtk]>  V   nettv_opera.cc 3296 opera_is_window_created  The given window id(opw = 20) doesn't identify an existing window
+[dtv_app_mtk]>  V   nettv_opera.cc 3296 opera_is_window_created  The given window id(opw = 8) doesn't identify an existing window
+[dtv_app_mtk]>  V   nettv_opera.cc 3296 opera_is_window_created  The given window id(opw = 8) doesn't identify an existing window
+[dtv_app_mtk]>  V   media_backend.cpp 1153 getDuration  duration 196.000000, uva_ret 1
+[dtv_app_mtk]>  V   media_backend.cpp 1153 getDuration  duration 196.000000, uva_ret 1
+[dtv_app_mtk]>  V   browser_controller.cc 2212 brctl_post_heart_beat  BRCTL_ICMD_HEART_BEAT
+[dtv_app_mtk]>  V   browser_controller.cc 2764 brctl_handle_int_message  brctl_handle_int_message() opw = 2, cmd = BRCTL_ICMD_HEART_BEAT
+[dtv_app_mtk]>  V   browser_proxy.c 0229 _brpxy_thread  event 0, res 0 at opera win -1
+[dtv_app_mtk]>  V   browser_proxy.c 0234 _brpxy_thread  HEARTBEAT (WC 0)
+[dtv_app_mtk]>  V   IMnettvPlf.c 0134 IMnettvP_plf_stream_playing_time  InstanceID[0],playback time:00:00:01.690
+[dtv_app_mtk]>  V   media_object.c 1345 _mobj_thread  MOBJ_CB_TIME_PLAYBACK
+[dtv_app_mtk]>  V   media_object.c 1566 _mobj_cb_playback_time_proc  Current Playback 00:00:01.690
+[dtv_app_mtk]>  V   media_object_ipc.c 0445 mobj_ipc_update_position  Sending MOBJ_IPC_EVT_PLAYPOSITION to MOPXY
+[dtv_app_mtk]>  V   media_backend.cpp 1538 _mmb_ntf_evt_callback  MOBJ_IPC_EVT_PLAYPOSITION
+[dtv_app_mtk]>  V   media_backend.cpp 0878 _handlePositionUpdate  position: 1.690000
+[dtv_app_mtk]>  V   media_backend.cpp 1544 _mmb_ntf_evt_callback  send buffering progress
+[dtv_app_mtk]>  V   media_backend.cpp 1703 _mmb_ntf_evt_callback  MOBJ_IPC_EVT_NETWORK_PROGRESSING
+[dtv_app_mtk]>  D   media_backend.cpp 1709 _mmb_ntf_evt_callback  [BufferingProgress] ret[2] [NOK]
+[dtv_app_mtk]>  V   nettvapp.c 0664 nettvapp_process_msg_async  msg 14: enter
+[dtv_app_mtk]>  V   IMnettvPlf.c 0589 nettvplf_intfR_stream_get_duration  entry
+[dtv_app_mtk]>  V   media_object.c 0949 mobj_get_duration  nettvplf_intfR_stream_get_duration(196.000000) ret 0
+[dtv_app_mtk]>  V   browser_proxy.c 1594 brpxy_ui_update  2 196
+[dtv_app_mtk]>  V   browser_proxy.c 1594 brpxy_ui_update  1 1
+[dtv_app_mtk]>  V   nettvapp.c 0697 nettvapp_process_msg_async  msg 14: exit
+[dtv_app_mtk]>  V   browser_controller.cc 6394 brctl_handle_ext_message  opw = 2, cmd = BRCTL_CMD_UI_UPDATE
+[dtv_app_mtk]>  V   nettv_opera.cc 3296 opera_is_window_created  The given window id(opw = 20) doesn't identify an existing window
+[dtv_app_mtk]>  V   nettv_opera.cc 3296 opera_is_window_created  The given window id(opw = 8) doesn't identify an existing window
+[dtv_app_mtk]>  V   browser_controller.cc 6394 brctl_handle_ext_message  opw = 2, cmd = BRCTL_CMD_UI_UPDATE
+[dtv_app_mtk]>  V   nettv_opera.cc 3296 opera_is_window_created  The given window id(opw = 20) doesn't identify an existing window
+[dtv_app_mtk]>  V   nettv_opera.cc 3296 opera_is_window_created  The given window id(opw = 8) doesn't identify an existing window
+[dtv_app_mtk]>  V   nettv_opera.cc 3296 opera_is_window_created  The given window id(opw = 8) doesn't identify an existing window
+[dtv_app_mtk]>  V   IMnettvPlf.c 0134 IMnettvP_plf_stream_playing_time  InstanceID[0],playback time:00:00:02.190
+[dtv_app_mtk]>  V   media_object.c 1345 _mobj_thread  MOBJ_CB_TIME_PLAYBACK
+[dtv_app_mtk]>  V   media_object.c 1566 _mobj_cb_playback_time_proc  Current Playback 00:00:02.190
+[dtv_app_mtk]>  V   media_object_ipc.c 0445 mobj_ipc_update_position  Sending MOBJ_IPC_EVT_PLAYPOSITION to MOPXY
+[dtv_app_mtk]>  V   media_backend.cpp 1538 _mmb_ntf_evt_callback  MOBJ_IPC_EVT_PLAYPOSITION
+[dtv_app_mtk]>  V   media_backend.cpp 0878 _handlePositionUpdate  position: 2.190000
+[dtv_app_mtk]>  V   media_backend.cpp 1544 _mmb_ntf_evt_callback  send buffering progress
+[dtv_app_mtk]>  V   media_backend.cpp 1703 _mmb_ntf_evt_callback  MOBJ_IPC_EVT_NETWORK_PROGRESSING
+[dtv_app_mtk]>  D   media_backend.cpp 1709 _mmb_ntf_evt_callback  [BufferingProgress] ret[2] [NOK]
+[dtv_app_mtk]>  V   nettvapp.c 0664 nettvapp_process_msg_async  msg 14: enter
+[dtv_app_mtk]>  V   browser_proxy.c 1594 brpxy_ui_update  1 2
+[dtv_app_mtk]>  V   nettvapp.c 0697 nettvapp_process_msg_async  msg 14: exit
+[dtv_app_mtk]>  V   browser_controller.cc 6394 brctl_handle_ext_message  opw = 2, cmd = BRCTL_CMD_UI_UPDATE
+[dtv_app_mtk]>  V   nettv_opera.cc 3296 opera_is_window_created  The given window id(opw = 20) doesn't identify an existing window
+[dtv_app_mtk]>  V   nettv_opera.cc 3296 opera_is_window_created  The given window id(opw = 8) doesn't identify an existing window
+[dtv_app_mtk]>  V   media_backend.cpp 1153 getDuration  duration 196.000000, uva_ret 1
+[dtv_app_mtk]>  V   media_backend.cpp 1153 getDuration  duration 196.000000, uva_ret 1
+[dtv_app_mtk]>  V   IMnettvPlf.c 0134 IMnettvP_plf_stream_playing_time  InstanceID[0],playback time:00:00:02.691
+[dtv_app_mtk]>  V   media_object.c 1345 _mobj_thread  MOBJ_CB_TIME_PLAYBACK
+[dtv_app_mtk]>  V   media_object.c 1566 _mobj_cb_playback_time_proc  Current Playback 00:00:02.691
+[dtv_app_mtk]>  V   media_object_ipc.c 0445 mobj_ipc_update_position  Sending MOBJ_IPC_EVT_PLAYPOSITION to MOPXY
+[dtv_app_mtk]>  V   media_backend.cpp 1538 _mmb_ntf_evt_callback  MOBJ_IPC_EVT_PLAYPOSITION
+[dtv_app_mtk]>  V   media_backend.cpp 0878 _handlePositionUpdate  position: 2.691000
+[dtv_app_mtk]>  V   media_backend.cpp 1544 _mmb_ntf_evt_callback  send buffering progress
+[dtv_app_mtk]>  V   media_backend.cpp 1703 _mmb_ntf_evt_callback  MOBJ_IPC_EVT_NETWORK_PROGRESSING
+[dtv_app_mtk]>  D   media_backend.cpp 1709 _mmb_ntf_evt_callback  [BufferingProgress] ret[2] [NOK]
+[dtv_app_mtk]>  V   nettvapp.c 0664 nettvapp_process_msg_async  msg 14: enter
+[dtv_app_mtk]>  V   browser_proxy.c 1594 brpxy_ui_update  1 2
+[dtv_app_mtk]>  V   nettvapp.c 0697 nettvapp_process_msg_async  msg 14: exit
+[dtv_app_mtk]>  V   browser_controller.cc 6394 brctl_handle_ext_message  opw = 2, cmd = BRCTL_CMD_UI_UPDATE
+[dtv_app_mtk]>  V   nettv_opera.cc 3296 opera_is_window_created  The given window id(opw = 20) doesn't identify an existing window
+[dtv_app_mtk]>  V   nettv_opera.cc 3296 opera_is_window_created  The given window id(opw = 8) doesn't identify an existing window
+[dtv_app_mtk]>  V   IMnettvPlf.c 0134 IMnettvP_plf_stream_playing_time  InstanceID[0],playback time:00:00:03.191
+[dtv_app_mtk]>  V   media_object.c 1345 _mobj_thread  MOBJ_CB_TIME_PLAYBACK
+[dtv_app_mtk]>  V   media_object.c 1566 _mobj_cb_playback_time_proc  Current Playback 00:00:03.191
+[dtv_app_mtk]>  V   media_object_ipc.c 0445 mobj_ipc_update_position  Sending MOBJ_IPC_EVT_PLAYPOSITION to MOPXY
+[dtv_app_mtk]>  V   media_backend.cpp 1538 _mmb_ntf_evt_callback  MOBJ_IPC_EVT_PLAYPOSITION
+[dtv_app_mtk]>  V   media_backend.cpp 0878 _handlePositionUpdate  position: 3.191000
+[dtv_app_mtk]>  V   media_backend.cpp 1544 _mmb_ntf_evt_callback  send buffering progress
+[dtv_app_mtk]>  V   media_backend.cpp 1703 _mmb_ntf_evt_callback  MOBJ_IPC_EVT_NETWORK_PROGRESSING
+[dtv_app_mtk]>  D   media_backend.cpp 1709 _mmb_ntf_evt_callback  [BufferingProgress] ret[2] [NOK]
+[dtv_app_mtk]>  V   nettvapp.c 0664 nettvapp_process_msg_async  msg 14: enter
+[dtv_app_mtk]>  V   browser_proxy.c 1594 brpxy_ui_update  1 3
+[dtv_app_mtk]>  V   nettvapp.c 0697 nettvapp_process_msg_async  msg 14: exit
+[dtv_app_mtk]>  V   browser_controller.cc 6394 brctl_handle_ext_message  opw = 2, cmd = BRCTL_CMD_UI_UPDATE
+[dtv_app_mtk]>  V   nettv_opera.cc 3296 opera_is_window_created  The given window id(opw = 20) doesn't identify an existing window
+[dtv_app_mtk]>  V   nettv_opera.cc 3296 opera_is_window_created  The given window id(opw = 8) doesn't identify an existing window
+[dtv_app_mtk]>  V   media_backend.cpp 1153 getDuration  duration 196.000000, uva_ret 1
+[dtv_app_mtk]>  V   media_backend.cpp 1153 getDuration  duration 196.000000, uva_ret 1
+[dtv_app_mtk]>  V   IMnettvPlf.c 0134 IMnettvP_plf_stream_playing_time  InstanceID[0],playback time:00:00:03.691
+[dtv_app_mtk]>  V   media_object.c 1345 _mobj_thread  MOBJ_CB_TIME_PLAYBACK
+[dtv_app_mtk]>  V   media_object.c 1566 _mobj_cb_playback_time_proc  Current Playback 00:00:03.691
+[dtv_app_mtk]>  V   media_object_ipc.c 0445 mobj_ipc_update_position  Sending MOBJ_IPC_EVT_PLAYPOSITION to MOPXY
+[dtv_app_mtk]>  V   media_backend.cpp 1538 _mmb_ntf_evt_callback  MOBJ_IPC_EVT_PLAYPOSITION
+[dtv_app_mtk]>  V   media_backend.cpp 0878 _handlePositionUpdate  position: 3.691000
+[dtv_app_mtk]>  V   media_backend.cpp 1544 _mmb_ntf_evt_callback  send buffering progress
+[dtv_app_mtk]>  V   media_backend.cpp 1703 _mmb_ntf_evt_callback  MOBJ_IPC_EVT_NETWORK_PROGRESSING
+[dtv_app_mtk]>  D   media_backend.cpp 1709 _mmb_ntf_evt_callback  [BufferingProgress] ret[2] [NOK]
+[dtv_app_mtk]>  V   nettvapp.c 0664 nettvapp_process_msg_async  msg 14: enter
+[dtv_app_mtk]>  V   browser_proxy.c 1594 brpxy_ui_update  1 3
+[dtv_app_mtk]>  V   nettvapp.c 0697 nettvapp_process_msg_async  msg 14: exit
+[dtv_app_mtk]>  V   browser_controller.cc 6394 brctl_handle_ext_message  opw = 2, cmd = BRCTL_CMD_UI_UPDATE
+[dtv_app_mtk]>  V   nettv_opera.cc 3296 opera_is_window_created  The given window id(opw = 20) doesn't identify an existing window
+[dtv_app_mtk]>  V   nettv_opera.cc 3296 opera_is_window_created  The given window id(opw = 8) doesn't identify an existing window
+[dtv_app_mtk]>  V   IMnettvPlf.c 0134 IMnettvP_plf_stream_playing_time  InstanceID[0],playback time:00:00:04.191
+[dtv_app_mtk]>  V   media_object.c 1345 _mobj_thread  MOBJ_CB_TIME_PLAYBACK
+[dtv_app_mtk]>  V   media_object.c 1566 _mobj_cb_playback_time_proc  Current Playback 00:00:04.191
+[dtv_app_mtk]>  V   media_object_ipc.c 0445 mobj_ipc_update_position  Sending MOBJ_IPC_EVT_PLAYPOSITION to MOPXY
+[dtv_app_mtk]>  V   media_backend.cpp 1538 _mmb_ntf_evt_callback  MOBJ_IPC_EVT_PLAYPOSITION
+[dtv_app_mtk]>  V   media_backend.cpp 0878 _handlePositionUpdate  position: 4.191000
+[dtv_app_mtk]>  V   media_backend.cpp 1544 _mmb_ntf_evt_callback  send buffering progress
+[dtv_app_mtk]>  V   media_backend.cpp 1703 _mmb_ntf_evt_callback  MOBJ_IPC_EVT_NETWORK_PROGRESSING
+[dtv_app_mtk]>  D   media_backend.cpp 1709 _mmb_ntf_evt_callback  [BufferingProgress] ret[2] [NOK]
+[dtv_app_mtk]>  V   nettvapp.c 0664 nettvapp_process_msg_async  msg 14: enter
+[dtv_app_mtk]>  V   browser_proxy.c 1594 brpxy_ui_update  1 4
+[dtv_app_mtk]>  V   nettvapp.c 0697 nettvapp_process_msg_async  msg 14: exit
+[dtv_app_mtk]>  V   browser_controller.cc 6394 brctl_handle_ext_message  opw = 2, cmd = BRCTL_CMD_UI_UPDATE
+[dtv_app_mtk]>  V   nettv_opera.cc 3296 opera_is_window_created  The given window id(opw = 20) doesn't identify an existing window
+[dtv_app_mtk]>  V   nettv_opera.cc 3296 opera_is_window_created  The given window id(opw = 8) doesn't identify an existing window
+[dtv_app_mtk]>  V   media_backend.cpp 1153 getDuration  duration 196.000000, uva_ret 1
+[dtv_app_mtk]>  V   media_backend.cpp 1153 getDuration  duration 196.000000, uva_ret 1
+[dtv_app_mtk]>  V   IMnettvPlf.c 0134 IMnettvP_plf_stream_playing_time  InstanceID[0],playback time:00:00:04.690
+[dtv_app_mtk]>  V   media_object.c 1345 _mobj_thread  MOBJ_CB_TIME_PLAYBACK
+[dtv_app_mtk]>  V   media_object.c 1566 _mobj_cb_playback_time_proc  Current Playback 00:00:04.690
+[dtv_app_mtk]>  V   media_object_ipc.c 0445 mobj_ipc_update_position  Sending MOBJ_IPC_EVT_PLAYPOSITION to MOPXY
+[dtv_app_mtk]>  V   media_backend.cpp 1538 _mmb_ntf_evt_callback  MOBJ_IPC_EVT_PLAYPOSITION
+[dtv_app_mtk]>  V   media_backend.cpp 0878 _handlePositionUpdate  position: 4.690000
+[dtv_app_mtk]>  V   media_backend.cpp 1544 _mmb_ntf_evt_callback  send buffering progress
+[dtv_app_mtk]>  V   media_backend.cpp 1703 _mmb_ntf_evt_callback  MOBJ_IPC_EVT_NETWORK_PROGRESSING
+[dtv_app_mtk]>  D   media_backend.cpp 1709 _mmb_ntf_evt_callback  [BufferingProgress] ret[2] [NOK]
+[dtv_app_mtk]>  V   nettvapp.c 0664 nettvapp_process_msg_async  msg 14: enter
+[dtv_app_mtk]>  V   browser_proxy.c 1594 brpxy_ui_update  1 4
+[dtv_app_mtk]>  V   nettvapp.c 0697 nettvapp_process_msg_async  msg 14: exit
+[dtv_app_mtk]>  V   browser_controller.cc 6394 brctl_handle_ext_message  opw = 2, cmd = BRCTL_CMD_UI_UPDATE
+[dtv_app_mtk]>  V   nettv_opera.cc 3296 opera_is_window_created  The given window id(opw = 20) doesn't identify an existing window
+[dtv_app_mtk]>  V   nettv_opera.cc 3296 opera_is_window_created  The given window id(opw = 8) doesn't identify an existing window
+[dtv_app_mtk]>  V   IMnettvPlf.c 0134 IMnettvP_plf_stream_playing_time  InstanceID[0],playback time:00:00:05.190
+[dtv_app_mtk]>  V   media_object.c 1345 _mobj_thread  MOBJ_CB_TIME_PLAYBACK
+[dtv_app_mtk]>  V   media_object.c 1566 _mobj_cb_playback_time_proc  Current Playback 00:00:05.190
+[dtv_app_mtk]>  V   media_object_ipc.c 0445 mobj_ipc_update_position  Sending MOBJ_IPC_EVT_PLAYPOSITION to MOPXY
+[dtv_app_mtk]>  V   media_backend.cpp 1538 _mmb_ntf_evt_callback  MOBJ_IPC_EVT_PLAYPOSITION
+[dtv_app_mtk]>  V   media_backend.cpp 0878 _handlePositionUpdate  position: 5.190000
+[dtv_app_mtk]>  V   media_backend.cpp 1544 _mmb_ntf_evt_callback  send buffering progress
+[dtv_app_mtk]>  V   media_backend.cpp 1703 _mmb_ntf_evt_callback  MOBJ_IPC_EVT_NETWORK_PROGRESSING
+[dtv_app_mtk]>  D   media_backend.cpp 1709 _mmb_ntf_evt_callback  [BufferingProgress] ret[2] [NOK]
+[dtv_app_mtk]>  V   nettvapp.c 0664 nettvapp_process_msg_async  msg 14: enter
+[dtv_app_mtk]>  V   browser_proxy.c 1594 brpxy_ui_update  1 5
+[dtv_app_mtk]>  V   nettvapp.c 0697 nettvapp_process_msg_async  msg 14: exit
+[dtv_app_mtk]>  V   browser_controller.cc 6394 brctl_handle_ext_message  opw = 2, cmd = BRCTL_CMD_UI_UPDATE
+[dtv_app_mtk]>  V   nettv_opera.cc 3296 opera_is_window_created  The given window id(opw = 20) doesn't identify an existing window
+[dtv_app_mtk]>  V   nettv_opera.cc 3296 opera_is_window_created  The given window id(opw = 8) doesn't identify an existing window
+[dtv_app_mtk]>  V   media_backend.cpp 1153 getDuration  duration 196.000000, uva_ret 1
+[dtv_app_mtk]>  V   media_backend.cpp 1153 getDuration  duration 196.000000, uva_ret 1
+[dtv_app_mtk]>  V   IMnettvPlf.c 0134 IMnettvP_plf_stream_playing_time  InstanceID[0],playback time:00:00:05.691
+[dtv_app_mtk]>  V   media_object.c 1345 _mobj_thread  MOBJ_CB_TIME_PLAYBACK
+[dtv_app_mtk]>  V   media_object.c 1566 _mobj_cb_playback_time_proc  Current Playback 00:00:05.691
+[dtv_app_mtk]>  V   media_object_ipc.c 0445 mobj_ipc_update_position  Sending MOBJ_IPC_EVT_PLAYPOSITION to MOPXY
+[dtv_app_mtk]>  V   media_backend.cpp 1538 _mmb_ntf_evt_callback  MOBJ_IPC_EVT_PLAYPOSITION
+[dtv_app_mtk]>  V   media_backend.cpp 0878 _handlePositionUpdate  position: 5.691000
+[dtv_app_mtk]>  V   media_backend.cpp 1544 _mmb_ntf_evt_callback  send buffering progress
+[dtv_app_mtk]>  V   media_backend.cpp 1703 _mmb_ntf_evt_callback  MOBJ_IPC_EVT_NETWORK_PROGRESSING
+[dtv_app_mtk]>  D   media_backend.cpp 1709 _mmb_ntf_evt_callback  [BufferingProgress] ret[2] [NOK]
+[dtv_app_mtk]>  V   nettvapp.c 0664 nettvapp_process_msg_async  msg 14: enter
+[dtv_app_mtk]>  V   browser_proxy.c 1594 brpxy_ui_update  1 5
+[dtv_app_mtk]>  V   nettvapp.c 0697 nettvapp_process_msg_async  msg 14: exit
+[dtv_app_mtk]>  V   browser_controller.cc 6394 brctl_handle_ext_message  opw = 2, cmd = BRCTL_CMD_UI_UPDATE
+[dtv_app_mtk]>  V   nettv_opera.cc 3296 opera_is_window_created  The given window id(opw = 20) doesn't identify an existing window
+[dtv_app_mtk]>  V   nettv_opera.cc 3296 opera_is_window_created  The given window id(opw = 8) doesn't identify an existing window
+[dtv_app_mtk]>  V   IMnettvPlf.c 0134 IMnettvP_plf_stream_playing_time  InstanceID[0],playback time:00:00:06.191
+[dtv_app_mtk]>  V   media_object.c 1345 _mobj_thread  MOBJ_CB_TIME_PLAYBACK
+[dtv_app_mtk]>  V   media_object.c 1566 _mobj_cb_playback_time_proc  Current Playback 00:00:06.191
+[dtv_app_mtk]>  V   media_object_ipc.c 0445 mobj_ipc_update_position  Sending MOBJ_IPC_EVT_PLAYPOSITION to MOPXY
+[dtv_app_mtk]>  V   nettvapp.c 0664 nettvapp_process_msg_async  msg 14: enter
+[dtv_app_mtk]>  V   browser_proxy.c 1594 brpxy_ui_update  1 6
+[dtv_app_mtk]>  V   media_backend.cpp 1538 _mmb_ntf_evt_callback  MOBJ_IPC_EVT_PLAYPOSITION
+[dtv_app_mtk]>  V   media_backend.cpp 0878 _handlePositionUpdate  position: 6.191000
+[dtv_app_mtk]>  V   media_backend.cpp 1544 _mmb_ntf_evt_callback  send buffering progress
+[dtv_app_mtk]>  V   media_backend.cpp 1703 _mmb_ntf_evt_callback  MOBJ_IPC_EVT_NETWORK_PROGRESSING
+[dtv_app_mtk]>  D   media_backend.cpp 1709 _mmb_ntf_evt_callback  [BufferingProgress] ret[2] [NOK]
+[dtv_app_mtk]>  V   nettvapp.c 0697 nettvapp_process_msg_async  msg 14: exit
+[dtv_app_mtk]>  V   browser_controller.cc 6394 brctl_handle_ext_message  opw = 2, cmd = BRCTL_CMD_UI_UPDATE
+[dtv_app_mtk]>  V   nettv_opera.cc 3296 opera_is_window_created  The given window id(opw = 20) doesn't identify an existing window
+[dtv_app_mtk]>  V   nettv_opera.cc 3296 opera_is_window_created  The given window id(opw = 8) doesn't identify an existing window
+[dtv_app_mtk]>  V   media_backend.cpp 1153 getDuration  duration 196.000000, uva_ret 1
+[dtv_app_mtk]>  V   media_backend.cpp 1153 getDuration  duration 196.000000, uva_ret 1
+[dtv_app_mtk]>  V   IMnettvPlf.c 0134 IMnettvP_plf_stream_playing_time  InstanceID[0],playback time:00:00:06.691
+[dtv_app_mtk]>  V   media_object.c 1345 _mobj_thread  MOBJ_CB_TIME_PLAYBACK
+[dtv_app_mtk]>  V   media_object.c 1566 _mobj_cb_playback_time_proc  Current Playback 00:00:06.691
+[dtv_app_mtk]>  V   media_object_ipc.c 0445 mobj_ipc_update_position  Sending MOBJ_IPC_EVT_PLAYPOSITION to MOPXY
+[dtv_app_mtk]>  V   media_backend.cpp 1538 _mmb_ntf_evt_callback  MOBJ_IPC_EVT_PLAYPOSITION
+[dtv_app_mtk]>  V   media_backend.cpp 0878 _handlePositionUpdate  position: 6.691000
+[dtv_app_mtk]>  V   media_backend.cpp 1544 _mmb_ntf_evt_callback  send buffering progress
+[dtv_app_mtk]>  V   media_backend.cpp 1703 _mmb_ntf_evt_callback  MOBJ_IPC_EVT_NETWORK_PROGRESSING
+[dtv_app_mtk]>  D   media_backend.cpp 1709 _mmb_ntf_evt_callback  [BufferingProgress] ret[2] [NOK]
+[dtv_app_mtk]>  V   nettvapp.c 0664 nettvapp_process_msg_async  msg 14: enter
+[dtv_app_mtk]>  V   browser_proxy.c 1594 brpxy_ui_update  1 6
+[dtv_app_mtk]>  V   nettvapp.c 0697 nettvapp_process_msg_async  msg 14: exit
+[dtv_app_mtk]>  V   browser_controller.cc 6394 brctl_handle_ext_message  opw = 2, cmd = BRCTL_CMD_UI_UPDATE
+[dtv_app_mtk]>  V   nettv_opera.cc 3296 opera_is_window_created  The given window id(opw = 20) doesn't identify an existing window
+[dtv_app_mtk]>  V   nettv_opera.cc 3296 opera_is_window_created  The given window id(opw = 8) doesn't identify an existing window
+[dtv_app_mtk]>  V   IMnettvPlf.c 0134 IMnettvP_plf_stream_playing_time  InstanceID[0],playback time:00:00:07.190
+[dtv_app_mtk]>  V   media_object.c 1345 _mobj_thread  MOBJ_CB_TIME_PLAYBACK
+[dtv_app_mtk]>  V   media_object.c 1566 _mobj_cb_playback_time_proc  Current Playback 00:00:07.190
+[dtv_app_mtk]>  V   media_object_ipc.c 0445 mobj_ipc_update_position  Sending MOBJ_IPC_EVT_PLAYPOSITION to MOPXY
+[dtv_app_mtk]>  V   media_backend.cpp 1538 _mmb_ntf_evt_callback  MOBJ_IPC_EVT_PLAYPOSITION
+[dtv_app_mtk]>  V   media_backend.cpp 0878 _handlePositionUpdate  position: 7.190000
+[dtv_app_mtk]>  V   media_backend.cpp 1544 _mmb_ntf_evt_callback  send buffering progress
+[dtv_app_mtk]>  V   media_backend.cpp 1703 _mmb_ntf_evt_callback  MOBJ_IPC_EVT_NETWORK_PROGRESSING
+[dtv_app_mtk]>  D   media_backend.cpp 1709 _mmb_ntf_evt_callback  [BufferingProgress] ret[2] [NOK]
+[dtv_app_mtk]>  V   nettvapp.c 0664 nettvapp_process_msg_async  msg 14: enter
+[dtv_app_mtk]>  V   browser_proxy.c 1594 brpxy_ui_update  1 7
+[dtv_app_mtk]>  V   nettvapp.c 0697 nettvapp_process_msg_async  msg 14: exit
+[dtv_app_mtk]>  V   browser_controller.cc 6394 brctl_handle_ext_message  opw = 2, cmd = BRCTL_CMD_UI_UPDATE
+[dtv_app_mtk]>  V   nettv_opera.cc 3296 opera_is_window_created  The given window id(opw = 20) doesn't identify an existing window
+[dtv_app_mtk]>  V   nettv_opera.cc 3296 opera_is_window_created  The given window id(opw = 8) doesn't identify an existing window
+[dtv_app_mtk]>  V   media_backend.cpp 1153 getDuration  duration 196.000000, uva_ret 1
+[dtv_app_mtk]>  V   media_backend.cpp 1153 getDuration  duration 196.000000, uva_ret 1
+[dtv_app_mtk]>  V   IMnettvPlf.c 0134 IMnettvP_plf_stream_playing_time  InstanceID[0],playback time:00:00:07.690
+[dtv_app_mtk]>  V   media_object.c 1345 _mobj_thread  MOBJ_CB_TIME_PLAYBACK
+[dtv_app_mtk]>  V   media_object.c 1566 _mobj_cb_playback_time_proc  Current Playback 00:00:07.690
+[dtv_app_mtk]>  V   media_object_ipc.c 0445 mobj_ipc_update_position  Sending MOBJ_IPC_EVT_PLAYPOSITION to MOPXY
+[dtv_app_mtk]>  V   media_backend.cpp 1538 _mmb_ntf_evt_callback  MOBJ_IPC_EVT_PLAYPOSITION
+[dtv_app_mtk]>  V   media_backend.cpp 0878 _handlePositionUpdate  position: 7.690000
+[dtv_app_mtk]>  V   media_backend.cpp 1544 _mmb_ntf_evt_callback  send buffering progress
+[dtv_app_mtk]>  V   media_backend.cpp 1703 _mmb_ntf_evt_callback  MOBJ_IPC_EVT_NETWORK_PROGRESSING
+[dtv_app_mtk]>  D   media_backend.cpp 1709 _mmb_ntf_evt_callback  [BufferingProgress] ret[2] [NOK]
+[dtv_app_mtk]>  V   nettvapp.c 0664 nettvapp_process_msg_async  msg 14: enter
+[dtv_app_mtk]>  V   browser_proxy.c 1594 brpxy_ui_update  1 7
+[dtv_app_mtk]>  V   nettvapp.c 0697 nettvapp_process_msg_async  msg 14: exit
+[dtv_app_mtk]>  V   browser_controller.cc 6394 brctl_handle_ext_message  opw = 2, cmd = BRCTL_CMD_UI_UPDATE
+[dtv_app_mtk]>  V   nettv_opera.cc 3296 opera_is_window_created  The given window id(opw = 20) doesn't identify an existing window
+[dtv_app_mtk]>  V   nettv_opera.cc 3296 opera_is_window_created  The given window id(opw = 8) doesn't identify an existing window
+[dtv_app_mtk]>  V   IMnettvPlf.c 0134 IMnettvP_plf_stream_playing_time  InstanceID[0],playback time:00:00:08.190
+[dtv_app_mtk]>  V   media_object.c 1345 _mobj_thread  MOBJ_CB_TIME_PLAYBACK
+[dtv_app_mtk]>  V   media_object.c 1566 _mobj_cb_playback_time_proc  Current Playback 00:00:08.190
+[dtv_app_mtk]>  V   media_object_ipc.c 0445 mobj_ipc_update_position  Sending MOBJ_IPC_EVT_PLAYPOSITION to MOPXY
+[dtv_app_mtk]>  V   media_backend.cpp 1538 _mmb_ntf_evt_callback  MOBJ_IPC_EVT_PLAYPOSITION
+[dtv_app_mtk]>  V   media_backend.cpp 0878 _handlePositionUpdate  position: 8.190000
+[dtv_app_mtk]>  V   media_backend.cpp 1544 _mmb_ntf_evt_callback  send buffering progress
+[dtv_app_mtk]>  V   media_backend.cpp 1703 _mmb_ntf_evt_callback  MOBJ_IPC_EVT_NETWORK_PROGRESSING
+[dtv_app_mtk]>  D   media_backend.cpp 1709 _mmb_ntf_evt_callback  [BufferingProgress] ret[2] [NOK]
+[dtv_app_mtk]>  V   nettvapp.c 0664 nettvapp_process_msg_async  msg 14: enter
+[dtv_app_mtk]>  V   browser_proxy.c 1594 brpxy_ui_update  1 8
+[dtv_app_mtk]>  V   nettvapp.c 0697 nettvapp_process_msg_async  msg 14: exit
+[dtv_app_mtk]>  V   browser_controller.cc 6394 brctl_handle_ext_message  opw = 2, cmd = BRCTL_CMD_UI_UPDATE
+[dtv_app_mtk]>  V   nettv_opera.cc 3296 opera_is_window_created  The given window id(opw = 20) doesn't identify an existing window
+[dtv_app_mtk]>  V   nettv_opera.cc 3296 opera_is_window_created  The given window id(opw = 8) doesn't identify an existing window
+[dtv_app_mtk]>  V   media_backend.cpp 1153 getDuration  duration 196.000000, uva_ret 1
+[dtv_app_mtk]>  V   media_backend.cpp 1153 getDuration  duration 196.000000, uva_ret 1
+[dtv_app_mtk]>  V   IMnettvPlf.c 0134 IMnettvP_plf_stream_playing_time  InstanceID[0],playback time:00:00:08.690
+[dtv_app_mtk]>  V   media_object.c 1345 _mobj_thread  MOBJ_CB_TIME_PLAYBACK
+[dtv_app_mtk]>  V   media_object.c 1566 _mobj_cb_playback_time_proc  Current Playback 00:00:08.690
+[dtv_app_mtk]>  V   media_object_ipc.c 0445 mobj_ipc_update_position  Sending MOBJ_IPC_EVT_PLAYPOSITION to MOPXY
+[dtv_app_mtk]>  V   media_backend.cpp 1538 _mmb_ntf_evt_callback  MOBJ_IPC_EVT_PLAYPOSITION
+[dtv_app_mtk]>  V   media_backend.cpp 0878 _handlePositionUpdate  position: 8.690000
+[dtv_app_mtk]>  V   media_backend.cpp 1544 _mmb_ntf_evt_callback  send buffering progress
+[dtv_app_mtk]>  V   media_backend.cpp 1703 _mmb_ntf_evt_callback  MOBJ_IPC_EVT_NETWORK_PROGRESSING
+[dtv_app_mtk]>  D   media_backend.cpp 1709 _mmb_ntf_evt_callback  [BufferingProgress] ret[2] [NOK]
+[dtv_app_mtk]>  V   nettvapp.c 0664 nettvapp_process_msg_async  msg 14: enter
+[dtv_app_mtk]>  V   browser_proxy.c 1594 brpxy_ui_update  1 8
+[dtv_app_mtk]>  V   nettvapp.c 0697 nettvapp_process_msg_async  msg 14: exit
+[dtv_app_mtk]>  V   browser_controller.cc 6394 brctl_handle_ext_message  opw = 2, cmd = BRCTL_CMD_UI_UPDATE
+[dtv_app_mtk]>  V   nettv_opera.cc 3296 opera_is_window_created  The given window id(opw = 20) doesn't identify an existing window
+[dtv_app_mtk]>  V   nettv_opera.cc 3296 opera_is_window_created  The given window id(opw = 8) doesn't identify an existing window
+[dtv_app_mtk]>  V   IMnettvPlf.c 0134 IMnettvP_plf_stream_playing_time  InstanceID[0],playback time:00:00:09.191
+[dtv_app_mtk]>  V   media_object.c 1345 _mobj_thread  MOBJ_CB_TIME_PLAYBACK
+[dtv_app_mtk]>  V   media_object.c 1566 _mobj_cb_playback_time_proc  Current Playback 00:00:09.191
+[dtv_app_mtk]>  V   media_object_ipc.c 0445 mobj_ipc_update_position  Sending MOBJ_IPC_EVT_PLAYPOSITION to MOPXY
+[dtv_app_mtk]>  V   media_backend.cpp 1538 _mmb_ntf_evt_callback  MOBJ_IPC_EVT_PLAYPOSITION
+[dtv_app_mtk]>  V   media_backend.cpp 0878 _handlePositionUpdate  position: 9.191000
+[dtv_app_mtk]>  V   media_backend.cpp 1544 _mmb_ntf_evt_callback  send buffering progress
+[dtv_app_mtk]>  V   media_backend.cpp 1703 _mmb_ntf_evt_callback  MOBJ_IPC_EVT_NETWORK_PROGRESSING
+[dtv_app_mtk]>  D   media_backend.cpp 1709 _mmb_ntf_evt_callback  [BufferingProgress] ret[2] [NOK]
+[dtv_app_mtk]>  V   nettvapp.c 0664 nettvapp_process_msg_async  msg 14: enter
+[dtv_app_mtk]>  V   browser_proxy.c 1594 brpxy_ui_update  1 9
+[dtv_app_mtk]>  V   nettvapp.c 0697 nettvapp_process_msg_async  msg 14: exit
+[dtv_app_mtk]>  V   browser_controller.cc 6394 brctl_handle_ext_message  opw = 2, cmd = BRCTL_CMD_UI_UPDATE
+[dtv_app_mtk]>  V   nettv_opera.cc 3296 opera_is_window_created  The given window id(opw = 20) doesn't identify an existing window
+[dtv_app_mtk]>  V   nettv_opera.cc 3296 opera_is_window_created  The given window id(opw = 8) doesn't identify an existing window
+[dtv_app_mtk]>  V   media_backend.cpp 1153 getDuration  duration 196.000000, uva_ret 1
+[dtv_app_mtk]>  V   media_backend.cpp 1153 getDuration  duration 196.000000, uva_ret 1
+
