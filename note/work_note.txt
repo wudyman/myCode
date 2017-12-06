@@ -113,13 +113,30 @@ W:\work\hbbtv\work_release\apollo\mtk_obj\TPV_linux\PHILIPS_2K17_MT5802_UHD_EU\r
 echo "-3 2 https://qual-e.appspot.com/awebp.html" > /tmp/brctl_cmd 
 echo "-3 2 http://192.168.1.14:8080/test3" > /tmp/brctl_cmd 
 echo "-3 0 http://192.168.1.14:8080/test3" > /tmp/brctl_cmd 
-echo "-3 0 http://192.168.1.14:8080/test4" > /tmp/brctl_cmd 
+echo "-3 0 http://192.168.1.14:8080/test4" > /tmp/brctl_cmd
+echo "-3 0 http://192.168.1.10:8080/euronews_test" > /tmp/brctl_cmd 
+echo "-3 0 http://172.16.246.43:8080/euronews_test" > /tmp/brctl_cmd
+echo "-3 0 http://172.16.246.43:8080/test.html" > /tmp/brctl_cmd 
+echo "-3 0 https://certification.nettvservices.com/test_environment/testroom/Practical_VOD/playready_2_0/player_mobject.php?movies=0" > /tmp/brctl_cmd       
 
 echo "-3 0 http://172.16.246.5:8080/mpeg-dash/dashPlayer.html" > /tmp/brctl_cmd
 echo "-3 0 http://192.168.1.8:8080/shaka-player/demo/index.html" > /tmp/brctl_cmd
 echo "-3 0 http://172.16.246.5:8080/mpeg-dash/test.html" > /tmp/brctl_cmd   
 echo "-3 0 http://172.16.246.5:8080/MsePlayer/index.html" > /tmp/brctl_cmd
-echo "-3 0 http://172.16.246.5:8080/test6/smartv_homepage.html" > /tmp/brctl_cmd  
+echo "-3 0 http://172.16.246.5:8080/test6/smartv_homepage.html" > /tmp/brctl_cmd 
+
+2k18:
+git clone ssh://gerrit-linux-eu/2K18_MT5802 -b 2K18_UI_FFC_tpv
+git pull origin 2K18_UI_FFC_tpv 
+git push origin HEAD:refs/for/2K18_UI_FFC_tpv
+
+rm -rf work_release/apollo/third_party/cust_app/TPV_Vision/TPV/opera-devices-sdk
+mkdir $_ #$_ means last parameter in last command.
+tar -xzvf opera-devices-sdk-4.11.2.40.Wagoner2.66.WAG2-141-1-MTK5800.tar.gz --strip-components 1 -C $_ #decompress opersdk
+cd work_release/apollo/third_party/cust_app/TPV_Vision/TPV/custom_scripts
+./integrate_opera_linux5802_2.sh
+
+ 
 
 
 
