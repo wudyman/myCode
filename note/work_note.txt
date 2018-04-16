@@ -124,11 +124,15 @@ echo "-3 0 http://192.168.1.8:8080/shaka-player/demo/index.html" > /tmp/brctl_cm
 echo "-3 0 http://172.16.246.5:8080/mpeg-dash/test.html" > /tmp/brctl_cmd   
 echo "-3 0 http://172.16.246.5:8080/MsePlayer/index.html" > /tmp/brctl_cmd
 echo "-3 0 http://172.16.246.5:8080/test6/smartv_homepage.html" > /tmp/brctl_cmd 
+echo "-3 0 http://192.168.1.13:8080/levira/homepage/index.html" > /tmp/brctl_cmd
 
 2k18:
+:am,browser_base,:window=info
 git clone ssh://gerrit-linux-eu/2K18_MT5802 -b 2K18_UI_FFC_tpv
 git pull origin 2K18_UI_FFC_tpv 
 git push origin HEAD:refs/for/2K18_UI_FFC_tpv
+git log --grep tag
+git reset --hard 95b612195a802f6281bc22bf3736cd56545b37bd
 
 rm -rf work_release/apollo/third_party/cust_app/TPV_Vision/TPV/opera-devices-sdk
 mkdir $_ #$_ means last parameter in last command.
@@ -136,6 +140,36 @@ tar -xzvf opera-devices-sdk-4.11.2.40.Wagoner2.66.WAG2-141-1-MTK5800.tar.gz --st
 cd work_release/apollo/third_party/cust_app/TPV_Vision/TPV/custom_scripts
 ./integrate_opera_linux5802_2.sh
 
+sed -i 's/window_width=1920/window_width=1280/' bws_profile.ini
+sed -i 's/window_height=1080/window_height=720/' bws_profile.ini
+
+sed -i 's/surface_width=1920/surface_width=1280/' bws_profile_common.ini
+sed -i 's/surface_height=1080/surface_height=720/' bws_profile_common.ini
+
+sed -i 's/window_width=1280/window_width=1920/' bws_profile.ini
+sed -i 's/window_height=720/window_height=1080/' bws_profile.ini
+
+sed -i 's/surface_width=1280/surface_width=1920/' bws_profile_common.ini
+sed -i 's/surface_height=720/surface_height=1080/' bws_profile_common.ini
+
+sed -i 's/--dfb-memory-limit-mb=328/--dfb-memory-limit-mb=228/' bws_profile_common.ini
+sed -i 's/--dfb-compositor-memory-limit-mb=328/--dfb-compositor-memory-limit-mb=228/' bws_profile_common.ini 
+sed -i 's/MEMORY_LIMIT=314572800/MEMORY_LIMIT=414572800/' bws_profile_common.ini 
+
+press "quit"
+:am,browser_base,14:opacity=50
+:am,browser_base,13:opacity=100
+
+:am,browser_base,:window=close
+
+:am,browser_base,:window=info
+
+echo "log=3" > /tmp/cmpb_cfg; sync;chmod 666 /tmp/cmpb_cfg
+
+
+./work_release/apollo/third_party/cust_app/TPV_Vision/TPV/custom_scripts/integrate_opera_linux.sh  opera-devices-sdk-4.11.3.57.Wagoner2-DEBUG.149.WAG2-384-DEBUG-MTK5800.tar.gz
+
+sed -i 's/}/}\n/g' mobile.main.css
  
 
 

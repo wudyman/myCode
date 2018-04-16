@@ -196,6 +196,7 @@ sudo cp build/rpm/httpd.init /etc/init.d/httpd
 sudo chmod 755 /etc/init.d/httpd
 sudo chkconfig --add httpd
 sudo chkconfig --level 35 httpd on
+sudo chkconfig --level 35 httpd off
 5）创建符号链接
 检查/etc/init.d/httpd看所需要的文件
 CONFFILE=/etc/httpd/conf/httpd.conf

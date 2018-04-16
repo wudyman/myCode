@@ -21,6 +21,13 @@ uwsgi --http :8082 --wsgi-file test.py
 --pid-path=/home/wudy/install_software/nginx/nginx.pid \
 --with-http_ssl_module
 
+./configure \
+--prefix=/home/dongxw/http_server/nginx \
+--sbin-path=/home/dongxw/http_server/nginx/nginx \
+--conf-path=/home/dongxw/http_server/nginx/nginx.conf \
+--pid-path=/home/dongxw/http_server/nginx/nginx.pid \
+--with-http_ssl_module
+
 启动：./nginx
 退出：./nginx -s stop
 帮助：./nginx -h
@@ -154,3 +161,5 @@ add this before exit 0:
    
 6) 创建超级管理员
    python manage.py createsuperuser 
+   
+   git clone https://github.com/wudyman/dnl.git
