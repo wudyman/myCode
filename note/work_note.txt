@@ -170,6 +170,20 @@ echo "log=3" > /tmp/cmpb_cfg; sync;chmod 666 /tmp/cmpb_cfg
 ./work_release/apollo/third_party/cust_app/TPV_Vision/TPV/custom_scripts/integrate_opera_linux.sh  opera-devices-sdk-4.11.3.57.Wagoner2-DEBUG.149.WAG2-384-DEBUG-MTK5800.tar.gz
 
 sed -i 's/}/}\n/g' mobile.main.css
+
+
+
+cp /basic/3rd_ini/browser_engine/global_env_setup.ini  /3rd_rw/browser_engine/global_env_setup.ini
+echo "export GST_DEBUG=4" >>  /3rd_rw/browser_engine/global_env_setup.ini
+echo "export UVA_DEBUG=*" >>  /3rd_rw/browser_engine/global_env_setup.ini
+echo "export UVA_AS_DEBUG_VERBOSITY=2" >>  /3rd_rw/browser_engine/global_env_setup.ini       
+
+#echo " export GST_DEBUG="*:4,gst_mtk_controller:6"" >>  /3rd_rw/browser_engine/global_env_setup.ini      
+#echo " export GST_DEBUG_FILE=/3rd_rw/browser_engine/log.txt " >>  /3rd_rw/browser_engine/global_env_setup.ini      
+
+sync   
+reboot 
+
  
 
 
