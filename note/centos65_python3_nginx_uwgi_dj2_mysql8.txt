@@ -1,0 +1,204 @@
+一 .python 3.6.5
+
+	1.下载并解压
+        wget https://www.python.org/ftp/python/3.6.5/Python-3.6.5.tgz
+		tar -xvf Python-3.6.5.tgz
+	2.配置并编译安装
+		./configure --prefix=/home/dongxw/http_server/python3.6.5 --enable-shared
+		make
+		make install
+	3. 添加动态库
+		vi ~/.bash_profile 后添加 export LD_LIBRARY_PATH=/home/dongxw/http_server/python3.6.5/lib:$LD_LIBRARY_PATH
+		PATH=$PATH:$HOME/bin:/home/dongxw/http_server/python3.6.5/bin
+
+		source ~/.bash_profile
+		
+		sudo vi /etc/ld.so.conf  后添加 /home/dongxw/http_server/python3.6.5/lib
+		sudo ldconfig -v	
+		
+	4.取消python2,默认python3
+		sudo mv python python2.6.6
+		sudo ln -s /home/dongxw/http_server/python3.6.5/bin/python3 /usr/bin/python
+		python -V (显示python 版本为python3.6.5)
+	5. sudo vi /usr/bin/yum
+		#!/usr/bin/python 改为#!/usr/bin/python2.6
+        
+二. 安装setuptools和pip
+	1.安装pip
+		https://pypi.python.org/pypi/pip#downloads
+        wget https://files.pythonhosted.org/packages/ae/e8/2340d46ecadb1692a1e455f13f75e596d4eab3d11a57446f08259dee8f02/pip-10.0.1.tar.gz
+		python setup.py build
+		python setup.py install
+        如果安装后pip 无法使用，请安装pip-9.0.1
+	2. 安装setuptools
+		https://pypi.python.org/pypi/setuptools
+        wget https://files.pythonhosted.org/packages/1a/04/d6f1159feaccdfc508517dba1929eb93a2854de729fa68da9d5c6b48fa00/setuptools-39.2.0.zip
+		unzip setuptools-35.0.2.zip
+		python setup.py install
+	3.如果安装中提示缺少包，如six,appdirs
+		chmod -R 777 /home/dongxw/http_server/python3.6.1
+		pip --trusted-host pypi.python.org install six
+		pip install appdirs
+        
+    4. 安装 distribute-0.7.3.zip
+       https://pypi.org/project/distribute/
+       wget https://files.pythonhosted.org/packages/5f/ad/1fde06877a8d7d5c9b60eff7de2d452f639916ae1d48f0b8f97bf97e570a/distribute-0.7.3.zip
+        unzip distribute-0.7.3.zip
+		python setup.py install
+        
+三：安装,测试uwsgi
+    1）安装：	pip install uwsgi
+    2）测试：
+    # test.py
+    def application(env, start_response):
+        start_response('200 OK', [('Content-Type','text/html')])
+        #return ["Hello World"] # python2
+        return [b"Hello World"] # python3
+    然后，Run uWSGI:
+    uwsgi --http :8082 --wsgi-file test.py
+    浏览器输入localhost:8082 测试
+        
+四. nginx
+
+
+官网www.nginx.org 下载并解压最新版本。
+wget http://nginx.org/download/nginx-1.15.0.tar.gz
+./configure \
+--prefix=/home/wudy/install_software/nginx \
+--sbin-path=/home/wudy/install_software/nginx/nginx \
+--conf-path=/home/wudy/install_software/nginx/nginx.conf \
+--pid-path=/home/wudy/install_software/nginx/nginx.pid \
+--with-http_ssl_module
+
+./configure \
+--prefix=/home/dongxw/http_server/nginx \
+--sbin-path=/home/dongxw/http_server/nginx/nginx \
+--conf-path=/home/dongxw/http_server/nginx/nginx.conf \
+--pid-path=/home/dongxw/http_server/nginx/nginx.pid \
+--with-http_ssl_module
+
+make
+make install
+
+启动：./nginx
+退出：./nginx -s stop
+帮助：./nginx -h
+
+五. 安装配置django1.11
+	1)安装django
+		pip install django==2.0.6
+
+六.nginx 连接 uwsgi 连接django
+1).  /home/wudy/install_software/nginx/nginx.conf 中 增加一句：include /etc/nginx_conf/*;
+2). 更改listen 为 8080  ：listen       8080;
+六.nginx 连接 uwsgi 连接django
+1).  /home/wudy/install_software/nginx/nginx.conf 中 增加一句：include /etc/nginx_conf/*;
+2).  在django的项目mysite 目录下 创建目录 media 和static
+3).   在django的项目mysite 目录下创建 mysite_nginx.conf 添加以下内容，并link 到 /etc/nginx_conf/  :   sudo ln -s /home/wudy/study/web/mysite/mysite_nginx.conf /etc/nginx_conf/
+# mysite_nginx.conf
+# the upstream component nginx needs to connect to
+upstream django {
+    # server unix:///path/to/your/mysite/mysite.sock; # for a file socket
+    server localhost:8001; # for a web port socket (we'll use this first)
+}
+
+# configuration of the server
+server {
+    # the port your site will be served on
+    listen      8000;
+    # the domain name it will serve for
+    server_name .example.com; # substitute your machine's IP address or FQDN
+    charset     utf-8;
+
+    # max upload size
+    client_max_body_size 75M;   # adjust to taste
+
+    # Django media
+    location /media  {
+        alias /path/to/your/mysite/media;  # your Django project's media files - amend as required
+    }
+
+    location /static {
+        alias /path/to/your/mysite/static; # your Django project's static files - amend as required
+    }
+
+    # Finally, send all non-media requests to the Django server.
+    location / {
+        uwsgi_pass  django;
+        include     /path/to/your/mysite/uwsgi_params; # the uwsgi_params file you installed
+    }
+}
+4).部署静态文件
+mysite/settings.py 中添加以下一句：
+STATIC_ROOT = os.path.join(BASE_DIR, "static/")   
+然后运行：
+python manage.py collectstatic
+
+5). 启动：
+先运行： nginx
+然后运行：uwsgi --socket :8001 --module mysite.wsgi
+
+6). 使用unix socket 替换 端口转发
+mysite_nginx.conf中更改为：
+ upstream django {
+    server unix:///home/wudy/study/web/mysite/mysite.sock; # for a file socket
+    #server localhost:8001; # for a web port socket (we'll use this first)
+}
+先运行： nginx
+然后运行：uwsgi --socket mysite.sock --module mysite.wsgi
+
+7). uwsgi 运行 .ini文件启动
+ 在mysite文件夹下创建文件mysite_uwsgi.ini，并添加以下内容：
+ 然后运行：uwsgi --ini mysite_uwsgi.ini
+ 
+ # mysite_uwsgi.ini file
+[uwsgi]
+
+# Django-related settings
+# the base directory (full path)
+chdir           = /home/wudy/study/web/mysite
+# Django's wsgi file
+module          = mysite.wsgi
+# the virtualenv (full path)
+#home            = /path/to/virtualenv
+
+# process-related settings
+# master
+master          = true
+# maximum number of worker processes
+processes       = 10
+# the socket (use the full path to be safe
+socket          = /home/wudy/study/web/mysite/mysite.sock
+# ... with appropriate permissions - may be needed
+# chmod-socket    = 664
+# clear environment on exit
+vacuum          = true
+
+# every time update the directory /home/wudy/study/web/mysite, uwsgi will auto restart
+touch-reload = /home/wudy/study/web/mysite
+
+8. emperor mode  run
+# create a directory for the vassals
+sudo mkdir /etc/uwsgi
+sudo mkdir /etc/uwsgi/vassals
+# symlink from the default config directory to your config file
+sudo ln -s /home/wudy/study/web/mysite/mysite_uwsgi.ini /etc/uwsgi/vassals/
+# run the emperor
+uwsgi --emperor /etc/uwsgi/vassals --uid www-data --gid www-data
+
+
+9. system boot run
+vi /etc/rc.local 
+add this before exit 0:
+/usr/local/bin/uwsgi --emperor /etc/uwsgi/vassals --uid www-data --gid www-data --daemonize /var/log/uwsgi-emperor.log
+
+七  pip install PyMySQL
+ django 项目 __init__.py 中添加  
+import pymysql
+pymysql.install_as_MySQLdb()
+
+八.pip install Pillow
+
+九. unzip dysms_python.zip 
+ python setup.py install
+
