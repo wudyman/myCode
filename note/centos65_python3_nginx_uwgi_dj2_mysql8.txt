@@ -201,4 +201,36 @@ pymysql.install_as_MySQLdb()
 
 九. unzip dysms_python.zip 
  python setup.py install
+ 
+十. mysql 8.0.11
+rpm -qa | grep mysql
+rpm -e mysql   //普通删除模式
+rpm -e --nodeps mysql    // 强力删除模式，如果使用上面命令删除时，提示有依赖的其它文件，则用该命令可以对其进行强力删除
+find 所有 mysql 文件并删除后重启系统
+
+wget https://dev.mysql.com/get/Downloads/MySQL-8.0/mysql-8.0.11-1.el6.x86_64.rpm-bundle.tar
+tar -xvf mysql-8.0.11-1.el6.x86_64.rpm-bundle.tar
+sudo yum install mysql-community-{server,client,common,libs}-*
+sudo service mysqld start
+sudo grep 'temporary password' /var/log/mysqld.log  (获取初始密码)
+mysql -uroot -p
+ALTER USER 'root'@'localhost' IDENTIFIED BY 'MyNewPass4!';（修改密码，必须包含大小写，数字，符号）
+show variables like '%char%'; (查看编码格式，mysql 8.0 默认utf8mb4)
+
+mysql> ALTER USER USER() IDENTIFIED BY 'Newpassword';（修改密码）
+
+如果过django出现（Django链接Mysql 8.0 出现错误(1045:Access denied for user 'root'@'localhost' (using password: NO) ）
+
+mysql -u root -p
+use mysql；
+ALTER USER 'root'@'localhost' IDENTIFIED WITH mysql_native_password BY 'newpassword';  
+FLUSH PRIVILEGES;  
+
+十一
+
+python manage.py collectstatic
+   python  manage.py makemigrations 或  python  manage.py makemigrations polls
+   python  manage.py 
+     python manage.py createsuperuser 
+
 
