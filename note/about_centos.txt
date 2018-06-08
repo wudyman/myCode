@@ -148,6 +148,15 @@ service nmb restart
 查看samba状态
 smbstatus
 
+a)、将SELinux设置成disabled或者permissive
+
+setenforce 0
+
+b)、关闭防火墙服务
+
+service iptables stop
+
+
 五. 安装SVN
 查看是否可以从yum软件仓库找到SVN安装包
 yum list *svn*
