@@ -163,3 +163,6 @@ add this before exit 0:
    python manage.py createsuperuser 
    
    git clone https://github.com/wudyman/dnl.git
+   
+7) django.db.utils.OperationalError: (1050, "Table '±íÃû' already exists£©
+    python manage.py migrate --fake;
