@@ -598,6 +598,18 @@ function test46()
     z=3;
     console.log(z);
 }
-test46();
+window.log47=function()
+{
+    console.log("this is global log 47");
+}
+function test47()
+{
+    function log47()
+    {
+        console.log("this is local log47");
+    }
+    setTimeout("log47()",2000);
+}
+test47();
 
 //alert(message);

@@ -40,6 +40,8 @@
             var originX= e.offsetX;
             var originY= e.offsetY;
             window.onmousemove=function (e) {
+                                                        console.log(originX);
+                                            console.log(e.clientX);
                 $('#chooseBox').css({
                     position:'absolute',
                     left:e.clientX-originX-300+'px',

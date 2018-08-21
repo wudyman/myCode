@@ -125,6 +125,14 @@ echo "-3 0 http://172.16.246.5:8080/mpeg-dash/test.html" > /tmp/brctl_cmd
 echo "-3 0 http://172.16.246.5:8080/MsePlayer/index.html" > /tmp/brctl_cmd
 echo "-3 0 http://172.16.246.5:8080/test6/smartv_homepage.html" > /tmp/brctl_cmd 
 echo "-3 0 http://192.168.1.13:8080/levira/homepage/index.html" > /tmp/brctl_cmd
+echo "-3 2 http://172.16.246.88:8080/test2/index.html" > /tmp/brctl_cmd
+echo "-3 0 http://172.16.246.88:8080/test2/index.html" > /tmp/brctl_cmd 
+echo "-3 2 https://miniportal.nettvservices.com/miniportal.php" > /tmp/brctl_cmd 
+echo "-3 2 http://192.168.1.12:8080/test2/index.html" > /tmp/brctl_cmd
+echo "-3 2 https://dashif.org/reference/players/javascript/1.4.0/samples/dash-if-reference-player/" > /tmp/brctl_cmd
+echo "-3 2 http://dash.edgesuite.net/dash264/TestCases/1a/sony/SNE_DASH_SD_CASE1A_REVISED.mpd" > /tmp/brctl_cmd
+
+
 
 2k18:
 :am,browser_base,:window=info
@@ -183,6 +191,12 @@ echo "export UVA_AS_DEBUG_VERBOSITY=2" >>  /3rd_rw/browser_engine/global_env_set
 
 sync   
 reboot 
+
+
+su
+mtkroot
+cli
+pmx.s.p 211
 
  
 
