@@ -1,1 +1,10 @@
+1.打包
+cd android
+./gradlew assembleRelease
+
+2.运行
+ react-native run-android --variant=release
+
+3. code-push
+
 code-push release-react MyApp-iOS ios  --t 1.0.0 --dev false --d Production --des "1.优化操作流程" --m true

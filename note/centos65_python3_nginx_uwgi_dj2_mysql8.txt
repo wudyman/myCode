@@ -232,5 +232,27 @@ python manage.py collectstatic
    python  manage.py makemigrations 或  python  manage.py makemigrations polls
    python  manage.py 
      python manage.py createsuperuser 
+     
+十二 django 定时
+pip install django-crontab
+
+INSTALLED_APPS = (
+        'django_crontab',
+        ...
+    )
+    
+    CRONJOBS = [
+    ('*/5 * * * *', 'appname.cron.test','>>/home/test.log')
+]
+
+python manage.py crontab remove
+python manage.py crontab show
+python manage.py crontab add
+
+如果不执行，cat /var/spool/mail/root 后出现"/usr/bin/python: error while loading shared libraries: libpython3.6m.so.1.0: cannot open shared object file: No such file or directory" 
+执行：	sudo vi /etc/ld.so.conf  后添加 /root/http_server/python3.6.5/lib
+		sudo ldconfig -v
+
+
 
 
