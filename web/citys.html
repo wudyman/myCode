@@ -1,0 +1,123 @@
+<html>
+<head>
+<meta charset="utf-8">
+<script src="jquery-3.2.1.js" type="text/javascript"></script>
+<script src="citys.js" type="text/javascript"></script>
+</head>
+<body>
+<h1>this is citys test</h1>
+<div id="addr_select">
+
+<div id="province">
+<select id="province_select" onchange="citySelectChange('province')">
+<option value="0">请选择省份</option>
+</select>
+</div>
+
+<div id="city">
+<select id="city_select" onchange="citySelectChange('city')">
+<option value="0">请选择城市</option>
+</select>
+</div>
+
+<div id="district">
+<select id="district_select" onchange="citySelectChange('district')">
+<option value="0">请选择地区</option>
+</select>
+</div>
+
+<div id="addr_detail">
+<input name="detail" type="text" disabled placeholder="乡镇,村(可选)">
+</div>
+
+</div>
+
+<div>
+<button id="post" type="button">发布</button>
+</div>
+<script>
+function citySelectChange(type)
+{
+    $("#addr_detail input").attr("disabled","true");
+    $("#addr_detail input").val("");
+    if("province"==type)
+    {
+        province_value = $("#province_select option:selected").attr("value");
+        city_value=district_value="0";
+        $("#city_select").empty().append('<option value="0">请选择城市</option>');
+        $("#district_select").empty().append('<option value="0">请选择地区</option>');
+        if("0"==province_value)
+            return;
+        citys=provinces[provinces_map[province_value]].children;
+        
+        for (i in citys)
+        {
+            var city=citys[i];
+            var value=city.value;
+            var name=city.label;
+            var city_element='<option value="'+value+'">'+name+'</option>';
+            $("#city_select").append(city_element);
+            citys_map[value]=i;
+        }
+    }
+    else if("city"==type)
+    {
+        city_value = $("#city_select option:selected").attr("value");
+        district_value="0";
+        $("#district_select").empty().append('<option value="0">请选择地区</option>');
+        if("0"==city_value)
+            return;
+        districts=citys[citys_map[city_value]].children;
+        
+        for (i in districts)
+        {
+            var district=districts[i];
+            var value=district.value;
+            var name=district.label;
+            var district_element='<option value="'+value+'">'+name+'</option>';
+            $("#district_select").append(district_element);
+            districts_map[value]=i;
+        }
+    }
+    else if("district"==type)
+    {
+        district_value = $("#district_select option:selected").attr("value");
+        if("0"!=district_value)
+            $("#addr_detail input").removeAttr("disabled");
+    }
+}
+function citySelect()
+{
+    provinces=getProvinces();
+    provinces_map={};
+    citys_map={};
+    districts_map={};
+    province_value=city_value=district_value="0";
+    addr="";
+
+    for (i in provinces)
+    {
+        var province=provinces[i];
+        var value=province.value;
+        var name=province.label;
+        var province_element='<option value="'+value+'">'+name+'</option>';
+        $("#province_select").append(province_element);        
+        provinces_map[value]=i;    
+    }
+    
+    $("#post").click(function(){
+        addr="";
+        if("0"!=province_value)
+            addr+=provinces[provinces_map[province_value]].label;
+        if("0"!=city_value)
+            addr+=citys[citys_map[city_value]].label;
+        if("0"!=district_value)
+            addr+=districts[districts_map[district_value]].label+$("#addr_detail input").val();
+        console.log(addr);
+    });
+    
+}
+citySelect();
+</script>
+</body>
+</html>

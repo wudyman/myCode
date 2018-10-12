@@ -132,6 +132,10 @@ echo "-3 2 http://192.168.1.12:8080/test2/index.html" > /tmp/brctl_cmd
 echo "-3 2 https://dashif.org/reference/players/javascript/1.4.0/samples/dash-if-reference-player/" > /tmp/brctl_cmd
 echo "-3 2 http://dash.edgesuite.net/dash264/TestCases/1a/sony/SNE_DASH_SD_CASE1A_REVISED.mpd" > /tmp/brctl_cmd
 
+echo "-3 2 https://www.youtube.com" > /tmp/brctl_cmd
+echo "-3 2 https://www.bugaboo.tv/" > /tmp/brctl_cmd
+echo "-3 2 https://www.037hd.com" > /tmp/brctl_cmd
+
 
 
 2k18:
