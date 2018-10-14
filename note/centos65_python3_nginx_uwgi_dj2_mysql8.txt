@@ -5,6 +5,7 @@
 		tar -xvf Python-3.6.5.tgz
 	2.配置并编译安装
 		./configure --prefix=/home/dongxw/http_server/python3.6.5 --enable-shared
+        ./configure --prefix=/root/http_server/python3.6.5 --enable-shared
 		make
 		make install
 	3. 添加动态库
@@ -75,6 +76,13 @@ wget http://nginx.org/download/nginx-1.15.0.tar.gz
 --sbin-path=/home/dongxw/http_server/nginx/nginx \
 --conf-path=/home/dongxw/http_server/nginx/nginx.conf \
 --pid-path=/home/dongxw/http_server/nginx/nginx.pid \
+--with-http_ssl_module
+
+./configure \
+--prefix=/root/http_server/nginx \
+--sbin-path=/root/http_server/nginx/nginx \
+--conf-path=/root/http_server/nginx/nginx.conf \
+--pid-path=/root/http_server/nginx/nginx.pid \
 --with-http_ssl_module
 
 make
