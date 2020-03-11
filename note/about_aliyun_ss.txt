@@ -11,7 +11,7 @@ vim /etc/shadowsocks.json
 	"server_port":3389,
 	"local_address":"127.0.0.1",
 	"local_port":1080,
-	"password":"s*n",
+	"password":"s*n8*4",
 	"timeout":300,
 	"method":"aes-256-cfb",
 	"fast_open":false,

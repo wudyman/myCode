@@ -518,8 +518,7 @@ vi /etc/sysconfig/iptables
     </VirtualHost>
 8£©.÷ÿ∆Ùapache
 	sudo service httpd restart
-	
-	  
+
 	
 
 	

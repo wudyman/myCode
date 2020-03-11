@@ -54,6 +54,7 @@ LOG
 2k19 
 cp -f /3rd/nettv/opera/nettvlog /3rd_rw
 cp -f /3rd/nettv/opera/nettvlog /tmp
+/3rd_rw/nettvlog -c -a 0
 /3rd_rw/nettvlog -c -a 1
 /3rd_rw/nettvlog -c -r
 /3rd_rw/nettvlog -r
@@ -78,6 +79,7 @@ cp -f /3rd/nettv/opera/nettvlog /tmp
 2k20:
 cp -f /3rd/nettv/opera/nettvlog /3rd_rw
 chmod +x /3rd_rw/nettvlog
+/3rd_rw/nettvlog -c -a 0
 /3rd/nettv/opera/nettvlog -c -m uva_media_backend -a 1
 /3rd/nettv/opera/nettvlog -c -m uva_media_backend -a 0
 /3rd/nettv/opera/nettvlog  -c -m nettv_provided_api -a 1
@@ -88,6 +90,7 @@ chmod +x /3rd_rw/nettvlog
 /3rd/nettv/opera/nettvlog -c -m media_object -a 0
 /3rd/nettv/opera/nettvlog -c -m nettv_app_module -a 1
 /3rd/nettv/opera/nettvlog -c -m nettv_app_module -a 1
+/3rd/nettv/opera/nettvlog -c -m opera_window_manager -a 1
 /3rd/nettv/opera/nettvlog -c -m opera_window_manager -a 0
 /3rd/nettv/opera/nettvlog -c -m opera_agent -a 0
 /3rd/nettv/opera/nettvlog -c -m uva_drm_backend -a 1
@@ -98,10 +101,15 @@ chmod +x /3rd_rw/nettvlog
 
 nvt:
 /mtd_apexe/board/com.tpv.opera/bin/nettvlog -c -a 1
+/mtd_apexe/board/com.tpv.opera/bin/nettvlog -c -r
 
 /mtd_apexe/board/com.tpv.opera/bin/nettvlog -c -m uva_media_backend -a 1
 /mtd_apexe/board/com.tpv.opera/bin/nettvlog -c -m nettv_provided_api -a 1
 /mtd_apexe/board/com.tpv.opera/bin/nettvlog -c -m media_object -a 1
+/mtd_apexe/board/com.tpv.opera/bin/nettvlog -c -m opera_window_manager -a 1
+/mtd_apexe/board/com.tpv.opera/bin/nettvlog -c -m opera_agent -a 1
+/mtd_apexe/board/com.tpv.opera/bin/nettvlog -c -m browser_proxy -a 1
+/mtd_apexe/board/com.tpv.opera/bin/nettvlog -c -m browser_controller -a 1
 
 mtk:
 app.nettv.dl 5
@@ -254,6 +262,8 @@ https://certification.nettvservices.com/test_environment/
 
 echo "-3 2 http://m.wsj.net/video/20191101/110119boristrump/110119boristrump_v2_ec264k.mp4" > /tmp/brctl_cmd
 echo "-3 2 https://www.youtube.com" > /tmp/brctl_cmd
+
+echo "-3 2 http://10.0.0.13:8080/rekuten_stress_player/index.html" > /tmp/brctl_cmd
 
 
 2k18:
@@ -424,6 +434,18 @@ feeder.d_l 2 +X
 mw.cm_playback.ecmpb
 
 svn revert --recursive *
+
+9288 osd
+
+1.  /basic/tty_man
+
+2. ctrl+i
+
+3. app.p.osd 0 0  
+app.p.osd 0 1  
+
+for 9288
+
 
 
 

@@ -1,0 +1,97 @@
+第一部分：搭建php apache mysql 环境，分开来搭建这些环境比较复杂，网络上有现成的工具包类似一键安装就能把环境搭建好，这个工具就是XAMPP 。这一部分步骤如下：
+    1、下载XAMPP  ，下载地址：https://www.apachefriends.org/download.html 
+	2、执行下载文件：xampp-linux-x64-7.2.8-0-installer.run 
+    3、安装xampp完成后，可以通过命令来启动xampp环境
+        /opt/lampp/lampp start   启动
+        /opt/lampp/lampp stop  停止
+        /opt/lampp/lampp restart  重启
+
+        启动后，可以通过ps -aef |grep lampp  来查看lampp 环境是否正常启动。如下提示中，可以看出Apache 和MySQL都启动正常
+	4、关闭Centos7 防火墙命令：systemctl stop firewalld.service，关闭防火墙后，可以从外部访问到这台服务器，到此，第一部分完成  
+    
+第二部分：配置数据库，数据库服务在第一部分一键安装好了，还需要配置下访问权限
+
+    1、登录mysql服务，执行命令：/opt/lampp/bin/mysql -uroot
+
+    2、登录后执行SQL
+        use mysql;
+        select t.host from user t where t.user='root';
+        GRANT ALL PRIVILEGES ON *.* TO 'root'@'%' IDENTIFIED BY 'shenlin830924' WITH GRANT OPTION;
+        GRANT ALL PRIVILEGES ON *.* TO 'root'@'localhost' IDENTIFIED BY 'shenlin830924' WITH GRANT OPTION;
+        FLUSH PRIVILEGES;
+        
+    3、登录mysql 服务创建wordpress 数据库，执行命令： /opt/lampp/bin/mysql -uroot -p  弹出输入password ，输入shenlin830924。
+       登入后执行SQL：CREATE DATABASE IF NOT EXISTS wordpress DEFAULT CHARSET utf8 COLLATE utf8_general_ci;
+       输入命令：show databases;
+       
+第三部分：安装Wordpress
+
+　　1、下载Wordpress：https://wordpress.org/download/   点击Download .tar.gz 下载wordpress 压缩包
+
+　　2、解压wordepress 到目录/opt/lampp/htdocs/下：tar -xzvf wordpress-5.2.1.tar.gz -C /opt/lampp/htdocs/
+
+　　3、浏览器中输入http://192.168.1.108/wordpress/index.php   ip 为centos7 的ip，由于是首次打开，自动跳转到安装页面http://192.168.1.108/wordpress/wp-admin/setup-config.php
+
+　　在安装页面，可以看出页面提示的必要数据库信息，这些信息在第二部分已经完成了
+
+    4、点击 【Let‘s go’】 进入填写数据库信息页面，点击【submit】
+    5、如果点击【Submit 】 按钮后出现如下提示：
+
+　　说明在写wp-config.php 文件的时候没有权限，提示中也给了解决方法，就是手动在wordpress 目录下新建wp-config.php 文件，并且把提示中的代码复制保存到wp-config.php 文件中再点击【run the installation】就能继续安装
+    6、输入站点信息，管理员账号密码后(admin:shenlin_830924) 点击【Install WordPress】  
+    7、安装完成后，进入登录页：http://192.168.1.108/wordpress/wp-login.php，并登录成功，说明安装成功
+
+    
+彻底解决wordpress安装主题或插件需要FTP问题
+            1.进入wp-content目录，新建tmp文件夹，设置文件夹的权限为777
+            2.修改：在wp-config.php中添加下列三行代码:
+
+            【使用记事本编辑器，推荐使用：Notepad++】
+
+            define('WP_TEMP_DIR', ABSPATH.'wp-content/tmp');/* WordPress的临时目录。*/
+
+            define("FS_METHOD", "direct");  
+
+            define("FS_CHMOD_DIR", 0777);  
+
+            define("FS_CHMOD_FILE", 0777);  
+
+            注意：要在定义ABSPATH的后面，即在它的后面添加
+
+            if ( !defined('ABSPATH') )
+
+            define('ABSPATH', dirname(__FILE__) . '/');
+
+            ================================
+
+            最后的代码应该是：
+
+            if ( !defined('ABSPATH') )
+
+                    define('ABSPATH', dirname(__FILE__) . '/');
+
+            define('WP_TEMP_DIR', ABSPATH.'wp-content/tmp');
+
+            define("FS_METHOD", "direct");  
+
+            define("FS_CHMOD_DIR", 0777);  
+
+            define("FS_CHMOD_FILE", 0777); 
+
+            3. 设置wp-content目录中的plugins（插件）和themes（主题）文件夹权限为777。不行的话把wp-content目录也改权限为0777.
+
+            至此，你的插件和主题已经可以自动更新了。
+
+            此为终极解决办法，其它都为阉割版本。
+
+            为了安全，应在.htaccess中把 tmp、themes、plugin 这些读写权限为777的文件夹，设置为没有执行权限。
+
+
+去掉wordpress url中的/wordpress
+1、先登录wp-admin，在设置-常规里，将站点地址URL后面的/wordpress给去掉，然后点保存。
+2、将.htaccess和inde.php下载放到根目录(非wordpress的目录)
+3.修改index.php文件
+将
+require( dirname( __FILE__ ) . '/wp-blog-header.php' );
+改为
+require( dirname( __FILE__ ) . '/wordpress/wp-blog-header.php' );
