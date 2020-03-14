@@ -1,0 +1,46 @@
+1.    bash <(curl -L -s https://install.direct/go.sh)
+
+2. 安装完成后，配置文件为/etc/v2ray/config.json，cat命令可查看内容：vi /etc/v2ray/config.json。一个安装时自动生成的配置文件示例：
+   {
+  "inbounds": [{
+    "port": 23581,
+    "protocol": "vmess",
+    "settings": {
+      "clients": [
+        {
+          "id": "ceb793e6-49cf-25d8-e4de-ae542e62748e",
+          "level": 1,
+          "alterId": 64
+        }
+      ]
+    }
+  }],
+  "outbounds": [{
+    "protocol": "freedom",
+    "settings": {}
+  },{
+    "protocol": "blackhole",
+    "settings": {},
+    "tag": "blocked"
+  }],
+  "routing": {
+    "rules": [
+      {
+        "type": "field",
+        "ip": ["geoip:private"],
+        "outboundTag": "blocked"
+      }
+    ]
+  }
+}
+
+配置文件中”inbounds”下的这几项信息需要留意：port（端口）、clients中的id（用户id）和alterId（额外id），它们将在配置客户端时用到。
+
+配置文件无需任何改动即可正常使用，但注意防火墙要放行监听的端口。接下来启动V2Ray并设置开机启动：
+
+systemctl enable v2ray
+systemctl start v2ray
+systemctl stop v2ray
+
+
+关闭Centos7 防火墙命令：systemctl stop firewalld.service
