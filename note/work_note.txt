@@ -105,6 +105,7 @@ nvt:
 
 /mtd_apexe/board/com.tpv.opera/bin/nettvlog -c -m uva_media_backend -a 1
 /mtd_apexe/board/com.tpv.opera/bin/nettvlog -c -m nettv_provided_api -a 1
+/mtd_apexe/board/com.tpv.opera/bin/nettvlog -c -m nettv_provided_api -a 0
 /mtd_apexe/board/com.tpv.opera/bin/nettvlog -c -m media_object -a 1
 /mtd_apexe/board/com.tpv.opera/bin/nettvlog -c -m opera_window_manager -a 1
 /mtd_apexe/board/com.tpv.opera/bin/nettvlog -c -m opera_agent -a 1

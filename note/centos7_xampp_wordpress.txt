@@ -1,6 +1,7 @@
 第一部分：搭建php apache mysql 环境，分开来搭建这些环境比较复杂，网络上有现成的工具包类似一键安装就能把环境搭建好，这个工具就是XAMPP 。这一部分步骤如下：
     1、下载XAMPP  ，下载地址：https://www.apachefriends.org/download.html 
         yum install net-tools
+        yum -y install wget
         wget https://downloadsapachefriends.global.ssl.fastly.net/7.2.28/xampp-linux-x64-7.2.28-0-installer.run
 	2、执行下载文件：xampp-linux-x64-7.2.8-0-installer.run 
     3、安装xampp完成后，可以通过命令来启动xampp环境
