@@ -6,7 +6,6 @@ from bs4 import BeautifulSoup
 import WpAutoPost
 
 #headers = {"User-Agent":"Mozilla/5.0 (Linux; Android 6.0; Nexus 5 Build/MRA58N) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/79.0.3945.130 Mobile Safari/537.36"}
-#response = requests.get("https://m.manrenshijie.com/fanhao/",headers=headers)
 #response.encoding = 'gbk'
 #print(response.status_code)
 #html=response.text
@@ -162,9 +161,7 @@ def getSubHtmlList(htmlUrl):
     return (mainTitle)
 
 headers = {"User-Agent":"Mozilla/5.0 (Linux; Android 6.0; Nexus 5 Build/MRA58N) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/79.0.3945.130 Mobile Safari/537.36"}        
-prefixWebUrl="https://m.manrenshijie.com/fanhao/"
 
-htmlUrl="https://m.manrenshijie.com/fanhao/22061.html"
 subHtmlList=[]
 subHtmlList.append(htmlUrl)
 mainTitle=getSubHtmlList(htmlUrl)
