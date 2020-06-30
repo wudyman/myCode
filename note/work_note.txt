@@ -78,11 +78,16 @@ cp -f /3rd/nettv/opera/nettvlog /tmp
 
 2k20:
 cp -f /3rd/nettv/opera/nettvlog /3rd_rw
+cp -f /3rd/nettv/opera/nettvlog /data
 chmod +x /3rd_rw/nettvlog
+chmod +x /data/nettvlog
+/data/nettvlog -c -m uva_media_backend -a 1
+/3rd_rw/nettvlog -c -m uva_media_backend -a 1
 /3rd_rw/nettvlog -c -a 0
+/3rd/nettv/opera/nettvlog -c -a 1 
 /3rd/nettv/opera/nettvlog -c -m uva_media_backend -a 1
 /3rd/nettv/opera/nettvlog -c -m uva_media_backend -a 0
-/3rd/nettv/opera/nettvlog  -c -m nettv_provided_api -a 1
+/3rd/nettv/opera/nettvlog -c -m nettv_provided_api -a 1
 /3rd/nettv/opera/nettvlog -c -m media_proxy -a 1 
 /3rd/nettv/opera/nettvlog -c -m browser_proxy -a 1
 /3rd/nettv/opera/nettvlog -c -m nettv_app_module -a 1
@@ -131,6 +136,9 @@ echo "-3 2 https://www.youtube.com/tv?additionalDataUrl=http://localhost:56789/a
 echo "-3 2 https://www.youtube.com/"> /tmp/brctl_cmd
 
 echo "-3 2 http://www.connectedplanettv.net/olvs/test/"> /tmp/brctl_cmd
+
+echo "-3 2 https://cdn.spotxcdn.com/media/videos/orig/7/3/73cd7236afa40f1539267d66d66bb5b2.mp4"> /tmp/brctl_cmd
+
 
 
 git:
@@ -345,10 +353,12 @@ git pull origin 2K19_UI_FFC_tpv
 git push origin HEAD:refs/for/2K19_UI_FFC_tpv
 git log --grep tag
 git reset --hard 95b612195a802f6281bc22bf3736cd56545b37bd
+git reset --soft 95b612195a802f6281bc22bf3736cd56545b37bd //保留本地更改
 
 2k20:
 git clone ssh://gerrit-linux-eu/2K20_MT9288_tpv -b 2K20_UI_FFC_tpv
 git pull origin 2K19_UI_FFC_tpv 
+git push origin HEAD:refs/for/2K20_UI_FFC_tpv 
 
 nvt:
 
@@ -446,6 +456,9 @@ svn revert --recursive *
 app.p.osd 0 1  
 
 for 9288
+
+
+:am,wpf_browser,:devtool=9222 //open chrome debug
 
 
 
