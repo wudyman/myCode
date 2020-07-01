@@ -5,29 +5,7 @@ import re
 from bs4 import BeautifulSoup
 import WpAutoPost
 
-#headers = {"User-Agent":"Mozilla/5.0 (Linux; Android 6.0; Nexus 5 Build/MRA58N) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/79.0.3945.130 Mobile Safari/537.36"}
-#response.encoding = 'gbk'
-#print(response.status_code)
-#html=response.text
-#print(html)
-
-#soup = BeautifulSoup(html,'lxml')
-#print(soup.prettify())
-#print(soup.section)
-
-            #articleContent=(soup.find_all("div",{"class":"article"}))[0]
-            #print(soup.prettify())
-            #articleContent=soup.select(".article")
-            #print(articleContent)
-            #pattern="<b>AV女优：</b>\.*\</p>"
-            #ret = re.match(pattern, str(articleContent))
-            #print(ret.group())
-            #res2=soup.find_all(re.compile("AV+"))
-            #print(res2)
-            #avName=soup.select("b[text='番号：']")
-            #print(avName)
-
-def parseSubHtmlContent(subHtmlList):
+def parseSubHtmlContent(subHtmlList,subHtmlContentList):
     id=0
     for subHtmlUrl in subHtmlList:
         response = None
@@ -42,7 +20,7 @@ def parseSubHtmlContent(subHtmlList):
             articleWP={}
             
             id=id+1
-            fanHao='888888'
+            fanHao='888'
             avName='---'
             movieName='---'
             distributorName='---'
@@ -53,6 +31,16 @@ def parseSubHtmlContent(subHtmlList):
             movieImage='./defaultImgDir/888888.jpg'
             
             articleWP['id']=id
+            articleWP['fanHao']=fanHao
+            articleWP['avName']=avName
+            articleWP['movieName']=movieName
+            articleWP['distributorName']=distributorName
+            articleWP['distributorTime']=distributorTime
+            articleWP['duration']=duration
+            articleWP['director']=director
+            articleWP['category']=category
+            articleWP['movieImage']=movieImage
+            
             bTag=soup.find("b",text="番号：")
             if bTag:
                 pTag=bTag.parent
@@ -126,11 +114,14 @@ def parseSubHtmlContent(subHtmlList):
                     articleWP['imagePath']=imagePath
                     
             #print(articleWP)
-            subHtmlContentList.append(articleWP)
+            if '888'==fanHao and '---'==avName:
+                print("invalid data")
+            else:
+                subHtmlContentList.append(articleWP)
             #print(pTag.find("b").clear())
             #print(bTag.get_text())
     
-def getSubHtmlList(htmlUrl):
+def getSubHtmlList(htmlUrl,subHtmlList):
     mainTitle=""
     response = None
     try:
@@ -154,21 +145,111 @@ def getSubHtmlList(htmlUrl):
             for aTag in aTagList:
                 subHtmlUrl=aTag.get('href')
                 if prefixWebUrl not in subHtmlUrl:
-                    subHtmlUrl=prefixWebUrl+subHtmlUrl
+                    subHtmlUrl=prefixWebUrl+"/fanhao/"+subHtmlUrl# "20880.html"
                     if subHtmlUrl not in subHtmlList:
                         subHtmlList.append(subHtmlUrl)
-        #print(subHtmlList)
     return (mainTitle)
 
-headers = {"User-Agent":"Mozilla/5.0 (Linux; Android 6.0; Nexus 5 Build/MRA58N) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/79.0.3945.130 Mobile Safari/537.36"}        
+def isHtmlHasSpider(tempUrl):
+    htmlHasSpiderListFile=open('./html_has_spider_list.txt', 'r+') 
+    lines=htmlHasSpiderListFile.readlines()
 
-subHtmlList=[]
-subHtmlList.append(htmlUrl)
-mainTitle=getSubHtmlList(htmlUrl)
-subHtmlContentList=[]
-parseSubHtmlContent(subHtmlList)
-WpAutoPost.postArticleList(subHtmlContentList,mainTitle)
+    htmlHasSpiderList=[]
+    for line in lines:
+        htmlHasSpiderList.append(line.strip('\n'))
 
+    if tempUrl in htmlHasSpiderList:
+        htmlHasSpiderListFile.close()
+        print("this url: "+tempUrl+" has spider,ignore!")
+        return(True)     
+    else:
+        htmlHasSpiderList.append(tempUrl)
+        htmlHasSpiderListFile.write(tempUrl)
+        htmlHasSpiderListFile.write('\n')  
+        htmlHasSpiderListFile.close()
+        return(False)
+        
+def getHtmlList(homeUrl,htmlUrlList):
+    response = None
+    try:
+        response = requests.get(homeUrl,headers=headers)
+    except:
+        pass
+    if response:
+        response.encoding = 'gbk'
+        htmlContent=response.text
+        soup = BeautifulSoup(htmlContent,'lxml')
+        aTagList = soup.select("section dd.f_card_dd a")
+        for item in reversed(aTagList):
+            tempUrl=item.get('href')
+            if not isHtmlHasSpider(tempUrl):
+                htmlUrlList.append(prefixWebUrl+tempUrl)#"/fanhao/22063.html"
+    #print(htmlUrlList)
+
+def getSpiderWebConfigReturn():
+    spiderWebConfigFile=open('./spider_web_config.txt', 'r')  
+    lines=spiderWebConfigFile.readlines()
+    spiderWebConfigFile.close()
+
+    prefixWebUrl=lines[0].strip('\n')
+    currentPageIndex=int(lines[1].strip('\n'))
+    return(prefixWebUrl,currentPageIndex)
+    
+def getSpiderWebConfig():
+    spiderWebConfigFile=open('./spider_web_config.txt', 'r')  
+    lines=spiderWebConfigFile.readlines()
+    spiderWebConfigFile.close()
+
+    global prefixWebUrl,currentPageIndex
+    prefixWebUrl=lines[0].strip('\n')
+    currentPageIndex=int(lines[1].strip('\n'))
+
+def setSpiderWebConfig():
+    fileObject = open('spider_web_config.txt', 'w')   
+    fileObject.write(prefixWebUrl)  
+    fileObject.write('\n')
+    fileObject.write(str(currentPageIndex))  
+    fileObject.write('\n')   
+    fileObject.close()
+
+def startSpider(htmlUrl):
+    subHtmlList=[]
+    subHtmlList.append(htmlUrl)
+    mainTitle=getSubHtmlList(htmlUrl,subHtmlList)
+    subHtmlContentList=[]
+    parseSubHtmlContent(subHtmlList,subHtmlContentList)
+    WpAutoPost.postArticleList(subHtmlContentList,mainTitle)
+        
+def spider1():
+    global currentPageIndex
+    endPageIndex=20880
+    for i in range(0,10):
+        if int(currentPageIndex)<int(endPageIndex):
+            currentPageIndex=currentPageIndex+1
+            htmlUrl=prefixWebUrl+"/fanhao/"+str(currentPageIndex)+".html"
+            print(htmlUrl)
+            startSpider(htmlUrl)
+        else:
+            print("spider to the end!")
+    setSpiderWebConfig()
+    
+def spider2():   
+    homeUrl=prefixWebUrl+"/fanhao/"
+    htmlUrlList=[]
+    getHtmlList(homeUrl,htmlUrlList)
+    if htmlUrlList:
+        for item in htmlUrlList:
+            htmlUrl=item
+            print("spider: "+htmlUrl)
+            #startSpider(htmlUrl)
+        
+    else:
+        print("latest, don`t need spider!")
+    
+headers = {"User-Agent":"Mozilla/5.0 (Linux; Android 6.0; Nexus 5 Build/MRA58N) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/79.0.3945.130 Mobile Safari/537.36"}
+
+(prefixWebUrl,currentPageIndex)=getSpiderWebConfigReturn()
+spider1()
     
 
 

@@ -16,9 +16,28 @@ from wordpress_xmlrpc.methods.users import GetUserInfo
 
 from wordpress_xmlrpc.compat import xmlrpc_client
 
+def isFanhaoHasPost(fanhao):
+    fanHaoListFile=open('./fanhao_list.txt', 'r+') 
+    lines=fanHaoListFile.readlines()
+
+    fanHaoList=[]
+    for line in lines:
+        fanHaoList.append(line.strip('\n'))
+
+    if fanhao in fanHaoList:
+        fanHaoListFile.close()
+        print("this fanhao: "+fanhao+" has posted,ignore!")
+        return(True)     
+    else:
+        fanHaoList.append(fanhao)
+        fanHaoListFile.write(fanhao)
+        fanHaoListFile.write('\n')  
+        fanHaoListFile.close()
+        return(False)
+        
 def postArticle(article,client,realAVName):
         
-##################upload imge#################
+
     id=article['id']
     fanHao=article['fanHao']
     avName=realAVName#article['avName']
@@ -28,6 +47,11 @@ def postArticle(article,client,realAVName):
     duration=article['duration']
     director=article['director']
     category=article['category']
+    
+    if isFanhaoHasPost(fanHao):
+        return ("false")
+    
+    ##################upload imge#################
     imagePath = article['imagePath'] #上传的图片文件路径
     print(imagePath)
     # prepare metadata
@@ -56,7 +80,10 @@ def postArticle(article,client,realAVName):
     "
 
     newpost = WordPressPost()
-    newpost.title = movieName
+    if '---'==movieName:
+        newpost.title = avName+' '+fanHao
+    else:
+        newpost.title = avName+' '+movieName
     newpost.content = articleConent
     print(id);
     if str(id)=="1":
@@ -115,36 +142,3 @@ def postArticleList(list,mainTitle):
 #    print(p.title)
 #    print(p.content)
 #    print(p.link)
-
-##################upload imge#################
-
-#filename = './test3.jpg' #上传的图片文件路径
-# prepare metadata
-#data = {
-#    'name': '3333.jpg',
-#    'type': 'image/jpeg',  # mimetype
-#}
-# read the binary file and let the XMLRPC library encode it into base64
-#with open(filename, 'rb') as img:
- #   data['bits'] = xmlrpc_client.Binary(img.read())
-#picResponse = client.call(media.UploadFile(data))
-# response == {
-#       'id': 6,
-#       'file': 'picture.jpg'
-#       'url': 'http://www.example.com/wp-content/uploads/2012/04/16/picture.jpg',
-#       'type': 'image/jpeg',
-# }
-#print(picResponse)
-####################################
-
-######### post #################
-#newpost = WordPressPost()
-#newpost.title = '我的第五篇文章标题'
-#newpost.content = '我第五篇测试文章正文'
-#newpost.terms_names = {
-#'category':['中国历史文化','日本历史文化'],
-#'post_tag':['一说春秋','春秋注解']
-#}
-#newpost.thumbnail = picResponse['id']
-#newpost.post_status = 'publish'
-#print(client.call(posts.NewPost(newpost)))
