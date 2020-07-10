@@ -16,31 +16,38 @@ from wordpress_xmlrpc.methods.users import GetUserInfo
 
 from wordpress_xmlrpc.compat import xmlrpc_client
 
-def isFanhaoHasPost(fanhao):
-    fanHaoListFile=open('./fanhao_list.txt', 'r+') 
+def setFanhaoHasPost(fanhao):
+    if '888'==fanhao:
+        print('fanhao 888 dont need set!')
+    else:
+        fanHaoListFile=open('./fanhao_list.txt', 'a+') 
+        fanHaoListFile.write(fanhao)
+        fanHaoListFile.write('\n')
+        fanHaoListFile.close() 
+        
+def getFanhaoHasPostList():
+    print('getFanhaoHasPostList')
+    fanHaoListFile=open('./fanhao_list.txt', 'r') 
     lines=fanHaoListFile.readlines()
 
     fanHaoList=[]
     for line in lines:
         fanHaoList.append(line.strip('\n'))
-
-    if fanhao in fanHaoList:
-        fanHaoListFile.close()
+    return(fanHaoList) 
+        
+def isFanhaoHasPost(fanhao,list):
+    print('check fanhao: '+fanhao)
+    if fanhao in list:
         print("this fanhao: "+fanhao+" has posted,ignore!")
         return(True)     
     else:
-        fanHaoList.append(fanhao)
-        fanHaoListFile.write(fanhao)
-        fanHaoListFile.write('\n')  
-        fanHaoListFile.close()
         return(False)
         
-def postArticle(article,client,realAVName):
+def postArticle(article,client,mainTitle,guessAVName1):
         
-
     id=article['id']
     fanHao=article['fanHao']
-    avName=realAVName#article['avName']
+    avName=article['avName']
     movieName=article['movieName']
     distributorName=article['distributorName']
     distributorTime=article['distributorTime']
@@ -48,8 +55,11 @@ def postArticle(article,client,realAVName):
     director=article['director']
     category=article['category']
     
-    if isFanhaoHasPost(fanHao):
-        return ("false")
+    #if isFanhaoHasPost(fanHao):
+    #    return ("false")
+        
+    ##############guess av name for tag again####################
+    ###############################
     
     ##################upload imge#################
     imagePath = article['imagePath'] #上传的图片文件路径
@@ -60,13 +70,62 @@ def postArticle(article,client,realAVName):
         'type': 'image/jpeg',  # mimetype
     }
     # read the binary file and let the XMLRPC library encode it into base64
+    time.sleep(5)
     with open(imagePath, 'rb') as img:
         data['bits'] = xmlrpc_client.Binary(img.read())
+    #try:
     picResponse = client.call(media.UploadFile(data))
+    #except:
+    #    print("wp UploadFile fail")
+    #    return
     #print(picResponse)
 
 ####################################
 
+    guessAVName2=""
+    
+    array=avName.split()
+    print(array)
+    for name in array:
+        if name in mainTitle:
+            guessAVName2=name
+            break
+            
+    if guessAVName2=='':                
+        for name in array:
+            if name in movieName:
+                guessAVName2=name
+                break
+                        
+    if guessAVName2=='':
+        for name in array:
+            #name=article['avName']
+            length=len(name)
+            print(name)
+            #testName=name
+            for i in range(0,length):
+                testName=name[0:length-i]
+                if testName in mainTitle:
+                    guessAVName2=testName
+                    break
+                    
+    if guessAVName2=='':
+        for name in array:
+            #name=article['avName']
+            length=len(name)
+            print(name)
+            #testName=name
+            for i in range(0,length):
+                testName=name[0:length-i]
+                if testName in movieName:
+                    guessAVName2=testName
+                    break
+                    
+    print("guessAVName2: "+guessAVName2)  
+    if guessAVName2=='':
+        tagAVName=guessAVName1
+    else:
+        tagAVName=guessAVName2
     ######### post #################
     articleConent="\
     <p><b>番号：</b>"+fanHao+"</p>\
@@ -87,39 +146,35 @@ def postArticle(article,client,realAVName):
     newpost.content = articleConent
     print(id);
     if str(id)=="1":
-        cate=['日韩明星','精华']
+        cate=['日本明星','推荐作品']
     else:
-        cate=['日韩明星']
+        cate=['日本明星','未分类作品']
+        
+    currentYear='2020'
+    yearCate='2020新番'
+    if currentYear in distributorTime:
+        cate.append(yearCate)
+    print(cate)
+    
     newpost.terms_names = {
     'category':cate,
-    'post_tag':[''+avName]
+    'post_tag':[''+tagAVName]
     }
     newpost.thumbnail = picResponse['id']
     newpost.post_status = 'publish'
+    time.sleep(5)
+    #try:
     print(client.call(posts.NewPost(newpost)))
+    #except:
+    #    print("wp NewPost fail")
+    #    return
     ########################################
+    setFanhaoHasPost(fanHao)
     
-    
-def postArticleList(list,mainTitle):
-    wpAccountFile=open('./account_config.txt', 'r')  
-    lines=wpAccountFile.readlines()
-    wpAccountFile.close()
+def postArticleList(client,list,mainTitle):
 
-    webUrl=lines[0].strip('\n')
-    userName=lines[1].strip('\n')
-    passwd=lines[2].strip('\n')
-
-
-    # 检测是否登录成功
-    try:
-        client = Client(webUrl,userName,passwd)
-    except ServerConnectionError:
-        print('登录失败')
-    else:
-        print('登录成功')
-    
     fAvNameFound=False
-    realAVName=""
+    guessAVName1=""
     for article in list:
         if not fAvNameFound:
             array=article['avName'].split()
@@ -127,11 +182,28 @@ def postArticleList(list,mainTitle):
             for a in array:
                 if a in mainTitle:
                     fAvNameFound=True
-                    realAVName=a
+                    guessAVName1=a
                     break
-                    
+                        
+    if guessAVName1=='':
+        for article in list:
+            if not fAvNameFound:
+                array=article['avName'].split()
+                for name in array:
+                    #name=article['avName']
+                    length=len(name)
+                    print(name)
+                    #testName=name
+                    for i in range(0,length):
+                        testName=name[0:length-i]
+                        if testName in mainTitle:
+                            fAvNameFound=True
+                            guessAVName1=testName
+                            break
+                        
+    print("guessAVName1: "+guessAVName1)    
     for article in list:
-        postArticle(article,client,realAVName)
+        postArticle(article,client,mainTitle,guessAVName1)
 
 # 获取所有文章，返回WordPressPost实例，文章列表
 
