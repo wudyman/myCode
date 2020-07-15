@@ -127,6 +127,8 @@ echo "log=6" > /3rd_rw/hlscfg
 		
 youtube
 
+https://ytlr-cert.appspot.com/ 
+
 echo "-3 2 https://qual-e.appspot.com/awebp.html" > /tmp/brctl_cmd 
 
 https://www.youtube.com/tv?launch=menu&additionalDataUrl=http://localhost:56789/apps/YouTube/dial_data#/watch/video/idle?v=z2z857RSfhk&resume 
@@ -260,6 +262,8 @@ echo "-3 2 http://10.0.0.13:8080/shaka/MsePlayer/index.html" > /tmp/brctl_cmd
 echo "-3 2 http://smart.divan.tv/index_common.html#movies" > /tmp/brctl_cmd
 echo "-3 2 http://omega.divan.tv:84/" > /tmp/brctl_cmd
 
+echo "-3 2 http://tvvvideorestart.solocoo.tv/tvvrestarthls3/smil:ketnetcc.ism/Manifest?DVR=1&f=1594360140" > /tmp/brctl_cmd
+echo "-3 2 http://danongling.com/work_test/streaming/mss/mss5.html" > /tmp/brctl_cmd
 
 
 
@@ -459,6 +463,9 @@ for 9288
 
 
 :am,wpf_browser,:devtool=9222 //open chrome debug
+
+
+http://developers.canal-plus.com/rx-player/   ###please don`t use https, it will block http url
 
 
 
