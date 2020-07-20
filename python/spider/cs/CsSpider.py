@@ -23,6 +23,8 @@ from wordpress_xmlrpc.compat import xmlrpc_client
 #from selenium import webdriver
 
 import WpDnlAutoPost
+import WpEnWebAutoPost
+import Misc
 
 def setUrlHasSpider(tempUrl):
     urlHasSpiderListFile=open('./spider_done_urls.txt', 'a+') 
@@ -51,8 +53,8 @@ def needSpider(articleUrl,postDate,list):
     if '小时前' in postDate:
         print('true:'+postDate)
         #return(True)
-    elif '1天前'==postDate:
-        print('true:'+postDate)
+    #elif '1天前'==postDate:
+    #    print('true:'+postDate)
     else:
         print('fail:'+postDate)
         return(False)
@@ -94,21 +96,42 @@ def spiderArticle(htmlUrl):
             tagList.append(tag.string.strip())
         article['tags']=tagList
         
+
+ 
         articleContentTag=soup.select("div.blog-content-box #content_views")
-        [s.extract() for s in articleContentTag[0]('a')]
+        #[s.extract() for s in articleContentTag[0]('a')]
         [s.extract() for s in articleContentTag[0]('img')]
+        
+        for a in articleContentTag[0].findAll('a'):
+            del a['href'] 
+        
         articleContent=[]
-        for child in articleContentTag[0].children:
+        #for child in articleContentTag[0].children:
+        for child in articleContentTag[0].descendants:
             if(child.name=='h1' or child.name=='h2' or child.name=='h3' or child.name=='h4' or child.name=='h5' or child.name=='h6'):
-                articleContent.append({'type':'htag','value':child.text})
+                if len(child.text) !=0 and (not child.text.isspace()):
+                    articleContent.append({'type':'htag','value':child.text})
             elif child.name=='blockquote' or child.name=='p':
                 #print(child.text)
-                articleContent.append({'type':'ptag','value':child.text})
+                if len(child.text) !=0 and (not child.text.isspace()):
+                    articleContent.append({'type':'ptag','value':child.text})
             elif child.name=='pre':
                 #print(child)
-                str=child.text
-                str = re.sub("[\u4e00-\u9fa5]", "", str)#remove chinese
-                articleContent.append({'type':'codetag','value':str})
+                if len(child.text) !=0 and (not child.text.isspace()):
+                    value=child.text
+                    #value=value.replace('<','&lt;')
+                    #value=value.replace('>','&gt;')
+                    #value = re.sub("[\u4e00-\u9fa5]", "", value)#remove chinese
+                    articleContent.append({'type':'codetag','value':value})
+            elif child.name=='table':
+                #print(child)
+                if len(child.text) !=0 and (not child.text.isspace()):
+                    value=str(child)
+                    #print(child)
+                    #value=value.replace('<','&lt;')
+                    #value=value.replace('>','&gt;')
+                    #value = re.sub("[\u4e00-\u9fa5]", "", value)#remove chinese
+                    articleContent.append({'type':'tabletag','value':value})
         article['content']=articleContent
         return(article)
     
@@ -150,7 +173,7 @@ def getSpiderWebConfigReturn(web_file):
     prefixWebUrl=lines[0].strip('\n')
     return(prefixWebUrl)
     
-def dnlServerLogin(accountFile):
+def postServerLogin(accountFile,serverName):
     wpAccountFile=open(accountFile, 'r')  
     lines=wpAccountFile.readlines()
     wpAccountFile.close()
@@ -163,58 +186,63 @@ def dnlServerLogin(accountFile):
     try:
         client = Client(webUrl,userName,passwd)
     except ServerConnectionError:
-        print('login fail')
+        print('login fail: '+serverName)
         return('fail')
     else:
-        print('login success')
+        print('login success: '+serverName)
         return(client)
-    
-def spiderCs():
-    dnlServerFile='./account_config_dnl.txt'
-    clientDnl=dnlServerLogin(dnlServerFile)
-    if 'fail'==clientDnl:
-        print('login dnl server fail')
+
+def spider1url(url):
+    dnlServerFile='../PostWebAccount/account_config_dnl.txt'
+    clientDnl=postServerLogin(dnlServerFile,'dnl')
+    wublogsServerFile='../PostWebAccount/account_config_wublogs.txt'
+    clientWuBlogs=postServerLogin(wublogsServerFile,'wublogs')
+    if 'fail' == clientDnl and 'fail' == clientWuBlogs:
         return('fail')
         
-    #cat = 'api/articles?type=new&category=python'
-    #cat = 'api/articles?type=new&category=java'
-    #cat = 'api/articles?type=new&category=web'
-    #cat = 'api/articles?type=new&category=arch'
-    #cat = 'api/articles?type=new&category=blockchain'
-    #cat = 'api/articles?type=new&category=db'
-    #cat = 'api/articles?type=new&category=5g'
-    #cat = 'api/articles?type=new&category=game'
-    #cat = 'api/articles?type=new&category=mobile'
-    #cat = 'api/articles?type=new&category=ops'
-    #cat = 'api/articles?type=new&category=sec'
-    #cat = 'api/articles?type=new&category=cloud'
-    #cat = 'api/articles?type=new&category=engineering'
-    #cat = 'api/articles?type=new&category=iot'
-    #cat = 'api/articles?type=new&category=fund'
-    #cat = 'api/articles?type=new&category=avi'
-    #cat = 'api/articles?type=new&category=other'
+    articleUrl=url
+    article=spiderArticle(articleUrl)
+    if article:
+        print('###post article: '+article['title']+articleUrl)
+        #WpDnlAutoPost.postArticle(article,clientDnl)
+        WpEnWebAutoPost.postArticle(article,clientWuBlogs)
+    else:
+        print('@@@skip this article： '+articleUrl)
+        
+def spiderCs():
+    dnlServerFile='../PostWebAccount/account_config_dnl.txt'
+    clientDnl=postServerLogin(dnlServerFile,'dnl')
+    wublogsServerFile='../PostWebAccount/account_config_wublogs.txt'
+    clientWuBlogs=postServerLogin(wublogsServerFile,'wublogs')
+    if 'fail' == clientDnl and 'fail' == clientWuBlogs:
+        return('fail')
+        
     catList=['python','java','web','arch','blockchain','db','5g','game','mobile','ops','sec','cloud','engineering','iot','fund','avi','other']
     spider_done_url_list=getUrlHasSpider()
     for catTemp in catList:
-        time.sleep(5)
+        time.sleep(1)
         cat='api/articles?type=new&category='+catTemp
         htmlUrls=[]
         htmlUrls=spiderHtmlUrls(cat,spider_done_url_list)
         if htmlUrls:
             for articleUrl in htmlUrls:
+                spider_done_url_list.append(articleUrl)
+                setUrlHasSpider(articleUrl)
                 article=spiderArticle(articleUrl)
                 if article:
                     print('###post article: '+article['title']+articleUrl)
-                    WpDnlAutoPost.postArticle(article,clientDnl)
+                    if 'fail' != clientDnl:
+                        WpDnlAutoPost.postArticle(article,clientDnl)
+                    if 'fail' != clientWuBlogs:
+                        WpEnWebAutoPost.postArticle(article,clientWuBlogs)
                 else:
                     print('@@@skip this article： '+articleUrl)
-                spider_done_url_list.append(articleUrl)
-                setUrlHasSpider(articleUrl)
         
 #headers = {"User-Agent":"Mozilla/5.0 (Linux; Android 6.0; Nexus 5 Build/MRA58N) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/79.0.3945.130 Mobile Safari/537.36"}
 headers = {"User-Agent":"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/79.0.3945.130 Safari/537.36"}
 
-spiderCs()
+#spiderCs()
+spider1url('https://blog.csdn.net/qq_46396563/article/details/107443470')
 
 
 

@@ -16,48 +16,52 @@ from wordpress_xmlrpc.methods.users import GetUserInfo
 
 from wordpress_xmlrpc.compat import xmlrpc_client
 
+import re
+
+import Misc
+    
 def guessCatByTags(tags):
     catList=[]
     catTags=['html','HTML','css','CSS','js','javascript','php','wordpress','apache','nginx','iis','mysql','nodejs','spring']
     for catTag in catTags:
         for tag in tags:
             if catTag.upper() in tag.upper():
-                catList.append('网站建设')
+                catList.append('web')
                 break
                 
     catTags=['html','HTML','css','CSS','js','javascript','jquery','vue','angula','react','node','Bootstrap']
     for catTag in catTags:
         for tag in tags:
             if catTag.upper() in tag.upper():
-                catList.append('前端')
+                catList.append('front-end')
                 break
                 
     catTags=['mysql','hive','node','django','hive','apache','nginx','iis']
     for catTag in catTags:
         for tag in tags:
             if catTag.upper() in tag.upper():
-                catList.append('后端/数据库')
+                catList.append('back-end/db')
                 break
                 
     catTags=['c','c/c++','c++','java','jvm','python','php','ruby','lua']
     for catTag in catTags:
         for tag in tags:
             if catTag.upper() in tag.upper():
-                catList.append('编程语言')
+                catList.append('languages')
                 break
                 
     catTags=['linux','centos','ubuntu','redhat','android','os','windows','chrome']
     for catTag in catTags:
         for tag in tags:
             if catTag.upper() in tag.upper():
-                catList.append('操作系统')
+                catList.append('os')
                 break
                 
     catTags=['hadoop']
     for catTag in catTags:
         for tag in tags:
             if catTag.upper() in tag.upper():
-                catList.append('AI/大数据')
+                catList.append('AI/big data')
                 break
                 
     if catList:
@@ -65,38 +69,47 @@ def guessCatByTags(tags):
         catList2 = list(set(catList))
         print(catList2)
     else:
-        catList.append('其他')
+        catList.append('others')
         catList2=catList
     return(catList2)
         
 def postArticle(article,client):
-    articleTitle=article['title']
+    oriTitle=article['title']
     articleAuthor=article['author']
-    articleTags=article['tags']
+    oriTags=article['tags']
     articleContent=article['content']
+    
+    articleTitle=Misc.transToEn(oriTitle)
+    
+    articleTags=[]
+    for tag in oriTags:
+        articleTags.append(Misc.transToEn(tag))
         
     ######### post #################
     postConent=''
     for section in articleContent:
         if(section['type']=='htag'):
-            value=section['value']
+            value=Misc.transToEn(section['value'])
             value=value.replace('<','&lt;')
             postConent=postConent+'<h2>'+value+'</h2>'
         elif(section['type']=='ptag'):
-            value=section['value']
+            value=Misc.transToEn(section['value'])
             value=value.replace('<','&lt;')
             postConent=postConent+'<p>'+value+'</p>'
         elif(section['type']=='codetag'):
-            value=section['value']
+            #value = re.sub("[\u4e00-\u9fa5]", "", section['value'])#remove chinese
+            #postConent=postConent+'<pre><code>'+value+'</code></pre>'
+            value=Misc.transToEn(section['value'])
             value=value.replace('<','&lt;')
             #value=value.replace('>','&gt;')
             postConent=postConent+'<pre class="wp-block-code"><code>'+value+'</code></pre>'
         elif(section['type']=='tabletag'):
-            value=section['value']
+            #value=section['value']
+            value=Misc.transToEn(section['value'])
             #value=value.replace('<','&lt;')
             #value=value.replace('>','&gt;')
             postConent=postConent+'<figure class="wp-block-table">'+value+'</figure>'
-            
+    
     newpost = WordPressPost()
     newpost.title=articleTitle
     newpost.content = postConent
