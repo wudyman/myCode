@@ -127,6 +127,7 @@ def spiderArticle(htmlUrl):
                 #print(child)
                 if len(child.text) !=0 and (not child.text.isspace()):
                     value=str(child)
+                    #value=child
                     #print(child)
                     #value=value.replace('<','&lt;')
                     #value=value.replace('>','&gt;')
@@ -192,7 +193,10 @@ def postServerLogin(accountFile,serverName):
         print('login success: '+serverName)
         return(client)
 
-def spider1url(url):
+def spider1url(shortUrl):
+    webFile='./web_cs_config.txt'
+    prefixWebUrl=getSpiderWebConfigReturn(webFile) 
+    
     dnlServerFile='../PostWebAccount/account_config_dnl.txt'
     clientDnl=postServerLogin(dnlServerFile,'dnl')
     wublogsServerFile='../PostWebAccount/account_config_wublogs.txt'
@@ -200,7 +204,7 @@ def spider1url(url):
     if 'fail' == clientDnl and 'fail' == clientWuBlogs:
         return('fail')
         
-    articleUrl=url
+    articleUrl=prefixWebUrl+shortUrl
     article=spiderArticle(articleUrl)
     if article:
         print('###post article: '+article['title']+articleUrl)
@@ -242,7 +246,7 @@ def spiderCs():
 headers = {"User-Agent":"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/79.0.3945.130 Safari/537.36"}
 
 #spiderCs()
-spider1url('https://blog.csdn.net/qq_46396563/article/details/107443470')
+spider1url('qq_46396563/article/details/107443470')
 
 
 

@@ -65,7 +65,6 @@ def guessCatByTags(tags):
                 break
                 
     if catList:
-        print(catList)
         catList2 = list(set(catList))
         print(catList2)
     else:
@@ -104,8 +103,15 @@ def postArticle(article,client):
             #value=value.replace('>','&gt;')
             postConent=postConent+'<pre class="wp-block-code"><code>'+value+'</code></pre>'
         elif(section['type']=='tabletag'):
-            #value=section['value']
-            value=Misc.transToEn(section['value'])
+            value=section['value']
+            value=value.replace('<th>','<td>')
+            value=value.replace('</th>','</td>')
+            value=Misc.transToEn(value)
+            value=value.replace('< code >','<code>')
+            value=value.replace('< / code >','</code>')
+            value=value.replace('< a >','<a>')
+            value=value.replace('< a','<a')
+            value=value.replace('< / a >','</a>')
             #value=value.replace('<','&lt;')
             #value=value.replace('>','&gt;')
             postConent=postConent+'<figure class="wp-block-table">'+value+'</figure>'
