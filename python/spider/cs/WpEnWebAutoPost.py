@@ -89,32 +89,47 @@ def postArticle(article,client):
     for section in articleContent:
         if(section['type']=='htag'):
             value=Misc.transToEn(section['value'])
-            value=value.replace('<','&lt;')
-            postConent=postConent+'<h2>'+value+'</h2>'
+            if 'fuck_trans_fail'!=value:
+                value=value.replace('<','&lt;')
+                postConent=postConent+'<h2>'+value+'</h2>'
         elif(section['type']=='ptag'):
             value=Misc.transToEn(section['value'])
-            value=value.replace('<','&lt;')
-            postConent=postConent+'<p>'+value+'</p>'
+            if 'fuck_trans_fail'!=value:
+                value=value.replace('<','&lt;')
+                postConent=postConent+'<p>'+value+'</p>'
         elif(section['type']=='codetag'):
             #value = re.sub("[\u4e00-\u9fa5]", "", section['value'])#remove chinese
             #postConent=postConent+'<pre><code>'+value+'</code></pre>'
-            value=Misc.transToEn(section['value'])
-            value=value.replace('<','&lt;')
-            #value=value.replace('>','&gt;')
-            postConent=postConent+'<pre class="wp-block-code"><code>'+value+'</code></pre>'
+            value=section['value'].replace(' ','&nbsp;')
+            value=Misc.transToEn(value)
+            if 'fuck_trans_fail'!=value:
+                value=value.strip().replace('<','&lt;')
+                #value=value.replace('>','&gt;')
+                postConent=postConent+'<pre class="wp-block-code"><code>'+value+'</code></pre>'
         elif(section['type']=='tabletag'):
             value=section['value']
             value=value.replace('<th>','<td>')
             value=value.replace('</th>','</td>')
             value=Misc.transToEn(value)
-            value=value.replace('< code >','<code>')
-            value=value.replace('< / code >','</code>')
-            value=value.replace('< a >','<a>')
-            value=value.replace('< a','<a')
-            value=value.replace('< / a >','</a>')
-            #value=value.replace('<','&lt;')
-            #value=value.replace('>','&gt;')
-            postConent=postConent+'<figure class="wp-block-table">'+value+'</figure>'
+            if 'fuck_trans_fail'!=value:
+                value=value.replace('< code >','<code>')
+                value=value.replace('< / code >','</code>')
+                value=value.replace('< a >','<a>')
+                value=value.replace('< a','<a')
+                value=value.replace('< / a >','</a>')
+                #value=value.replace('<','&lt;')
+                #value=value.replace('>','&gt;')
+                postConent=postConent+'<figure class="wp-block-table">'+value+'</figure>'
+        elif(section['type']=='litag'):
+            value=Misc.transToEn(section['value'])
+            if 'fuck_trans_fail'!=value:
+                value=value.replace('<','&lt;')
+                #value=value.replace('>','&gt;')
+                postConent=postConent+'<li>'+value+'</li>'
+        elif(section['type']=='separatorTag'):
+            #postConent=postConent+'<hr class="wp-block-separator">'
+            value=section['value']
+            postConent=postConent+'<p>'+value+'</p>'
     
     newpost = WordPressPost()
     newpost.title=articleTitle
@@ -129,7 +144,7 @@ def postArticle(article,client):
     }
     #newpost.thumbnail = picResponse['id']
     newpost.post_status = 'publish'
-    time.sleep(5)
+    #time.sleep(5)
     #try:
     print(client.call(posts.NewPost(newpost)))
     #except:

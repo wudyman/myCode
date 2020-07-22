@@ -40,10 +40,12 @@ def transToEn(oriContent,fromLang='zh',toLang='en'):
 #post request
     res = requests.post(apiUrl, data=data)
     time.sleep(2)
-    #print(res.content)
-    trans_result = json.loads(res.content.decode()).get('trans_result')
-    if trans_result:
-        for a in trans_result:
-            transDoneContent=transDoneContent+a.get("dst")+'\n'
-    #print(trans_result)
-    return(transDoneContent)
+    if res.content:
+        #print(res.content)
+        trans_result = json.loads(res.content).get('trans_result')
+        if trans_result:
+            for a in trans_result:
+                transDoneContent=transDoneContent+a.get("dst")+'\n'
+            #print(trans_result)
+            return(transDoneContent)
+    return('fuck_trans_fail')

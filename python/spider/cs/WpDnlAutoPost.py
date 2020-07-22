@@ -96,13 +96,22 @@ def postArticle(article,client):
             #value=value.replace('<','&lt;')
             #value=value.replace('>','&gt;')
             postConent=postConent+'<figure class="wp-block-table">'+value+'</figure>'
-            
-    newpost = WordPressPost()
-    newpost.title=articleTitle
-    newpost.content = postConent
+        elif(section['type']=='litag'):
+            value=section['value']
+            #value=value.replace('<','&lt;')
+            #value=value.replace('>','&gt;')
+            postConent=postConent+'<li>'+value+'</li>'
+        elif(section['type']=='separatorTag'):
+            #postConent=postConent+'<hr class="wp-block-separator">'
+            value=section['value']
+            postConent=postConent+'<p>'+value+'</p>'
  
     tags=articleTags  
-    cats=guessCatByTags(tags)    
+    cats=guessCatByTags(tags)  
+
+    newpost = WordPressPost()
+    newpost.title=articleTitle+'-'+tags[0]
+    newpost.content = postConent    
     
     newpost.terms_names = {
     'category':cats,
