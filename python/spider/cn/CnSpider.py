@@ -92,6 +92,7 @@ def needSpiderAskUrl(url,num,list):
     return(True)
     
 def spiderQuestion(htmlUrl):
+    print(htmlUrl)
     article={}
     response = None
     try:
@@ -102,20 +103,16 @@ def spiderQuestion(htmlUrl):
         htmlContent=response.text
         x=htmlContent.encode('gbk','ignore').decode('gbk')
         soup = BeautifulSoup(x,'lxml')
-        title=soup.select("div.questions_detail_con dt")[0]
-        [s.extract() for s in title('b')]
-        article['title']=title.text.strip()
+        title=soup.select("#q_title a")[0].text.strip()
+        article['title']=title
+        print(title)
         
-        author=soup.select(".user_name")[0].text
-        article['author']=author
         
-        tags=soup.select("div.questions_detail_con div.tags a")
-        tagList=[]
-        for tag in tags:
-            tagList.append(tag.string.strip())
-        article['tags']=tagList
+        article['author']='who'
+        article['tags']=[]
         
-        questionContentTag=soup.select("div.questions_detail_con")
+        
+        questionContentTag=soup.select("div.qitem_question #qes_content")
         [s.extract() for s in questionContentTag[0]('a')]
         [s.extract() for s in questionContentTag[0]('img')]
         #print(questionContentTag[0])
@@ -140,11 +137,12 @@ def spiderQuestion(htmlUrl):
             elif child.name=='li':
                 if len(child.text) !=0 and (not child.text.isspace()):
                     value=child.text
-                    questionContent.append({'type':'litag','value':value})
+                    questionContent.append({'type':'litag','value':value})                    
+       
                     
         answerContent=[{'type':'separatorTag','value':'━═━═━◥◤━═━═━━═━═━◥◤━═━═━━═━═━◥◤━═━═━━═━═━◥◤━═━═━━═━═━◥◤━═━═━'}]    
         
-        answerContentTags=soup.select("div.answer_detail_con")
+        answerContentTags=soup.select("div.qitem_all_answer_inner .q_content")
         #answerContent=[]
         for answerContentTag in answerContentTags:
             #answerContent.append({'type':'separatorTag','value':'﹋﹊﹋﹊﹋﹊﹋﹊﹋﹊﹋﹊﹋﹊﹋﹊﹋﹊'})
@@ -173,13 +171,14 @@ def spiderQuestion(htmlUrl):
                         value=child.text
                         answerContent.append({'type':'litag','value':value})
             answerContent.append({'type':'separatorTag','value':'﹋﹊﹋﹊﹋﹊﹋﹊﹋﹊﹋﹊﹋﹊﹋﹊﹋﹊﹋﹊﹋﹊﹋﹊﹋﹊﹋﹊﹋﹊﹋﹊﹋﹊﹋﹊'})
-            
+        
         articleContent=questionContent+answerContent
         article['content']=articleContent
         return(article)
 
+
 def spiderHtmlUrlsAsk(cat,list):
-    webFile='./web_cs_config.txt'
+    webFile='./web_cn_config.txt'
     prefixWebUrlAsk=getSpiderWebConfigReturn(webFile,'ask')
     spiderUrl=prefixWebUrlAsk+cat
     print(spiderUrl)
@@ -195,13 +194,17 @@ def spiderHtmlUrlsAsk(cat,list):
         x=htmlContent.encode('gbk','ignore').decode('gbk')
         soup = BeautifulSoup(x,'lxml')
                 
-        questions=soup.select("div.questions_detail_con")
+        questions=soup.select("div#main div.one_entity")
         for question in questions:
-            answer_num=int(question.find('a',{'class':'answer_num'})('span')[0].string)
-            url=question.find('dl').find('a').get('href')
+            url=question.select('.news_item .news_entry a')[0].get('href')
+            answer_num_tag=question.select('.answercount .diggit .diggnum.answered')
+            if (answer_num_tag):
+                answer_num=int(answer_num_tag[0].text)
+            else:
+                answer_num_tag=question.select('.answercount .diggit .diggnum.unanswered')
+                answer_num=int(answer_num_tag[0].text)
             if needSpiderAskUrl(url,answer_num,list):
-                htmlUrlList.append(url)
-                
+               htmlUrlList.append(url)      
     return(htmlUrlList) 
 
 '''    
@@ -214,7 +217,7 @@ def spiderCsAsk1Url(shortUrl):
     if 'fail' == clientDnl and 'fail' == clientWuBlogs:
         return('fail')
         
-    webFile='./web_cs_config.txt'
+    webFile='./web_cn_config.txt'
     prefixWebUrlAsk=getSpiderWebConfigReturn(webFile,'ask')
     
     questionUrl=shortUrl    
@@ -229,40 +232,35 @@ def spiderCsAsk1Url(shortUrl):
         print('@@@skip this question '+questionUrl)
 '''
     
-def spiderCsAsk(clientDnl,clientWuBlogs):
-    catList=['/questions?type=resolved','']    
+def spiderCnAsk(clientDnl,clientWuBlogs):  
     spider_done_url_list=getUrlHasSpider()
-    for cat in catList:
-        htmlUrls=[]
-        htmlUrls=spiderHtmlUrlsAsk(cat,spider_done_url_list)
-        if htmlUrls:
-            webFile='./web_cs_config.txt'
-            prefixWebUrlAsk=getSpiderWebConfigReturn(webFile,'ask')
-            for questionUrl in htmlUrls:
-                spider_done_url_list.append(questionUrl)
-                setUrlHasSpider(questionUrl)
-                question=spiderQuestion(prefixWebUrlAsk+questionUrl)
-                if question:
-                    print('###post question: '+question['title']+questionUrl)
-                    if 'fail' != clientDnl:
-                        WpDnlAutoPost.postArticle(question,clientDnl)
-                    if 'fail' != clientWuBlogs:
-                        WpEnWebAutoPost.postArticle(question,clientWuBlogs)
-                else:
-                    print('@@@skip this question '+questionUrl)
-                #break
+    cat=''
+    htmlUrls=[]
+    htmlUrls=spiderHtmlUrlsAsk(cat,spider_done_url_list)
+    if htmlUrls:
+        print(htmlUrls)
+        webFile='./web_cn_config.txt'
+        prefixWebUrlAsk=getSpiderWebConfigReturn(webFile,'ask')
+        for questionUrl in htmlUrls:
+            #spider_done_url_list.append(questionUrl)
+            #setUrlHasSpider(questionUrl)
+            question=spiderQuestion(prefixWebUrlAsk+questionUrl)
+            break
+            '''
+            if question:
+                print('###post question: '+question['title']+questionUrl)
+                if 'fail' != clientDnl:
+                    WpDnlAutoPost.postArticle(question,clientDnl)
+                if 'fail' != clientWuBlogs:
+                    WpEnWebAutoPost.postArticle(question,clientWuBlogs)
+            else:
+                print('@@@skip this question '+questionUrl)
+            #break
+            '''
 ##################################spider question start#######################################
 
 ##################################spider blog start#######################################
-def needSpiderBlogUrl(articleUrl,postDate,list):
-    if '小时前' in postDate:
-        print('true:'+postDate)
-        #return(True)
-    #elif '1天前'==postDate:
-    #    print('true:'+postDate)
-    else:
-        print('fail:'+postDate)
-        return(False)
+def needSpiderBlogUrl(articleUrl,list):
     
     if isUrlHasSpider(articleUrl,list):
         return(False) 
@@ -281,29 +279,25 @@ def spiderArticle(htmlUrl):
         x=htmlContent.encode('gbk','ignore').decode('gbk')
         soup = BeautifulSoup(x,'lxml')
         
-        imgs=soup.select("div.blog-content-box #content_views img")
+        imgs=soup.select("div.blogpost-body img")
         if imgs:
             print('has img')
             return(article)
         else:
             print('no img')
-        title=soup.select("div.blog-content-box .article-header-box .title-article")[0].text
-        #print(title)
+        title=soup.select("div.post .postTitle")[0].text.strip()
+        print(title)
         article['title']=title
         
-        author=soup.select(".follow-nickName")[0].text
+        
+        author='who'
         #print(author)
         article['author']=author
         
-        tags=soup.select("div.blog-content-box .article-header-box .tags-box a")
-        tagList=[]
-        for tag in tags:
-            tagList.append(tag.string.strip())
-        article['tags']=tagList
-        
-
+        #guessTagsCats(title)
+        article['tags']=[]        
  
-        articleContentTag=soup.select("div.blog-content-box #content_views")
+        articleContentTag=soup.select("div.blogpost-body")
         #[s.extract() for s in articleContentTag[0]('a')]
         [s.extract() for s in articleContentTag[0]('img')]
         
@@ -334,11 +328,13 @@ def spiderArticle(htmlUrl):
                 if len(child.text) !=0 and (not child.text.isspace()):
                     value=child.text
                     articleContent.append({'type':'litag','value':value})
+            #print(articleContent)
         article['content']=articleContent
+        
         return(article)
     
 def spiderHtmlUrlsBlog(cat,list):
-    webFile='./web_cs_config.txt'
+    webFile='./web_cn_config.txt'
     prefixWebUrlBlog=getSpiderWebConfigReturn(webFile,'blog')  
     spiderUrl=prefixWebUrlBlog+cat
     print(spiderUrl)
@@ -350,12 +346,14 @@ def spiderHtmlUrlsBlog(cat,list):
     except:
         pass
     if response:
-        articles=json.loads(response.text).get('articles')
-        for article in articles:
-            articleUrl=article.get('url')
-            postDate=article.get('created_at')
-            articleTitle=article.get('title')
-            if needSpiderBlogUrl(articleUrl,postDate,list):
+        htmlContent=response.text
+        x=htmlContent.encode('gbk','ignore').decode('gbk')
+        soup = BeautifulSoup(x,'lxml')
+                
+        postItems=soup.select("div.post_item")
+        for postItem in postItems:
+            articleUrl=postItem.find('a',{'class':'titlelnk'}).get('href')
+            if needSpiderBlogUrl(articleUrl,list):
                 htmlUrlList.append(articleUrl)
     return(htmlUrlList) 
 
@@ -369,7 +367,7 @@ def spiderCsBlog1Url(shortUrl):
     if 'fail' == clientDnl and 'fail' == clientWuBlogs:
         return('fail')
         
-    webFile='./web_cs_config.txt'
+    webFile='./web_cn_config.txt'
     prefixWebUrlBlog=getSpiderWebConfigReturn(webFile,'blog') 
     
         
@@ -383,28 +381,29 @@ def spiderCsBlog1Url(shortUrl):
         print('@@@skip this article： '+articleUrl)
 '''
        
-def spiderCsBlog(clientDnl,clientWuBlogs):
+def spiderCnBlog(clientDnl,clientWuBlogs):
         
-    catList=['python','java','web','arch','blockchain','db','5g','game','mobile','ops','sec','cloud','engineering','iot','fund','avi','other']
     spider_done_url_list=getUrlHasSpider()
-    for catTemp in catList:
-        time.sleep(1)
-        cat='api/articles?type=new&category='+catTemp
-        htmlUrls=[]
-        htmlUrls=spiderHtmlUrlsBlog(cat,spider_done_url_list)
-        if htmlUrls:
-            for articleUrl in htmlUrls:
-                spider_done_url_list.append(articleUrl)
-                setUrlHasSpider(articleUrl)
-                article=spiderArticle(articleUrl)
-                if article:
-                    print('###post article: '+article['title']+articleUrl)
-                    if 'fail' != clientDnl:
-                        WpDnlAutoPost.postArticle(article,clientDnl)
-                    if 'fail' != clientWuBlogs:
-                        WpEnWebAutoPost.postArticle(article,clientWuBlogs)
-                else:
-                    print('@@@skip this article： '+articleUrl)
+    time.sleep(1)
+    htmlUrls=[]
+    cat=''
+    htmlUrls=spiderHtmlUrlsBlog(cat,spider_done_url_list)
+    if htmlUrls:
+        for articleUrl in htmlUrls:
+            #spider_done_url_list.append(articleUrl)
+            #setUrlHasSpider(articleUrl)
+            article=spiderArticle(articleUrl)
+            
+            if article:
+                print('###post article: '+article['title']+articleUrl)
+                if 'fail' != clientDnl:
+                    WpDnlAutoPost.postArticle(article,clientDnl)
+                if 'fail' != clientWuBlogs:
+                    WpEnWebAutoPost.postArticle(article,clientWuBlogs)
+            else:
+                print('@@@skip this article： '+articleUrl)
+            
+            #break
                     
 ###########################################spider blog end####################################################     
 
@@ -424,6 +423,8 @@ headers = {"User-Agent":"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/5
 
 #spiderCs()
 #spiderCsBlog1Url('qq_46396563/article/details/107443470')
+#spiderCnBlog('fail','fail')
+spiderCnAsk('fail','fail')
 
 
 
