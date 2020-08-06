@@ -91,7 +91,7 @@ def needSpiderAskUrl(url,num,list):
         return(False) 
     return(True)
     
-def spiderQuestion(htmlUrl):
+def spiderQuestion(htmlUrl,cat):
     article={}
     response = None
     try:
@@ -104,7 +104,11 @@ def spiderQuestion(htmlUrl):
         soup = BeautifulSoup(x,'lxml')
         title=soup.select("div.questions_detail_con dt")[0]
         [s.extract() for s in title('b')]
-        article['title']=title.text.strip()
+        title=title.text.strip()
+        if cat=='/questions?type=resolved':
+            article['title']='(已解决)'+title
+        else:
+            article['title']=title
         
         author=soup.select(".user_name")[0].text
         article['author']=author
@@ -116,8 +120,8 @@ def spiderQuestion(htmlUrl):
         article['tags']=tagList
         
         questionContentTag=soup.select("div.questions_detail_con")
-        [s.extract() for s in questionContentTag[0]('a')]
-        [s.extract() for s in questionContentTag[0]('img')]
+        [s.extract() for s in questionContentTag[0]('a',{'class':'user_name'})]
+        #[s.extract() for s in questionContentTag[0]('img')]
         #print(questionContentTag[0])
         questionContent=[]
         for child in questionContentTag[0].descendants:
@@ -141,6 +145,11 @@ def spiderQuestion(htmlUrl):
                 if len(child.text) !=0 and (not child.text.isspace()):
                     value=child.text
                     questionContent.append({'type':'litag','value':value})
+            elif child.name=='img':
+                value=child['src']
+                if 'http' in value:
+                    value=value.replace('https://','http://')
+                    questionContent.append({'type':'imgtag','value':value})
                     
         answerContent=[{'type':'separatorTag','value':'━═━═━◥◤━═━═━━═━═━◥◤━═━═━━═━═━◥◤━═━═━━═━═━◥◤━═━═━━═━═━◥◤━═━═━'}]    
         
@@ -148,8 +157,8 @@ def spiderQuestion(htmlUrl):
         #answerContent=[]
         for answerContentTag in answerContentTags:
             #answerContent.append({'type':'separatorTag','value':'﹋﹊﹋﹊﹋﹊﹋﹊﹋﹊﹋﹊﹋﹊﹋﹊﹋﹊'})
-            [s.extract() for s in answerContentTag('a')]
-            [s.extract() for s in answerContentTag('img')]
+            [s.extract() for s in answerContentTag('a',{'class':'user_name'})]
+            #[s.extract() for s in answerContentTag('img')]
             #print(answerContentTag)
             for child in answerContentTag.descendants:
                 if(child.name=='h1' or child.name=='h2' or child.name=='h3' or child.name=='h4' or child.name=='h5' or child.name=='h6'):
@@ -172,6 +181,11 @@ def spiderQuestion(htmlUrl):
                     if len(child.text) !=0 and (not child.text.isspace()):
                         value=child.text
                         answerContent.append({'type':'litag','value':value})
+                elif child.name=='img':
+                    value=child['src']
+                    if 'http' in value:
+                        value=value.replace('https://','http://')
+                        answerContent.append({'type':'imgtag','value':value})
             answerContent.append({'type':'separatorTag','value':'﹋﹊﹋﹊﹋﹊﹋﹊﹋﹊﹋﹊﹋﹊﹋﹊﹋﹊﹋﹊﹋﹊﹋﹊﹋﹊﹋﹊﹋﹊﹋﹊﹋﹊﹋﹊'})
             
         articleContent=questionContent+answerContent
@@ -241,7 +255,7 @@ def spiderCsAsk(clientDnl,clientWuBlogs):
             for questionUrl in htmlUrls:
                 spider_done_url_list.append(questionUrl)
                 setUrlHasSpider(questionUrl)
-                question=spiderQuestion(prefixWebUrlAsk+questionUrl)
+                question=spiderQuestion(prefixWebUrlAsk+questionUrl,cat)
                 if question:
                     print('###post question: '+question['title']+questionUrl)
                     if 'fail' != clientDnl:

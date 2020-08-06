@@ -16,6 +16,8 @@ from wordpress_xmlrpc.methods.users import GetUserInfo
 
 from wordpress_xmlrpc.compat import xmlrpc_client
 
+import Misc
+
 def guessTagsCats(title,tags):
 
     webCatTags={'name':'网站建设','tags':['网站','web','html','HTML','css','CSS','js','javascript','php','wordpress','apache','nginx','iis','mysql','nodejs','spring','asp','cgi','wsgi','uwsgi','django','flask','Tornado','tomcat','ajax','webSocket']}
@@ -103,7 +105,11 @@ def postArticle(article,client):
             #postConent=postConent+'<hr class="wp-block-separator">'
             value=section['value']
             postConent=postConent+'<p>'+value+'</p>'
- 
+        elif(section['type']=='imgtag'):
+            value=Misc.downloadImg(section['value'],'dnl')
+            postConent=postConent+'<p><img style="max-width:100%;" alt="picture" src='+value+'></p>'
+            #postConent=postConent+'<p><img style="max-width:100%;" alt="picture" rel="noreferrer noopener sponsored nofollow" src='+value+'></p>'
+  
     (tags,cats)=guessTagsCats(articleTitle,articleTags) 
     print(tags)
     print(cats)
@@ -119,7 +125,9 @@ def postArticle(article,client):
     newpost.post_status = 'publish'
     time.sleep(3)
     #try:
-    print(client.call(posts.NewPost(newpost)))
+    aritcleId=client.call(posts.NewPost(newpost))
+    print(aritcleId)
+    Misc.push2Baidu(aritcleId)
     #except:
     #    print("wp NewPost fail")
     #    return
